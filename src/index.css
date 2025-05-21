@@ -132,6 +132,8 @@
     -webkit-text-fill-color: transparent;
     animation: shine-bronze 6s linear infinite;
     text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
+    display: inline-block; /* Ensures text doesn't get cut off */
+    padding-right: 1px; /* Small padding to prevent cutoff */
   }
 
   @keyframes shine-bronze {
