@@ -35,7 +35,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-6 border-b border-white/10",
+        "py-8 border-b border-white/10",
         className,
       )}
     >
@@ -46,7 +46,7 @@ export function NavBar({ items, className }: NavBarProps) {
             <img 
               src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
               alt="Logo"
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </div>
         </Link>
