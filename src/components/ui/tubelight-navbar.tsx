@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
-import { Layers2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface NavItem {
@@ -44,7 +43,11 @@ export function NavBar({ items, className }: NavBarProps) {
         {/* Logo on the left */}
         <Link to="/" className="flex items-center gap-2">
           <div className="text-white text-glow">
-            <Layers2 size={28} className="text-white" />
+            <img 
+              src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
+              alt="Logo"
+              className="h-8 w-auto"
+            />
           </div>
         </Link>
         
