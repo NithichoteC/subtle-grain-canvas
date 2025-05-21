@@ -27,9 +27,9 @@ function Hero() {
       <div className="container mx-auto">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-bold">
+            <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4">
               <span className="text-white">
-                <span className="bronze-gradient">AI</span>-Powered System That <span className="bronze-gradient">Delivers</span> <span className="bronze-gradient">Ready Buyers</span> to Your Calendar
+                <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
             <div className="h-16 flex items-center justify-center mt-4">
@@ -42,7 +42,7 @@ function Hero() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="inline-block"
+                    className="inline-block min-w-[160px]"
                   >
                     {rotatingPhrases[currentIndex]}
                   </motion.span>
