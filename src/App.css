@@ -1,10 +1,19 @@
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* We're keeping other styles but ensuring they don't interfere with our full-width design */
 .logo {
   height: 6em;
   padding: 1.5em;
