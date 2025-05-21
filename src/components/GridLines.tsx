@@ -8,7 +8,7 @@ interface GridLinesProps {
 
 const GridLines: React.FC<GridLinesProps> = ({ className }) => {
   return (
-    <div className={cn("fixed inset-0 z-0 pointer-events-none", className)}>
+    <div className={cn("absolute inset-0 pointer-events-none", className)}>
       {/* Left vertical line */}
       <div className="absolute left-8 md:left-16 top-0 bottom-0 w-[1.5px] bg-white/10"></div>
       
