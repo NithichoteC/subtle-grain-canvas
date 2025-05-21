@@ -14,7 +14,7 @@ export function NavBarDemo() {
   ]
 
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-center justify-between w-full h-full">
       {/* Logo on the left */}
       <div className="bg-background/5 border border-white/10 backdrop-blur-xl py-2 px-4 rounded-full shadow-lg white-glow h-10 flex items-center">
         <img 
@@ -27,14 +27,14 @@ export function NavBarDemo() {
       {/* Center Navigation */}
       <NavBar items={navItems} className="px-4" />
       
-      {/* CTA Button on the right */}
+      {/* CTA Button on the right with bronze gradient */}
       <div className="bg-background/5 border border-white/10 backdrop-blur-xl py-2 px-2 rounded-full shadow-lg white-glow h-10 flex items-center">
         <Button 
-          className="flex items-center justify-center rounded-full w-8 h-8 p-0 bronze-gradient"
+          className="flex items-center justify-center rounded-full w-8 h-8 p-0"
           variant="ghost"
           size="icon"
         >
-          <BookOpen size={16} className="text-white" />
+          <BookOpen size={16} className="bronze-gradient" />
         </Button>
       </div>
     </div>
