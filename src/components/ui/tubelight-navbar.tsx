@@ -36,7 +36,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-4 border-b border-white/10", // Reduced padding from py-8 to py-4
+        "py-4 border-b border-white/10",
         className,
       )}
     >
@@ -91,7 +91,7 @@ export function NavBar({ items, className }: NavBarProps) {
         {/* Button on the right */}
         <div>
           <Button 
-            className="bronze-gradient-button text-sm px-4 py-2 rounded-md font-medium" 
+            className="minimalist-button text-sm px-4 py-2 rounded-md font-medium" 
             size="sm"
           >
             Book Call

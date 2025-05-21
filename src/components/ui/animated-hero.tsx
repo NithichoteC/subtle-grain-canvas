@@ -56,7 +56,7 @@ function Hero() {
           </div>
           <div className="flex flex-row gap-3 mt-4">
             <Magnetic intensity={0.8} range={120}>
-              <Button size="lg" className="bronze-gradient-button gap-3 px-6 py-3 rounded-md">
+              <Button size="lg" className="minimalist-button gap-3 px-6 py-3 rounded-md">
                 Book My Call <MoveRight className="w-4 h-4" />
               </Button>
             </Magnetic>
