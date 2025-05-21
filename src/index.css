@@ -152,11 +152,11 @@
     -webkit-text-fill-color: transparent;
     animation: shine-bronze 6s linear infinite;
     text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
-    padding-right: 12px; /* Horizontal padding to prevent right cutoff */
-    padding-bottom: 8px; /* Added padding at the bottom to prevent 'y' cutoff */
-    margin-right: 4px; /* Spacing between words */
-    display: inline-block; /* Ensures the full element is rendered */
-    line-height: 1.2; /* Adjusted line height to provide more space for descenders */
+    padding-right: 12px; /* Keep horizontal padding to prevent right cutoff */
+    padding-bottom: 4px; /* Reduced padding at the bottom from 8px to 4px */
+    margin-right: 4px; /* Keep spacing between words */
+    display: inline-block; /* Keep to ensure the full element is rendered */
+    line-height: 1; /* Adjusted line height from 1.2 to 1 to reduce vertical spacing */
   }
 
   @keyframes shine-bronze {

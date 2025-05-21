@@ -25,14 +25,14 @@ function Hero() {
   return (
     <div className="w-full">
       <div className="container mx-auto">
-        <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
-          <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4">
+        <div className="flex gap-3 py-16 lg:py-28 items-center justify-center flex-col">
+          <div className="flex gap-1 flex-col">
+            <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
-            <div className="h-16 flex items-center justify-center mt-4">
+            <div className="h-12 flex items-center justify-center mt-1">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium">
                 <span className="inline-block mr-3">Skip the</span>
                 <AnimatePresence mode="wait">
@@ -49,11 +49,11 @@ function Hero() {
                 </AnimatePresence>
               </h2>
             </div>
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mx-auto text-white/90 mt-4">
+            <p className="text-lg md:text-xl leading-tight tracking-tight text-muted-foreground max-w-2xl text-center mx-auto text-white/90 mt-2">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>
-          <div className="flex flex-row gap-3 mt-4">
+          <div className="flex flex-row gap-3 mt-2">
             <Button size="lg" className="gap-4">
               Book My Free Strategy Call <MoveRight className="w-4 h-4" />
             </Button>
