@@ -9,7 +9,6 @@ function Hero() {
     "no-shows      ",
     "tire-kickers  ",
     "ghost lists   ",
-    "endless research",
     "ad waste      "
   ];
 
@@ -31,8 +30,8 @@ function Hero() {
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-bold">
               <span className="text-white">AI-Driven Booking Engine That Fills Your Calendar With Ready Buyers</span>
             </h1>
-            <div className="h-12 flex items-center justify-center">
-              <h2 className="text-2xl md:text-3xl tracking-tighter text-center text-white/80 font-medium inline-flex">
+            <div className="h-16 flex items-center justify-center mt-4">
+              <h2 className="text-3xl md:text-4xl tracking-tighter text-center text-white/80 font-medium inline-flex">
                 <span>Skip the</span>
                 <AnimatePresence mode="wait">
                   <motion.span
