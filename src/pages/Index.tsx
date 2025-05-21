@@ -9,7 +9,7 @@ const Index = () => {
     <div className="min-h-screen w-full overflow-hidden">
       <TextureBackground />
       <div className="min-h-screen w-full relative">
-        <div className="sticky top-0 z-50 pt-4 px-8 md:px-16">
+        <div className="sticky top-0 z-50">
           <NavBarDemo />
         </div>
         <HeroDemo />

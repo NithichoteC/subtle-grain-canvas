@@ -12,5 +12,9 @@ export function NavBarDemo() {
     { name: 'FAQ', url: '#', icon: HelpCircle }
   ]
 
-  return <NavBar items={navItems} />
+  return (
+    <div className="pt-4 px-8 md:px-16 bg-dark/50 backdrop-blur-sm relative">
+      <NavBar items={navItems} className="mb-4" />
+    </div>
+  )
 }
