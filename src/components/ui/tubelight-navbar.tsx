@@ -89,9 +89,9 @@ export function NavBar({ items, className }: NavBarProps) {
           })}
         </div>
         
-        {/* Button on the right */}
+        {/* Button on the right - Removed rounded-md to use default rounded-[11px] from gradient button */}
         <div>
-          <GradientButton className="text-sm px-3 py-2 rounded-md font-medium text-base">
+          <GradientButton className="text-sm px-3 py-2 font-medium text-base">
             Schedule
           </GradientButton>
         </div>
