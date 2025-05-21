@@ -153,10 +153,11 @@
     animation: shine-bronze 6s linear infinite;
     text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
     padding-right: 12px; /* Horizontal padding to prevent right cutoff */
-    padding-bottom: 8px; /* Increased padding at the bottom to prevent 'y' cutoff */
+    padding-bottom: 12px; /* Increased padding to fully accommodate descenders */
     margin-right: 4px; /* Spacing between words */
     display: inline-block; /* Ensures the full element is rendered */
-    line-height: 1; /* Keep line height at 1 for compact text within lines */
+    line-height: 1; /* Compact text within lines */
+    transform: translateY(-4px); /* Slight upward shift to prevent descenders cutoff */
   }
 
   @keyframes shine-bronze {

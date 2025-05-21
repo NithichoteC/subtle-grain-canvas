@@ -29,10 +29,10 @@ function Hero() {
           <div className="flex gap-3 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
-                <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix">Ready Buyers</span> to Your Calendar
+                <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
-            <div className="h-14 flex items-center justify-center mt-3">
+            <div className="h-16 flex items-center justify-center mt-3">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium">
                 <span className="inline-block mr-3">Skip the</span>
                 <AnimatePresence mode="wait">
