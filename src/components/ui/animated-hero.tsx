@@ -23,9 +23,9 @@ function Hero() {
   }, []);
 
   return (
-    <div className="w-full border-b border-white/20">
+    <div className="w-full">
       <div className="container mx-auto">
-        <div className="flex gap-4 py-16 lg:py-28 items-center justify-center flex-col border-l border-r border-white/10">
+        <div className="flex gap-4 py-16 lg:py-28 items-center justify-center flex-col">
           <div className="flex gap-3 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
