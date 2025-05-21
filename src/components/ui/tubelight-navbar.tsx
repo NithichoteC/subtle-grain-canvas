@@ -35,7 +35,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-8 border-b border-white/10",
+        "py-4 border-b border-white/10", // Reduced padding from py-8 to py-4
         className,
       )}
     >
@@ -46,7 +46,7 @@ export function NavBar({ items, className }: NavBarProps) {
             <img 
               src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
               alt="Logo"
-              className="h-[48px] w-auto my-0" // Adjusted height to match navbar height
+              className="h-[36px] w-auto my-0" // Reduced height from 48px to 36px to match the new navbar height
             />
           </div>
         </Link>
