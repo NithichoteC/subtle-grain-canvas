@@ -51,13 +51,13 @@ export function NavBar({ items, className }: NavBarProps) {
               onClick={() => setActiveTab(item.name)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300 font-inter",
-                isActive ? "text-white" : "text-white/60 hover:text-white/90 hover:scale-105",
-                isActive && "bg-white/10 text-glow",
+                "text-white/80 hover:text-white hover:scale-105",
+                isActive && "bg-white/10 text-white text-glow",
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
               <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} className={isActive ? "stroke-white" : "stroke-white/60 hover:stroke-white/90"} />
+                <Icon size={18} strokeWidth={2.5} className="hover:stroke-white" />
               </span>
               {isActive && (
                 <motion.div
