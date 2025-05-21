@@ -49,7 +49,7 @@ function Hero() {
                 </AnimatePresence>
               </h2>
             </div>
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center text-white/90 mt-4">
+            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mx-auto text-white/90 mt-4">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>

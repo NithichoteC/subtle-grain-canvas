@@ -152,7 +152,7 @@
     -webkit-text-fill-color: transparent;
     animation: shine-bronze 6s linear infinite;
     text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
-    padding-right: 6px; /* Increased padding to fix text cutoff for 'y' */
+    padding-right: 8px; /* Further increased padding to fix text cutoff for 'y' */
     margin-right: 2px; /* Add margin to ensure spacing between words */
   }
 
