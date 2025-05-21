@@ -91,8 +91,8 @@ export function NavBar({ items, className }: NavBarProps) {
         
         {/* Button on the right */}
         <div>
-          <GradientButton className="text-sm px-3 py-2 rounded-md font-medium text-xs">
-            Book Call
+          <GradientButton className="text-sm px-3 py-2 rounded-md font-medium text-sm">
+            Schedule
           </GradientButton>
         </div>
       </div>

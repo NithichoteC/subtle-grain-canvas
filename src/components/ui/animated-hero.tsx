@@ -58,7 +58,7 @@ function Hero() {
           <div className="flex flex-row gap-3 mt-4">
             <Magnetic intensity={0.8} range={120}>
               <GradientButton className="py-3 px-6 gap-3 flex items-center text-base">
-                Book My Call <MoveRight className="w-4 h-4 ml-1" />
+                Schedule Your Free Strategy Call <MoveRight className="w-4 h-4 ml-1" />
               </GradientButton>
             </Magnetic>
           </div>
