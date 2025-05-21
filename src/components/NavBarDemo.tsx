@@ -15,7 +15,7 @@ export function NavBarDemo() {
   ]
 
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-center justify-between w-full relative">
       {/* Logo on the left */}
       <motion.div 
         whileHover={{ scale: 1.05 }}
