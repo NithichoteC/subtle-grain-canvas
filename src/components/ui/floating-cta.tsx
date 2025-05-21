@@ -1,37 +1,38 @@
 
-import React, { useState } from 'react';
-import { Calendar } from 'lucide-react';
-import { Button } from './button';
-import { motion } from 'framer-motion';
+import { Calendar } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
-const FloatingCta: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+function FloatingCTA() {
+  const [isHovered, setIsHovered] = useState(false);
   
   return (
-    <motion.div 
-      className="fixed bottom-20 right-6 z-50"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1, duration: 0.3 }}
+    <div 
+      className="fixed bottom-8 right-8 z-50"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.div
-        className="relative"
-        onHoverStart={() => setIsExpanded(true)}
-        onHoverEnd={() => setIsExpanded(false)}
+      <Button 
+        size="lg" 
+        className="rounded-full h-14 w-14 p-0 flex items-center justify-center overflow-hidden"
       >
-        <Button 
-          className={`rounded-full shadow-lg transition-all duration-300 ${
-            isExpanded 
-              ? 'bg-gradient-to-r from-amber-600 to-amber-500 px-6' 
-              : 'bg-amber-500 p-3'
-          }`}
-        >
-          <Calendar className={`${isExpanded ? 'mr-2' : ''}`} size={20} />
-          {isExpanded && <span>Book Call</span>}
-        </Button>
-      </motion.div>
-    </motion.div>
+        <Calendar className="h-6 w-6" />
+        <AnimatePresence>
+          {isHovered && (
+            <motion.span
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "auto", opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
+              className="ml-2 whitespace-nowrap overflow-hidden"
+            >
+              Book Call
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </Button>
+    </div>
   );
-};
+}
 
-export { FloatingCta };
+export { FloatingCTA };

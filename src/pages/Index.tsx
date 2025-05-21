@@ -3,33 +3,33 @@ import React from 'react';
 import TextureBackground from '@/components/TextureBackground';
 import { NavBarDemo } from '@/components/NavBarDemo';
 import { HeroDemo } from '@/components/HeroDemo';
-import { PainPromiseSection } from '@/components/sections/PainPromiseSection';
-import { LiveCounterSection } from '@/components/sections/LiveCounterSection';
-import { PipelineOverviewSection } from '@/components/sections/PipelineOverviewSection';
-import { KPISnapshotSection } from '@/components/sections/KPISnapshotSection';
-import { GuaranteeBannerSection } from '@/components/sections/GuaranteeBannerSection';
-import { WhoWeServeSection } from '@/components/sections/WhoWeServeSection';
-import { FAQSection } from '@/components/sections/FAQSection';
-import { FooterSection } from '@/components/sections/FooterSection';
-import { FloatingCta } from '@/components/ui/floating-cta';
+import { PainPromise } from '@/components/sections/pain-promise';
+import { LiveCounter } from '@/components/sections/live-counter';
+import { PipelineOverview } from '@/components/sections/pipeline-overview';
+import { KpiSnapshot } from '@/components/sections/kpi-snapshot';
+import { GuaranteeBanner } from '@/components/sections/guarantee-banner';
+import { WhoWeServe } from '@/components/sections/who-we-serve';
+import { FAQ } from '@/components/sections/faq';
+import { Footer } from '@/components/sections/footer';
+import { FloatingCTA } from '@/components/ui/floating-cta';
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full overflow-hidden">
+    <div className="min-h-screen w-full overflow-hidden relative">
       <TextureBackground />
-      <div className="min-h-screen w-full">
+      <div className="min-h-screen w-full grid grid-cols-1">
         <NavBarDemo />
         <HeroDemo />
-        <PainPromiseSection />
-        <LiveCounterSection />
-        <PipelineOverviewSection />
-        <KPISnapshotSection />
-        <GuaranteeBannerSection />
-        <WhoWeServeSection />
-        <FAQSection />
-        <FooterSection />
-        <FloatingCta />
+        <PainPromise />
+        <LiveCounter />
+        <PipelineOverview />
+        <KpiSnapshot />
+        <GuaranteeBanner />
+        <WhoWeServe />
+        <FAQ />
+        <Footer />
       </div>
+      <FloatingCTA />
     </div>
   );
 };
