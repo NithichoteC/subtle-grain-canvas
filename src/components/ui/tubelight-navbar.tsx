@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -66,18 +66,28 @@ export function NavBar({ items, className }: NavBarProps) {
                   )} 
                 />
               </span>
-              {isActive && (
-                <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-white/10 rounded-full -z-10"
-                  initial={false}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                />
-              )}
+              <AnimatePresence>
+                {isActive && (
+                  <motion.span
+                    layoutId="lamp"
+                    className="absolute inset-0 w-full h-full bg-white/10 rounded-full -z-10 overflow-hidden"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                      opacity: { duration: 0.15 }
+                    }}
+                    style={{
+                      willChange: "transform, opacity",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)"
+                    }}
+                  />
+                )}
+              </AnimatePresence>
             </Link>
           )
         })}
