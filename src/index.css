@@ -113,4 +113,27 @@
   .white-glow {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
   }
+
+  .metallic-gradient {
+    background: linear-gradient(
+      to right,
+      #fff 0%,
+      #e2d1c3 25%,
+      #fdfcfb 50%,
+      #d4af37 75%,
+      #fff 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 8s linear infinite;
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
 }

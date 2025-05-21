@@ -29,7 +29,7 @@ function Hero() {
           <div className="flex gap-4 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-bold">
               <span className="text-white">
-                <span className="gradient-text">AI-Powered</span> System That <span className="gradient-text">Delivers</span> <span className="gradient-text">Ready Buyers</span> to Your Calendar
+                <span className="metallic-gradient">AI-Powered</span> System That <span className="metallic-gradient">Delivers</span> <span className="metallic-gradient">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
             <div className="h-16 flex items-center justify-center mt-4">
@@ -42,7 +42,7 @@ function Hero() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="ml-2 inline-block min-w-[120px]"
+                    className="ml-1 inline-block min-w-[120px] text-left"
                   >
                     {rotatingPhrases[currentIndex]}
                   </motion.span>
