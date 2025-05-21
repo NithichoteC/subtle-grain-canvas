@@ -6,7 +6,7 @@ function HeroDemo() {
   return (
     <div className="relative">
       <GridLines />
-      <div className="block px-8 md:px-16 relative z-10">
+      <div className="block px-8 md:px-16 py-8 relative z-10">
         <Hero />
       </div>
     </div>
