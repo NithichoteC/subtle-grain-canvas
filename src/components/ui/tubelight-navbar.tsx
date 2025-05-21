@@ -76,9 +76,7 @@ export function NavBar({ items, className }: NavBarProps) {
                     stiffness: 300,
                     damping: 30,
                   }}
-                >
-                  {/* Removed the div that was causing the white line glitch */}
-                </motion.div>
+                />
               )}
             </Link>
           )
