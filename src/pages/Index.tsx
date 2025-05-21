@@ -11,8 +11,8 @@ const Index = () => {
       <TextureBackground />
       <GridLines />
       <div className="min-h-screen w-full relative">
-        {/* Navigation bar positioned between the top grid lines */}
-        <div className="sticky top-0 z-50 h-[72px] flex items-center px-8 md:px-16">
+        {/* Navigation bar positioned between the horizontal grid lines */}
+        <div className="sticky top-0 z-50 h-[72px] flex items-center px-8 md:px-16 backdrop-blur-sm bg-black/10">
           <NavBarDemo />
         </div>
         <HeroDemo />

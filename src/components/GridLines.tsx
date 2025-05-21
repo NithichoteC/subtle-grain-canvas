@@ -15,10 +15,10 @@ const GridLines: React.FC<GridLinesProps> = ({ className }) => {
       {/* Right vertical line */}
       <div className="absolute right-8 md:right-16 top-0 bottom-0 w-[1.5px] bg-white/10"></div>
       
-      {/* Horizontal line at top of navbar area */}
+      {/* Top horizontal line */}
       <div className="absolute left-8 md:left-16 right-8 md:right-16 top-0 h-[1.5px] bg-white/10"></div>
       
-      {/* Horizontal line separating navbar and content */}
+      {/* Horizontal line below navbar */}
       <div className="absolute left-8 md:left-16 right-8 md:right-16 top-[72px] h-[1.5px] bg-white/10"></div>
       
       {/* Bottom horizontal line */}
