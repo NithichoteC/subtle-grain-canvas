@@ -35,13 +35,13 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-6 border-b border-white/10 backdrop-blur-md bg-transparent",
+        "py-6 border-b border-white/10 backdrop-blur-md",
         className,
       )}
     >
       <div className="flex items-center justify-center">
         <div className="flex items-center gap-6">
-          {items.map((item, index) => {
+          {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name
             
