@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 interface NavItem {
   name: string
   url: string
-  icon: LucideIcon
+  icon?: LucideIcon
 }
 
 interface NavBarProps {
@@ -41,8 +41,8 @@ export function NavBar({ items, className }: NavBarProps) {
     >
       <div className="flex items-center gap-1 bg-background/5 border border-white/10 backdrop-blur-xl py-1 px-1 rounded-full shadow-lg white-glow">
         {items.map((item, index) => {
-          const Icon = item.icon
-          const isActive = activeTab === item.name
+          const Icon = item.icon;
+          const isActive = activeTab === item.name;
           
           return (
             <React.Fragment key={item.name}>
@@ -59,16 +59,18 @@ export function NavBar({ items, className }: NavBarProps) {
                 )}
               >
                 <span className="hidden md:inline text-white">{item.name}</span>
-                <span className="md:hidden">
-                  <Icon 
-                    size={18} 
-                    strokeWidth={2.5} 
-                    className={cn(
-                      "transition-colors",
-                      isActive ? "stroke-white" : "stroke-white/60 hover:stroke-white/90"
-                    )} 
-                  />
-                </span>
+                {Icon && (
+                  <span className="md:hidden">
+                    <Icon 
+                      size={18} 
+                      strokeWidth={2.5} 
+                      className={cn(
+                        "transition-colors",
+                        isActive ? "stroke-white" : "stroke-white/60 hover:stroke-white/90"
+                      )} 
+                    />
+                  </span>
+                )}
                 <AnimatePresence>
                   {isActive && (
                     <motion.span

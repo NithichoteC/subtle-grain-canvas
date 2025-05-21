@@ -1,17 +1,16 @@
 
-import { User, Settings, Activity, TrendingUp, ShieldCheck, HelpCircle, BookOpen } from 'lucide-react'
-import { NavBar } from "@/components/ui/tubelight-navbar"
+import { User, Settings, TrendingUp, ShieldCheck, HelpCircle, BookOpen } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 
 export function NavBarDemo() {
   const navItems = [
-    { name: 'Hi!', url: '#', icon: User },
-    { name: 'Process', url: '#', icon: Settings },
-    { name: 'Metrics', url: '#', icon: TrendingUp },
-    { name: 'Guarantee', url: '#', icon: ShieldCheck },
-    { name: 'Who', url: '#', icon: User },
-    { name: 'FAQ', url: '#', icon: HelpCircle }
+    { name: 'Hi!', url: '#' },
+    { name: 'Process', url: '#' },
+    { name: 'Metrics', url: '#' },
+    { name: 'Guarantee', url: '#' },
+    { name: 'Who', url: '#' },
+    { name: 'FAQ', url: '#' }
   ]
 
   return (
@@ -19,7 +18,7 @@ export function NavBarDemo() {
       {/* Logo on the left */}
       <motion.div 
         whileHover={{ scale: 1.05 }}
-        className="bg-background/5 border border-white/10 backdrop-blur-xl px-4 py-2 rounded-full shadow-lg white-glow"
+        className="bg-black/30 border border-white/10 backdrop-blur-md px-4 py-2 rounded-full shadow-lg"
       >
         <Link to="/">
           <img 
@@ -31,16 +30,33 @@ export function NavBarDemo() {
       </motion.div>
 
       {/* Navigation in the center */}
-      <NavBar items={navItems} className="mx-auto" />
+      <div className="hidden md:flex items-center bg-black/30 border border-white/10 backdrop-blur-md rounded-full">
+        {navItems.map((item, index) => (
+          <Link
+            key={item.name}
+            to={item.url}
+            className={`px-6 py-3 text-sm font-medium text-white/80 hover:text-white transition-colors duration-200 ${
+              index === 0 ? 'bg-white/5 rounded-full' : ''
+            }`}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Mobile navigation */}
+      <div className="flex md:hidden items-center justify-center bg-black/30 border border-white/10 backdrop-blur-md rounded-full py-2 px-6">
+        <span className="text-white/80 text-sm font-medium">Menu</span>
+      </div>
 
       {/* CTA on the right */}
       <motion.div 
         whileHover={{ scale: 1.05 }}
-        className="bg-background/5 border border-white/10 backdrop-blur-xl py-1 px-1 rounded-full shadow-lg white-glow"
+        className="bg-black/30 border border-white/10 backdrop-blur-md py-1 px-1 rounded-full shadow-lg"
       >
         <Link 
           to="#" 
-          className="flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full bg-white/5 text-white text-glow hover:bg-white/10 transition-all duration-300"
+          className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full text-white hover:bg-white/5 transition-all duration-300"
         >
           <BookOpen className="h-4 w-4" />
           <span className="hidden md:inline">Book My Free Strategy Call</span>
