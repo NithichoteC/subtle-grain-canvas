@@ -3,6 +3,7 @@ import { MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Magnetic } from "@/components/ui/magnetic";
 
 function Hero() {
   const rotatingPhrases = [
@@ -54,9 +55,11 @@ function Hero() {
             </p>
           </div>
           <div className="flex flex-row gap-3 mt-4">
-            <Button size="lg" className="gap-4">
-              Book My Free Strategy Call <MoveRight className="w-4 h-4" />
-            </Button>
+            <Magnetic intensity={0.8} range={120}>
+              <Button size="lg" className="bronze-gradient-button gap-3 px-6 py-3 rounded-md">
+                Book My Call <MoveRight className="w-4 h-4" />
+              </Button>
+            </Magnetic>
           </div>
         </div>
       </div>
