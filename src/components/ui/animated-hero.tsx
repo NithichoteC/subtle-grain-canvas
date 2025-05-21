@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 
 function Hero() {
   const rotatingPhrases = [
-    "no-shows      ",
-    "tire-kickers  ",
-    "ghost lists   ",
-    "ad waste      "
+    "no-shows",
+    "tire-kickers",
+    "ghost lists",
+    "ad waste"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,10 +28,12 @@ function Hero() {
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-bold">
-              <span className="text-white">AI-Driven Booking Engine That Fills Your Calendar With Ready Buyers</span>
+              <span className="text-white">
+                <span className="gradient-text">AI-Powered</span> System That <span className="gradient-text">Delivers</span> <span className="gradient-text">Ready Buyers</span> to Your Calendar
+              </span>
             </h1>
             <div className="h-16 flex items-center justify-center mt-4">
-              <h2 className="text-3xl md:text-4xl tracking-tighter text-center text-white/80 font-medium inline-flex">
+              <h2 className="text-3xl md:text-4xl tracking-tighter text-center text-white/80 font-medium inline-flex items-center">
                 <span>Skip the</span>
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -40,7 +42,7 @@ function Hero() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="ml-2 inline-block min-w-[180px]"
+                    className="ml-2 inline-block min-w-[120px]"
                   >
                     {rotatingPhrases[currentIndex]}
                   </motion.span>
