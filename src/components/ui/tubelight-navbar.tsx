@@ -35,7 +35,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-6 border-b border-white/10 backdrop-blur-md",
+        "py-6 border-b border-white/10",
         className,
       )}
     >
