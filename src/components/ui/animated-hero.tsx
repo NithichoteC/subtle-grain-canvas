@@ -23,7 +23,7 @@ function Hero() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-8">
       <div className="container mx-auto">
         <div className="flex gap-4 py-16 lg:py-28 items-center justify-center flex-col">
           <div className="flex gap-3 flex-col">
