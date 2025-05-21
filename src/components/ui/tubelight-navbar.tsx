@@ -35,11 +35,11 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-6 border-b border-white/10 backdrop-blur-sm",
+        "py-6 border-b border-white/10 backdrop-blur-md bg-transparent",
         className,
       )}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center">
         <div className="flex items-center gap-6">
           {items.map((item, index) => {
             const Icon = item.icon
