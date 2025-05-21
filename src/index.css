@@ -133,6 +133,28 @@
     animation: shine-bronze 6s linear infinite;
     text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
   }
+  
+  .bronze-gradient-fix {
+    background: linear-gradient(
+      to right,
+      #b8860b 0%,
+      #e2d1c3 20%,
+      #cd7f32 40%,
+      #ffd700 50%,
+      #cd7f32 60%,
+      #e2d1c3 80%,
+      #b8860b 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine-bronze 6s linear infinite;
+    text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
+    padding-right: 4px; /* Add padding to fix text cutoff */
+    margin-right: 2px; /* Add margin to ensure spacing between words */
+  }
 
   @keyframes shine-bronze {
     to {
