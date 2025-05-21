@@ -6,7 +6,7 @@ import { GridLines } from "@/components/ui/grid-lines";
 function HeroDemo() {
   return (
     <div className="relative block border-white/10 border-t border-b">
-      <GridLines />
+      <GridLines variant="connected" />
       <Hero />
     </div>
   );

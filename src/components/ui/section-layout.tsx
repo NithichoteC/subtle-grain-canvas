@@ -7,6 +7,7 @@ interface SectionLayoutProps {
   children: React.ReactNode;
   className?: string;
   variant?: "default" | "graphite" | "charcoal" | "dotGrid" | "gold";
+  gridVariant?: "default" | "connected";
   id?: string;
 }
 
@@ -14,6 +15,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   children, 
   className,
   variant = "default",
+  gridVariant = "default",
   id
 }) => {
   const bgClasses = {
@@ -41,7 +43,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
           }}
         />
       )}
-      <GridLines />
+      <GridLines variant={gridVariant} />
       <div className="container mx-auto relative z-20">
         {children}
       </div>

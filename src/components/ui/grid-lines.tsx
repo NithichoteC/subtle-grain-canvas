@@ -4,9 +4,31 @@ import { cn } from "@/lib/utils";
 
 interface GridLinesProps {
   className?: string;
+  variant?: "default" | "connected";
 }
 
-const GridLines: React.FC<GridLinesProps> = ({ className }) => {
+const GridLines: React.FC<GridLinesProps> = ({ className, variant = "default" }) => {
+  if (variant === "connected") {
+    return (
+      <div className={cn("absolute inset-0 pointer-events-none z-10", className)}>
+        {/* Left vertical lines */}
+        <div className="absolute left-0 top-0 w-px h-full bg-white/10" />
+        <div className="absolute left-1/4 top-0 w-px h-full bg-white/10" />
+        
+        {/* Right vertical lines */}
+        <div className="absolute right-1/4 top-0 w-px h-full bg-white/10" />
+        <div className="absolute right-0 top-0 w-px h-full bg-white/10" />
+        
+        {/* Horizontal connecting line */}
+        <div className="absolute left-0 top-1/3 w-full h-px bg-white/10" />
+        
+        {/* Top and bottom border lines */}
+        <div className="absolute left-0 top-0 w-full h-px bg-white/10" />
+        <div className="absolute left-0 bottom-0 w-full h-px bg-white/10" />
+      </div>
+    );
+  }
+  
   return (
     <div className={cn("absolute inset-0 pointer-events-none z-10", className)}>
       {/* Vertical lines */}
