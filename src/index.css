@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -87,6 +88,108 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  @property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+  }
+
+  @property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+  }
+
+  @property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+  }
+
+  @property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+  }
+
+  @property --color-1 {
+    syntax: '<color>';
+    initial-value: #ffffff; /* White base for our theme */
+    inherits: false;
+  }
+
+  @property --color-2 {
+    syntax: '<color>';
+    initial-value: #f5f5f5; /* Very light gray */
+    inherits: false;
+  }
+
+  @property --color-3 {
+    syntax: '<color>';
+    initial-value: #e2d1c3; /* Light bronze from the site */
+    inherits: false;
+  }
+
+  @property --color-4 {
+    syntax: '<color>';
+    initial-value: #f8f8f8; /* Almost white */
+    inherits: false;
+  }
+
+  @property --color-5 {
+    syntax: '<color>';
+    initial-value: #ffffff; /* White */
+    inherits: false;
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+  }
+
+  @property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(43, 74%, 49%, 0.2); /* Bronze/gold */
+    inherits: true;
+  }
+
+  @property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(33, 74%, 39%, 0.3); /* Darker bronze */
+    inherits: true;
+  }
+
+  @property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+  }
+
+  @property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+  }
+
+  @property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+  }
+
+  @property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+  }
+
+  @property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
   }
 }
 
@@ -226,5 +329,102 @@
     to {
       background-position: 200% center;
     }
+  }
+}
+
+@layer components {
+  .gradient-button {
+    @apply relative appearance-none cursor-pointer;
+    background: radial-gradient(
+      var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+      var(--color-1) var(--stop-1),
+      var(--color-2) var(--stop-2),
+      var(--color-3) var(--stop-3),
+      var(--color-4) var(--stop-4),
+      var(--color-5) var(--stop-5)
+    );
+    transition:
+      --pos-x 0.5s,
+      --pos-y 0.5s,
+      --spread-x 0.5s,
+      --spread-y 0.5s,
+      --color-1 0.5s,
+      --color-2 0.5s,
+      --color-3 0.5s,
+      --color-4 0.5s,
+      --color-5 0.5s,
+      --border-angle 0.5s,
+      --border-color-1 0.5s,
+      --border-color-2 0.5s,
+      --stop-1 0.5s,
+      --stop-2 0.5s,
+      --stop-3 0.5s,
+      --stop-4 0.5s,
+      --stop-5 0.5s;
+  }
+
+  .gradient-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle),
+      var(--border-color-1),
+      var(--border-color-2)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .gradient-button:hover {
+    --pos-x: 0%;
+    --pos-y: 91.51%;
+    --spread-x: 120.24%;
+    --spread-y: 103.18%;
+    --color-1: #b8860b; /* Dark gold */
+    --color-2: #e2d1c3; /* Light bronze */
+    --color-3: #cd7f32; /* Bronze */
+    --color-4: #ffd700; /* Gold */
+    --color-5: #cd7f32; /* Bronze again */
+    --border-angle: 190deg;
+    --border-color-1: hsla(43, 74%, 70%, 0.4); /* Lighter bronze */
+    --border-color-2: hsla(33, 74%, 50%, 0.7); /* Darker bronze */
+    --stop-1: 0%;
+    --stop-2: 20%;
+    --stop-3: 40%;
+    --stop-4: 60%;
+    --stop-5: 100%;
+  }
+
+  .gradient-button-variant {
+    --color-1: #f5f5f5; /* Light base */
+    --color-2: #e2d1c3; /* Light bronze */
+    --color-3: #f8f8f8; /* Almost white */
+    --border-angle: 200deg;
+    --border-color-1: hsla(43, 74%, 49%, 0.3); /* Bronze */
+    --border-color-2: hsla(33, 74%, 39%, 0.15); /* Darker bronze */
+  }
+
+  .gradient-button-variant:hover {
+    --pos-x: 0%;
+    --pos-y: 95.51%;
+    --spread-x: 110.24%;
+    --spread-y: 110.2%;
+    --color-1: #b8860b; /* Dark gold */
+    --color-2: #ffd700; /* Gold */
+    --color-3: #cd7f32; /* Bronze */
+    --color-4: #e2d1c3; /* Light bronze */
+    --color-5: #b8860b; /* Dark gold again */
+    --stop-1: 0%;
+    --stop-2: 20%;
+    --stop-3: 50%;
+    --stop-4: 80%;
+    --stop-5: 100%;
+    --border-angle: 210deg;
+    --border-color-1: hsla(43, 74%, 70%, 0.4); /* Lighter bronze */
+    --border-color-2: hsla(33, 74%, 50%, 0.7); /* Darker bronze */
   }
 }

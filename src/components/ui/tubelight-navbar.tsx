@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
 
 interface NavItem {
   name: string
@@ -90,12 +91,9 @@ export function NavBar({ items, className }: NavBarProps) {
         
         {/* Button on the right */}
         <div>
-          <Button 
-            className="minimalist-button text-sm px-4 py-2 rounded-md font-medium" 
-            size="sm"
-          >
+          <GradientButton className="text-sm px-3 py-2 rounded-md font-medium text-xs">
             Book Call
-          </Button>
+          </GradientButton>
         </div>
       </div>
     </div>
