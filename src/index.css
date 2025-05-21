@@ -114,24 +114,27 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
   }
 
-  .metallic-gradient {
+  .bronze-gradient {
     background: linear-gradient(
       to right,
-      #fff 0%,
-      #e2d1c3 25%,
-      #fdfcfb 50%,
-      #d4af37 75%,
-      #fff 100%
+      #b8860b 0%,
+      #e2d1c3 20%,
+      #cd7f32 40%,
+      #ffd700 50%,
+      #cd7f32 60%,
+      #e2d1c3 80%,
+      #b8860b 100%
     );
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shine 8s linear infinite;
+    animation: shine-bronze 6s linear infinite;
+    text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
   }
 
-  @keyframes shine {
+  @keyframes shine-bronze {
     to {
       background-position: 200% center;
     }
