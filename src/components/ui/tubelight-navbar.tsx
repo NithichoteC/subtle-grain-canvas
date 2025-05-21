@@ -35,30 +35,28 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+        "py-6 border-b border-white/10 backdrop-blur-sm",
         className,
       )}
     >
-      <div className="flex items-center gap-1 bg-background/5 border border-white/10 backdrop-blur-xl py-1 px-1 rounded-full shadow-lg white-glow">
-        {items.map((item, index) => {
-          const Icon = item.icon
-          const isActive = activeTab === item.name
-          
-          return (
-            <React.Fragment key={item.name}>
-              {index > 0 && (
-                <div className="h-4 w-px bg-white/10" aria-hidden="true" />
-              )}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-6">
+          {items.map((item, index) => {
+            const Icon = item.icon
+            const isActive = activeTab === item.name
+            
+            return (
               <Link
+                key={item.name}
                 to={item.url}
                 onClick={() => setActiveTab(item.name)}
                 className={cn(
-                  "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300 font-inter",
-                  "text-white/60 hover:text-white/90",
-                  isActive && "bg-white/5 text-white text-glow",
+                  "relative cursor-pointer text-sm font-semibold transition-all duration-300 font-inter",
+                  "text-white/60 hover:text-white",
+                  isActive && "text-white"
                 )}
               >
-                <span className="hidden md:inline text-white">{item.name}</span>
+                <span className="hidden md:inline">{item.name}</span>
                 <span className="md:hidden">
                   <Icon 
                     size={18} 
@@ -69,32 +67,13 @@ export function NavBar({ items, className }: NavBarProps) {
                     )} 
                   />
                 </span>
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.span
-                      layoutId="lamp"
-                      className="absolute inset-0 w-full h-full bg-white/5 rounded-full -z-10 overflow-hidden"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                        opacity: { duration: 0.15 }
-                      }}
-                      style={{
-                        willChange: "transform, opacity",
-                        backfaceVisibility: "hidden",
-                        transform: "translateZ(0)"
-                      }}
-                    />
-                  )}
-                </AnimatePresence>
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></span>
+                )}
               </Link>
-            </React.Fragment>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
     </div>
   )

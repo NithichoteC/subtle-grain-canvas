@@ -13,8 +13,6 @@ export function NavBarDemo() {
   ]
 
   return (
-    <div className="pt-4 px-8 md:px-16 bg-dark/50 backdrop-blur-sm relative">
-      <NavBar items={navItems} className="mb-4" />
-    </div>
+    <NavBar items={navItems} className="sticky top-0 z-50" />
   )
 }

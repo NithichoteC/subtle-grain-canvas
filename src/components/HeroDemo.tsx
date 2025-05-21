@@ -9,7 +9,7 @@ function HeroDemo() {
       <GridLines />
       <div className="px-8 md:px-16 relative z-10">
         <NavBarDemo />
-        <div className="py-6">
+        <div className="py-12">
           <Hero />
         </div>
       </div>
