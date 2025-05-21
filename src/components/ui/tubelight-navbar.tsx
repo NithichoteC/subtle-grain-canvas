@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
+import { Layers2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface NavItem {
@@ -39,7 +40,15 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-between px-8 md:px-16">
+        {/* Logo on the left */}
+        <Link to="/" className="flex items-center gap-2">
+          <div className="text-white text-glow">
+            <Layers2 size={28} className="text-white" />
+          </div>
+        </Link>
+        
+        {/* Navigation items in the center */}
         <div className="flex items-center gap-6">
           {items.map((item) => {
             const Icon = item.icon
@@ -74,6 +83,9 @@ export function NavBar({ items, className }: NavBarProps) {
             )
           })}
         </div>
+        
+        {/* Empty div to balance the layout */}
+        <div className="w-[28px]"></div>
       </div>
     </div>
   )
