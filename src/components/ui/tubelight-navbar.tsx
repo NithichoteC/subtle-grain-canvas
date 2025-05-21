@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 interface NavItem {
   name: string
@@ -87,8 +88,15 @@ export function NavBar({ items, className }: NavBarProps) {
           })}
         </div>
         
-        {/* Empty div to balance the layout */}
-        <div className="w-[28px]"></div>
+        {/* Button on the right */}
+        <div>
+          <Button 
+            className="bronze-gradient-button text-sm px-4 py-2 rounded-md font-medium" 
+            size="sm"
+          >
+            Book Call
+          </Button>
+        </div>
       </div>
     </div>
   )
