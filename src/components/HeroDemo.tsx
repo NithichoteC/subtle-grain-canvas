@@ -1,13 +1,17 @@
 
 import { Hero } from "@/components/ui/animated-hero";
 import GridLines from "@/components/GridLines";
+import { NavBarDemo } from "@/components/NavBarDemo";
 
 function HeroDemo() {
   return (
     <div className="relative">
       <GridLines />
-      <div className="block px-8 md:px-16 py-6 relative z-10">
-        <Hero />
+      <div className="px-8 md:px-16 relative z-10">
+        <NavBarDemo />
+        <div className="py-6">
+          <Hero />
+        </div>
       </div>
     </div>
   );
