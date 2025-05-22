@@ -5,40 +5,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GradientButton } from "@/components/ui/gradient-button";
-
 function Hero() {
   const rotatingPhrases = ["no-shows", "tire-kickers", "ghost lists", "ad waste"];
   const [currentIndex, setCurrentIndex] = useState(0);
-  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % rotatingPhrases.length);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
-  
   return <div className="w-full pt-0">
       <div className="w-full">
         <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
-          {/* Text bubble - brand name - updated styling to match metallic mono style */}
-          <Magnetic intensity={0.3} rangeX={60} rangeY={40} actionArea="global" shape="elliptical" springOptions={{
-            stiffness: 10,
-            damping: 8,
-            mass: 0.5
-          }}>
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.5 }} 
-              className="relative px-6 py-1 rounded-full inline-flex -mb-8 overflow-hidden"
-            >
-              {/* Metallic background layers */}
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600 opacity-70"></div>
-              <div className="absolute inset-0 backdrop-blur-sm border border-white/30"></div>
-              
-              <span className="text-sm font-medium tracking-wider text-white relative z-10 font-roboto">PWC AGENCY</span>
-            </motion.div>
-          </Magnetic>
+          {/* Text bubble - brand name - updated styling and reduced spacing to headline */}
+          <motion.div initial={{
+          opacity: 0,
+          y: 10
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5
+        }} className="bg-black/30 border border-white/15 px-6 rounded-full inline-flex -mb-8 py-1">
+            <span className="text-sm font-medium tracking-wider text-white font-roboto">PWC AGENCY</span>
+          </motion.div>
           
           {/* Main headline - increased spacing from bubble but decreased to next section */}
           <div className="space-y-6">
@@ -101,5 +91,4 @@ function Hero() {
       </div>
     </div>;
 }
-
 export { Hero };
