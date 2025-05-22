@@ -12,7 +12,7 @@ interface HeroSectionBackgroundProps {
  */
 const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({ children, className }) => {
   return (
-    <div className={`relative z-10 ${className || ''}`}>
+    <div className={`relative z-10 pt-2 ${className || ''}`}>
       {/* Border styling to match the navigation line */}
       <div className="absolute inset-0 z-[-1] border-l border-r border-b border-white/10">
         {/* Main background */}

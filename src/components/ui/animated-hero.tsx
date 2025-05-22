@@ -20,19 +20,19 @@ function Hero() {
   return (
     <div className="w-full pt-0">
       <div className="w-full">
-        <div className="flex flex-col items-center justify-center py-10 lg:py-16 space-y-16">
-          {/* Text bubble - brand name */}
+        <div className="flex flex-col items-center justify-center py-10 lg:py-14 space-y-12">
+          {/* Text bubble - brand name - REDUCED MARGIN BOTTOM */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.5 }} 
-            className="mb-1 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex"
+            className="mb-0 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex"
           >
             <span className="text-sm font-medium tracking-wider text-white/90">PWC AGENCY</span>
           </motion.div>
           
-          {/* Main headline - first block */}
-          <div className="space-y-6">
+          {/* Main headline - first block - REDUCED BOTTOM SPACE */}
+          <div className="space-y-6 -mt-2">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
@@ -67,8 +67,8 @@ function Hero() {
             </p>
           </div>
           
-          {/* CTA Button - clear separation from above content */}
-          <div className="flex flex-row gap-3 mt-6">
+          {/* CTA Button - ADJUSTED BOTTOM MARGIN FOR CONSISTENT SPACING */}
+          <div className="flex flex-row gap-3 mb-4">
             <Magnetic 
               intensity={0.25} 
               rangeX={100} 
