@@ -16,16 +16,14 @@ const gradientButtonVariants = cva(
     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
     "disabled:pointer-events-none disabled:opacity-50",
     "relative overflow-hidden",
-    // Added for gradient animation
+    // Improved gradient background with sliding animation
     "before:absolute before:inset-0 before:z-0",
-    // For gradient background
     "before:bg-gradient-to-tr before:from-[#FFC94D] before:via-[#F7B733] before:to-[#F59E0B]",
-    // Static gradient
-    "before:transition-transform before:duration-500",
-    // For animation
-    "hover:before:translate-x-[-10%] hover:before:translate-y-[-10%] hover:before:scale-[1.2]",
-    // Gradient animation on hover
-    "hover:shadow-lg transition-all duration-200"
+    "before:bg-[length:200%_200%]",
+    "before:animate-gradient-slide",
+    // Enhanced hover effect
+    "hover:before:brightness-110",
+    "hover:shadow-lg transition-all duration-300"
   ],
   {
     variants: {

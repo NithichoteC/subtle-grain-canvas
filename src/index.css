@@ -342,6 +342,19 @@
       background-position: 0% 50%;
     }
   }
+  
+  /* New animation for sliding gradient backgrounds */
+  @keyframes gradient-slide {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
 @layer components {
@@ -478,5 +491,11 @@
     --border-color-1: hsla(43, 84%, 65%, 0.6); /* Brighter bronze border */
     --border-color-2: hsla(33, 84%, 45%, 0.8); /* Rich bronze border */
     transform: none; /* Removed the translateY movement */
+  }
+  
+  /* New class for animating gradients */
+  .animate-gradient-slide {
+    animation: gradient-slide 3s ease infinite;
+    background-size: 200% 200%;
   }
 }
