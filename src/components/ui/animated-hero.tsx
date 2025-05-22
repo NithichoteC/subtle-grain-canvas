@@ -1,5 +1,6 @@
 
 import { MoveRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -24,9 +25,9 @@ function Hero() {
   }, []);
 
   return (
-    <div className="w-full">
-      <div className="mx-auto">
-        <div className="flex gap-4 py-8 lg:py-16 items-center justify-center flex-col">
+    <div className="w-full pt-8">
+      <div className="container mx-auto">
+        <div className="flex gap-4 py-16 lg:py-28 items-center justify-center flex-col">
           <div className="flex gap-3 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
