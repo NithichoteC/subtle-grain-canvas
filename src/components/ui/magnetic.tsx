@@ -43,6 +43,14 @@ export function Magnetic({
   const springX = useSpring(x, springOptions);
   const springY = useSpring(y, springOptions);
 
+  // Set isHovered to true immediately if actionArea is global
+  useEffect(() => {
+    if (actionArea === 'global') {
+      console.log('Magnetic: Setting global hover state to true');
+      setIsHovered(true);
+    }
+  }, [actionArea]);
+
   useEffect(() => {
     const calculateDistance = (e: MouseEvent) => {
       if (ref.current) {
@@ -51,6 +59,21 @@ export function Magnetic({
         const centerY = rect.top + rect.height / 2;
         const distanceX = e.clientX - centerX;
         const distanceY = e.clientY - centerY;
+
+        // Debug information
+        if (Math.abs(distanceX) < rangeX && Math.abs(distanceY) < effectiveRangeY) {
+          console.log(`Magnetic effect active: 
+            - distanceX: ${distanceX.toFixed(2)} 
+            - distanceY: ${distanceY.toFixed(2)} 
+            - isHovered: ${isHovered}
+            - intensity: ${intensity}
+            - rect: ${JSON.stringify({
+              top: rect.top.toFixed(0),
+              left: rect.left.toFixed(0),
+              width: rect.width.toFixed(0),
+              height: rect.height.toFixed(0)
+            })}`);
+        }
 
         // Check if cursor is at the edge of the viewport
         const edgeSensitivity = 20; // pixels from edge to consider "at edge"
@@ -140,19 +163,19 @@ export function Magnetic({
         parent.removeEventListener('mouseenter', handleParentEnter);
         parent.removeEventListener('mouseleave', handleParentLeave);
       };
-    } else if (actionArea === 'global') {
-      setIsHovered(true);
     }
   }, [actionArea, x, y]);
 
   const handleMouseEnter = () => {
     if (actionArea === 'self') {
+      console.log('Magnetic: Mouse enter - setting hover state to true');
       setIsHovered(true);
     }
   };
 
   const handleMouseLeave = () => {
     if (actionArea === 'self') {
+      console.log('Magnetic: Mouse leave - setting hover state to false');
       setIsHovered(false);
       x.set(0);
       y.set(0);
@@ -162,8 +185,8 @@ export function Magnetic({
   return (
     <motion.div
       ref={ref}
-      onMouseEnter={actionArea === 'self' ? handleMouseEnter : undefined}
-      onMouseLeave={actionArea === 'self' ? handleMouseLeave : undefined}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         x: springX,
         y: springY,
