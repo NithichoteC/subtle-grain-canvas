@@ -1,18 +1,22 @@
+
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GradientButton } from "@/components/ui/gradient-button";
+
 function Hero() {
   const rotatingPhrases = ["no-shows", "tire-kickers", "ghost lists", "ad waste"];
   const [currentIndex, setCurrentIndex] = useState(0);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % rotatingPhrases.length);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+  
   return <div className="w-full pt-0">
       <div className="w-full">
         <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
@@ -75,11 +79,18 @@ function Hero() {
           
           {/* CTA Button - maintained consistent spacing */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
-            <Magnetic intensity={0.25} rangeX={100} rangeY={80} actionArea="parent" shape="elliptical" springOptions={{
-            stiffness: 14,
-            damping: 9,
-            mass: 0.6
-          }}>
+            <Magnetic 
+              intensity={0.5} 
+              rangeX={100} 
+              rangeY={80} 
+              actionArea="global" 
+              shape="elliptical" 
+              springOptions={{
+                stiffness: 14,
+                damping: 8,
+                mass: 0.5
+              }}
+            >
               <GradientButton className="gap-3 flex items-center text-base font-roboto px-[5px] my-0 mx-0 py-[12px]">
                 <span className="text-white">Schedule Your Free Strategy Call</span>
                 <Calendar className="w-4 h-4 text-white flex-shrink-0" />
