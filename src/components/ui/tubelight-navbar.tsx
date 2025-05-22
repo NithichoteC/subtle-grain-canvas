@@ -37,11 +37,11 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-4 border-b border-l border-r border-white/10",
+        "py-4 border-b border-l border-r border-white/10 w-full",
         className,
       )}
     >
-      <div className="flex items-center justify-between px-6 md:px-12">
+      <div className="flex items-center justify-between px-4 md:px-6">
         {/* Logo on the left */}
         <Link to="/" className="flex items-center gap-2">
           <div className="text-white text-glow">
