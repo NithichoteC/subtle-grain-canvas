@@ -48,7 +48,7 @@ export function NavBar({ items, className }: NavBarProps) {
             <img 
               src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
               alt="Logo"
-              className="h-[36px] w-auto my-0" // Reduced height from 48px to 36px to match the new navbar height
+              className="h-[36px] w-auto my-0" 
             />
           </div>
         </Link>
@@ -89,10 +89,10 @@ export function NavBar({ items, className }: NavBarProps) {
           })}
         </div>
         
-        {/* Button on the right - Removed rounded-md to use default rounded-[11px] from gradient button */}
+        {/* Button on the right */}
         <div>
           <GradientButton className="text-sm px-3 py-2 font-medium text-base">
-            Schedule
+            <span className="text-white">Schedule</span>
           </GradientButton>
         </div>
       </div>
