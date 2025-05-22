@@ -329,6 +329,19 @@
       background-position: 200% center;
     }
   }
+
+  /* Add a shine effect animation for gradient buttons */
+  @keyframes gradient-shine {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
 @layer components {
@@ -379,63 +392,95 @@
   }
 
   .gradient-button {
-    /* Default state - darker bronze/gold for better contrast with white text */
-    --color-1: #8B6914; /* Darker gold */
-    --color-2: #A67C00; /* Medium gold */
-    --color-3: #B8860B; /* Dark gold */
-    --color-4: #CD7F32; /* Bronze */
-    --color-5: #996515; /* Brown gold */
+    /* Default state - luxury bronze/gold with nice contrast for white text */
+    --pos-x: 85%;
+    --pos-y: 20%;
+    --spread-x: 150%;
+    --spread-y: 130%;
+    --color-1: #B8860B; /* Dark gold */
+    --color-2: #956F29; /* Medium-dark gold */
+    --color-3: #CD7F32; /* Bronze */
+    --color-4: #D4AF37; /* Metallic gold */
+    --color-5: #705114; /* Deep brown gold */
     --border-angle: 190deg;
-    --border-color-1: hsla(43, 74%, 49%, 0.4); /* Bronze */
-    --border-color-2: hsla(33, 74%, 39%, 0.7); /* Darker bronze */
+    --border-color-1: hsla(43, 74%, 49%, 0.6); /* Bronze */
+    --border-color-2: hsla(33, 74%, 39%, 0.8); /* Darker bronze */
+    --stop-1: 10%;
+    --stop-2: 30%;
+    --stop-3: 60%;
+    --stop-4: 80%;
+    --stop-5: 100%;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25); /* Inner highlight and outer shadow */
+    animation: gradient-shine 6s ease infinite; /* Add subtle animation even in non-hover */
   }
 
   .gradient-button:hover {
-    --pos-x: 0%;
-    --pos-y: 91.51%;
-    --spread-x: 120.24%;
-    --spread-y: 103.18%;
-    --color-1: #705419; /* Even darker gold for hover */
-    --color-2: #9F7922; /* Darker bronze */
-    --color-3: #B8860B; /* Dark gold */
-    --color-4: #D4AF37; /* Metallic gold */
-    --color-5: #996515; /* Brown gold */
-    --border-angle: 190deg;
-    --border-color-1: hsla(43, 74%, 70%, 0.4); /* Lighter bronze */
-    --border-color-2: hsla(33, 74%, 50%, 0.7); /* Darker bronze */
+    --pos-x: 10%;
+    --pos-y: 90%;
+    --spread-x: 180%;
+    --spread-y: 160%;
+    --color-1: #FFD700; /* Bright gold */
+    --color-2: #DAA520; /* Golden rod */
+    --color-3: #CD7F32; /* Bronze */
+    --color-4: #B8860B; /* Dark gold */
+    --color-5: #956F29; /* Medium gold */
+    --border-angle: 220deg;
+    --border-color-1: hsla(43, 84%, 65%, 0.7); /* Brighter bronze border */
+    --border-color-2: hsla(33, 84%, 45%, 0.9); /* Rich bronze border */
     --stop-1: 0%;
-    --stop-2: 20%;
-    --stop-3: 40%;
-    --stop-4: 60%;
+    --stop-2: 25%;
+    --stop-3: 50%;
+    --stop-4: 75%;
     --stop-5: 100%;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 0 15px rgba(218, 165, 32, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
   }
 
   .gradient-button-variant {
-    --color-1: #8B6914; /* Darker gold */
-    --color-2: #A67C00; /* Medium gold */
-    --color-3: #B8860B; /* Dark gold */
+    /* Variant button - slightly different color scheme */
+    --pos-x: 70%;
+    --pos-y: 30%;
+    --spread-x: 120%;
+    --spread-y: 110%;
+    --color-1: #956F29; /* Medium-dark gold */
+    --color-2: #B8860B; /* Dark gold */
+    --color-3: #E6BE8A; /* Light gold */
+    --color-4: #8B6914; /* Darker gold */
+    --color-5: #CD7F32; /* Bronze */
     --border-angle: 200deg;
-    --border-color-1: hsla(43, 74%, 49%, 0.3); /* Bronze */
-    --border-color-2: hsla(33, 74%, 39%, 0.15); /* Darker bronze */
+    --border-color-1: hsla(43, 74%, 49%, 0.5); /* Bronze */
+    --border-color-2: hsla(33, 74%, 39%, 0.6); /* Darker bronze */
+    --stop-1: 5%;
+    --stop-2: 25%;
+    --stop-3: 55%;
+    --stop-4: 75%;
+    --stop-5: 95%;
   }
 
   .gradient-button-variant:hover {
-    --pos-x: 0%;
-    --pos-y: 95.51%;
-    --spread-x: 110.24%;
-    --spread-y: 110.2%;
-    --color-1: #705419; /* Even darker gold */
-    --color-2: #B8860B; /* Dark gold */
+    --pos-x: 15%;
+    --pos-y: 85%;
+    --spread-x: 160%;
+    --spread-y: 140%;
+    --color-1: #FFD700; /* Bright gold */
+    --color-2: #DAA520; /* Golden rod */
     --color-3: #CD7F32; /* Bronze */
-    --color-4: #D4AF37; /* Metallic gold */
-    --color-5: #996515; /* Brown gold */
+    --color-4: #B8860B; /* Dark gold */
+    --color-5: #8B6914; /* Darker gold */
     --stop-1: 0%;
-    --stop-2: 20%;
+    --stop-2: 25%;
     --stop-3: 50%;
-    --stop-4: 80%;
+    --stop-4: 75%;
     --stop-5: 100%;
-    --border-angle: 210deg;
-    --border-color-1: hsla(43, 74%, 70%, 0.4); /* Lighter bronze */
-    --border-color-2: hsla(33, 74%, 50%, 0.7); /* Darker bronze */
+    --border-angle: 220deg;
+    --border-color-1: hsla(43, 84%, 65%, 0.6); /* Brighter bronze border */
+    --border-color-2: hsla(33, 84%, 45%, 0.8); /* Rich bronze border */
   }
 }
