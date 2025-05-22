@@ -1,4 +1,3 @@
-
 'use client'
 import * as React from 'react'
 import { useEffect, useRef } from 'react'
@@ -308,7 +307,7 @@ export function Waves({
     return (
         <div
             ref={containerRef}
-            className={`waves-component relative overflow-hidden ${className}`}
+            className={`waves-component relative overflow-hidden w-full ${className}`}
             style={{
                 backgroundColor,
                 position: 'absolute',

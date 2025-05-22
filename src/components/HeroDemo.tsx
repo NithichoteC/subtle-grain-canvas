@@ -6,20 +6,26 @@ import { Waves } from "@/components/ui/wave-background";
 
 function HeroDemo() {
   return (
-    <div className="relative">
-      {/* Navbar with its own background */}
-      <div className="container max-w-5xl mx-auto relative z-20">
-        <NavBarDemo />
+    <div className="relative overflow-hidden w-full">
+      {/* Waves background spans the full viewport width */}
+      <div className="absolute inset-0 z-10 w-screen">
+        <Waves 
+          strokeColor="#ffffff1a" 
+          backgroundColor="transparent" 
+          pointerSize={0.3}
+          className="w-full"
+        />
       </div>
       
-      {/* Hero section with wave background */}
-      <div className="relative">
-        {/* Waves background with lower z-index */}
-        <div className="absolute inset-0 z-10">
-          <Waves strokeColor="#ffffff1a" backgroundColor="transparent" pointerSize={0.3} />
+      {/* Container for content with proper z-index */}
+      <div className="relative z-20">
+        {/* Navbar */}
+        <div className="container max-w-5xl mx-auto">
+          <NavBarDemo />
         </div>
         
-        <div className="container max-w-5xl mx-auto relative z-20">
+        {/* Hero section */}
+        <div className="container max-w-5xl mx-auto">
           <HeroSectionBackground>
             <Hero />
           </HeroSectionBackground>
