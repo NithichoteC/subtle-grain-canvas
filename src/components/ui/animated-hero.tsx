@@ -1,4 +1,5 @@
 
+
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -75,7 +76,8 @@ function Hero() {
               springOptions={{ stiffness: 16.5, damping: 8.2, mass: 0.5 }}
             >
               <GradientButton className="py-3 px-8 gap-3 flex items-center text-base">
-                <span className="text-white">Schedule Your Free Strategy Call</span> <Calendar className="w-4 h-4 ml-1 text-white" />
+                <span className="text-white">Schedule Your Free Strategy Call</span>
+                <Calendar className="w-4 h-4 text-white flex-shrink-0" />
               </GradientButton>
             </Magnetic>
           </div>
