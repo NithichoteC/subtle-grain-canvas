@@ -10,7 +10,7 @@ function HeroDemo() {
     <div className="relative">
       <GridLines />
       <BackgroundEdgePaths />
-      <div className="px-8 md:px-16 relative z-10">
+      <div className="px-6 md:px-12 relative z-10">
         <NavBarDemo />
         <HeroSectionBackground>
           <Hero />

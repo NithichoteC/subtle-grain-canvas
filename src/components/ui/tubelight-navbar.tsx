@@ -41,7 +41,7 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center justify-between px-8 md:px-16">
+      <div className="flex items-center justify-between px-6 md:px-12">
         {/* Logo on the left */}
         <Link to="/" className="flex items-center gap-2">
           <div className="text-white text-glow">
