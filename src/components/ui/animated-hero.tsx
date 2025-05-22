@@ -26,9 +26,18 @@ function Hero() {
 
   return (
     <div className="w-full pt-8">
-      {/* Removed the "container mx-auto" class to let it take the full width of the parent container */}
       <div className="w-full">
         <div className="flex gap-4 py-16 lg:py-28 items-center justify-center flex-col">
+          {/* Text bubble - brand name */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-2 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex"
+          >
+            <span className="text-sm font-medium tracking-wider text-white/90">PWC AGENCY</span>
+          </motion.div>
+          
           <div className="flex gap-3 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">

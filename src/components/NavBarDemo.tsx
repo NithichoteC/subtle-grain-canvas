@@ -1,14 +1,15 @@
 
-import { User, Settings, Activity, TrendingUp, ShieldCheck, HelpCircle } from 'lucide-react'
+import { Settings, TrendingUp, ShieldCheck, Users, HelpCircle, Home } from 'lucide-react'
 import { NavBar } from "@/components/ui/tubelight-navbar"
 
 export function NavBarDemo() {
+  // Updated navigation items with more modern icons and cleaner naming
   const navItems = [
-    { name: 'Hi!', url: '#', icon: User },
+    { name: 'Home', url: '#', icon: Home },
     { name: 'Process', url: '#', icon: Settings },
-    { name: 'Metrics', url: '#', icon: TrendingUp },
-    { name: 'Guarantee', url: '#', icon: ShieldCheck },
-    { name: 'Who', url: '#', icon: User },
+    { name: 'Results', url: '#', icon: TrendingUp },
+    { name: 'Trust', url: '#', icon: ShieldCheck },
+    { name: 'Team', url: '#', icon: Users },
     { name: 'FAQ', url: '#', icon: HelpCircle }
   ]
 

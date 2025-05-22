@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 import { GradientButton } from "@/components/ui/gradient-button"
 
 interface NavItem {
@@ -37,7 +36,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-4 border-b border-l border-r border-white/10 w-full relative",
+        "py-5 border-b border-l border-r border-white/10 w-full relative",
         className,
       )}
     >
@@ -55,7 +54,7 @@ export function NavBar({ items, className }: NavBarProps) {
       <div className="flex items-center justify-between px-4 md:px-6 relative z-10">
         {/* Logo on the left */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="text-white text-glow">
+          <div className="text-white">
             <img 
               src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
               alt="Logo"
@@ -65,7 +64,7 @@ export function NavBar({ items, className }: NavBarProps) {
         </Link>
         
         {/* Navigation items in the center */}
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name
@@ -76,26 +75,43 @@ export function NavBar({ items, className }: NavBarProps) {
                 to={item.url}
                 onClick={() => setActiveTab(item.name)}
                 className={cn(
-                  "relative cursor-pointer text-sm font-semibold transition-all duration-300 font-inter",
-                  "text-white/60 hover:text-white",
-                  isActive && "text-white"
+                  "relative cursor-pointer text-sm font-medium transition-all duration-300",
+                  "flex items-center gap-2 px-3 py-1.5 rounded-full",
+                  isActive 
+                    ? "text-white bg-white/5 border border-white/10" 
+                    : "text-white/60 hover:text-white hover:bg-white/5 hover:border hover:border-white/5"
                 )}
               >
-                <span className="hidden md:inline">{item.name}</span>
-                <span className="md:hidden">
-                  <Icon 
-                    size={18} 
-                    strokeWidth={2.5} 
-                    className={cn(
-                      "transition-colors",
-                      isActive ? "stroke-white" : "stroke-white/60 hover:stroke-white/90"
-                    )} 
-                  />
-                </span>
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></span>
-                )}
+                <Icon size={16} strokeWidth={2.5} />
+                <span>{item.name}</span>
               </Link>
+            )
+          })}
+        </div>
+
+        {/* Mobile navigation */}
+        <div className="flex md:hidden items-center gap-1">
+          {items.map((item) => {
+            const Icon = item.icon
+            const isActive = activeTab === item.name
+            
+            return (
+              <button
+                key={item.name}
+                onClick={() => setActiveTab(item.name)}
+                className={cn(
+                  "p-2 rounded-full transition-all",
+                  isActive 
+                    ? "bg-white/10 text-white" 
+                    : "text-white/60"
+                )}
+              >
+                <Icon 
+                  size={18} 
+                  strokeWidth={2} 
+                  className="transition-colors" 
+                />
+              </button>
             )
           })}
         </div>
