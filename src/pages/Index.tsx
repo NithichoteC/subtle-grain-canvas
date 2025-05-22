@@ -2,6 +2,7 @@
 import React from 'react';
 import TextureBackground from '@/components/TextureBackground';
 import { HeroDemo } from '@/components/HeroDemo';
+import { ProcessStepsDemo } from '@/components/ProcessStepsDemo';
 
 const Index = () => {
   return (
@@ -9,6 +10,7 @@ const Index = () => {
       <TextureBackground />
       <div className="min-h-screen w-full relative">
         <HeroDemo />
+        <ProcessStepsDemo />
       </div>
     </div>
   );

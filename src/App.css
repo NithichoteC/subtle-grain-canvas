@@ -13,6 +13,11 @@ body, html {
   overflow-x: hidden;
 }
 
+/* Custom gold gradient for cards */
+.evervault-card-gradient {
+  background: linear-gradient(to right, #FFC94D, #a17d2c);
+}
+
 /* We're keeping other styles but ensuring they don't interfere with our full-width design */
 .logo {
   height: 6em;
