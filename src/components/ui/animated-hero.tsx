@@ -33,7 +33,7 @@ function Hero() {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight font-roboto">
               <span className="text-white">
-                <span className="bronze-gradient-fix my-0 py-[15px]">AI</span>
+                <span className="bronze-gradient-fix my-0 px-0 mx-0 py-0 text-center">AI</span>
                 <span className="mx-1">-</span>
                 <span className="inline-block">Powered</span>
                 <span> System That </span>
