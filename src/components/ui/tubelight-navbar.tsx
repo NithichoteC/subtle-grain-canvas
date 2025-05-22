@@ -6,6 +6,8 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Magnetic } from "@/components/ui/magnetic"
+import { GradientButton } from "@/components/ui/gradient-button"
 
 interface NavItem {
   name: string
@@ -110,9 +112,17 @@ export function NavBar({ items, className }: NavBarProps) {
         
         {/* Button on the right */}
         <div className="flex-1 flex justify-end">
-          <div className="text-white rounded-full px-4 py-2 bg-white/5 backdrop-blur-lg border border-white/10 font-medium">
-            Schedule
-          </div>
+          <Magnetic 
+            intensity={0.5} 
+            rangeX={80} 
+            rangeY={40} 
+            actionArea="global"
+            shape="elliptical"
+          >
+            <GradientButton className="text-sm py-2 px-4">
+              Schedule
+            </GradientButton>
+          </Magnetic>
         </div>
       </div>
     </div>
