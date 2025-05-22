@@ -14,6 +14,6 @@ export function NavBarDemo() {
   ]
 
   return (
-    <NavBar items={navItems} className="sticky top-0 z-50" />
+    <NavBar items={navItems} className="sticky top-0 z-50" magneticIntensity={0.15} magneticRange={35} />
   )
 }
