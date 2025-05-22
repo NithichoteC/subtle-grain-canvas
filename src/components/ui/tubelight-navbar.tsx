@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -17,9 +18,16 @@ interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
+  magneticIntensity?: number
+  magneticRange?: number
 }
 
-export function NavBar({ items, className }: NavBarProps) {
+export function NavBar({ 
+  items, 
+  className,
+  magneticIntensity = 0.15, 
+  magneticRange = 35 
+}: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -112,9 +120,9 @@ export function NavBar({ items, className }: NavBarProps) {
         {/* Button on the right - adjusted for equal height and padding */}
         <div className="flex-1 flex justify-end items-center h-[36px]">
           <Magnetic 
-            intensity={0.5} 
-            rangeX={80} 
-            rangeY={40} 
+            intensity={magneticIntensity} 
+            rangeX={magneticRange} 
+            rangeY={magneticRange/2} 
             actionArea="global"
             shape="elliptical"
           >
