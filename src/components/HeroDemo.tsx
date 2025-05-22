@@ -1,18 +1,21 @@
 
 import { Hero } from "@/components/ui/animated-hero";
-import GridLines from "@/components/GridLines";
 import { NavBarDemo } from "@/components/NavBarDemo";
-import { BackgroundEdgePaths } from "@/components/ui/background-paths";
+import { BlockFrame } from "@/components/ui/BlockFrame";
 
 function HeroDemo() {
   return (
     <div className="relative">
-      <GridLines />
-      <BackgroundEdgePaths />
-      <div className="px-8 md:px-16 relative z-10">
+      <div className="relative z-10">
         <NavBarDemo />
-        <div className="py-12">
-          <Hero />
+        <div className="container mx-auto px-6 py-8">
+          <BlockFrame 
+            flowIntensity="medium" 
+            flowDirection="both"
+            className="mt-8"
+          >
+            <Hero />
+          </BlockFrame>
         </div>
       </div>
     </div>
