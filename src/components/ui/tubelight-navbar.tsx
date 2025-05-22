@@ -121,9 +121,9 @@ export function NavBar({ items, className }: NavBarProps) {
           >
             <GradientButton 
               variant="compact" 
-              className="text-sm font-semibold h-[36px] w-[36px] flex items-center justify-center p-0"
+              className="text-sm font-semibold h-[36px] w-[100px] flex items-center justify-center"
             >
-              <span className="inline-block">Schedule</span>
+              <span className="px-3">Schedule</span>
             </GradientButton>
           </Magnetic>
         </div>
