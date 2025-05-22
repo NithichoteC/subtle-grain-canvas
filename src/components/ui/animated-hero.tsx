@@ -77,18 +77,18 @@ function Hero() {
             </p>
           </div>
           
-          {/* CTA Button - maintained consistent spacing - REDUCED MAGNETIC INTENSITY AND RANGE */}
+          {/* CTA Button - SIGNIFICANTLY INCREASED MAGNETIC INTENSITY FOR VISIBILITY */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
-              intensity={0.15} 
-              rangeX={40} 
-              rangeY={30} 
+              intensity={0.4} 
+              rangeX={80} 
+              rangeY={60} 
               actionArea="global" 
               shape="elliptical"
               springOptions={{
-                stiffness: 30,
-                damping: 12,
-                mass: 0.7
+                stiffness: 150,
+                damping: 15,
+                mass: 0.3
               }}
             >
               <GradientButton className="gap-3 flex items-center text-base font-roboto px-[5px] my-0 mx-0 py-[12px]">

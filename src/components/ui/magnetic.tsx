@@ -9,8 +9,8 @@ import {
   type SpringOptions,
 } from 'framer-motion';
 
-// Refined spring config for smoother motion
-const SPRING_CONFIG = { stiffness: 14, damping: 9, mass: 0.6 };
+// Much more responsive spring config
+const SPRING_CONFIG = { stiffness: 150, damping: 15, mass: 0.3 };
 
 export type MagneticProps = {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ export type MagneticProps = {
 
 export function Magnetic({
   children,
-  intensity = 0.25, // Default intensity
+  intensity = 0.25, // Increased default intensity for more noticeable effect
   rangeX = 100,
   rangeY,
   actionArea = 'self',
@@ -40,13 +40,14 @@ export function Magnetic({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
+  // Configure more responsive springs
   const springX = useSpring(x, springOptions);
   const springY = useSpring(y, springOptions);
 
   // Set isHovered to true immediately if actionArea is global
   useEffect(() => {
     if (actionArea === 'global') {
-      console.log('Magnetic: Setting global hover state to true');
+      console.log('Magnetic: Global hover active');
       setIsHovered(true);
     }
   }, [actionArea]);
@@ -60,19 +61,11 @@ export function Magnetic({
         const distanceX = e.clientX - centerX;
         const distanceY = e.clientY - centerY;
 
-        // Debug information
+        // Log when within range for debugging
         if (Math.abs(distanceX) < rangeX && Math.abs(distanceY) < effectiveRangeY) {
-          console.log(`Magnetic effect active: 
-            - distanceX: ${distanceX.toFixed(2)} 
-            - distanceY: ${distanceY.toFixed(2)} 
-            - isHovered: ${isHovered}
-            - intensity: ${intensity}
-            - rect: ${JSON.stringify({
-              top: rect.top.toFixed(0),
-              left: rect.left.toFixed(0),
-              width: rect.width.toFixed(0),
-              height: rect.height.toFixed(0)
-            })}`);
+          console.log(`Mouse position: ${e.clientX}, ${e.clientY}`);
+          console.log(`Button center: ${centerX}, ${centerY}`);
+          console.log(`Distance: X=${distanceX.toFixed(2)}, Y=${distanceY.toFixed(2)}`);
         }
 
         // Calculate normalized distance based on the selected shape
@@ -95,30 +88,65 @@ export function Magnetic({
           );
         }
 
-        // CRITICAL FIX: Always apply magnetic effect when in range and isHovered is true
-        // This is the key fix to ensure the buttons move with the cursor
-        if (isHovered && normalizedDistance <= 1) {
-          // Use a more aggressive easing for better visual effect
-          const scale = 1 - normalizedDistance; // Linear scale based on distance
-          const effectiveIntensity = intensity * scale;
-          
-          // Apply the magnetic effect directly
-          x.set(distanceX * effectiveIntensity);
-          y.set(distanceY * effectiveIntensity);
-          console.log(`Magnetic applied: X=${distanceX * effectiveIntensity}, Y=${distanceY * effectiveIntensity}`);
-        } else if (normalizedDistance > 1) {
-          // Reset position when out of range
-          x.set(0);
-          y.set(0);
+        // CRITICAL FIX: Simplify the application logic and make it more direct
+        if (isHovered) {
+          if (normalizedDistance <= 1) {
+            // Calculate a smoother easing curve for the magnetic effect
+            const easing = 1 - Math.pow(normalizedDistance, 1.5);
+            const effectIntensity = intensity * easing * 2; // Double the effect for visibility
+            
+            // Apply directly to motion values - this is key for the effect to be visible
+            x.set(distanceX * effectIntensity);
+            y.set(distanceY * effectIntensity);
+            
+            console.log(`✅ Applied: X=${(distanceX * effectIntensity).toFixed(2)}, Y=${(distanceY * effectIntensity).toFixed(2)}, Intensity=${effectIntensity.toFixed(2)}`);
+          } else {
+            // Gradual reset when out of range
+            const currentX = x.get();
+            const currentY = y.get();
+            
+            // If we have movement, gradually reset to 0
+            if (Math.abs(currentX) > 0.01 || Math.abs(currentY) > 0.01) {
+              x.set(currentX * 0.85);
+              y.set(currentY * 0.85);
+            } else {
+              x.set(0);
+              y.set(0);
+            }
+          }
         }
       }
     };
 
-    // Run calculation on every mouse move
-    document.addEventListener('mousemove', calculateDistance);
+    // Use requestAnimationFrame for smoother performance
+    let animationFrameId: number;
+    
+    const animateFrame = () => {
+      calculateDistance(lastMouseEvent);
+      animationFrameId = requestAnimationFrame(animateFrame);
+    };
+
+    let lastMouseEvent: MouseEvent;
+    const handleMouseMove = (e: MouseEvent) => {
+      lastMouseEvent = e;
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(animateFrame);
+      }
+    };
+
+    // Start only if we have mouse movement
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // Initial animation frame if global mode
+    if (actionArea === 'global' && lastMouseEvent) {
+      animationFrameId = requestAnimationFrame(animateFrame);
+    }
 
     return () => {
-      document.removeEventListener('mousemove', calculateDistance);
+      document.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [ref, isHovered, intensity, rangeX, effectiveRangeY, x, y, shape]);
 
@@ -169,6 +197,8 @@ export function Magnetic({
         y: springY,
         position: "relative", // Ensure proper positioning
         display: "inline-block", // Make sure it only takes necessary space
+        willChange: "transform", // Performance optimization for transform
+        zIndex: 10, // Ensure it's above other elements
       }}
     >
       {children}
