@@ -24,7 +24,7 @@ export type MagneticProps = {
 
 export function Magnetic({
   children,
-  intensity = 0.25, // Reduced default intensity for smoother effect
+  intensity = 0.25, // Default intensity
   rangeX = 100,
   rangeY,
   actionArea = 'self',
@@ -75,21 +75,6 @@ export function Magnetic({
             })}`);
         }
 
-        // Check if cursor is at the edge of the viewport
-        const edgeSensitivity = 20; // pixels from edge to consider "at edge"
-        const atEdge = 
-          e.clientX < edgeSensitivity || 
-          e.clientY < edgeSensitivity || 
-          window.innerWidth - e.clientX < edgeSensitivity || 
-          window.innerHeight - e.clientY < edgeSensitivity;
-
-        if (atEdge) {
-          // Gradually reset when at viewport edges
-          x.set(x.get() * 0.85);
-          y.set(y.get() * 0.85);
-          return;
-        }
-
         // Calculate normalized distance based on the selected shape
         let normalizedDistance: number;
         
@@ -110,38 +95,30 @@ export function Magnetic({
           );
         }
 
-        const inRange = normalizedDistance <= 1;
-        
-        if (isHovered && inRange) {
-          // Improved easing function for smoother transition
-          const scale = Math.max(0, 1 - Math.pow(normalizedDistance, 1.8));
+        // CRITICAL FIX: Always apply magnetic effect when in range and isHovered is true
+        // This is the key fix to ensure the buttons move with the cursor
+        if (isHovered && normalizedDistance <= 1) {
+          // Use a more aggressive easing for better visual effect
+          const scale = 1 - normalizedDistance; // Linear scale based on distance
+          const effectiveIntensity = intensity * scale;
           
-          // Apply with smoothing and more controlled intensity
-          const easedIntensity = intensity * Math.min(0.8, scale);
-          x.set(distanceX * easedIntensity);
-          y.set(distanceY * easedIntensity);
-        } else if (normalizedDistance > 1.2) { // Adding some buffer for smooth transition
-          // Reset position when out of range, with gentle transition
+          // Apply the magnetic effect directly
+          x.set(distanceX * effectiveIntensity);
+          y.set(distanceY * effectiveIntensity);
+          console.log(`Magnetic applied: X=${distanceX * effectiveIntensity}, Y=${distanceY * effectiveIntensity}`);
+        } else if (normalizedDistance > 1) {
+          // Reset position when out of range
           x.set(0);
           y.set(0);
         }
       }
     };
 
-    // Improved throttle with smoother frame rate control
-    let lastCall = 0;
-    const throttledCalculateDistance = (e: MouseEvent) => {
-      const now = Date.now();
-      if (now - lastCall > 16) { // ~60fps (1000ms/60)
-        lastCall = now;
-        calculateDistance(e);
-      }
-    };
-
-    document.addEventListener('mousemove', throttledCalculateDistance);
+    // Run calculation on every mouse move
+    document.addEventListener('mousemove', calculateDistance);
 
     return () => {
-      document.removeEventListener('mousemove', throttledCalculateDistance);
+      document.removeEventListener('mousemove', calculateDistance);
     };
   }, [ref, isHovered, intensity, rangeX, effectiveRangeY, x, y, shape]);
 
@@ -190,6 +167,8 @@ export function Magnetic({
       style={{
         x: springX,
         y: springY,
+        position: "relative", // Ensure proper positioning
+        display: "inline-block", // Make sure it only takes necessary space
       }}
     >
       {children}
