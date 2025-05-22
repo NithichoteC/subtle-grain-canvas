@@ -14,20 +14,27 @@ const SPRING_CONFIG = { stiffness: 26.7, damping: 4.1, mass: 0.2 };
 export type MagneticProps = {
   children: React.ReactNode;
   intensity?: number;
-  range?: number;
+  rangeX?: number;
+  rangeY?: number;
   actionArea?: 'self' | 'parent' | 'global';
   springOptions?: SpringOptions;
+  shape?: 'circular' | 'rectangular' | 'elliptical';
 };
 
 export function Magnetic({
   children,
   intensity = 0.6,
-  range = 100,
+  rangeX = 100,
+  rangeY,
   actionArea = 'self',
   springOptions = SPRING_CONFIG,
+  shape = 'elliptical',
 }: MagneticProps) {
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  // If rangeY is not specified, default to rangeX
+  const effectiveRangeY = rangeY ?? rangeX;
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -44,13 +51,37 @@ export function Magnetic({
         const distanceX = e.clientX - centerX;
         const distanceY = e.clientY - centerY;
 
-        const absoluteDistance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+        // Calculate distance based on the selected shape
+        let normalizedDistance: number;
+        
+        if (shape === 'circular') {
+          // Circular: standard Euclidean distance
+          normalizedDistance = Math.sqrt(distanceX ** 2 + distanceY ** 2) / rangeX;
+        } else if (shape === 'rectangular') {
+          // Rectangular: max of normalized x and y distances
+          normalizedDistance = Math.max(
+            Math.abs(distanceX) / rangeX,
+            Math.abs(distanceY) / effectiveRangeY
+          );
+        } else { // elliptical
+          // Elliptical: normalized distance considering different x and y ranges
+          normalizedDistance = Math.sqrt(
+            (distanceX / rangeX) ** 2 + 
+            (distanceY / effectiveRangeY) ** 2
+          );
+        }
 
-        if (isHovered && absoluteDistance <= range) {
-          const scale = 1 - absoluteDistance / range;
+        const inRange = normalizedDistance <= 1;
+        
+        if (isHovered && inRange) {
+          // Scale the effect based on the normalized distance (1 at center, 0 at edge)
+          const scale = 1 - normalizedDistance;
+          
+          // Apply the effect with the appropriate intensity
           x.set(distanceX * intensity * scale);
           y.set(distanceY * intensity * scale);
         } else {
+          // Reset position when out of range
           x.set(0);
           y.set(0);
         }
@@ -62,7 +93,7 @@ export function Magnetic({
     return () => {
       document.removeEventListener('mousemove', calculateDistance);
     };
-  }, [ref, isHovered, intensity, range, x, y]);
+  }, [ref, isHovered, intensity, rangeX, effectiveRangeY, x, y, shape]);
 
   useEffect(() => {
     if (actionArea === 'parent' && ref.current?.parentElement) {
