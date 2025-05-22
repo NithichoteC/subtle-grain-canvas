@@ -56,7 +56,8 @@ function Hero() {
             </p>
           </div>
           <div className="flex flex-row gap-3 mt-4">
-            <Magnetic intensity={0.8} range={120} actionArea="global">
+            {/* Updated the magnetic component parameters to more accurately match button dimensions */}
+            <Magnetic intensity={0.4} range={80} actionArea="self">
               <GradientButton className="py-3 px-6 gap-3 flex items-center text-base">
                 <span className="text-white">Schedule Your Free Strategy Call</span> <MoveRight className="w-4 h-4 ml-1 text-white" />
               </GradientButton>
