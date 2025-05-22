@@ -80,15 +80,15 @@ function Hero() {
           {/* CTA Button - maintained consistent spacing */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
-              intensity={0.5} 
-              rangeX={100} 
-              rangeY={80} 
+              intensity={0.65} 
+              rangeX={180} 
+              rangeY={100} 
               actionArea="global" 
               shape="elliptical" 
               springOptions={{
-                stiffness: 14,
-                damping: 8,
-                mass: 0.5
+                stiffness: 12,
+                damping: 7,
+                mass: 0.4
               }}
             >
               <GradientButton className="gap-3 flex items-center text-base font-roboto px-[5px] my-0 mx-0 py-[12px]">
