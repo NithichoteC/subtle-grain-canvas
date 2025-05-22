@@ -1,5 +1,5 @@
 
-import { Settings, TrendingUp, ShieldCheck, Users, HelpCircle, Home } from 'lucide-react'
+import { Home, Settings, TrendingUp, ShieldCheck, Users, HelpCircle } from 'lucide-react'
 import { NavBar } from "@/components/ui/tubelight-navbar"
 
 export function NavBarDemo() {
