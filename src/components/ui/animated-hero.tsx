@@ -47,7 +47,7 @@ function Hero() {
             {/* Rotating phrase part */}
             <div className="h-14 flex items-center justify-center">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium font-roboto">
-                <span className="inline-block mr-3">Skip the</span>
+                <span className="inline-block mr-3 text-[#efcc8a]">Skip the</span>
                 <AnimatePresence mode="wait">
                   <motion.span key={currentIndex} initial={{
                   y: 20,
