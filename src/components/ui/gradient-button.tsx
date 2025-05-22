@@ -15,12 +15,14 @@ const gradientButtonVariants = cva(
     "font-sans font-bold",
     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
     "disabled:pointer-events-none disabled:opacity-50",
+    "bg-gradient-to-tr from-[#FFC94D] to-[#F59E0B] hover:from-[#FFD700] hover:to-[#F7B733]",
+    "hover:shadow-lg transition-all duration-200",
   ],
   {
     variants: {
       variant: {
         default: "min-w-[132px] px-9 py-4",
-        compact: "min-w-0 px-4 py-2",
+        compact: "min-w-0 px-2.5 py-2.5", // Equal padding for square appearance
       },
     },
     defaultVariants: {

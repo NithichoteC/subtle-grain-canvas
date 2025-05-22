@@ -110,8 +110,8 @@ export function NavBar({ items, className }: NavBarProps) {
           })}
         </div>
         
-        {/* Button on the right */}
-        <div className="flex-1 flex justify-end">
+        {/* Button on the right - adjusted for equal height and padding */}
+        <div className="flex-1 flex justify-end items-center h-[36px]">
           <Magnetic 
             intensity={0.5} 
             rangeX={80} 
@@ -119,8 +119,11 @@ export function NavBar({ items, className }: NavBarProps) {
             actionArea="global"
             shape="elliptical"
           >
-            <GradientButton className="text-sm font-semibold py-2 px-2 min-w-0 h-[36px] flex items-center justify-center">
-              Schedule
+            <GradientButton 
+              variant="compact" 
+              className="text-sm font-semibold h-[36px] w-[36px] flex items-center justify-center p-0"
+            >
+              <span className="inline-block">Schedule</span>
             </GradientButton>
           </Magnetic>
         </div>
