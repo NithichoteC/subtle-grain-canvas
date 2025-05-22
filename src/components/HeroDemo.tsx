@@ -6,7 +6,7 @@ import { Waves } from "@/components/ui/wave-background";
 
 function HeroDemo() {
   return (
-    <div className="relative overflow-hidden w-full">
+    <div className="relative overflow-hidden w-full font-roboto">
       {/* Waves background covers the full width and height of the hero section */}
       <div className="absolute inset-0 z-10">
         <Waves 
