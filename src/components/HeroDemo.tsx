@@ -7,13 +7,17 @@ import { Waves } from "@/components/ui/wave-background";
 function HeroDemo() {
   return (
     <div className="relative">
-      {/* Replace GridLines and BackgroundEdgePaths with Waves */}
-      <div className="absolute inset-0 z-0">
+      {/* Position the Waves background below the navbar */}
+      <div className="container max-w-5xl mx-auto relative z-20">
+        <NavBarDemo />
+      </div>
+      
+      {/* Waves background with lower z-index */}
+      <div className="absolute inset-0 z-10">
         <Waves strokeColor="#ffffff1a" backgroundColor="transparent" pointerSize={0.3} />
       </div>
       
       <div className="container max-w-5xl mx-auto relative z-10">
-        <NavBarDemo />
         <HeroSectionBackground>
           <Hero />
         </HeroSectionBackground>
