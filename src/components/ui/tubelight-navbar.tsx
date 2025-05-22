@@ -50,17 +50,19 @@ export function NavBar({ items, className }: NavBarProps) {
         ></div>
       </div>
 
-      <div className="flex items-center justify-between px-4 md:px-6">
+      <div className="flex items-center justify-center px-4 md:px-6">
         {/* Logo on the left */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="text-white">
-            <img 
-              src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
-              alt="Logo"
-              className="h-[36px] w-auto my-0" 
-            />
-          </div>
-        </Link>
+        <div className="flex-1 flex justify-start">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="text-white">
+              <img 
+                src="/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png"
+                alt="Logo"
+                className="h-[36px] w-auto my-0" 
+              />
+            </div>
+          </Link>
+        </div>
         
         {/* Navigation items in the middle */}
         <div className="flex items-center gap-3 bg-white/5 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg border border-white/10">
@@ -107,8 +109,10 @@ export function NavBar({ items, className }: NavBarProps) {
         </div>
         
         {/* Button on the right */}
-        <div className="text-white rounded-full px-4 py-2 bg-white/5 backdrop-blur-lg border border-white/10 font-medium">
-          Schedule
+        <div className="flex-1 flex justify-end">
+          <div className="text-white rounded-full px-4 py-2 bg-white/5 backdrop-blur-lg border border-white/10 font-medium">
+            Schedule
+          </div>
         </div>
       </div>
     </div>
