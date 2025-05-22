@@ -1,4 +1,3 @@
-
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,7 +25,7 @@ function Hero() {
           y: 0
         }} transition={{
           duration: 0.5
-        }} className="bg-black/30 border border-white/15 px-6 rounded-full inline-flex -mb-8 py-1">
+        }} className="border border-white/15 px-6 rounded-full inline-flex -mb-8 py-1 bg-[#202020]/[0.32]">
             <span className="text-sm font-medium tracking-wider text-white font-roboto">PWC AGENCY</span>
           </motion.div>
           
