@@ -20,7 +20,7 @@ function Hero() {
   return (
     <div className="w-full pt-0">
       <div className="w-full">
-        <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-8">
+        <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
           {/* Text bubble - brand name - reduced spacing to headline */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }} 
@@ -35,13 +35,16 @@ function Hero() {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight font-roboto">
               <span className="text-white">
-                <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
+                <span className="bronze-gradient-fix">AI</span>
+                <span className="mx-1">-</span>
+                <span>Powered System That </span>
+                <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
           </div>
           
-          {/* Combined subheading block - better grouped together with less internal spacing */}
-          <div className="space-y-4 mt-4">
+          {/* Combined subheading block - increased margin from headline */}
+          <div className="space-y-6 mt-8">
             {/* Rotating phrase part */}
             <div className="h-14 flex items-center justify-center">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium font-roboto">
@@ -67,8 +70,8 @@ function Hero() {
             </p>
           </div>
           
-          {/* CTA Button - increased bottom margin for consistent spacing */}
-          <div className="flex flex-row gap-3 mt-6 mb-8">
+          {/* CTA Button - increased top margin for better spacing */}
+          <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
               intensity={0.25} 
               rangeX={100} 
