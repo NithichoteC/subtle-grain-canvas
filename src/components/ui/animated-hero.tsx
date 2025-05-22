@@ -43,7 +43,7 @@ function Hero() {
           </div>
           
           {/* Combined subheading block - adjusted margin from headline */}
-          <div className="space-y-3 mt-10">
+          <div className="space-y-3 mt-10 py-0 my-[61px]">
             {/* Rotating phrase part */}
             <div className="h-14 flex items-center justify-center">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium font-roboto">
