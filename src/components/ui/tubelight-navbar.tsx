@@ -37,7 +37,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "py-4 border-b border-white/10",
+        "py-4 border-b border-l border-r border-white/10",
         className,
       )}
     >
