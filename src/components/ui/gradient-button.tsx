@@ -20,7 +20,7 @@ const gradientButtonVariants = cva(
     variants: {
       variant: {
         default: "min-w-[132px] px-9 py-4",
-        compact: "min-w-0 px-4 py-2",
+        compact: "min-w-0 aspect-square", // Making it perfectly square for equal padding
       },
     },
     defaultVariants: {
