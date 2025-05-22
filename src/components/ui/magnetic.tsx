@@ -9,7 +9,8 @@ import {
   type SpringOptions,
 } from 'framer-motion';
 
-const SPRING_CONFIG = { stiffness: 26.7, damping: 4.1, mass: 0.2 };
+// Updated spring config for smoother motion
+const SPRING_CONFIG = { stiffness: 16.5, damping: 8.2, mass: 0.5 };
 
 export type MagneticProps = {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ export type MagneticProps = {
 
 export function Magnetic({
   children,
-  intensity = 0.6,
+  intensity = 0.4, // Reduced default intensity for smoother effect
   rangeX = 100,
   rangeY,
   actionArea = 'self',
@@ -74,24 +75,35 @@ export function Magnetic({
         const inRange = normalizedDistance <= 1;
         
         if (isHovered && inRange) {
-          // Scale the effect based on the normalized distance (1 at center, 0 at edge)
-          const scale = 1 - normalizedDistance;
+          // Scale the effect based on the normalized distance with easing function
+          // Using a cubic easing function for smoother transition
+          const scale = Math.pow(1 - normalizedDistance, 1.5);
           
-          // Apply the effect with the appropriate intensity
+          // Apply the effect with the appropriate intensity, more gradually
           x.set(distanceX * intensity * scale);
           y.set(distanceY * intensity * scale);
         } else {
-          // Reset position when out of range
+          // Reset position when out of range, with gentle transition
           x.set(0);
           y.set(0);
         }
       }
     };
 
-    document.addEventListener('mousemove', calculateDistance);
+    // Throttle the mousemove event for better performance
+    let lastCall = 0;
+    const throttledCalculateDistance = (e: MouseEvent) => {
+      const now = Date.now();
+      if (now - lastCall > 10) { // 10ms throttle
+        lastCall = now;
+        calculateDistance(e);
+      }
+    };
+
+    document.addEventListener('mousemove', throttledCalculateDistance);
 
     return () => {
-      document.removeEventListener('mousemove', calculateDistance);
+      document.removeEventListener('mousemove', throttledCalculateDistance);
     };
   }, [ref, isHovered, intensity, rangeX, effectiveRangeY, x, y, shape]);
 

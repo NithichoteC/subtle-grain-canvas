@@ -67,11 +67,12 @@ function Hero() {
           </div>
           <div className="flex flex-row gap-3 mt-4">
             <Magnetic 
-              intensity={0.8} 
+              intensity={0.4} 
               rangeX={180} 
               rangeY={120} 
               actionArea="global"
               shape="elliptical"
+              springOptions={{ stiffness: 16.5, damping: 8.2, mass: 0.5 }}
             >
               <GradientButton className="py-3 px-6 gap-3 flex items-center text-base">
                 <span className="text-white">Schedule Your Free Strategy Call</span> <MoveRight className="w-4 h-4 ml-1 text-white" />
