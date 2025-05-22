@@ -36,7 +36,7 @@ function FloatingPaths({ position, side }: { position: number; side: 'left' | 'r
         <div className={`absolute top-0 bottom-0 ${side === 'left' ? 'left-0' : 'right-0'} pointer-events-none overflow-hidden`} 
             style={{width: '200px'}}> {/* Increased width for more visibility */}
             <svg
-                className="w-full h-full text-white/50" /* Increased contrast */
+                className="w-full h-full text-white/60" /* Increased contrast with slight bronze tint */
                 viewBox={`0 0 300 800`} /* Larger viewBox for better scale */
                 preserveAspectRatio="none"
                 fill="none"
