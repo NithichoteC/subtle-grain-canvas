@@ -80,7 +80,7 @@ function Hero() {
             damping: 9,
             mass: 0.6
           }}>
-              <GradientButton className="py-3 px-8 gap-3 flex items-center text-base font-roboto">
+              <GradientButton className="gap-3 flex items-center text-base font-roboto py-[14px] px-[5px] my-0 mx-0">
                 <span className="text-white">Schedule Your Free Strategy Call</span>
                 <Calendar className="w-4 h-4 text-white flex-shrink-0" />
               </GradientButton>
