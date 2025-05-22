@@ -10,7 +10,7 @@ const gradientButtonVariants = cva(
   [
     "gradient-button",
     "inline-flex items-center justify-center",
-    "rounded-full min-w-[132px] px-9 py-4", // Changed to rounded-full to match navbar
+    "rounded-full", 
     "text-base leading-[19px] font-[500] text-white",
     "font-sans font-bold",
     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
@@ -19,8 +19,8 @@ const gradientButtonVariants = cva(
   {
     variants: {
       variant: {
-        default: "",
-        variant: "gradient-button-variant",
+        default: "min-w-[132px] px-9 py-4",
+        compact: "min-w-0 px-4 py-2",
       },
     },
     defaultVariants: {
