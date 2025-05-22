@@ -5,24 +5,26 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 function FloatingPaths({ position, side }: { position: number; side: 'left' | 'right' }) {
-    // Create much more visible and dynamic paths for the edges
-    const paths = Array.from({ length: 18 }, (_, i) => {
-        // Generate paths that flow along the edges with better visibility
+    // Create more visible, flowing paths that span from edge to edge
+    const paths = Array.from({ length: 12 }, (_, i) => {
+        // Generate paths that flow horizontally with better visibility
         let pathData;
         
         if (side === 'left') {
-            // Left side paths - flowing from left edge towards center
+            // Left side paths - flowing from left edge toward right
             pathData = {
-                d: `M-${150 + i * 6} ${50 + i * 10}C-${80 + i * 4} ${100 + i * 6} -${30 + i * 3} ${180 + i * 8} ${50 + i * 5} ${260 - i * 6}`,
-                width: 1.2 + i * 0.2,
-                opacity: 0.2 + i * 0.04
+                d: `M-20 ${120 + i * 50}C100 ${100 + i * 5} 200 ${150 + i * 15} 300 ${140 - i * 10}`,
+                width: 1.8 + (i % 3) * 0.4,
+                opacity: 0.15 + (i % 4) * 0.08,
+                duration: 18 + (i % 5) * 4
             };
         } else {
-            // Right side paths - flowing from right edge towards center
+            // Right side paths - flowing from right edge toward left
             pathData = {
-                d: `M${500 - i * 6} ${50 + i * 10}C${420 - i * 4} ${100 + i * 6} ${370 - i * 3} ${180 + i * 8} ${290 - i * 5} ${260 - i * 6}`,
-                width: 1.2 + i * 0.2,
-                opacity: 0.2 + i * 0.04
+                d: `M620 ${140 + i * 50}C500 ${160 + i * 5} 400 ${120 + i * 15} 300 ${130 - i * 10}`,
+                width: 1.8 + (i % 3) * 0.4,
+                opacity: 0.15 + (i % 4) * 0.08,
+                duration: 18 + (i % 5) * 4
             };
         }
         
@@ -34,10 +36,10 @@ function FloatingPaths({ position, side }: { position: number; side: 'left' | 'r
 
     return (
         <div className={`absolute top-0 bottom-0 ${side === 'left' ? 'left-0' : 'right-0'} pointer-events-none overflow-hidden`} 
-            style={{width: '200px'}}> {/* Increased width for more visibility */}
+            style={{width: '50%', height: '100%'}}> {/* Wider container to allow for edge-to-edge flow */}
             <svg
-                className="w-full h-full text-white/60" /* Increased contrast with slight bronze tint */
-                viewBox={`0 0 300 800`} /* Larger viewBox for better scale */
+                className="w-full h-full text-white/70" /* Increased contrast with hint of gold/bronze */
+                viewBox={`0 0 600 800`} /* Larger viewBox for better horizontal span */
                 preserveAspectRatio="none"
                 fill="none"
             >
@@ -48,17 +50,16 @@ function FloatingPaths({ position, side }: { position: number; side: 'left' | 'r
                         stroke="currentColor"
                         strokeWidth={path.width}
                         strokeOpacity={path.opacity}
-                        initial={{ pathLength: 0.4, opacity: 0.5 }}
+                        initial={{ pathLength: 0, opacity: 0.1 }}
                         animate={{
-                            pathLength: 0.8,
-                            opacity: [0.4, 0.7, 0.4],
-                            pathOffset: [0, 1],
+                            pathLength: 1,
+                            opacity: [0.3, 0.7, 0.3],
                         }}
                         transition={{
-                            duration: 10 + Math.random() * 6, /* Faster animation */
+                            duration: path.duration,
                             repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                            delay: path.id * 0.3 /* Less delay for more activity */
+                            ease: "easeInOut",
+                            repeatType: "loop",
                         }}
                     />
                 ))}
@@ -69,9 +70,9 @@ function FloatingPaths({ position, side }: { position: number; side: 'left' | 'r
 
 export function BackgroundEdgePaths() {
     return (
-        <>
+        <div className="absolute inset-0 z-0 overflow-hidden">
             <FloatingPaths position={1} side="left" />
             <FloatingPaths position={1} side="right" />
-        </>
+        </div>
     );
 }
