@@ -13,8 +13,8 @@ interface HeroSectionBackgroundProps {
 const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({ children, className }) => {
   return (
     <div className={`relative z-10 py-12 ${className || ''}`}>
-      {/* Background with the same styling as the page */}
-      <div className="absolute inset-0 z-[-1]">
+      {/* Border styling to match the navigation line */}
+      <div className="absolute inset-0 z-[-1] border-l border-r border-b border-white/10">
         {/* Main background */}
         <div className="absolute inset-0 bg-dark"></div>
         
