@@ -65,6 +65,9 @@ export default {
 				},
 				dark: {
 					DEFAULT: '#171717',  // Adding your specific dark color
+				},
+				gold: {
+					DEFAULT: '#FFC94D',  // Adding the gold accent color
 				}
 			},
 			borderRadius: {
