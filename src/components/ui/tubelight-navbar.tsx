@@ -119,10 +119,7 @@ export function NavBar({ items, className }: NavBarProps) {
             actionArea="global"
             shape="elliptical"
           >
-            <GradientButton 
-              variant="compact" 
-              className="h-[34px] w-[34px] text-sm font-semibold"
-            >
+            <GradientButton className="text-sm font-semibold py-2 px-2 min-w-0 h-[36px] flex items-center justify-center">
               Schedule
             </GradientButton>
           </Magnetic>
