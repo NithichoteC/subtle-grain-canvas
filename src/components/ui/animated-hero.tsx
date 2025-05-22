@@ -20,32 +20,31 @@ function Hero() {
   return (
     <div className="w-full pt-0">
       <div className="w-full">
-        {/* Asymmetrical layout with more intentional spacing */}
-        <div className="flex flex-col items-center justify-center py-24 lg:py-32 space-y-12 max-w-3xl mx-auto">
-          {/* Text bubble with improved positioning */}
+        <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-8">
+          {/* Text bubble - brand name - reduced spacing to headline */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.5 }} 
-            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex -mb-4 ml-auto mr-12"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex -mb-4"
           >
             <span className="text-sm font-medium tracking-wider text-white/90">PWC AGENCY</span>
           </motion.div>
           
-          {/* Main headline - with improved line height and tracking */}
-          <div className="space-y-6 self-start pl-4">
-            <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tight text-left font-bold leading-[1.15] pl-0">
+          {/* Main headline - increased spacing from bubble but decreased to next section */}
+          <div className="space-y-6">
+            <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
           </div>
           
-          {/* Combined subheading block - asymmetrically positioned */}
-          <div className="space-y-6 mt-8 self-center">
-            {/* Rotating phrase part - increased height for better spacing */}
-            <div className="h-16 flex items-center justify-center">
-              <h2 className="text-3xl md:text-4xl tracking-tight text-white/80 font-medium">
+          {/* Combined subheading block - better grouped together with less internal spacing */}
+          <div className="space-y-4 mt-4">
+            {/* Rotating phrase part */}
+            <div className="h-14 flex items-center justify-center">
+              <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium">
                 <span className="inline-block mr-3">Skip the</span>
                 <AnimatePresence mode="wait">
                   <motion.span 
@@ -62,14 +61,14 @@ function Hero() {
               </h2>
             </div>
             
-            {/* Static subheading part - with improved line height */}
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight max-w-xl text-center mx-auto text-white/60">
+            {/* Static subheading part - kept close to rotating text */}
+            <p className="text-lg md:text-xl leading-tight tracking-tight max-w-2xl text-center mx-auto text-white/60">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>
           
-          {/* CTA Button - positioned with more whitespace around it */}
-          <div className="flex flex-row gap-3 mt-10 mb-0 self-end mr-12">
+          {/* CTA Button - increased bottom margin for consistent spacing */}
+          <div className="flex flex-row gap-3 mt-6 mb-8">
             <Magnetic 
               intensity={0.25} 
               rangeX={100} 
