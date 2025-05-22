@@ -27,7 +27,7 @@ function Hero() {
   return (
     <div className="w-full pt-3">
       <div className="w-full">
-        <div className="flex gap-3 py-10 lg:py-16 items-center justify-center flex-col">
+        <div className="flex gap-6 py-8 lg:py-14 items-center justify-center flex-col">
           {/* Text bubble - brand name */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -38,13 +38,13 @@ function Hero() {
             <span className="text-sm font-medium tracking-wider text-white/90">PWC AGENCY</span>
           </motion.div>
           
-          <div className="flex gap-2 flex-col">
+          <div className="flex gap-5 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
-            <div className="h-14 flex items-center justify-center">
+            <div className="h-14 flex items-center justify-center mt-2">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium">
                 <span className="inline-block mr-3">Skip the</span>
                 <AnimatePresence mode="wait">
@@ -61,11 +61,11 @@ function Hero() {
                 </AnimatePresence>
               </h2>
             </div>
-            <p className="text-lg md:text-xl leading-tight tracking-tight text-muted-foreground max-w-2xl text-center mx-auto text-white/90 mt-1">
+            <p className="text-lg md:text-xl leading-tight tracking-tight text-muted-foreground max-w-2xl text-center mx-auto text-white/90 mt-2">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>
-          <div className="flex flex-row gap-3 mt-3">
+          <div className="flex flex-row gap-3 mt-6">
             <Magnetic 
               intensity={0.25} 
               rangeX={100} 
