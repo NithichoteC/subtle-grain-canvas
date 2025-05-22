@@ -37,14 +37,15 @@ function Hero() {
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>
                 <span className="mx-1">-</span>
-                <span>Powered System That </span>
+                <span className="inline-block">Powered</span>
+                <span> System That </span>
                 <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
           </div>
           
-          {/* Combined subheading block - increased margin from headline */}
-          <div className="space-y-6 mt-8">
+          {/* Combined subheading block - adjusted margin from headline */}
+          <div className="space-y-3 mt-10">
             {/* Rotating phrase part */}
             <div className="h-14 flex items-center justify-center">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium font-roboto">
@@ -64,13 +65,13 @@ function Hero() {
               </h2>
             </div>
             
-            {/* Static subheading part - kept close to rotating text */}
+            {/* Static subheading part - kept closer to rotating text */}
             <p className="text-lg md:text-xl leading-tight tracking-tight max-w-2xl text-center mx-auto text-white/60 font-roboto">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>
           
-          {/* CTA Button - increased top margin for better spacing */}
+          {/* CTA Button - maintained consistent spacing */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
               intensity={0.25} 
