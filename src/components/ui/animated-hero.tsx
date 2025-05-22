@@ -26,7 +26,8 @@ function Hero() {
 
   return (
     <div className="w-full pt-8">
-      <div className="container mx-auto">
+      {/* Removed the "container mx-auto" class to let it take the full width of the parent container */}
+      <div className="w-full">
         <div className="flex gap-4 py-16 lg:py-28 items-center justify-center flex-col">
           <div className="flex gap-3 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
