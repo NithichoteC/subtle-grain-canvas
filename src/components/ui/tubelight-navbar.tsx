@@ -121,7 +121,7 @@ export function NavBar({ items, className }: NavBarProps) {
           >
             <GradientButton 
               variant="compact" 
-              className="h-[34px] w-[34px] text-sm font-semibold flex items-center justify-center"
+              className="h-[34px] w-[34px] text-sm font-semibold"
             >
               Schedule
             </GradientButton>
