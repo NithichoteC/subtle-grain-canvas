@@ -45,19 +45,11 @@ export function Magnetic({
         const distanceY = e.clientY - centerY;
 
         const absoluteDistance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-        
-        // Check if mouse is within the element's bounds plus the range
-        const isInRange = 
-          Math.abs(distanceX) <= (rect.width / 2 + range) && 
-          Math.abs(distanceY) <= (rect.height / 2 + range);
 
-        if (isHovered && isInRange) {
-          // Use normalized distance for smoother effect based on button dimensions
-          const scale = 1 - absoluteDistance / (Math.max(rect.width, rect.height) + range);
-          const effectiveScale = Math.max(0, scale);
-          
-          x.set(distanceX * intensity * effectiveScale);
-          y.set(distanceY * intensity * effectiveScale);
+        if (isHovered && absoluteDistance <= range) {
+          const scale = 1 - absoluteDistance / range;
+          x.set(distanceX * intensity * scale);
+          y.set(distanceY * intensity * scale);
         } else {
           x.set(0);
           y.set(0);
@@ -113,10 +105,7 @@ export function Magnetic({
       style={{
         x: springX,
         y: springY,
-        width: 'fit-content', // Ensure the container fits the button exactly
-        display: 'inline-block', // Prevent container from taking full width
       }}
-      className="magnetic-wrapper"
     >
       {children}
     </motion.div>
