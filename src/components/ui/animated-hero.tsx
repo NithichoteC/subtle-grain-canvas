@@ -20,19 +20,19 @@ function Hero() {
   return (
     <div className="w-full pt-0">
       <div className="w-full">
-        <div className="flex flex-col items-center justify-center py-10 lg:py-14 space-y-12">
-          {/* Text bubble - brand name - REDUCED MARGIN BOTTOM */}
+        <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-8">
+          {/* Text bubble - brand name - reduced spacing to headline */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.5 }} 
-            className="mb-0 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full inline-flex -mb-4"
           >
             <span className="text-sm font-medium tracking-wider text-white/90">PWC AGENCY</span>
           </motion.div>
           
-          {/* Main headline - first block - REDUCED BOTTOM SPACE */}
-          <div className="space-y-6 -mt-2">
+          {/* Main headline - increased spacing from bubble but decreased to next section */}
+          <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
@@ -40,8 +40,8 @@ function Hero() {
             </h1>
           </div>
           
-          {/* Combined subheading block - second block */}
-          <div className="space-y-8">
+          {/* Combined subheading block - better grouped together with less internal spacing */}
+          <div className="space-y-4 mt-4">
             {/* Rotating phrase part */}
             <div className="h-14 flex items-center justify-center">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium">
@@ -61,14 +61,14 @@ function Hero() {
               </h2>
             </div>
             
-            {/* Static subheading part */}
+            {/* Static subheading part - kept close to rotating text */}
             <p className="text-lg md:text-xl leading-tight tracking-tight max-w-2xl text-center mx-auto text-white/60">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>
           
-          {/* CTA Button - ADJUSTED BOTTOM MARGIN FOR CONSISTENT SPACING */}
-          <div className="flex flex-row gap-3 mb-4">
+          {/* CTA Button - increased bottom margin for consistent spacing */}
+          <div className="flex flex-row gap-3 mt-6 mb-8">
             <Magnetic 
               intensity={0.25} 
               rangeX={100} 
