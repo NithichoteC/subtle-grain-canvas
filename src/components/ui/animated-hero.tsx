@@ -1,4 +1,3 @@
-
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -80,15 +79,15 @@ function Hero() {
           {/* CTA Button - maintained consistent spacing */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
-              intensity={0.65} 
-              rangeX={180} 
-              rangeY={100} 
+              intensity={0.4} 
+              rangeX={120} 
+              rangeY={80} 
               actionArea="global" 
               shape="elliptical" 
               springOptions={{
-                stiffness: 12,
-                damping: 7,
-                mass: 0.4
+                stiffness: 10,
+                damping: 8,
+                mass: 0.5
               }}
             >
               <GradientButton className="gap-3 flex items-center text-base font-roboto px-[5px] my-0 mx-0 py-[12px]">
