@@ -1,3 +1,4 @@
+
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +17,7 @@ function Hero() {
   return <div className="w-full pt-0">
       <div className="w-full">
         <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
-          {/* Text bubble - brand name - reduced spacing to headline */}
+          {/* Text bubble - brand name - updated styling and reduced spacing to headline */}
           <motion.div initial={{
           opacity: 0,
           y: 10
@@ -25,8 +26,8 @@ function Hero() {
           y: 0
         }} transition={{
           duration: 0.5
-        }} className="bg-white/5 backdrop-blur-sm border border-white/10 px-6 rounded-full inline-flex -mb-4 py-[3px]">
-            <span className="text-sm font-medium tracking-wider text-white/90 font-roboto">PWC AGENCY</span>
+        }} className="bg-black/30 border border-white/15 px-6 rounded-full inline-flex -mb-8 py-1">
+            <span className="text-sm font-medium tracking-wider text-white font-roboto">PWC AGENCY</span>
           </motion.div>
           
           {/* Main headline - increased spacing from bubble but decreased to next section */}
