@@ -20,7 +20,7 @@ function Hero() {
   return (
     <div className="w-full pt-0">
       <div className="w-full">
-        <div className="flex flex-col items-center justify-center py-10 lg:py-16 space-y-12">
+        <div className="flex flex-col items-center justify-center py-10 lg:py-16 space-y-16">
           {/* Text bubble - brand name */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }} 
@@ -31,13 +31,18 @@ function Hero() {
             <span className="text-sm font-medium tracking-wider text-white/90">PWC AGENCY</span>
           </motion.div>
           
-          <div className="flex flex-col space-y-10">
+          {/* Main headline - first block */}
+          <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter text-center font-bold px-4 leading-tight">
               <span className="text-white">
                 <span className="bronze-gradient-fix">AI</span>-Powered System That <span className="bronze-gradient-fix">Delivers</span> <span className="bronze-gradient-fix overflow-visible">Ready Buyers</span> to Your Calendar
               </span>
             </h1>
-            
+          </div>
+          
+          {/* Combined subheading block - second block */}
+          <div className="space-y-8">
+            {/* Rotating phrase part */}
             <div className="h-14 flex items-center justify-center">
               <h2 className="text-3xl md:text-4xl tracking-tighter text-white/80 font-medium">
                 <span className="inline-block mr-3">Skip the</span>
@@ -56,12 +61,14 @@ function Hero() {
               </h2>
             </div>
             
+            {/* Static subheading part */}
             <p className="text-lg md:text-xl leading-tight tracking-tight max-w-2xl text-center mx-auto text-white/60">
               We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
             </p>
           </div>
           
-          <div className="flex flex-row gap-3 mt-8">
+          {/* CTA Button - clear separation from above content */}
+          <div className="flex flex-row gap-3 mt-6">
             <Magnetic 
               intensity={0.25} 
               rangeX={100} 
