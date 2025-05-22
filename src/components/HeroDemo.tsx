@@ -1,6 +1,5 @@
 
 import { Hero } from "@/components/ui/animated-hero";
-import GridLines from "@/components/GridLines";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import { BackgroundEdgePaths } from "@/components/ui/background-paths";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
