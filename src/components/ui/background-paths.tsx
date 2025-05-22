@@ -34,10 +34,10 @@ function FloatingPaths({ position, side }: { position: number; side: 'left' | 'r
 
     return (
         <div className={`absolute top-0 bottom-0 ${side === 'left' ? 'left-0' : 'right-0'} pointer-events-none overflow-hidden`} 
-            style={{width: '200px'}}> {/* Increased width for more visibility */}
+            style={{width: '250px'}}> {/* Increased width for better coverage */}
             <svg
-                className="w-full h-full text-white/60" /* Increased contrast with slight bronze tint */
-                viewBox={`0 0 300 800`} /* Larger viewBox for better scale */
+                className="w-full h-full text-white/60"
+                viewBox={`0 0 400 800`} /* Wider viewBox for better coverage */
                 preserveAspectRatio="none"
                 fill="none"
             >
@@ -55,10 +55,10 @@ function FloatingPaths({ position, side }: { position: number; side: 'left' | 'r
                             pathOffset: [0, 1],
                         }}
                         transition={{
-                            duration: 10 + Math.random() * 6, /* Faster animation */
+                            duration: 10 + Math.random() * 6,
                             repeat: Number.POSITIVE_INFINITY,
                             ease: "linear",
-                            delay: path.id * 0.3 /* Less delay for more activity */
+                            delay: path.id * 0.3
                         }}
                     />
                 ))}

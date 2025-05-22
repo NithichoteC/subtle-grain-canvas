@@ -12,9 +12,9 @@ export function WavesDemo() {
         {/* Top border - thin white line */}
         <div className="w-full h-[1px] bg-white/80"></div>
         
-        {/* 16:9 container that's full width */}
+        {/* Container that's full width and maintains aspect ratio */}
         <div className="w-full aspect-video relative">
-          <Waves className="h-full w-full" />
+          <Waves className="h-full w-full" strokeColor="#ffffff" />
         </div>
         
         {/* Bottom border - thin white line */}

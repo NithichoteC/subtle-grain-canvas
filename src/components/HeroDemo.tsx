@@ -7,13 +7,13 @@ import { Waves } from "@/components/ui/wave-background";
 function HeroDemo() {
   return (
     <div className="relative overflow-hidden w-full">
-      {/* Waves background spans the full viewport width */}
-      <div className="absolute inset-0 z-10 w-screen">
+      {/* Waves background covers the full width and height of the hero section */}
+      <div className="absolute inset-0 z-10">
         <Waves 
           strokeColor="#ffffff1a" 
           backgroundColor="transparent" 
           pointerSize={0.3}
-          className="w-full"
+          className="w-full h-full"
         />
       </div>
       
