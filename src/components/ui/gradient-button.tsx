@@ -28,7 +28,7 @@ const gradientButtonVariants = cva(
   {
     variants: {
       variant: {
-        default: "min-w-[132px] px-9 py-4",
+        default: "min-w-[132px] px-8 py-4",
         compact: "min-w-0 py-2" // Removed horizontal padding to let container control it
       }
     },
@@ -53,7 +53,7 @@ const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
         ref={ref}
         {...props}
       >
-        <span className="relative z-10 mx-[9px] px-[22px] text-center flex items-center whitespace-nowrap gap-2">
+        <span className="relative z-10 px-5 text-center flex items-center whitespace-nowrap gap-2">
           {children}
         </span>
       </Comp>
