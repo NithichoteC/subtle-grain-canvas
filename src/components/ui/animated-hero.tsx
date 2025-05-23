@@ -1,4 +1,3 @@
-
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -77,12 +76,12 @@ function Hero() {
             </p>
           </div>
           
-          {/* CTA Button - REDUCED MAGNETIC INTENSITY TO MATCH NAVBAR */}
+          {/* CTA Button - PERFECTLY CALIBRATED MAGNETIC EFFECT */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
               intensity={0.15} 
               rangeX={35} 
-              rangeY={20} 
+              rangeY={17.5} 
               actionArea="global" 
               shape="elliptical"
               springOptions={{
