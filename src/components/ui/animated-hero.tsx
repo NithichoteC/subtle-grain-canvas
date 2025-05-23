@@ -77,18 +77,18 @@ function Hero() {
             </p>
           </div>
           
-          {/* CTA Button - OPTIMIZED FOR LONG BUTTON TEXT */}
+          {/* CTA Button - ENHANCED MAGNETIC FIELD WITH PROPORTIONAL RANGES */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
-              intensity={0.12} 
-              rangeX={50} 
-              rangeY={20} 
+              intensity={0.1} 
+              rangeX={150} 
+              rangeY={60} 
               actionArea="global" 
               shape="elliptical"
               springOptions={{
-                stiffness: 120,
+                stiffness: 100,
                 damping: 20,
-                mass: 0.4
+                mass: 0.5
               }}
             >
               <GradientButton className="gap-2 flex items-center text-base font-roboto py-[12px]">
