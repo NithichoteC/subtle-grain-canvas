@@ -77,12 +77,12 @@ function Hero() {
             </p>
           </div>
           
-          {/* CTA Button - SIGNIFICANTLY INCREASED MAGNETIC INTENSITY FOR VISIBILITY */}
+          {/* CTA Button - REDUCED MAGNETIC INTENSITY TO MATCH NAVBAR */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
             <Magnetic 
-              intensity={0.4} 
-              rangeX={80} 
-              rangeY={60} 
+              intensity={0.15} 
+              rangeX={35} 
+              rangeY={20} 
               actionArea="global" 
               shape="elliptical"
               springOptions={{
