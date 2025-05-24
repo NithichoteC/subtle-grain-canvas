@@ -12,6 +12,8 @@ interface FlowingIcon {
   startTime: number
   size: number
   opacity: number
+  depth: number
+  rotationSpeed: number
 }
 
 interface FlowingIconBackgroundProps {
@@ -38,85 +40,108 @@ export function FlowingIconBackground({ className = "" }: FlowingIconBackgroundP
     '/lovable-uploads/12e0b00f-8648-4108-8a27-13c1db2eb02e.png'  // money bag (revenue)
   ]
 
+  // Strategic Y positions for visual hierarchy
+  const strategicPositions = [
+    window.innerHeight * 0.2,  // Upper third
+    window.innerHeight * 0.35, // Upper middle
+    window.innerHeight * 0.5,  // Center
+    window.innerHeight * 0.65, // Lower middle
+    window.innerHeight * 0.8   // Lower third
+  ]
+
   const createProblemIcon = (): FlowingIcon => ({
     id: Math.random(),
     type: 'problem',
     iconSrc: problemIcons[Math.floor(Math.random() * problemIcons.length)],
-    x: -120, // Start off-screen left
-    y: Math.random() * (window.innerHeight * 0.5) + (window.innerHeight * 0.25), // Random height in middle 50%
+    x: -200, // Start further off-screen for dramatic entrance
+    y: strategicPositions[Math.floor(Math.random() * strategicPositions.length)],
     startTime: Date.now(),
-    size: 48 + Math.random() * 16, // 48-64px
-    opacity: 0.8 + Math.random() * 0.2
+    size: 120 + Math.random() * 60, // 120-180px - MUCH larger
+    opacity: 0.85 + Math.random() * 0.15,
+    depth: Math.random() * 0.3, // 3D depth effect
+    rotationSpeed: 0.5 + Math.random() * 0.5
   })
 
   const createSolutionIcon = (): FlowingIcon => ({
     id: Math.random(),
     type: 'solution',
     iconSrc: solutionIcons[Math.floor(Math.random() * solutionIcons.length)],
-    x: window.innerWidth * 0.75, // Start near right boundary
-    y: Math.random() * (window.innerHeight * 0.5) + (window.innerHeight * 0.25),
+    x: window.innerWidth * 0.7, // Start from strategic right position
+    y: strategicPositions[Math.floor(Math.random() * strategicPositions.length)],
     startTime: Date.now(),
-    size: 52 + Math.random() * 16, // 52-68px - slightly larger for success
-    opacity: 0.9 + Math.random() * 0.1
+    size: 130 + Math.random() * 50, // 130-180px - Premium sized solutions
+    opacity: 0.9 + Math.random() * 0.1,
+    depth: Math.random() * 0.2,
+    rotationSpeed: 0.3 + Math.random() * 0.4
   })
 
   useEffect(() => {
     const animate = () => {
       const now = Date.now()
       
-      // Spawn new icons every 3-5 seconds with staggered timing
-      if (now - lastSpawnTimeRef.current > 3000 + Math.random() * 2000) {
+      // Strategic spawning every 8-12 seconds
+      if (now - lastSpawnTimeRef.current > 8000 + Math.random() * 4000) {
         setIcons(prev => {
           const newIcons = [...prev]
           
-          // Add problem icon (left side)
-          if (Math.random() > 0.3) { // 70% chance
+          // Add problem icon with premium timing
+          if (Math.random() > 0.2) { // 80% chance for strategic appearance
             newIcons.push(createProblemIcon())
           }
           
-          // Add solution icon (right side) with slight delay
+          // Add solution icon with elegant delay
           setTimeout(() => {
-            if (Math.random() > 0.4) { // 60% chance
+            if (Math.random() > 0.3) { // 70% chance for confident solutions
               setIcons(current => [...current, createSolutionIcon()])
             }
-          }, 800 + Math.random() * 1200)
+          }, 2000 + Math.random() * 2000) // 2-4 second staggered delay
           
           return newIcons
         })
         lastSpawnTimeRef.current = now
       }
 
-      // Update icon positions and remove old ones
+      // Elegant movement and sophisticated lifecycle
       setIcons(prev => prev
         .map(icon => {
           const elapsed = (now - icon.startTime) / 1000 // seconds
           
           if (icon.type === 'problem') {
-            // Move left to right, fade out as approaching center
-            const newX = icon.x + elapsed * 65 // 65px per second
+            // Slow, confident movement - 20px per second
+            const newX = icon.x + elapsed * 20
             const centerBoundary = window.innerWidth * 0.45
-            const fadeStartPoint = window.innerWidth * 0.25
+            const fadeStartPoint = window.innerWidth * 0.2
             
+            // Elegant fade with sophisticated curve
             let newOpacity = icon.opacity
             if (newX > fadeStartPoint) {
               const fadeProgress = (newX - fadeStartPoint) / (centerBoundary - fadeStartPoint)
-              newOpacity = icon.opacity * (1 - Math.pow(fadeProgress, 0.8))
+              newOpacity = icon.opacity * (1 - Math.pow(fadeProgress, 1.2))
             }
             
-            return { ...icon, x: newX, opacity: Math.max(0, newOpacity) }
+            return { 
+              ...icon, 
+              x: newX, 
+              opacity: Math.max(0, newOpacity),
+              depth: icon.depth + elapsed * 0.02 // Subtle 3D depth progression
+            }
           } else {
-            // Move right and off screen with confidence
-            const newX = icon.x + elapsed * 80 // 80px per second
-            return { ...icon, x: newX }
+            // Solutions move with premium confidence - 25px per second
+            const newX = icon.x + elapsed * 25
+            return { 
+              ...icon, 
+              x: newX,
+              depth: icon.depth + elapsed * 0.015
+            }
           }
         })
         .filter(icon => {
           if (icon.type === 'problem') {
-            // Remove when reaching center or faded out
-            return icon.x < window.innerWidth * 0.45 && icon.opacity > 0.05
+            // Remove when transformed (reached center) or completely faded
+            return icon.x < window.innerWidth * 0.45 && icon.opacity > 0.02
           } else {
-            // Remove when off-screen right
-            return icon.x < window.innerWidth + 150
+            // Remove when successfully delivered off-screen
+            return icon.x < window.innerWidth + 300
           }
         })
       )
@@ -137,155 +162,193 @@ export function FlowingIconBackground({ className = "" }: FlowingIconBackgroundP
       className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
       style={{ zIndex: 10 }}
     >
-      {/* Premium Ambient Background Effects */}
+      {/* Premium Ambient Zones */}
       
-      {/* Left Edge Problem Zone - Subtle Red Undertones */}
-      <div className="absolute left-0 top-0 bottom-0 w-80 opacity-15">
+      {/* Problem Zone - Subtle tension */}
+      <div className="absolute left-0 top-0 bottom-0 w-96 opacity-12">
         <div 
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse 300px 100% at 0% 50%, rgba(239, 68, 68, 0.1), transparent 70%)'
+            background: 'radial-gradient(ellipse 400px 100% at 0% 50%, rgba(220, 38, 38, 0.08), transparent 80%)'
           }}
         />
       </div>
 
-      {/* Right Edge Success Zone - Golden Prosperity */}
-      <div className="absolute right-0 top-0 bottom-0 w-80 opacity-20">
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 300px 100% at 100% 50%, rgba(239, 204, 138, 0.2), transparent 70%)'
-          }}
-        />
-      </div>
-
-      {/* Center Processing Zone Indicator - Subtle Pulse */}
+      {/* Transformation Zone - AI processing power */}
       <div 
-        className="absolute top-0 bottom-0 w-1 opacity-20"
+        className="absolute top-0 bottom-0 w-2 opacity-25"
         style={{ left: '45%' }}
       >
         <motion.div
           className="w-full h-full bg-gradient-to-b from-transparent via-[#efcc8a] to-transparent"
           animate={{
-            opacity: [0.1, 0.3, 0.1],
+            opacity: [0.15, 0.4, 0.15],
+            scaleX: [1, 1.5, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 6,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         />
       </div>
 
-      {/* Flowing 3D Icons */}
-      {icons.map(icon => (
-        <motion.div
-          key={icon.id}
-          className="absolute pointer-events-none"
+      {/* Success Zone - Golden prosperity */}
+      <div className="absolute right-0 top-0 bottom-0 w-96 opacity-18">
+        <div 
+          className="absolute inset-0"
           style={{
-            left: icon.x,
-            top: icon.y,
-            opacity: icon.opacity,
-            filter: `drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 12px rgba(239, 204, 138, 0.2))`,
+            background: 'radial-gradient(ellipse 400px 100% at 100% 50%, rgba(239, 204, 138, 0.15), transparent 80%)'
           }}
-          initial={{ 
-            scale: 0.6, 
-            opacity: 0,
-            rotateY: icon.type === 'problem' ? -15 : 15
-          }}
-          animate={{ 
-            scale: 1, 
-            opacity: icon.opacity,
-            rotateY: 0,
-            y: [0, -8, 0] // Gentle floating
-          }}
-          transition={{ 
-            initial: { duration: 0.8, ease: 'easeOut' },
-            y: { 
-              duration: 3 + Math.random() * 2, 
-              repeat: Infinity, 
-              ease: 'easeInOut' 
-            }
-          }}
-        >
-          <img
-            src={icon.iconSrc}
-            alt=""
-            className="w-auto h-auto object-contain"
-            style={{
-              width: `${icon.size}px`,
-              height: `${icon.size}px`,
-              filter: icon.type === 'problem' 
-                ? 'brightness(0.9) saturate(0.8)' // Slightly dimmed problems
-                : 'brightness(1.1) saturate(1.2)', // Enhanced solutions
-            }}
-          />
-          
-          {/* Premium Glow Effect */}
-          <div
-            className="absolute inset-0 rounded-full"
-            style={{
-              background: icon.type === 'problem'
-                ? 'radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%)'
-                : 'radial-gradient(circle, rgba(239, 204, 138, 0.2) 0%, transparent 70%)',
-              filter: 'blur(8px)',
-              transform: 'scale(1.5)',
-            }}
-          />
-        </motion.div>
-      ))}
+        />
+      </div>
 
-      {/* Strategic Accent Elements */}
+      {/* Premium 3D Icons with Sophisticated Animation */}
+      {icons.map(icon => {
+        const rotation = (Date.now() - icon.startTime) / 1000 * icon.rotationSpeed
+        
+        return (
+          <motion.div
+            key={icon.id}
+            className="absolute pointer-events-none"
+            style={{
+              left: icon.x,
+              top: icon.y,
+              opacity: icon.opacity,
+              filter: `drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(239, 204, 138, 0.3))`,
+              transform: `perspective(1000px) rotateY(${rotation * 5}deg) rotateX(${Math.sin(rotation) * 3}deg) translateZ(${icon.depth * 50}px)`,
+            }}
+            initial={{ 
+              scale: 0.3, 
+              opacity: 0,
+              rotateY: icon.type === 'problem' ? -30 : 30,
+              y: icon.y + 50
+            }}
+            animate={{ 
+              scale: 1, 
+              opacity: icon.opacity,
+              rotateY: 0,
+              y: [icon.y, icon.y - 15, icon.y], // Elegant floating
+            }}
+            transition={{ 
+              initial: { duration: 1.2, ease: 'easeOut' },
+              y: { 
+                duration: 4 + Math.random() * 2, 
+                repeat: Infinity, 
+                ease: 'easeInOut' 
+              }
+            }}
+          >
+            <img
+              src={icon.iconSrc}
+              alt=""
+              className="w-auto h-auto object-contain"
+              style={{
+                width: `${icon.size}px`,
+                height: `${icon.size}px`,
+                filter: icon.type === 'problem' 
+                  ? 'brightness(0.85) saturate(0.9) contrast(1.1)' // Sophisticated problem styling
+                  : 'brightness(1.15) saturate(1.3) contrast(1.05)', // Premium solution enhancement
+              }}
+            />
+            
+            {/* Premium Halo Effect */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: icon.type === 'problem'
+                  ? 'radial-gradient(circle, rgba(220, 38, 38, 0.12) 0%, transparent 70%)'
+                  : 'radial-gradient(circle, rgba(239, 204, 138, 0.25) 0%, transparent 70%)',
+                filter: 'blur(12px)',
+                transform: 'scale(2)',
+              }}
+            />
+
+            {/* Elite Glow Ring */}
+            <div
+              className="absolute inset-0 rounded-full border border-white/10"
+              style={{
+                transform: 'scale(1.3)',
+                background: icon.type === 'solution' 
+                  ? 'radial-gradient(circle, transparent 60%, rgba(239, 204, 138, 0.1) 70%, transparent 80%)'
+                  : 'none',
+              }}
+            />
+          </motion.div>
+        )
+      })}
+
+      {/* Strategic Accent Elements for Premium Feel */}
       <motion.div
-        className="absolute left-12 top-1/3 w-3 h-3 rounded-full"
+        className="absolute left-16 top-1/4 w-4 h-4 rounded-full"
         style={{ 
           background: 'radial-gradient(circle, #efcc8a 0%, transparent 70%)',
-          filter: 'blur(1px)'
+          filter: 'blur(2px)'
         }}
         animate={{
-          opacity: [0.2, 0.6, 0.2],
-          scale: [1, 1.4, 1],
+          opacity: [0.3, 0.8, 0.3],
+          scale: [1, 1.6, 1],
         }}
         transition={{
-          duration: 5,
+          duration: 8,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
       
       <motion.div
-        className="absolute right-12 top-2/3 w-2 h-2 rounded-full"
+        className="absolute right-16 top-3/4 w-3 h-3 rounded-full"
         style={{ 
           background: 'radial-gradient(circle, #efcc8a 0%, transparent 70%)',
           filter: 'blur(1px)'
         }}
         animate={{
-          opacity: [0.2, 0.7, 0.2],
-          scale: [1, 1.6, 1],
+          opacity: [0.2, 0.9, 0.2],
+          scale: [1, 2, 1],
         }}
         transition={{
-          duration: 6,
+          duration: 10,
           repeat: Infinity,
           ease: 'easeInOut',
-          delay: 2.5,
+          delay: 4,
         }}
       />
 
-      {/* Flowing Energy Lines */}
+      {/* Premium Energy Flow Lines */}
       <motion.div
-        className="absolute bottom-20 h-[1px] w-40 opacity-25"
+        className="absolute bottom-24 h-[2px] w-64 opacity-30"
         style={{
-          left: '10%',
+          left: '8%',
+          background: 'linear-gradient(90deg, transparent 0%, #efcc8a 50%, transparent 100%)',
+          filter: 'blur(1px)',
+        }}
+        animate={{
+          x: [0, window.innerWidth * 0.7],
+          opacity: [0, 0.5, 0],
+          scaleY: [1, 1.5, 1],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      />
+
+      <motion.div
+        className="absolute top-20 h-[1px] w-48 opacity-25"
+        style={{
+          right: '12%',
           background: 'linear-gradient(90deg, transparent 0%, #efcc8a 50%, transparent 100%)',
         }}
         animate={{
-          x: [0, window.innerWidth * 0.8],
+          x: [0, -window.innerWidth * 0.6],
           opacity: [0, 0.4, 0],
         }}
         transition={{
-          duration: 12,
+          duration: 18,
           repeat: Infinity,
           ease: 'linear',
+          delay: 7,
         }}
       />
     </div>
