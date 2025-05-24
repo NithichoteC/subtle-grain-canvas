@@ -26,17 +26,17 @@ export function AnimatedSideIcons({ side }: AnimatedSideIconsProps) {
 
   useEffect(() => {
     if (side === 'left') {
-      // Left side - problems flowing toward center (problems moving from left edge toward center)
+      // Left side - problems flowing from left edge toward center
       const leftIcons: AnimatedIcon[] = [
         {
           id: 'ghost-1',
           src: '/lovable-uploads/94f1bc06-3a18-4cae-a257-f8b89cec0533.png',
           alt: 'Ghost lead',
-          startX: 50,
+          startX: -150,
           startY: 120,
-          endX: 400,
+          endX: 350,
           endY: 180,
-          duration: 12,
+          duration: 14,
           delay: 0,
           size: 120
         },
@@ -44,64 +44,64 @@ export function AnimatedSideIcons({ side }: AnimatedSideIconsProps) {
           id: 'clock-1',
           src: '/lovable-uploads/f9ea4515-3aea-409c-b4b1-2f393a00e80f.png',
           alt: 'Time waste',
-          startX: 80,
+          startX: -180,
           startY: 320,
-          endX: 420,
+          endX: 380,
           endY: 380,
-          duration: 14,
-          delay: 3,
+          duration: 16,
+          delay: 4,
           size: 110
         },
         {
           id: 'coin-1',
           src: '/lovable-uploads/5e2fb48f-fda0-4750-8932-cd0de0ad9297.png',
           alt: 'Money loss',
-          startX: 60,
+          startX: -160,
           startY: 520,
-          endX: 410,
+          endX: 360,
           endY: 580,
-          duration: 13,
-          delay: 6,
+          duration: 15,
+          delay: 8,
           size: 115
         },
         {
           id: 'ghost-2',
           src: '/lovable-uploads/94f1bc06-3a18-4cae-a257-f8b89cec0533.png',
           alt: 'Ghost lead',
-          startX: 70,
+          startX: -170,
           startY: 720,
-          endX: 430,
+          endX: 370,
           endY: 780,
-          duration: 15,
-          delay: 9,
+          duration: 17,
+          delay: 12,
           size: 125
         },
         {
           id: 'clock-2',
           src: '/lovable-uploads/f9ea4515-3aea-409c-b4b1-2f393a00e80f.png',
           alt: 'Time waste',
-          startX: 90,
+          startX: -140,
           startY: 220,
-          endX: 440,
+          endX: 340,
           endY: 280,
-          duration: 11,
-          delay: 12,
+          duration: 13,
+          delay: 16,
           size: 105
         }
       ];
       setIcons(leftIcons);
     } else {
-      // Right side - solutions flowing from center outward (solutions appearing from center and flowing toward right edge)
+      // Right side - solutions flowing from center toward right edge
       const rightIcons: AnimatedIcon[] = [
         {
           id: 'deal-1',
           src: '/lovable-uploads/9b7d8ecc-065d-42a9-a772-fc48d1903c67.png',
           alt: 'Deal closed',
-          startX: -350,
+          startX: 250,
           startY: 150,
-          endX: 80,
+          endX: 500,
           endY: 120,
-          duration: 12,
+          duration: 14,
           delay: 2,
           size: 130
         },
@@ -109,48 +109,48 @@ export function AnimatedSideIcons({ side }: AnimatedSideIconsProps) {
           id: 'profit-1',
           src: '/lovable-uploads/59675f16-e45d-4726-ad78-e0f57c866636.png',
           alt: 'Profit earned',
-          startX: -380,
+          startX: 220,
           startY: 350,
-          endX: 90,
+          endX: 520,
           endY: 320,
-          duration: 14,
-          delay: 5,
+          duration: 16,
+          delay: 6,
           size: 120
         },
         {
           id: 'calendar-1',
           src: '/lovable-uploads/1465df59-9d01-4f31-b906-a87ab19bb92a.png',
           alt: 'Calendar booking',
-          startX: -360,
+          startX: 240,
           startY: 550,
-          endX: 100,
+          endX: 510,
           endY: 520,
-          duration: 13,
-          delay: 8,
+          duration: 15,
+          delay: 10,
           size: 115
         },
         {
           id: 'deal-2',
           src: '/lovable-uploads/9b7d8ecc-065d-42a9-a772-fc48d1903c67.png',
           alt: 'Deal closed',
-          startX: -370,
+          startX: 230,
           startY: 750,
-          endX: 110,
+          endX: 530,
           endY: 720,
-          duration: 15,
-          delay: 11,
+          duration: 17,
+          delay: 14,
           size: 135
         },
         {
           id: 'calendar-2',
           src: '/lovable-uploads/1465df59-9d01-4f31-b906-a87ab19bb92a.png',
           alt: 'Calendar booking',
-          startX: -340,
+          startX: 260,
           startY: 250,
-          endX: 70,
+          endX: 490,
           endY: 220,
-          duration: 11,
-          delay: 14,
+          duration: 13,
+          delay: 18,
           size: 110
         }
       ];
@@ -169,26 +169,27 @@ export function AnimatedSideIcons({ side }: AnimatedSideIconsProps) {
             y: icon.startY,
             opacity: 0,
             scale: 1,
-            rotate: side === 'left' ? -15 : 15
+            rotate: side === 'left' ? -10 : 10
           }}
           animate={{
             x: icon.endX,
             y: icon.endY,
-            opacity: [0, 0.8, 0.6, 0],
-            scale: [1, 1, 1, 1], // Keep stable size throughout animation
-            rotate: [side === 'left' ? -15 : 15, 0, side === 'left' ? 10 : -10]
+            opacity: [0, 1, 1, 1, 0],
+            scale: [1, 1, 1, 1, 1],
+            rotate: [side === 'left' ? -10 : 10, 0, side === 'left' ? 5 : -5, 0, side === 'left' ? 8 : -8]
           }}
           transition={{
             duration: icon.duration,
             delay: icon.delay,
             repeat: Infinity,
-            repeatDelay: 3,
-            ease: "easeInOut"
+            repeatDelay: 4,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.7, 0.9, 1]
           }}
           style={{
             width: `${icon.size}px`,
             height: `${icon.size}px`,
-            filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4))'
+            filter: 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))'
           }}
         >
           <img
@@ -206,10 +207,10 @@ export function AnimatedSideIcons({ side }: AnimatedSideIconsProps) {
       
       {/* Enhanced gradient overlays for better depth */}
       {side === 'left' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/20 pointer-events-none" />
       )}
       {side === 'right' && (
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/20 pointer-events-none" />
       )}
     </div>
   );
