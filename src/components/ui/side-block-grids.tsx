@@ -7,12 +7,9 @@ interface SideBlockGridsProps {
 
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`fixed inset-0 z-0 ${className || ''}`} data-testid="side-blocks-container">
+    <div className={`fixed inset-0 z-0 ${className || ''}`}>
       {/* Left Side Block - full height, extends to left edge */}
-      <div 
-        className="absolute left-0 top-0 bottom-0 w-1/2 bg-[#171717] border-r border-white/10"
-        data-testid="left-side-block"
-      >
+      <div className="absolute left-0 top-0 bottom-0 w-1/2 bg-[#171717] border-r border-white/10">
         {/* Noise texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.12]" 
@@ -24,10 +21,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
       </div>
       
       {/* Right Side Block - full height, extends to right edge */}
-      <div 
-        className="absolute right-0 top-0 bottom-0 w-1/2 bg-[#171717] border-l border-white/10"
-        data-testid="right-side-block"
-      >
+      <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[#171717] border-l border-white/10">
         {/* Noise texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.12]" 
