@@ -19,6 +19,10 @@ function HeroDemo() {
           <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
           {/* Right vertical line */}
           <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+          {/* Bottom left horizontal line */}
+          <div className="absolute left-0 bottom-0 w-32 h-[1px] bg-white/10"></div>
+          {/* Bottom right horizontal line */}
+          <div className="absolute right-0 bottom-0 w-32 h-[1px] bg-white/10"></div>
         </div>
         
         {/* Container for hero content with proper z-index */}
@@ -36,9 +40,6 @@ function HeroDemo() {
           </div>
         </div>
       </div>
-      
-      {/* Bottom grid line continuation */}
-      <div className="absolute left-0 right-0 h-[1px] bg-white/10 z-30" style={{ top: '100%' }}></div>
       
       {/* Early Adopter Section - separate block */}
       <EarlyAdopterSection />
