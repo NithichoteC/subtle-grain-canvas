@@ -2,23 +2,23 @@
 import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
-import { InteractiveGradientBackground } from "@/components/ui/interactive-gradient-background";
+import { AssetBasedBackground } from "@/components/ui/asset-based-background";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
   return (
     <div className="relative overflow-hidden w-full font-roboto">
-      {/* Hero Section with Interactive Gradient Background */}
+      {/* Hero Section with Asset-Based Background */}
       <div className="relative">
-        {/* Interactive Gradient Background - covers only the sides and strategic points */}
-        <InteractiveGradientBackground className="z-10" />
+        {/* Asset-Based Background - covers only the sides */}
+        <AssetBasedBackground className="z-10" />
         
-        {/* Grid Lines - clean borders */}
+        {/* Fixed Grid Lines - clean borders with better opacity */}
         <div className="absolute inset-0 z-30 pointer-events-none">
           {/* Left vertical line */}
-          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gray-600"></div>
           {/* Right vertical line */}
-          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gray-600"></div>
         </div>
         
         {/* Container for hero content with proper z-index */}
@@ -37,8 +37,8 @@ function HeroDemo() {
         </div>
       </div>
       
-      {/* Bottom grid line continuation */}
-      <div className="absolute left-0 right-0 h-[1px] bg-white/10 z-30" style={{ top: '100%' }}></div>
+      {/* Bottom grid line - single continuous line */}
+      <div className="absolute left-0 right-0 h-[1px] bg-gray-600 z-30" style={{ top: '100%' }}></div>
       
       {/* Early Adopter Section - separate block */}
       <EarlyAdopterSection />
