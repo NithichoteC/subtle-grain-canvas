@@ -1,22 +1,18 @@
-
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GradientButton } from "@/components/ui/gradient-button";
-
 function Hero() {
   const rotatingPhrases = ["no-shows", "tire-kickers", "ghost lists", "ad waste"];
   const [currentIndex, setCurrentIndex] = useState(0);
-  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % rotatingPhrases.length);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
-  
   return <div className="w-full pt-0">
       <div className="w-full">
         <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
@@ -72,25 +68,16 @@ function Hero() {
             </div>
             
             {/* Static subheading part - kept closer to rotating text */}
-            <p className="text-lg md:text-xl leading-tight tracking-tight max-w-2xl text-center mx-auto text-white/60 font-roboto">
-              We do the heavy lifting so your calendar fills with serious buyers and zero distractions.
-            </p>
+            <p className="text-lg leading-tight tracking-tight max-w-2xl text-center mx-auto text-white/60 font-roboto md:text-lg">Focus on closing deals by vetting every lead so you only connect with decision-makers.</p>
           </div>
           
           {/* CTA Button - ENHANCED MAGNETIC FIELD WITH PROPORTIONAL RANGES */}
           <div className="flex flex-row gap-3 mt-10 mb-8">
-            <Magnetic 
-              intensity={0.1} 
-              rangeX={150} 
-              rangeY={60} 
-              actionArea="global" 
-              shape="elliptical"
-              springOptions={{
-                stiffness: 100,
-                damping: 20,
-                mass: 0.5
-              }}
-            >
+            <Magnetic intensity={0.1} rangeX={150} rangeY={60} actionArea="global" shape="elliptical" springOptions={{
+            stiffness: 100,
+            damping: 20,
+            mass: 0.5
+          }}>
               <GradientButton className="gap-2 flex items-center text-base font-roboto py-[12px]">
                 <span className="text-white whitespace-nowrap">Schedule Your Free Strategy Call</span>
                 <Calendar className="w-4 h-4 text-white flex-shrink-0" />
@@ -101,5 +88,4 @@ function Hero() {
       </div>
     </div>;
 }
-
 export { Hero };
