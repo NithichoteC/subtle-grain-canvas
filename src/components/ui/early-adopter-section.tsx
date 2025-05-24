@@ -2,52 +2,48 @@
 import { cn } from "@/lib/utils";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GradientButton } from "@/components/ui/gradient-button";
-import { Calendar, Users, BarChart3, Crown, ArrowRight } from "lucide-react";
+import { Calendar, Users, BarChart3, Crown, ArrowRight, Zap, Shield, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function EarlyAdopterSection() {
   const features = [
     {
-      title: "Tailored AI Setup & Launch",
-      description: "We adapt our AI workflows to your exact sales process and get you operational within 48 hours.",
-      metric: "48hr",
+      title: "48-Hour AI Implementation",
+      description: "Complete AI lead qualification system deployed and optimized for your specific market within 48 hours.",
+      metric: "48hrs",
       metricLabel: "Setup Time",
-      icon: <Users className="w-6 h-6" />,
-      size: "large" as const,
+      icon: <Zap className="w-6 h-6" />,
       number: "01"
     },
     {
-      title: "Weekly Strategy Calls",
-      description: "One-on-one optimization sessions to maximize your ROI and conversion rates.",
+      title: "Weekly 1:1 Strategy Sessions",
+      description: "Private optimization calls with our AI specialists to maximize your conversion rates and ROI.",
       metric: "4x",
-      metricLabel: "ROI Boost",
+      metricLabel: "Average ROI",
       icon: <BarChart3 className="w-6 h-6" />,
-      size: "medium" as const,
       number: "02"
     },
     {
-      title: "Real-Time Dashboard",
-      description: "Watch qualified leads flow in with complete transparency on every interaction.",
+      title: "Real-Time Lead Intelligence",
+      description: "Live dashboard showing every lead interaction, qualification score, and conversion opportunity.",
       metric: "100%",
       metricLabel: "Transparency",
-      icon: <Calendar className="w-6 h-6" />,
-      size: "medium" as const,
+      icon: <Shield className="w-6 h-6" />,
       number: "03"
     },
     {
-      title: "VIP Partner Access",
-      description: "Direct line to our team and priority influence on new features and integrations.",
+      title: "Founding Partner Privileges",
+      description: "Direct access to our team, priority feature requests, and lifetime pricing protection.",
       metric: "24/7",
-      metricLabel: "Support",
+      metricLabel: "VIP Support",
       icon: <Crown className="w-6 h-6" />,
-      size: "large" as const,
       number: "04"
     },
   ];
 
   return (
-    <div className="w-full py-32 relative font-roboto bg-[#171717] overflow-hidden">
-      {/* Enhanced background with multiple layers */}
+    <div className="w-full py-16 relative font-roboto bg-[#171717] overflow-hidden">
+      {/* Background texture to match hero */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#171717]/50 to-transparent"></div>
       <div 
         className="absolute inset-0 opacity-[0.08]" 
@@ -57,38 +53,55 @@ export function EarlyAdopterSection() {
         }}
       ></div>
       
-      {/* Ambient cursor glow effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-96 h-96 bg-[#efcc8a]/5 rounded-full blur-3xl opacity-0 transition-opacity duration-500 hover:opacity-100" 
-             style={{ transform: 'translate(var(--mouse-x, 50%), var(--mouse-y, 50%))' }}></div>
-      </div>
-      
-      <div className="container max-w-6xl mx-auto px-4 relative z-10">
-        {/* Section Header with enhanced typography */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20 space-y-6"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#efcc8a]/20 bg-[#efcc8a]/5 mb-4">
-            <Crown className="w-4 h-4 text-[#efcc8a]" />
-            <span className="text-sm font-medium text-[#efcc8a] tracking-wider">FOUNDING PARTNER PROGRAM</span>
-          </div>
+      <div className="container max-w-5xl mx-auto px-4 relative z-10">
+        {/* Grid Layout matching hero section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-white/10">
           
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            <span className="bronze-gradient-fix">Become Our First</span>{" "}
-            <span className="text-white">Success Story</span>
-          </h2>
-          
-          <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Join an exclusive group of solar & roofing leaders who get priority access to our AI system, 
-            personalized support, and shape the future of lead generation.
-          </p>
-        </motion.div>
+          {/* Header Block - spans full width */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="md:col-span-2 border-b border-white/10 p-12 bg-[#171717] relative"
+          >
+            {/* Texture background for header block */}
+            <div 
+              className="absolute inset-0 opacity-[0.12]" 
+              style={{ 
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                backgroundSize: '200px 200px'
+              }}
+            ></div>
+            
+            <div className="relative z-10 text-center space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#efcc8a]/20 bg-[#efcc8a]/5">
+                <Crown className="w-4 h-4 text-[#efcc8a]" />
+                <span className="text-sm font-medium text-[#efcc8a] tracking-wider">FOUNDING PARTNER PROGRAM</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                <span className="bronze-gradient-fix">Become Our</span>{" "}
+                <span className="text-white">Founding Partner</span>
+              </h2>
+              
+              <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+                Join an exclusive group of 50 solar & roofing leaders who get priority access, 
+                personalized support, and help shape the future of AI-powered lead generation.
+              </p>
+              
+              {/* Progress indicator */}
+              <div className="space-y-3 pt-4">
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-20 h-1 bg-[#efcc8a] rounded-full"></div>
+                  <span className="text-[#efcc8a] text-sm font-medium">13 spots remaining</span>
+                  <div className="w-8 h-1 bg-white/20 rounded-full"></div>
+                </div>
+                <p className="text-white/40 text-xs">Limited founding partner positions</p>
+              </div>
+            </div>
+          </motion.div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {/* Feature Blocks - 2x2 grid */}
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -100,14 +113,14 @@ export function EarlyAdopterSection() {
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
               className={cn(
-                "relative group/card",
-                feature.size === "large" ? "md:col-span-2" : "md:col-span-1"
+                "relative border-r border-b border-white/10 last:border-r-0 md:even:border-r-0",
+                index < 2 ? "border-b" : ""
               )}
             >
               <Magnetic 
-                intensity={0.05} 
-                rangeX={80} 
-                rangeY={40} 
+                intensity={0.03} 
+                rangeX={60} 
+                rangeY={30} 
                 actionArea="self" 
                 shape="rectangular"
                 springOptions={{
@@ -116,15 +129,24 @@ export function EarlyAdopterSection() {
                   mass: 0.4
                 }}
               >
-                <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md border border-white/10 overflow-hidden transition-all duration-500 hover:border-[#efcc8a]/30 hover:bg-gradient-to-br hover:from-[#efcc8a]/[0.12] hover:to-[#efcc8a]/[0.04]">
-                  {/* Card number */}
-                  <div className="absolute top-4 right-6 text-6xl font-bold text-white/[0.06] group-hover/card:text-[#efcc8a]/[0.12] transition-colors duration-500">
+                <div className="relative h-full p-8 bg-[#171717] transition-all duration-500 hover:bg-[#1a1a1a] group">
+                  {/* Texture background for feature blocks */}
+                  <div 
+                    className="absolute inset-0 opacity-[0.12] group-hover:opacity-[0.15] transition-opacity duration-500" 
+                    style={{ 
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                      backgroundSize: '200px 200px'
+                    }}
+                  ></div>
+                  
+                  {/* Block number */}
+                  <div className="absolute top-4 right-6 text-6xl font-bold text-white/[0.06] group-hover:text-[#efcc8a]/[0.12] transition-colors duration-500">
                     {feature.number}
                   </div>
                   
-                  {/* Icon with micro-animation */}
+                  {/* Icon */}
                   <motion.div 
-                    className="mb-6 relative z-10 text-[#efcc8a] group-hover/card:text-[#efcc8a] transition-colors duration-300"
+                    className="mb-6 relative z-10 text-[#efcc8a] group-hover:text-[#efcc8a] transition-colors duration-300"
                     whileHover={{ 
                       scale: 1.1, 
                       rotate: 5,
@@ -136,11 +158,11 @@ export function EarlyAdopterSection() {
                   
                   {/* Content */}
                   <div className="relative z-10 space-y-4">
-                    <h3 className="text-xl font-bold text-white group-hover/card:text-white transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors duration-300">
                       {feature.title}
                     </h3>
                     
-                    <p className="text-sm text-white/70 group-hover/card:text-white/90 transition-colors duration-300 leading-relaxed">
+                    <p className="text-sm text-white/70 group-hover:text-white/90 transition-colors duration-300 leading-relaxed">
                       {feature.description}
                     </p>
                     
@@ -150,13 +172,13 @@ export function EarlyAdopterSection() {
                         <span className="text-2xl font-bold text-[#efcc8a]">{feature.metric}</span>
                         <span className="text-xs text-white/50 uppercase tracking-wider">{feature.metricLabel}</span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-[#efcc8a]/60 group-hover/card:text-[#efcc8a] group-hover/card:translate-x-1 transition-all duration-300" />
+                      <ArrowRight className="w-4 h-4 text-[#efcc8a]/60 group-hover:text-[#efcc8a] group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                   
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#efcc8a]/5 via-transparent to-[#efcc8a]/5 rounded-2xl"></div>
+                  {/* Subtle hover border effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute inset-0 border border-[#efcc8a]/10"></div>
                   </div>
                 </div>
               </Magnetic>
@@ -164,24 +186,13 @@ export function EarlyAdopterSection() {
           ))}
         </div>
 
-        {/* Enhanced CTA Section */}
+        {/* CTA Section - outside the grid */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center space-y-6"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center space-y-6 pt-16"
         >
-          <div className="space-y-3">
-            <p className="text-white/70 text-sm uppercase tracking-wider font-medium">
-              Limited to 50 founding partners
-            </p>
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-20 h-1 bg-[#efcc8a] rounded-full"></div>
-              <span className="text-[#efcc8a] text-sm font-medium">37 spots remaining</span>
-              <div className="w-8 h-1 bg-white/20 rounded-full"></div>
-            </div>
-          </div>
-          
           <Magnetic 
             intensity={0.08} 
             rangeX={120} 
