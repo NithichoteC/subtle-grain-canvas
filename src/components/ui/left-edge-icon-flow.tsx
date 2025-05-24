@@ -42,17 +42,15 @@ export function LeftEdgeIconFlow() {
 
   // Create new icon
   const createIcon = useCallback(() => {
-    const leftEdgeWidth = dimensions.width * 0.15; // 15% of screen width for left edge
-    
     return {
       id: `left-${Date.now()}-${Math.random()}`,
       type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
-      x: -150, // Start well off-screen to the left
-      y: Math.random() * dimensions.height,
-      scale: 0.7 + Math.random() * 0.4,
+      x: -80, // Start off-screen to the left
+      y: Math.random() * (dimensions.height - 200) + 100, // Keep away from edges
+      scale: 0.8 + Math.random() * 0.4,
       rotation: Math.random() * 360,
-      opacity: 0.2 + Math.random() * 0.25,
-      speed: 1.2 + Math.random() * 0.8
+      opacity: 0.4 + Math.random() * 0.3,
+      speed: 1.5 + Math.random() * 1.0
     };
   }, [dimensions, iconTypes]);
 
@@ -62,14 +60,14 @@ export function LeftEdgeIconFlow() {
 
     const spawnInterval = setInterval(() => {
       setIcons(prevIcons => {
-        // Remove icons that have moved past the edge boundary
-        const leftEdgeWidth = dimensions.width * 0.15;
-        const filteredIcons = prevIcons.filter(icon => icon.x < leftEdgeWidth + 100);
+        // Remove icons that have moved past the boundary (15% of screen width)
+        const leftBoundary = dimensions.width * 0.15;
+        const filteredIcons = prevIcons.filter(icon => icon.x < leftBoundary + 50);
         
         // Add new icon
         return [...filteredIcons, createIcon()];
       });
-    }, 1500); // Spawn new icon every 1.5 seconds
+    }, 800); // Spawn every 800ms for continuous flow
 
     return () => clearInterval(spawnInterval);
   }, [createIcon, dimensions]);
@@ -86,7 +84,7 @@ export function LeftEdgeIconFlow() {
       setIcons(prevIcons => 
         prevIcons.map(icon => {
           const newX = icon.x + (icon.speed * deltaTime);
-          const newRotation = icon.rotation + 0.5 * deltaTime;
+          const newRotation = icon.rotation + 0.3 * deltaTime;
           
           return {
             ...icon,
@@ -104,7 +102,7 @@ export function LeftEdgeIconFlow() {
   }, []);
 
   return (
-    <div className="absolute left-0 top-0 bottom-0 w-[15%] overflow-hidden pointer-events-none z-5">
+    <div className="absolute left-0 top-0 bottom-0 w-[15%] overflow-hidden pointer-events-none z-10">
       {icons.map((icon) => (
         <motion.div
           key={icon.id}
@@ -121,16 +119,16 @@ export function LeftEdgeIconFlow() {
             scale: icon.scale
           }}
           transition={{ 
-            duration: 1.5, 
+            duration: 1.0, 
             ease: "easeOut"
           }}
         >
           <img 
             src={iconSources[icon.type as keyof typeof iconSources]}
             alt=""
-            className="w-20 h-20 object-contain"
+            className="w-10 h-10 object-contain"
             style={{ 
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2)) drop-shadow(0 2px 4px rgba(184,134,11,0.1))',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3)) drop-shadow(0 2px 4px rgba(184,134,11,0.2))',
               imageRendering: 'crisp-edges'
             }}
             loading="lazy"
