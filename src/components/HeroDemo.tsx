@@ -8,15 +8,35 @@ import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 function HeroDemo() {
   return (
     <div className="relative overflow-hidden w-full font-roboto">
-      {/* Hero Section with Waves */}
+      {/* Hero Section with optimized waves on sides only */}
       <div className="relative">
-        {/* Waves background covers the full hero section */}
-        <div className="absolute inset-0 z-10">
+        {/* Left side wave background */}
+        <div className="absolute left-0 top-0 bottom-0 w-64 z-10 overflow-hidden">
           <Waves 
             strokeColor="#ffffff1a" 
             backgroundColor="transparent" 
             pointerSize={0.3}
             className="w-full h-full min-h-screen"
+          />
+        </div>
+        
+        {/* Right side wave background */}
+        <div className="absolute right-0 top-0 bottom-0 w-64 z-10 overflow-hidden">
+          <Waves 
+            strokeColor="#ffffff1a" 
+            backgroundColor="transparent" 
+            pointerSize={0.3}
+            className="w-full h-full min-h-screen"
+          />
+        </div>
+        
+        {/* Bottom wave background */}
+        <div className="absolute left-0 right-0 bottom-0 h-32 z-10 overflow-hidden">
+          <Waves 
+            strokeColor="#ffffff1a" 
+            backgroundColor="transparent" 
+            pointerSize={0.3}
+            className="w-full h-full"
           />
         </div>
         
@@ -43,6 +63,9 @@ function HeroDemo() {
           </div>
         </div>
       </div>
+      
+      {/* Bottom grid line continuation */}
+      <div className="absolute left-0 right-0 h-[1px] bg-white/10 z-30" style={{ top: '100%' }}></div>
       
       {/* Early Adopter Section - separate block without waves */}
       <EarlyAdopterSection />
