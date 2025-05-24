@@ -7,7 +7,7 @@ interface SideBlockGridsProps {
 
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`fixed inset-0 z-5 pointer-events-none ${className || ''}`}>
+    <div className={`fixed inset-0 z-0 pointer-events-none ${className || ''}`}>
       {/* Left Side Block Grid - extends to full left edge */}
       <div className="absolute left-0 top-0 bottom-0 right-1/2 border-r border-white/10">
         {/* Left block content area with bottom border */}

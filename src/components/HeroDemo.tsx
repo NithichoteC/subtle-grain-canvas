@@ -12,7 +12,7 @@ function HeroDemo() {
       <SideBlockGrids />
       
       {/* Hero Section with Clean Background */}
-      <div className="relative">
+      <div className="relative z-10">
         {/* Container for hero content with highest z-index */}
         <div className="relative z-20">
           {/* Navbar */}
