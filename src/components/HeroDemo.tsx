@@ -7,12 +7,12 @@ import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
   return (
-    <div className="relative overflow-hidden w-full font-roboto">
-      {/* Full-width Side Block Grids - positioned behind everything */}
+    <div className="relative overflow-hidden w-full font-roboto min-h-screen">
+      {/* Full-width Side Block Grids - positioned behind everything but selectable */}
       <SideBlockGrids />
       
       {/* Hero Section with Clean Background */}
-      <div className="relative z-10">
+      <div className="relative z-10 min-h-screen">
         {/* Container for hero content with highest z-index */}
         <div className="relative z-20">
           {/* Navbar */}
