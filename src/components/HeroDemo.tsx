@@ -2,28 +2,23 @@
 import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
-import { GeometricEnergyGrid } from "@/components/ui/geometric-energy-grid";
+import { InteractiveGradientBackground } from "@/components/ui/interactive-gradient-background";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
   return (
     <div className="relative overflow-hidden w-full font-roboto">
-      {/* Hero Section with Geometric Energy Grid Background */}
+      {/* Hero Section with Interactive Gradient Background */}
       <div className="relative">
-        {/* Geometric Energy Grid Background */}
-        <GeometricEnergyGrid className="z-10" />
+        {/* Interactive Gradient Background - covers only the sides and strategic points */}
+        <InteractiveGradientBackground className="z-10" />
         
-        {/* Fixed Grid Lines - proper opacity and continuous lines */}
+        {/* Grid Lines - clean borders */}
         <div className="absolute inset-0 z-30 pointer-events-none">
-          {/* Left vertical line - full opacity */}
-          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gray-600"></div>
-          {/* Right vertical line - full opacity */}
-          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gray-600"></div>
-          {/* Bottom horizontal line - continuous across full width */}
-          <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-gray-600"></div>
-          {/* Corner connection dots - enhanced visibility */}
-          <div className="absolute left-0 bottom-0 w-1.5 h-1.5 bg-[#efcc8a] rounded-full transform -translate-x-0.5 translate-y-0.5"></div>
-          <div className="absolute right-0 bottom-0 w-1.5 h-1.5 bg-[#efcc8a] rounded-full transform translate-x-0.5 translate-y-0.5"></div>
+          {/* Left vertical line */}
+          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+          {/* Right vertical line */}
+          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
         </div>
         
         {/* Container for hero content with proper z-index */}
@@ -41,6 +36,9 @@ function HeroDemo() {
           </div>
         </div>
       </div>
+      
+      {/* Bottom grid line continuation */}
+      <div className="absolute left-0 right-0 h-[1px] bg-white/10 z-30" style={{ top: '100%' }}></div>
       
       {/* Early Adopter Section - separate block */}
       <EarlyAdopterSection />
