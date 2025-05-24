@@ -2,45 +2,18 @@
 import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
-import { Waves } from "@/components/ui/wave-background";
+import { InteractiveGradientBackground } from "@/components/ui/interactive-gradient-background";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
   return (
     <div className="relative overflow-hidden w-full font-roboto">
-      {/* Hero Section with optimized waves on sides only */}
+      {/* Hero Section with Interactive Gradient Background */}
       <div className="relative">
-        {/* Left side wave background */}
-        <div className="absolute left-0 top-0 bottom-0 w-64 z-10 overflow-hidden">
-          <Waves 
-            strokeColor="#ffffff1a" 
-            backgroundColor="transparent" 
-            pointerSize={0.3}
-            className="w-full h-full min-h-screen"
-          />
-        </div>
+        {/* Interactive Gradient Background - covers only the sides and strategic points */}
+        <InteractiveGradientBackground className="z-10" />
         
-        {/* Right side wave background */}
-        <div className="absolute right-0 top-0 bottom-0 w-64 z-10 overflow-hidden">
-          <Waves 
-            strokeColor="#ffffff1a" 
-            backgroundColor="transparent" 
-            pointerSize={0.3}
-            className="w-full h-full min-h-screen"
-          />
-        </div>
-        
-        {/* Bottom wave background */}
-        <div className="absolute left-0 right-0 bottom-0 h-32 z-10 overflow-hidden">
-          <Waves 
-            strokeColor="#ffffff1a" 
-            backgroundColor="transparent" 
-            pointerSize={0.3}
-            className="w-full h-full"
-          />
-        </div>
-        
-        {/* Left and Right Grid Lines */}
+        {/* Grid Lines - clean borders */}
         <div className="absolute inset-0 z-30 pointer-events-none">
           {/* Left vertical line */}
           <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
@@ -67,7 +40,7 @@ function HeroDemo() {
       {/* Bottom grid line continuation */}
       <div className="absolute left-0 right-0 h-[1px] bg-white/10 z-30" style={{ top: '100%' }}></div>
       
-      {/* Early Adopter Section - separate block without waves */}
+      {/* Early Adopter Section - separate block */}
       <EarlyAdopterSection />
     </div>
   );
