@@ -36,19 +36,19 @@ export function AssetBasedBackground({ className = "" }: AssetBasedBackgroundPro
   // Left edge problem icons
   const leftAssets = [
     { 
-      src: '/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png', // Ghost-Leads Icon
+      src: '/lovable-uploads/507d857a-2be0-4ef1-a031-27752429edf9.png', // Ghost-Leads Icon
       delay: 0,
       y: '20%',
       size: 'w-16 h-16'
     },
     { 
-      src: '/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png', // Dollar-Drain Icon
+      src: '/lovable-uploads/ac0728a3-82d0-4d24-bc8c-9f4ee44a99f1.png', // Dollar-Drain Icon
       delay: 1,
       y: '50%',
       size: 'w-14 h-14'
     },
     { 
-      src: '/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png', // Clock/Hourglass Icon
+      src: '/lovable-uploads/0408e123-af22-4a93-bb75-38850f44c9bd.png', // Clock/Hourglass Icon
       delay: 2,
       y: '75%',
       size: 'w-12 h-12'
@@ -58,19 +58,19 @@ export function AssetBasedBackground({ className = "" }: AssetBasedBackgroundPro
   // Right edge solution icons
   const rightAssets = [
     { 
-      src: '/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png', // Handshake Icon
+      src: '/lovable-uploads/a5e12395-628e-41f6-bf2c-bd91da6d941f.png', // Handshake Icon
       delay: 3,
       y: '25%',
       size: 'w-16 h-16'
     },
     { 
-      src: '/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png', // Calendar-Star Icon
+      src: '/lovable-uploads/48fdc002-fcc5-47a8-9b93-d5500a085ef3.png', // Calendar-Star Icon
       delay: 4,
       y: '55%',
       size: 'w-14 h-14'
     },
     { 
-      src: '/lovable-uploads/4bc8f358-13e0-4525-8ac8-6fdad9dd5d5c.png', // Money-Profit Icon
+      src: '/lovable-uploads/89c006ad-579b-463c-ae75-24151c6beefa.png', // Money-Profit Icon
       delay: 5,
       y: '80%',
       size: 'w-12 h-12'
@@ -117,7 +117,7 @@ export function AssetBasedBackground({ className = "" }: AssetBasedBackgroundPro
               src={asset.src}
               alt="Problem Asset"
               className="w-full h-full object-contain filter brightness-75 sepia saturate-150 hue-rotate-15"
-              whileHover={{ scale: 1.1, brightness: 1.2 }}
+              whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             />
             
@@ -167,7 +167,7 @@ export function AssetBasedBackground({ className = "" }: AssetBasedBackgroundPro
               src={asset.src}
               alt="Solution Asset"
               className="w-full h-full object-contain filter brightness-110 saturate-125"
-              whileHover={{ scale: 1.1, brightness: 1.3 }}
+              whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             />
             
