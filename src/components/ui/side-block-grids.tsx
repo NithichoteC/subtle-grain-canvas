@@ -1,6 +1,8 @@
 
 "use client";
 
+import { AnimatedSideIcons } from "./animated-side-icons";
+
 interface SideBlockGridsProps {
   className?: string;
 }
@@ -9,7 +11,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`fixed inset-0 z-0 ${className || ''}`}>
       {/* Left Side Block - full height, extends to left edge, selectable */}
-      <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-[#171717] border-r border-white/10 cursor-pointer hover:bg-[#1a1a1a] transition-colors duration-300">
+      <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-[#171717] border-r border-white/10 cursor-pointer hover:bg-[#1a1a1a] transition-colors duration-300 overflow-hidden">
         {/* Noise texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.12]" 
@@ -18,10 +20,16 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             backgroundSize: '200px 200px'
           }}
         />
+        
+        {/* Animated Icons for Left Side - Problems flowing toward center */}
+        <AnimatedSideIcons side="left" />
+        
+        {/* Subtle gradient overlay for visual depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 via-transparent to-transparent pointer-events-none" />
       </div>
       
       {/* Right Side Block - full height, extends to right edge, selectable */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#171717] border-l border-white/10 cursor-pointer hover:bg-[#1a1a1a] transition-colors duration-300">
+      <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#171717] border-l border-white/10 cursor-pointer hover:bg-[#1a1a1a] transition-colors duration-300 overflow-hidden">
         {/* Noise texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.12]" 
@@ -30,6 +38,12 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             backgroundSize: '200px 200px'
           }}
         />
+        
+        {/* Animated Icons for Right Side - Solutions flowing from center */}
+        <AnimatedSideIcons side="right" />
+        
+        {/* Subtle gradient overlay for visual depth */}
+        <div className="absolute inset-0 bg-gradient-to-l from-green-900/5 via-transparent to-transparent pointer-events-none" />
       </div>
     </div>
   );
