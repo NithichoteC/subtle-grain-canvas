@@ -12,14 +12,12 @@ function HeroDemo() {
       {/* Hero Section with Clean Background */}
       <div className="relative">
         
-        {/* Left Edge Icon Flow */}
+        {/* Icon flows with proper Z-index */}
         <LeftEdgeIconFlow />
-        
-        {/* Right Edge Icon Flow */}
         <RightEdgeIconFlow />
         
         {/* Clean grid lines for structure */}
-        <div className="absolute inset-0 z-15 pointer-events-none">
+        <div className="absolute inset-0 z-10 pointer-events-none">
           {/* Left vertical line */}
           <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
           {/* Right vertical line */}

@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 interface FlowingIcon {
   id: string;
@@ -12,12 +12,11 @@ interface FlowingIcon {
   scale: number;
   rotation: number;
   opacity: number;
-  speed: number;
 }
 
 export function RightEdgeIconFlow() {
   const [icons, setIcons] = useState<FlowingIcon[]>([]);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [isReady, setIsReady] = useState(false);
 
   const iconSources = {
     calendar: '/lovable-uploads/d5947268-f6d0-4381-80c3-d132d1a3ccad.png',
@@ -27,117 +26,114 @@ export function RightEdgeIconFlow() {
 
   const iconTypes = ['calendar', 'money-bag', 'ghost'];
 
-  // Initialize dimensions
+  // Create initial icons immediately
   useEffect(() => {
-    const updateDimensions = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-    };
-
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    console.log('RightEdgeIconFlow: Initializing...');
+    
+    const initialIcons: FlowingIcon[] = [];
+    for (let i = 0; i < 3; i++) {
+      const icon = {
+        id: `right-initial-${i}`,
+        type: iconTypes[i % iconTypes.length],
+        x: window.innerWidth + 80,
+        y: 150 + (i * 200),
+        scale: 0.8,
+        rotation: 0,
+        opacity: 0.7
+      };
+      initialIcons.push(icon);
+      console.log('RightEdgeIconFlow: Created initial icon', icon);
+    }
+    
+    setIcons(initialIcons);
+    setIsReady(true);
+    console.log('RightEdgeIconFlow: Set initial icons count:', initialIcons.length);
   }, []);
 
-  // Create new icon
-  const createIcon = useCallback(() => {
-    return {
-      id: `right-${Date.now()}-${Math.random()}`,
-      type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
-      x: dimensions.width + 100, // Start further off-screen to the right
-      y: Math.random() * (dimensions.height - 300) + 150, // Better vertical distribution
-      scale: 0.6 + Math.random() * 0.3, // Smaller but visible icons
-      rotation: Math.random() * 360,
-      opacity: 0.6 + Math.random() * 0.3, // Higher opacity for visibility
-      speed: 1.2 + Math.random() * 0.8
-    };
-  }, [dimensions, iconTypes]);
-
-  // Continuous spawning system
+  // Simple animation loop
   useEffect(() => {
-    if (dimensions.width === 0) return;
+    if (!isReady) return;
+
+    const interval = setInterval(() => {
+      setIcons(prevIcons => {
+        return prevIcons.map(icon => ({
+          ...icon,
+          x: icon.x - 1,
+          rotation: icon.rotation - 1
+        })).filter(icon => icon.x > window.innerWidth * 0.7);
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isReady]);
+
+  // Add new icons periodically
+  useEffect(() => {
+    if (!isReady) return;
 
     const spawnInterval = setInterval(() => {
-      setIcons(prevIcons => {
-        // Remove icons that have moved past the boundary (80% of screen width)
-        const rightBoundary = dimensions.width * 0.8;
-        const filteredIcons = prevIcons.filter(icon => icon.x > rightBoundary - 100);
-        
-        // Add new icon
-        return [...filteredIcons, createIcon()];
-      });
-    }, 700); // Slightly different timing for variety
+      const newIcon = {
+        id: `right-${Date.now()}`,
+        type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
+        x: window.innerWidth + 80,
+        y: Math.random() * (window.innerHeight - 200) + 100,
+        scale: 0.6 + Math.random() * 0.4,
+        rotation: 0,
+        opacity: 0.5 + Math.random() * 0.3
+      };
+
+      console.log('RightEdgeIconFlow: Adding new icon', newIcon);
+      
+      setIcons(prevIcons => [...prevIcons, newIcon]);
+    }, 2500);
 
     return () => clearInterval(spawnInterval);
-  }, [createIcon, dimensions]);
+  }, [isReady]);
 
-  // Animation loop
-  useEffect(() => {
-    let animationId: number;
-    let lastTime = performance.now();
-
-    const animate = (currentTime: number) => {
-      const deltaTime = (currentTime - lastTime) / 16.67;
-      lastTime = currentTime;
-
-      setIcons(prevIcons => 
-        prevIcons.map(icon => {
-          const newX = icon.x - (icon.speed * deltaTime); // Move left
-          const newRotation = icon.rotation - 0.5 * deltaTime; // Rotate opposite direction
-          
-          return {
-            ...icon,
-            x: newX,
-            rotation: newRotation
-          };
-        })
-      );
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
-  }, []);
-
-  console.log('RightEdgeIconFlow: Rendering', icons.length, 'icons');
+  console.log('RightEdgeIconFlow: Rendering with icons count:', icons.length);
 
   return (
-    <div className="absolute right-0 top-0 bottom-0 w-[20%] overflow-hidden pointer-events-none z-10">
-      {icons.map((icon) => (
-        <motion.div
-          key={icon.id}
-          className="absolute will-change-transform"
-          style={{
-            left: icon.x,
-            top: icon.y,
-            transform: `scale(${icon.scale}) rotate(${icon.rotation}deg)`,
-            opacity: icon.opacity,
-          }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ 
-            opacity: icon.opacity,
-            scale: icon.scale
-          }}
-          transition={{ 
-            duration: 0.8, 
-            ease: "easeOut"
-          }}
-        >
-          <img 
-            src={iconSources[icon.type as keyof typeof iconSources]}
-            alt=""
-            className="w-12 h-12 object-contain"
-            style={{ 
-              filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4)) drop-shadow(0 2px 6px rgba(184,134,11,0.3))',
-              imageRendering: 'crisp-edges'
+    <div className="fixed right-0 top-0 bottom-0 w-[25%] overflow-hidden pointer-events-none z-[5]">
+      <div className="relative w-full h-full">
+        {icons.map((icon) => (
+          <motion.div
+            key={icon.id}
+            className="absolute"
+            style={{
+              left: icon.x,
+              top: icon.y,
+              transform: `scale(${icon.scale}) rotate(${icon.rotation}deg)`,
+              opacity: icon.opacity,
             }}
-            loading="lazy"
-          />
-        </motion.div>
-      ))}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: icon.opacity,
+              scale: icon.scale
+            }}
+            transition={{ 
+              duration: 0.5, 
+              ease: "easeOut"
+            }}
+          >
+            <img 
+              src={iconSources[icon.type as keyof typeof iconSources]}
+              alt=""
+              className="w-16 h-16 object-contain"
+              style={{ 
+                filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4)) brightness(1.2)',
+                imageRendering: 'crisp-edges'
+              }}
+              onLoad={() => console.log('RightEdgeIconFlow: Image loaded for', icon.type)}
+              onError={() => console.log('RightEdgeIconFlow: Image failed to load for', icon.type)}
+            />
+          </motion.div>
+        ))}
+      </div>
+      
+      {/* Debug indicator */}
+      <div className="absolute top-4 right-4 text-white text-xs bg-blue-500 px-2 py-1 rounded z-10">
+        Right Icons: {icons.length}
+      </div>
     </div>
   );
 }
