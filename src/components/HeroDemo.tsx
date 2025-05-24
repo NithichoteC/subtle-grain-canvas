@@ -10,14 +10,22 @@ function HeroDemo() {
     <div className="relative overflow-hidden w-full font-roboto">
       {/* Hero Section with Waves */}
       <div className="relative">
-        {/* Waves background covers only the hero section */}
+        {/* Waves background covers the full hero section */}
         <div className="absolute inset-0 z-10">
           <Waves 
             strokeColor="#ffffff1a" 
             backgroundColor="transparent" 
             pointerSize={0.3}
-            className="w-full h-full"
+            className="w-full h-full min-h-screen"
           />
+        </div>
+        
+        {/* Left and Right Grid Lines */}
+        <div className="absolute inset-0 z-30 pointer-events-none">
+          {/* Left vertical line */}
+          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+          {/* Right vertical line */}
+          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
         </div>
         
         {/* Container for hero content with proper z-index */}
