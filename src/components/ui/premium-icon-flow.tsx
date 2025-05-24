@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 
 interface FlowingIcon {
   id: string;
@@ -13,7 +13,8 @@ interface FlowingIcon {
   rotation: number;
   opacity: number;
   speed: number;
-  verticalOffset: number;
+  waveOffset: number;
+  rotationSpeed: number;
 }
 
 interface PremiumIconFlowProps {
@@ -23,11 +24,34 @@ interface PremiumIconFlowProps {
   density?: number;
 }
 
-export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: PremiumIconFlowProps) {
+export function PremiumIconFlow({ side, iconTypes, iconSources, density = 5 }: PremiumIconFlowProps) {
   const [icons, setIcons] = useState<FlowingIcon[]>([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  // Initialize dimensions
+  // Memoize the initial position logic
+  const getInitialPosition = useCallback((index: number) => {
+    const isLeft = side === 'left';
+    const baseX = isLeft ? -250 - Math.random() * 100 : dimensions.width + 150 + Math.random() * 100;
+    const staggeredY = (index * (dimensions.height / density)) + Math.random() * 200;
+    
+    return {
+      x: baseX,
+      y: staggeredY % (dimensions.height || window.innerHeight),
+      speed: 0.4 + Math.random() * 0.6,
+      scale: 0.25 + Math.random() * 0.35,
+      opacity: 0.12 + Math.random() * 0.18,
+      rotation: Math.random() * 360,
+      waveOffset: Math.random() * Math.PI * 2,
+      rotationSpeed: (Math.random() - 0.5) * 0.8
+    };
+  }, [side, density, dimensions]);
+
+  // Memoize icon source getter
+  const getIconSource = useCallback((type: string) => {
+    return iconSources[type] || iconSources[iconTypes[0]];
+  }, [iconSources, iconTypes]);
+
+  // Initialize dimensions and icons
   useEffect(() => {
     const updateDimensions = () => {
       setDimensions({
@@ -38,45 +62,26 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
 
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
+
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Create initial icons with proper positioning
-  const createIcon = useCallback((index: number, reset: boolean = false) => {
-    const isLeft = side === 'left';
-    
-    // Starting positions - well outside viewport
-    const startX = isLeft ? -200 : dimensions.width + 200;
-    
-    // Staggered vertical positioning across the screen height
-    const baseY = (dimensions.height / (density + 1)) * (index + 1);
-    const randomYOffset = (Math.random() - 0.5) * 150; // Less random variation
-    
-    return {
-      id: `${side}-${index}-${Date.now()}`,
-      type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
-      x: startX,
-      y: baseY + randomYOffset,
-      scale: 0.6 + Math.random() * 0.4, // Larger icons: 0.6 to 1.0
-      rotation: Math.random() * 360,
-      opacity: 0.15 + Math.random() * 0.25, // More visible: 0.15 to 0.4
-      speed: 0.8 + Math.random() * 0.6, // Consistent speed
-      verticalOffset: Math.random() * Math.PI * 2
-    };
-  }, [side, density, dimensions, iconTypes]);
-
-  // Initialize icons
   useEffect(() => {
     if (dimensions.width === 0) return;
 
     const initialIcons: FlowingIcon[] = [];
     for (let i = 0; i < density; i++) {
-      initialIcons.push(createIcon(i));
+      const position = getInitialPosition(i);
+      initialIcons.push({
+        id: `${side}-${i}`,
+        type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
+        ...position
+      });
     }
     setIcons(initialIcons);
-  }, [density, createIcon, dimensions]);
+  }, [density, side, iconTypes, getInitialPosition, dimensions]);
 
-  // Animation loop with proper directional movement
+  // Optimized animation loop
   useEffect(() => {
     let animationId: number;
     let lastTime = performance.now();
@@ -86,28 +91,31 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
       lastTime = currentTime;
 
       setIcons(prevIcons => 
-        prevIcons.map((icon, index) => {
+        prevIcons.map(icon => {
           const isLeft = side === 'left';
-          const direction = isLeft ? 1 : -1; // Left side: move right (+), Right side: move left (-)
+          const direction = isLeft ? 1 : -1;
           
-          // Calculate new horizontal position
+          // Calculate new position with wave motion
           const newX = icon.x + (icon.speed * direction * deltaTime);
+          const waveAmplitude = 0.8;
+          const waveFrequency = 0.008;
+          const newY = icon.y + Math.sin(newX * waveFrequency + icon.waveOffset) * waveAmplitude;
           
-          // Subtle vertical floating motion
-          const floatAmplitude = 12;
-          const floatSpeed = 0.02;
-          const newY = icon.y + Math.sin(currentTime * floatSpeed + icon.verticalOffset) * floatAmplitude;
+          // Update rotation
+          const newRotation = icon.rotation + (icon.rotationSpeed * deltaTime);
           
-          // Slow rotation
-          const newRotation = icon.rotation + 0.3 * deltaTime;
-          
-          // Check if icon has moved off screen and needs to reset
+          // Check if icon needs to reset
           const shouldReset = isLeft 
-            ? newX > dimensions.width + 200 
-            : newX < -200;
+            ? newX > dimensions.width + 250 
+            : newX < -250;
           
           if (shouldReset) {
-            return createIcon(index, true);
+            const resetPosition = getInitialPosition(0);
+            return {
+              ...icon,
+              ...resetPosition,
+              type: iconTypes[Math.floor(Math.random() * iconTypes.length)]
+            };
           }
           
           return {
@@ -129,47 +137,49 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
         cancelAnimationFrame(animationId);
       }
     };
-  }, [side, createIcon, dimensions]);
+  }, [side, iconTypes, getInitialPosition, dimensions]);
 
-  const getIconSource = useCallback((type: string) => {
-    return iconSources[type] || iconSources[iconTypes[0]];
-  }, [iconSources, iconTypes]);
+  // Memoized icon elements
+  const iconElements = useMemo(() => {
+    return icons.map((icon) => (
+      <motion.div
+        key={icon.id}
+        className="absolute will-change-transform"
+        style={{
+          left: icon.x,
+          top: icon.y,
+          transform: `scale(${icon.scale}) rotate(${icon.rotation}deg)`,
+          opacity: icon.opacity,
+        }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ 
+          opacity: icon.opacity,
+          scale: icon.scale
+        }}
+        transition={{ 
+          duration: 1.5, 
+          ease: "easeOut",
+          opacity: { duration: 2 }
+        }}
+      >
+        <img 
+          src={getIconSource(icon.type)}
+          alt=""
+          className="w-20 h-20 object-contain"
+          style={{ 
+            filter: 'drop-shadow(0 6px 12px rgba(0,0,0,0.25)) drop-shadow(0 2px 4px rgba(184,134,11,0.1))',
+            imageRendering: 'crisp-edges'
+          }}
+          loading="lazy"
+        />
+      </motion.div>
+    ));
+  }, [icons, getIconSource]);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="relative w-full h-full">
-        {icons.map((icon) => (
-          <motion.div
-            key={icon.id}
-            className="absolute will-change-transform"
-            style={{
-              left: icon.x,
-              top: icon.y,
-              transform: `scale(${icon.scale}) rotate(${icon.rotation}deg)`,
-              opacity: icon.opacity,
-            }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
-              opacity: icon.opacity,
-              scale: icon.scale
-            }}
-            transition={{ 
-              duration: 2, 
-              ease: "easeOut"
-            }}
-          >
-            <img 
-              src={getIconSource(icon.type)}
-              alt=""
-              className="w-32 h-32 object-contain" // Much larger icons
-              style={{ 
-                filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3)) drop-shadow(0 4px 8px rgba(184,134,11,0.15))',
-                imageRendering: 'crisp-edges'
-              }}
-              loading="lazy"
-            />
-          </motion.div>
-        ))}
+        {iconElements}
       </div>
     </div>
   );
