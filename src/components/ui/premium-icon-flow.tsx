@@ -41,29 +41,30 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Create initial icons with proper positioning
-  const createIcon = useCallback((index: number, reset: boolean = false) => {
+  // Create initial icons with vertical positioning in edge columns
+  const createIcon = useCallback((index: number) => {
     const isLeft = side === 'left';
+    const columnWidth = 150; // Width of each edge column
     
-    // Starting positions - well outside viewport
-    const startX = isLeft ? -200 : dimensions.width + 200;
+    // Fixed horizontal position within edge columns
+    const baseX = isLeft ? 0 : dimensions.width - columnWidth;
+    const randomX = baseX + Math.random() * columnWidth;
     
-    // Staggered vertical positioning across the screen height
-    const baseY = (dimensions.height / (density + 1)) * (index + 1);
-    const randomYOffset = (Math.random() - 0.5) * 150; // Less random variation
+    // Start above viewport, stagger initial positions
+    const startY = -200 - (index * 150); // Stagger icons vertically
     
     return {
       id: `${side}-${index}-${Date.now()}`,
       type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
-      x: startX,
-      y: baseY + randomYOffset,
-      scale: 0.6 + Math.random() * 0.4, // Larger icons: 0.6 to 1.0
+      x: randomX,
+      y: startY,
+      scale: 0.6 + Math.random() * 0.4, // 0.6 to 1.0
       rotation: Math.random() * 360,
-      opacity: 0.15 + Math.random() * 0.25, // More visible: 0.15 to 0.4
-      speed: 0.8 + Math.random() * 0.6, // Consistent speed
+      opacity: 0.15 + Math.random() * 0.25, // 0.15 to 0.4
+      speed: 1.2 + Math.random() * 0.8, // Vertical speed
       verticalOffset: Math.random() * Math.PI * 2
     };
-  }, [side, density, dimensions, iconTypes]);
+  }, [side, dimensions, iconTypes]);
 
   // Initialize icons
   useEffect(() => {
@@ -76,7 +77,7 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
     setIcons(initialIcons);
   }, [density, createIcon, dimensions]);
 
-  // Animation loop with proper directional movement
+  // Animation loop with vertical downward movement
   useEffect(() => {
     let animationId: number;
     let lastTime = performance.now();
@@ -87,32 +88,30 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
 
       setIcons(prevIcons => 
         prevIcons.map((icon, index) => {
+          // Vertical downward movement only
+          const newY = icon.y + (icon.speed * deltaTime);
+          
+          // Subtle horizontal floating within column bounds
           const isLeft = side === 'left';
-          const direction = isLeft ? 1 : -1; // Left side: move right (+), Right side: move left (-)
-          
-          // Calculate new horizontal position
-          const newX = icon.x + (icon.speed * direction * deltaTime);
-          
-          // Subtle vertical floating motion
-          const floatAmplitude = 12;
-          const floatSpeed = 0.02;
-          const newY = icon.y + Math.sin(currentTime * floatSpeed + icon.verticalOffset) * floatAmplitude;
+          const columnWidth = 150;
+          const baseX = isLeft ? 0 : dimensions.width - columnWidth;
+          const floatAmplitude = 8; // Small horizontal float
+          const floatSpeed = 0.015;
+          const newX = baseX + (columnWidth * 0.5) + Math.sin(currentTime * floatSpeed + icon.verticalOffset) * floatAmplitude + (Math.random() - 0.5) * 20;
           
           // Slow rotation
           const newRotation = icon.rotation + 0.3 * deltaTime;
           
-          // Check if icon has moved off screen and needs to reset
-          const shouldReset = isLeft 
-            ? newX > dimensions.width + 200 
-            : newX < -200;
+          // Check if icon has moved below viewport
+          const shouldReset = newY > dimensions.height + 200;
           
           if (shouldReset) {
-            return createIcon(index, true);
+            return createIcon(index);
           }
           
           return {
             ...icon,
-            x: newX,
+            x: Math.max(baseX, Math.min(baseX + columnWidth, newX)), // Keep within column bounds
             y: newY,
             rotation: newRotation
           };
@@ -161,7 +160,7 @@ export function PremiumIconFlow({ side, iconTypes, iconSources, density = 3 }: P
             <img 
               src={getIconSource(icon.type)}
               alt=""
-              className="w-32 h-32 object-contain" // Much larger icons
+              className="w-32 h-32 object-contain"
               style={{ 
                 filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3)) drop-shadow(0 4px 8px rgba(184,134,11,0.15))',
                 imageRendering: 'crisp-edges'
