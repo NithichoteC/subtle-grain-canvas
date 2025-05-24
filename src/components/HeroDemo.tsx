@@ -2,7 +2,8 @@
 import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
-import { HeroFlowingIcons } from "@/components/ui/hero-flowing-icons";
+import { LeftEdgeIconFlow } from "@/components/ui/left-edge-icon-flow";
+import { RightEdgeIconFlow } from "@/components/ui/right-edge-icon-flow";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
@@ -10,10 +11,12 @@ function HeroDemo() {
     <div className="relative overflow-hidden w-full font-roboto">
       {/* Hero Section with Clean Background */}
       <div className="relative">
-        {/* Flowing Icons Background - positioned behind hero content */}
-        <div className="absolute inset-0 z-5">
-          <HeroFlowingIcons />
-        </div>
+        
+        {/* Left Edge Icon Flow */}
+        <LeftEdgeIconFlow />
+        
+        {/* Right Edge Icon Flow */}
+        <RightEdgeIconFlow />
         
         {/* Clean grid lines for structure */}
         <div className="absolute inset-0 z-15 pointer-events-none">
