@@ -3,6 +3,7 @@ import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { Waves } from "@/components/ui/wave-background";
+import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
   return (
@@ -30,6 +31,9 @@ function HeroDemo() {
             <Hero />
           </HeroSectionBackground>
         </div>
+        
+        {/* Early Adopter Section */}
+        <EarlyAdopterSection />
       </div>
     </div>
   );
