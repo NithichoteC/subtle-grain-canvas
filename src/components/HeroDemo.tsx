@@ -2,16 +2,16 @@
 import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
-import { InteractiveGradientBackground } from "@/components/ui/interactive-gradient-background";
+import { FlowingIconBackground } from "@/components/ui/flowing-icon-background";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 
 function HeroDemo() {
   return (
     <div className="relative overflow-hidden w-full font-roboto">
-      {/* Hero Section with Interactive Gradient Background */}
+      {/* Hero Section with Flowing Icon Background */}
       <div className="relative">
-        {/* Interactive Gradient Background - covers only the sides and strategic points */}
-        <InteractiveGradientBackground className="z-10" />
+        {/* Flowing Icon Background - covers only the sides and strategic points */}
+        <FlowingIconBackground className="z-10" />
         
         {/* Grid Lines - clean borders */}
         <div className="absolute inset-0 z-30 pointer-events-none">
