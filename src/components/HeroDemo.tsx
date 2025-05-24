@@ -4,8 +4,8 @@ import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { InteractiveGradientBackground } from "@/components/ui/interactive-gradient-background";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
-import { LeftGridBackground } from "@/components/ui/left-grid-background";
-import { RightGridBackground } from "@/components/ui/right-grid-background";
+import { LeftFlowingIcons } from "@/components/ui/left-flowing-icons";
+import { RightFlowingIcons } from "@/components/ui/right-flowing-icons";
 
 function HeroDemo() {
   return (
@@ -15,10 +15,10 @@ function HeroDemo() {
         {/* Interactive Gradient Background - deepest layer */}
         <InteractiveGradientBackground className="z-0" />
         
-        {/* Grid Background Components - subtle layer behind hero content */}
+        {/* Flowing Icon Components - behind hero content */}
         <div className="absolute inset-0 z-5">
-          <LeftGridBackground />
-          <RightGridBackground />
+          <LeftFlowingIcons />
+          <RightFlowingIcons />
         </div>
         
         {/* Grid Lines - clean borders above icons but below content */}
