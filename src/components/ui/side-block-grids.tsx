@@ -1,7 +1,7 @@
 
 "use client";
 
-import { AnimatedSideIcons } from "./animated-side-icons";
+import { FloatingTextAnimations } from "./floating-text-animations";
 
 interface SideBlockGridsProps {
   className?: string;
@@ -21,8 +21,8 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           }}
         />
         
-        {/* Animated Icons for Left Side - Problems flowing toward center */}
-        <AnimatedSideIcons side="left" />
+        {/* Floating Text Animations for Left Side - Problems flowing toward center */}
+        <FloatingTextAnimations side="left" />
         
         {/* Enhanced gradient overlay for visual depth and problem theme */}
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/8 via-transparent to-transparent pointer-events-none" />
@@ -39,8 +39,8 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           }}
         />
         
-        {/* Animated Icons for Right Side - Solutions flowing from center */}
-        <AnimatedSideIcons side="right" />
+        {/* Floating Text Animations for Right Side - Solutions flowing from center */}
+        <FloatingTextAnimations side="right" />
         
         {/* Enhanced gradient overlay for visual depth and solution theme */}
         <div className="absolute inset-0 bg-gradient-to-l from-green-900/8 via-transparent to-transparent pointer-events-none" />
