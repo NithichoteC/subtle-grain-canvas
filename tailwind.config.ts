@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -94,53 +93,101 @@ export default {
 				},
 				first: {
 					"0%": {
-						transform: "rotate(0deg)",
+						transform: "rotate(0deg) scale(1)",
+					},
+					"33%": {
+						transform: "rotate(120deg) scale(1.1)",
+					},
+					"66%": {
+						transform: "rotate(240deg) scale(0.9)",
 					},
 					"100%": {
-						transform: "rotate(360deg)",
+						transform: "rotate(360deg) scale(1)",
 					},
 				},
 				second: {
 					"0%": {
-						transform: "rotate(0deg)",
+						transform: "rotate(0deg) translateX(0)",
+					},
+					"25%": {
+						transform: "rotate(-90deg) translateX(20px)",
+					},
+					"50%": {
+						transform: "rotate(-180deg) translateX(0)",
+					},
+					"75%": {
+						transform: "rotate(-270deg) translateX(-20px)",
 					},
 					"100%": {
-						transform: "rotate(-360deg)",
+						transform: "rotate(-360deg) translateX(0)",
 					},
 				},
 				third: {
 					"0%": {
-						transform: "rotate(0deg)",
+						transform: "rotate(0deg) translateY(0)",
+					},
+					"20%": {
+						transform: "rotate(72deg) translateY(-15px)",
+					},
+					"40%": {
+						transform: "rotate(144deg) translateY(10px)",
+					},
+					"60%": {
+						transform: "rotate(216deg) translateY(-5px)",
+					},
+					"80%": {
+						transform: "rotate(288deg) translateY(15px)",
 					},
 					"100%": {
-						transform: "rotate(360deg)",
+						transform: "rotate(360deg) translateY(0)",
 					},
 				},
 				fourth: {
 					"0%": {
-						transform: "rotate(0deg)",
+						transform: "rotate(0deg) scale(1) skew(0deg)",
+					},
+					"25%": {
+						transform: "rotate(-90deg) scale(1.2) skew(5deg)",
+					},
+					"50%": {
+						transform: "rotate(-180deg) scale(0.8) skew(0deg)",
+					},
+					"75%": {
+						transform: "rotate(-270deg) scale(1.1) skew(-5deg)",
 					},
 					"100%": {
-						transform: "rotate(-360deg)",
+						transform: "rotate(-360deg) scale(1) skew(0deg)",
 					},
 				},
 				fifth: {
 					"0%": {
-						transform: "rotate(0deg)",
+						transform: "rotate(0deg) translateX(0) translateY(0)",
+					},
+					"20%": {
+						transform: "rotate(72deg) translateX(30px) translateY(-20px)",
+					},
+					"40%": {
+						transform: "rotate(144deg) translateX(-10px) translateY(25px)",
+					},
+					"60%": {
+						transform: "rotate(216deg) translateX(-25px) translateY(-15px)",
+					},
+					"80%": {
+						transform: "rotate(288deg) translateX(15px) translateY(30px)",
 					},
 					"100%": {
-						transform: "rotate(360deg)",
+						transform: "rotate(360deg) translateX(0) translateY(0)",
 					},
 				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				first: "first 20s linear infinite",
-				second: "second 40s linear infinite",
-				third: "third 40s linear infinite",
-				fourth: "fourth 60s linear infinite",
-				fifth: "fifth 60s linear infinite",
+				first: "first 25s ease-in-out infinite",
+				second: "second 35s ease-in-out infinite",
+				third: "third 30s ease-in-out infinite",
+				fourth: "fourth 45s ease-in-out infinite",
+				fifth: "fifth 40s ease-in-out infinite",
 			}
 		}
 	},
