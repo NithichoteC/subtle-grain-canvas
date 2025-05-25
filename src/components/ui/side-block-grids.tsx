@@ -1,7 +1,7 @@
 
 "use client";
 
-import { AnimatedSideIcons } from "./animated-side-icons";
+import { GradientWaveAnimations } from "./gradient-wave-animations";
 
 interface SideBlockGridsProps {
   className?: string;
@@ -21,8 +21,8 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           }}
         />
         
-        {/* Animated Icons for Left Side - Problems flowing toward center */}
-        <AnimatedSideIcons side="left" />
+        {/* Gradient Wave Animations for Left Side - Problems flowing toward center */}
+        <GradientWaveAnimations side="left" />
         
         {/* Enhanced gradient overlay for visual depth and problem theme */}
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/8 via-transparent to-transparent pointer-events-none" />
@@ -39,8 +39,8 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           }}
         />
         
-        {/* Animated Icons for Right Side - Solutions flowing from center */}
-        <AnimatedSideIcons side="right" />
+        {/* Gradient Wave Animations for Right Side - Solutions flowing from center */}
+        <GradientWaveAnimations side="right" />
         
         {/* Enhanced gradient overlay for visual depth and solution theme */}
         <div className="absolute inset-0 bg-gradient-to-l from-green-900/8 via-transparent to-transparent pointer-events-none" />
