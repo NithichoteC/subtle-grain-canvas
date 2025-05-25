@@ -23,7 +23,19 @@ function Hero() {
   }, []);
 
   return (
-    <div className="w-full pt-0">
+    <div className="w-full pt-0 relative">
+      {/* Grid Lines - Left and Right */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Left vertical grid line */}
+        <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+        
+        {/* Right vertical grid line */}
+        <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+        
+        {/* Center vertical grid line */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10 transform -translate-x-1/2"></div>
+      </div>
+
       <div className="w-full">
         <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
           {/* Brand bubble */}
