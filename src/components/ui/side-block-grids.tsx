@@ -2,34 +2,87 @@
 "use client";
 
 import { NoiseTexture } from '@/components/ui/noise-texture';
-import { CustomGradientAnimation } from '@/components/ui/custom-gradient-animation';
-import { colors, noiseConfigs, zIndex } from '@/lib/design-tokens';
+import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
+import { colors, layout, noiseConfigs, zIndex } from '@/lib/design-tokens';
 
 interface SideBlockGridsProps {
   className?: string;
 }
 
 /**
- * Side block grid enhancements with custom gradient animations
- * Perfect bronze gradients with smooth flowing animations
+ * Side block grid enhancements with animated gradient backgrounds
+ * Uses toned-down bronze/gold color palette with differentiated left/right animations
+ * Ensures perfect edge-to-edge connection with zero gaps and scrolls with page
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement */}
+      {/* Left Edge Enhancement - Original animation timing */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
-        <CustomGradientAnimation side="left" />
+        <BackgroundGradientAnimation
+          gradientBackgroundStart="rgb(23, 23, 23)"
+          gradientBackgroundEnd="rgb(35, 35, 35)"
+          firstColor="130, 95, 8"      // Darker bronze
+          secondColor="165, 102, 40"   // Muted bronze medium  
+          thirdColor="200, 170, 0"     // Toned gold
+          fourthColor="119, 89, 33"    // Deep bronze
+          fifthColor="180, 166, 156"   // Subtle bronze light
+          pointerColor="191, 163, 110" // Muted bronze base
+          size="120%"
+          blendingValue="overlay"
+          interactive={true}
+          containerClassName="h-full w-full"
+          className="relative z-0"
+          animationSet="left"
+        >
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
+            aria-label="Reserved space for 3D assets"
+          />
+          
+          {/* Subtle texture overlay */}
+          <div className="absolute inset-0 z-10">
+            <NoiseTexture {...noiseConfigs.sideBlocks} />
+          </div>
+        </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement */}
+      {/* Right Edge Enhancement - Offset animation timing */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
-        <CustomGradientAnimation side="right" />
+        <BackgroundGradientAnimation
+          gradientBackgroundStart="rgb(23, 23, 23)"
+          gradientBackgroundEnd="rgb(35, 35, 35)"
+          firstColor="180, 166, 156"   // Subtle bronze light (swapped order)
+          secondColor="119, 89, 33"    // Deep bronze
+          thirdColor="130, 95, 8"      // Darker bronze
+          fourthColor="200, 170, 0"    // Toned gold
+          fifthColor="165, 102, 40"    // Muted bronze medium
+          pointerColor="191, 163, 110" // Muted bronze base
+          size="120%"
+          blendingValue="overlay"
+          interactive={true}
+          containerClassName="h-full w-full"
+          className="relative z-0"
+          animationSet="right"
+        >
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
+            aria-label="Reserved space for 3D assets"
+          />
+          
+          {/* Subtle texture overlay */}
+          <div className="absolute inset-0 z-10">
+            <NoiseTexture {...noiseConfigs.sideBlocks} />
+          </div>
+        </BackgroundGradientAnimation>
       </div>
       
       {/* Center connection zone - fills the 1280px center area */}
