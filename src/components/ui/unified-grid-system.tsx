@@ -7,18 +7,18 @@ interface UnifiedGridSystemProps {
 
 export function UnifiedGridSystem({ className }: UnifiedGridSystemProps) {
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Full-width viewport grid lines */}
-      <div className="absolute inset-0" style={{ width: '100vw', height: '100%', left: '50%', transform: 'translateX(-50%)' }}>
-        {/* Left vertical line - spans full viewport height */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-white/10" />
-        
-        {/* Right vertical line - spans full viewport height */}
-        <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10" />
-        
-        {/* Bottom horizontal line - spans full viewport width */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
-      </div>
+    <div className={`w-screen h-screen pointer-events-none overflow-hidden ${className || ''}`}>
+      {/* Left vertical line - full viewport height */}
+      <div className="absolute left-0 top-0 h-full w-px bg-white/10" />
+      
+      {/* Right vertical line - full viewport height */}
+      <div className="absolute right-0 top-0 h-full w-px bg-white/10" />
+      
+      {/* Bottom horizontal line - full viewport width, positioned at hero section bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-white/10" style={{ 
+        top: 'auto',
+        bottom: 'calc(100vh - 100vh)' // This will be adjusted based on hero section height
+      }} />
       
       {/* Inner content area markers - subtle guides for the content container */}
       <div className="absolute inset-0 flex justify-center">
