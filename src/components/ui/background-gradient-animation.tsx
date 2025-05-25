@@ -60,8 +60,7 @@ export const BackgroundGradientAnimation = ({
     container.style.setProperty(`${cssVarPrefix}-fifth-color`, fifthColor);
     container.style.setProperty(`${cssVarPrefix}-pointer-color`, pointerColor);
     container.style.setProperty(`${cssVarPrefix}-size`, size);
-    container.style.setProperty(`${cssVarPrefix}-blending-value`, blendingValue);
-  }, [cssVarPrefix, gradientBackgroundStart, gradientBackgroundEnd, firstColor, secondColor, thirdColor, fourthColor, fifthColor, pointerColor, size, blendingValue]);
+  }, [cssVarPrefix, gradientBackgroundStart, gradientBackgroundEnd, firstColor, secondColor, thirdColor, fourthColor, fifthColor, pointerColor, size]);
 
   useEffect(() => {
     function move() {
@@ -156,7 +155,7 @@ export const BackgroundGradientAnimation = ({
           )}
           style={{
             background: `radial-gradient(circle at center, rgba(var(${cssVarPrefix}-first-color), 0.5) 0%, rgba(var(${cssVarPrefix}-first-color), 0) 50%) no-repeat`,
-            mixBlendMode: `var(${cssVarPrefix}-blending-value)`,
+            mixBlendMode: blendingValue as any,
             width: `var(${cssVarPrefix}-size)`,
             height: `var(${cssVarPrefix}-size)`,
             top: `calc(50% - var(${cssVarPrefix}-size) / 2)`,
@@ -172,7 +171,7 @@ export const BackgroundGradientAnimation = ({
           )}
           style={{
             background: `radial-gradient(circle at center, rgba(var(${cssVarPrefix}-second-color), 0.5) 0%, rgba(var(${cssVarPrefix}-second-color), 0) 50%) no-repeat`,
-            mixBlendMode: `var(${cssVarPrefix}-blending-value)`,
+            mixBlendMode: blendingValue as any,
             width: `var(${cssVarPrefix}-size)`,
             height: `var(${cssVarPrefix}-size)`,
             top: `calc(50% - var(${cssVarPrefix}-size) / 2)`,
@@ -188,7 +187,7 @@ export const BackgroundGradientAnimation = ({
           )}
           style={{
             background: `radial-gradient(circle at center, rgba(var(${cssVarPrefix}-third-color), 0.5) 0%, rgba(var(${cssVarPrefix}-third-color), 0) 50%) no-repeat`,
-            mixBlendMode: `var(${cssVarPrefix}-blending-value)`,
+            mixBlendMode: blendingValue as any,
             width: `var(${cssVarPrefix}-size)`,
             height: `var(${cssVarPrefix}-size)`,
             top: `calc(50% - var(${cssVarPrefix}-size) / 2)`,
@@ -204,7 +203,7 @@ export const BackgroundGradientAnimation = ({
           )}
           style={{
             background: `radial-gradient(circle at center, rgba(var(${cssVarPrefix}-fourth-color), 0.5) 0%, rgba(var(${cssVarPrefix}-fourth-color), 0) 50%) no-repeat`,
-            mixBlendMode: `var(${cssVarPrefix}-blending-value)`,
+            mixBlendMode: blendingValue as any,
             width: `var(${cssVarPrefix}-size)`,
             height: `var(${cssVarPrefix}-size)`,
             top: `calc(50% - var(${cssVarPrefix}-size) / 2)`,
@@ -220,7 +219,7 @@ export const BackgroundGradientAnimation = ({
           )}
           style={{
             background: `radial-gradient(circle at center, rgba(var(${cssVarPrefix}-fifth-color), 0.5) 0%, rgba(var(${cssVarPrefix}-fifth-color), 0) 50%) no-repeat`,
-            mixBlendMode: `var(${cssVarPrefix}-blending-value)`,
+            mixBlendMode: blendingValue as any,
             width: `var(${cssVarPrefix}-size)`,
             height: `var(${cssVarPrefix}-size)`,
             top: `calc(50% - var(${cssVarPrefix}-size) / 2)`,
@@ -237,7 +236,7 @@ export const BackgroundGradientAnimation = ({
             className="absolute opacity-50"
             style={{
               background: `radial-gradient(circle at center, rgba(var(${cssVarPrefix}-pointer-color), 0.6) 0%, rgba(var(${cssVarPrefix}-pointer-color), 0) 50%) no-repeat`,
-              mixBlendMode: `var(${cssVarPrefix}-blending-value)`,
+              mixBlendMode: blendingValue as any,
               width: '100%',
               height: '100%',
               top: '-50%',
