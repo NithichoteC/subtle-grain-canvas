@@ -9,29 +9,35 @@ interface SideBlockGridsProps {
 
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Made wider and more visible */}
-      <div className="absolute left-0 top-0 bottom-0 w-[200px] z-[5]">
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden z-[100] ${className || ''}`}>
+      {/* Debug background to see container */}
+      <div className="absolute inset-0 bg-blue-500/5" />
+      
+      {/* Left Edge Enhancement */}
+      <div className="absolute left-0 top-0 bottom-0 w-[300px] z-[110]">
+        {/* Debug background for left container */}
+        <div className="absolute inset-0 bg-green-500/10" />
+        
         <FlowingWaveLines side="left" />
         
-        {/* Strong border accent */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#efcc8a]/60 via-50% to-transparent" />
+        {/* Visible border accent */}
+        <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-transparent via-[#FFD700]/80 via-50% to-transparent" />
       </div>
       
-      {/* Right Edge Enhancement - Made wider and more visible */}
-      <div className="absolute right-0 top-0 bottom-0 w-[200px] z-[5]">
+      {/* Right Edge Enhancement */}
+      <div className="absolute right-0 top-0 bottom-0 w-[300px] z-[110]">
+        {/* Debug background for right container */}
+        <div className="absolute inset-0 bg-purple-500/10" />
+        
         <FlowingWaveLines side="right" />
         
-        {/* Strong border accent */}
-        <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#efcc8a]/60 via-50% to-transparent" />
+        {/* Visible border accent */}
+        <div className="absolute right-0 top-0 bottom-0 w-2 bg-gradient-to-b from-transparent via-[#FFD700]/80 via-50% to-transparent" />
       </div>
       
-      {/* Enhanced ambient glow */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#efcc8a]/[0.08] via-transparent to-transparent z-[1]" 
-           style={{ 
-             background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(239, 204, 138, 0.08) 0%, transparent 70%)'
-           }} 
-      />
+      {/* Strong test elements to verify positioning */}
+      <div className="absolute top-10 left-10 w-4 h-4 bg-red-500 rounded-full z-[120]" />
+      <div className="absolute top-10 right-10 w-4 h-4 bg-blue-500 rounded-full z-[120]" />
     </div>
   );
 }

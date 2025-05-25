@@ -9,41 +9,44 @@ interface FlowingWaveLinesProps {
 }
 
 export function FlowingWaveLines({ className, side }: FlowingWaveLinesProps) {
-  // Generate much more visible and simpler wave paths
-  const generateWavePath = (index: number, total: number) => {
-    const spacing = 100 / total;
-    const startY = index * spacing;
-    const waveHeight = 15 + (index % 2) * 5; // More pronounced waves
+  // Create simple, visible wave paths
+  const generateSimpleWave = (index: number) => {
+    const amplitude = 30;
+    const frequency = 0.02;
+    const yOffset = index * 80;
     
     if (side === 'left') {
-      // Left side - curves flowing from left edge inward
-      return `M0,${startY} Q${waveHeight},${startY + spacing/3} 0,${startY + spacing/2} T0,${startY + spacing}`;
+      // Left side - simple sine wave from left edge
+      return `M 0 ${yOffset} Q ${amplitude} ${yOffset + 20} 0 ${yOffset + 40} T 0 ${yOffset + 80}`;
     } else {
-      // Right side - curves flowing from right edge inward
-      return `M100,${startY} Q${100-waveHeight},${startY + spacing/3} 100,${startY + spacing/2} T100,${startY + spacing}`;
+      // Right side - simple sine wave from right edge  
+      const width = 200;
+      return `M ${width} ${yOffset} Q ${width - amplitude} ${yOffset + 20} ${width} ${yOffset + 40} T ${width} ${yOffset + 80}`;
     }
   };
 
-  const waveCount = 8;
-  const waves = Array.from({ length: waveCount }, (_, i) => ({
+  const waves = Array.from({ length: 6 }, (_, i) => ({
     id: i,
-    path: generateWavePath(i, waveCount),
-    opacity: 0.6 + (i % 3) * 0.2, // High opacity for visibility
-    strokeWidth: 2 + (i % 2) * 1, // Thick strokes
-    delay: i * 0.3
+    path: generateSimpleWave(i),
+    opacity: 0.8 - (i * 0.1),
+    strokeWidth: 2 + (i % 2),
+    delay: i * 0.2
   }));
 
   return (
     <div className={`absolute inset-0 pointer-events-none ${className || ''}`}>
+      {/* High contrast background for debugging */}
+      <div className="absolute inset-0 bg-red-500/10" />
+      
       <svg
         className="w-full h-full"
-        viewBox="0 0 100 100"
+        viewBox="0 0 200 500"
         preserveAspectRatio="none"
         fill="none"
       >
         <defs>
-          <filter id={`glow-${side}`}>
-            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <filter id={`wave-glow-${side}`}>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
             <feMerge> 
               <feMergeNode in="coloredBlur"/>
               <feMergeNode in="SourceGraphic"/>
@@ -55,39 +58,35 @@ export function FlowingWaveLines({ className, side }: FlowingWaveLinesProps) {
           <motion.path
             key={wave.id}
             d={wave.path}
-            stroke="#efcc8a"
+            stroke="#FFD700"
             strokeWidth={wave.strokeWidth}
             strokeOpacity={wave.opacity}
             fill="none"
             strokeLinecap="round"
-            filter={`url(#glow-${side})`}
+            filter={`url(#wave-glow-${side})`}
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ 
               pathLength: 1, 
               opacity: wave.opacity,
-              strokeDashoffset: [0, -20, 0]
             }}
             transition={{
               pathLength: { duration: 2, delay: wave.delay },
               opacity: { duration: 1, delay: wave.delay },
-              strokeDashoffset: { 
-                duration: 4 + wave.id * 0.5, 
-                repeat: Infinity, 
-                ease: "linear",
-                delay: wave.delay 
-              }
             }}
-            strokeDasharray="10 5"
           />
         ))}
+        
+        {/* Additional bright test lines */}
+        <line 
+          x1={side === 'left' ? "0" : "200"} 
+          y1="0" 
+          x2={side === 'left' ? "50" : "150"} 
+          y2="100" 
+          stroke="#00FF00" 
+          strokeWidth="3"
+          opacity="0.8"
+        />
       </svg>
-      
-      {/* Strong gradient overlay for enhanced visibility */}
-      <div className={`absolute inset-0 ${
-        side === 'left' 
-          ? 'bg-gradient-to-r from-[#efcc8a]/20 via-[#efcc8a]/10 to-transparent' 
-          : 'bg-gradient-to-l from-[#efcc8a]/20 via-[#efcc8a]/10 to-transparent'
-      }`} />
     </div>
   );
 }
