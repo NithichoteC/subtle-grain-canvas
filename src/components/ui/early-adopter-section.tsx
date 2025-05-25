@@ -97,8 +97,8 @@ export function EarlyAdopterSection() {
           </div>
         </motion.div>
 
-        {/* Premium Features Grid - Better Width Distribution */}
-        <div className="w-full max-w-7xl mx-auto">
+        {/* Premium Features Grid - Responsive Layout */}
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <motion.div
