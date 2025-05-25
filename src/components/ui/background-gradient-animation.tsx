@@ -41,7 +41,6 @@ export const BackgroundGradientAnimation = ({
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
-  const animationRef = useRef<number>();
 
   useEffect(() => {
     function move() {
@@ -53,7 +52,7 @@ export const BackgroundGradientAnimation = ({
       interactiveRef.current.style.transform = `translate3d(${Math.round(curX)}px, ${Math.round(curY)}px, 0)`;
     }
     move();
-  }, [tgX, tgY]);
+  }, [tgX, tgY, curX, curY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current && interactive) {
@@ -68,8 +67,8 @@ export const BackgroundGradientAnimation = ({
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
-  // Animation timing offsets for left/right differentiation
-  const baseDelay = animationSet === "right" ? 2000 : 0;
+  // Create unique IDs for filters to avoid conflicts
+  const filterId = `blurMe-${animationSet}-${Math.random().toString(36).substr(2, 9)}`;
 
   return (
     <div
@@ -81,7 +80,7 @@ export const BackgroundGradientAnimation = ({
     >
       <svg className="hidden">
         <defs>
-          <filter id={`blurMe-${animationSet}`}>
+          <filter id={filterId}>
             <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
             <feColorMatrix
               in="blur"
@@ -99,215 +98,107 @@ export const BackgroundGradientAnimation = ({
       <div
         className={cn(
           "gradients-container h-full w-full blur-lg",
-          isSafari ? "blur-2xl" : "[filter:url(#blurMe-left)_blur(40px)]"
+          isSafari ? "blur-2xl" : ""
         )}
+        style={{
+          filter: isSafari ? undefined : `url(#${filterId}) blur(40px)`,
+        }}
       >
         {/* First gradient orb */}
         <div
-          className={cn("absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0%,_var(--first-color)_50%,_transparent_100%)] [mix-blend-mode:var(--blending-value)] opacity-100")}
+          className="absolute opacity-100 mix-blend-mode"
           style={{
-            "--first-color": `rgba(${firstColor}, 0.8)`,
-            "--blending-value": blendingValue,
+            background: `radial-gradient(circle at center, rgba(${firstColor}, 0.8) 0%, rgba(${firstColor}, 0.8) 50%, transparent 100%)`,
+            mixBlendMode: blendingValue,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
             transformOrigin: "center center",
-            animation: `first-${animationSet} 20s ease infinite`,
-            animationDelay: `${baseDelay}ms`,
-          } as React.CSSProperties}
+            animation: `gradient-flow-1-${animationSet} 30s ease-in-out infinite`,
+          }}
         />
 
         {/* Second gradient orb */}
         <div
-          className={cn("absolute [background:radial-gradient(circle_at_center,_var(--second-color)_0%,_var(--second-color)_50%,_transparent_100%)] [mix-blend-mode:var(--blending-value)] opacity-100")}
+          className="absolute opacity-100 mix-blend-mode"
           style={{
-            "--second-color": `rgba(${secondColor}, 0.8)`,
-            "--blending-value": blendingValue,
+            background: `radial-gradient(circle at center, rgba(${secondColor}, 0.8) 0%, rgba(${secondColor}, 0.8) 50%, transparent 100%)`,
+            mixBlendMode: blendingValue,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "calc(50% - 400px)",
-            animation: `second-${animationSet} 20s ease infinite`,
-            animationDelay: `${baseDelay + 1000}ms`,
-          } as React.CSSProperties}
+            transformOrigin: "center center",
+            animation: `gradient-flow-2-${animationSet} 25s ease-in-out infinite`,
+            animationDelay: "2s",
+          }}
         />
 
         {/* Third gradient orb */}
         <div
-          className={cn("absolute [background:radial-gradient(circle_at_center,_var(--third-color)_0%,_var(--third-color)_50%,_transparent_100%)] [mix-blend-mode:var(--blending-value)] opacity-100")}
+          className="absolute opacity-100 mix-blend-mode"
           style={{
-            "--third-color": `rgba(${thirdColor}, 0.8)`,
-            "--blending-value": blendingValue,
+            background: `radial-gradient(circle at center, rgba(${thirdColor}, 0.8) 0%, rgba(${thirdColor}, 0.8) 50%, transparent 100%)`,
+            mixBlendMode: blendingValue,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "calc(50% + 400px)",
-            animation: `third-${animationSet} 20s ease infinite`,
-            animationDelay: `${baseDelay + 2000}ms`,
-          } as React.CSSProperties}
+            transformOrigin: "center center",
+            animation: `gradient-flow-3-${animationSet} 35s ease-in-out infinite`,
+            animationDelay: "4s",
+          }}
         />
 
         {/* Fourth gradient orb */}
         <div
-          className={cn("absolute [background:radial-gradient(circle_at_center,_var(--fourth-color)_0%,_var(--fourth-color)_50%,_transparent_100%)] [mix-blend-mode:var(--blending-value)] opacity-70")}
+          className="absolute opacity-70 mix-blend-mode"
           style={{
-            "--fourth-color": `rgba(${fourthColor}, 0.7)`,
-            "--blending-value": blendingValue,
+            background: `radial-gradient(circle at center, rgba(${fourthColor}, 0.7) 0%, rgba(${fourthColor}, 0.7) 50%, transparent 100%)`,
+            mixBlendMode: blendingValue,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "calc(50% - 200px)",
-            animation: `fourth-${animationSet} 20s linear infinite`,
-            animationDelay: `${baseDelay + 3000}ms`,
-          } as React.CSSProperties}
+            transformOrigin: "center center",
+            animation: `gradient-flow-4-${animationSet} 20s ease-in-out infinite`,
+            animationDelay: "1s",
+          }}
         />
 
         {/* Fifth gradient orb */}
         <div
-          className={cn("absolute [background:radial-gradient(circle_at_center,_var(--fifth-color)_0%,_var(--fifth-color)_50%,_transparent_100%)] [mix-blend-mode:var(--blending-value)] opacity-100")}
+          className="absolute opacity-100 mix-blend-mode"
           style={{
-            "--fifth-color": `rgba(${fifthColor}, 0.7)`,
-            "--blending-value": blendingValue,
+            background: `radial-gradient(circle at center, rgba(${fifthColor}, 0.7) 0%, rgba(${fifthColor}, 0.7) 50%, transparent 100%)`,
+            mixBlendMode: blendingValue,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "calc(50% - 800px) calc(50% + 800px)",
-            animation: `fifth-${animationSet} 20s ease infinite`,
-            animationDelay: `${baseDelay + 4000}ms`,
-          } as React.CSSProperties}
+            transformOrigin: "center center",
+            animation: `gradient-flow-5-${animationSet} 40s ease-in-out infinite`,
+            animationDelay: "3s",
+          }}
         />
 
         {/* Interactive pointer element */}
         {interactive && (
           <div
             ref={interactiveRef}
-            className={cn("absolute [background:radial-gradient(circle_at_center,_var(--pointer-color)_0%,_transparent_50%)] [mix-blend-mode:var(--blending-value)] opacity-70")}
+            className="absolute opacity-70 mix-blend-mode"
             style={{
-              "--pointer-color": `rgba(${pointerColor}, 0.5)`,
-              "--blending-value": blendingValue,
+              background: `radial-gradient(circle at center, rgba(${pointerColor}, 0.5) 0%, transparent 50%)`,
+              mixBlendMode: blendingValue,
               width: "100%",
               height: "100%",
               top: "-50%",
               left: "-50%",
-            } as React.CSSProperties}
+            }}
           />
         )}
       </div>
-
-      <style jsx>{`
-        @keyframes first-left {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          33% {
-            transform: translate3d(30px, -30px, 0) rotate(120deg);
-          }
-          66% {
-            transform: translate3d(-20px, 20px, 0) rotate(240deg);
-          }
-        }
-
-        @keyframes second-left {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          50% {
-            transform: translate3d(-25px, -25px, 0) rotate(180deg);
-          }
-        }
-
-        @keyframes third-left {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          25% {
-            transform: translate3d(25px, 25px, 0) rotate(90deg);
-          }
-          75% {
-            transform: translate3d(-25px, 25px, 0) rotate(270deg);
-          }
-        }
-
-        @keyframes fourth-left {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          100% {
-            transform: translate3d(0, 0, 0) rotate(360deg);
-          }
-        }
-
-        @keyframes fifth-left {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          40% {
-            transform: translate3d(-20px, -20px, 0) rotate(144deg);
-          }
-          80% {
-            transform: translate3d(20px, -20px, 0) rotate(288deg);
-          }
-        }
-
-        @keyframes first-right {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          33% {
-            transform: translate3d(-30px, 30px, 0) rotate(-120deg);
-          }
-          66% {
-            transform: translate3d(20px, -20px, 0) rotate(-240deg);
-          }
-        }
-
-        @keyframes second-right {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          50% {
-            transform: translate3d(25px, 25px, 0) rotate(-180deg);
-          }
-        }
-
-        @keyframes third-right {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          25% {
-            transform: translate3d(-25px, -25px, 0) rotate(-90deg);
-          }
-          75% {
-            transform: translate3d(25px, -25px, 0) rotate(-270deg);
-          }
-        }
-
-        @keyframes fourth-right {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          100% {
-            transform: translate3d(0, 0, 0) rotate(-360deg);
-          }
-        }
-
-        @keyframes fifth-right {
-          0%, 100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          40% {
-            transform: translate3d(20px, 20px, 0) rotate(-144deg);
-          }
-          80% {
-            transform: translate3d(-20px, 20px, 0) rotate(-288deg);
-          }
-        }
-      `}</style>
     </div>
   );
 };

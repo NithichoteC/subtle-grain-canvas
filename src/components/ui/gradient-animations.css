@@ -1,0 +1,136 @@
+
+/* Smooth flowing gradient animations for BackgroundGradientAnimation */
+
+/* Left side animations - flowing organic movement */
+@keyframes gradient-flow-1-left {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(60px, -40px, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(-30px, 60px, 0) scale(0.9);
+  }
+  75% {
+    transform: translate3d(-50px, -30px, 0) scale(1.05);
+  }
+}
+
+@keyframes gradient-flow-2-left {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-40px, 50px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(50px, -20px, 0) scale(0.95);
+  }
+}
+
+@keyframes gradient-flow-3-left {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  20% {
+    transform: translate3d(30px, 40px, 0) scale(1.03);
+  }
+  40% {
+    transform: translate3d(-60px, -10px, 0) scale(1.12);
+  }
+  60% {
+    transform: translate3d(20px, -50px, 0) scale(0.88);
+  }
+  80% {
+    transform: translate3d(-20px, 30px, 0) scale(1.06);
+  }
+}
+
+@keyframes gradient-flow-4-left {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-35px, -35px, 0) scale(1.15);
+  }
+}
+
+@keyframes gradient-flow-5-left {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  30% {
+    transform: translate3d(45px, 25px, 0) scale(0.92);
+  }
+  70% {
+    transform: translate3d(-25px, -45px, 0) scale(1.08);
+  }
+}
+
+/* Right side animations - mirrored and offset timing */
+@keyframes gradient-flow-1-right {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(-60px, 40px, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(30px, -60px, 0) scale(0.9);
+  }
+  75% {
+    transform: translate3d(50px, 30px, 0) scale(1.05);
+  }
+}
+
+@keyframes gradient-flow-2-right {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, -50px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-50px, 20px, 0) scale(0.95);
+  }
+}
+
+@keyframes gradient-flow-3-right {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  20% {
+    transform: translate3d(-30px, -40px, 0) scale(1.03);
+  }
+  40% {
+    transform: translate3d(60px, 10px, 0) scale(1.12);
+  }
+  60% {
+    transform: translate3d(-20px, 50px, 0) scale(0.88);
+  }
+  80% {
+    transform: translate3d(20px, -30px, 0) scale(1.06);
+  }
+}
+
+@keyframes gradient-flow-4-right {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(35px, 35px, 0) scale(1.15);
+  }
+}
+
+@keyframes gradient-flow-5-right {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  30% {
+    transform: translate3d(-45px, -25px, 0) scale(0.92);
+  }
+  70% {
+    transform: translate3d(25px, 45px, 0) scale(1.08);
+  }
+}

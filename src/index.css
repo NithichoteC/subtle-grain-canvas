@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('./components/ui/gradient-animations.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,190 +8,73 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 0 0% 100%; /* Pure white for primary */
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 0 0% 98%; /* Lighter border for contrast */
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 0% 100%; /* White ring */
-
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 0 0% 3.9%;
+    --sidebar-primary: 0 0% 9%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 96.1%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 89.8%;
+    --sidebar-ring: 0 0% 3.9%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  @property --pos-x {
-    syntax: '<percentage>';
-    initial-value: 11.14%;
-    inherits: false;
-  }
-
-  @property --pos-y {
-    syntax: '<percentage>';
-    initial-value: 140%;
-    inherits: false;
-  }
-
-  @property --spread-x {
-    syntax: '<percentage>';
-    initial-value: 150%;
-    inherits: false;
-  }
-
-  @property --spread-y {
-    syntax: '<percentage>';
-    initial-value: 180.06%;
-    inherits: false;
-  }
-
-  @property --color-1 {
-    syntax: '<color>';
-    initial-value: #ffffff; /* White base for our theme */
-    inherits: false;
-  }
-
-  @property --color-2 {
-    syntax: '<color>';
-    initial-value: #f5f5f5; /* Very light gray */
-    inherits: false;
-  }
-
-  @property --color-3 {
-    syntax: '<color>';
-    initial-value: #e2d1c3; /* Light bronze from the site */
-    inherits: false;
-  }
-
-  @property --color-4 {
-    syntax: '<color>';
-    initial-value: #f8f8f8; /* Almost white */
-    inherits: false;
-  }
-
-  @property --color-5 {
-    syntax: '<color>';
-    initial-value: #ffffff; /* White */
-    inherits: false;
-  }
-
-  @property --border-angle {
-    syntax: '<angle>';
-    initial-value: 20deg;
-    inherits: true;
-  }
-
-  @property --border-color-1 {
-    syntax: '<color>';
-    initial-value: hsla(43, 74%, 49%, 0.2); /* Bronze/gold */
-    inherits: true;
-  }
-
-  @property --border-color-2 {
-    syntax: '<color>';
-    initial-value: hsla(33, 74%, 39%, 0.3); /* Darker bronze */
-    inherits: true;
-  }
-
-  @property --stop-1 {
-    syntax: '<percentage>';
-    initial-value: 37.35%;
-    inherits: false;
-  }
-
-  @property --stop-2 {
-    syntax: '<percentage>';
-    initial-value: 61.36%;
-    inherits: false;
-  }
-
-  @property --stop-3 {
-    syntax: '<percentage>';
-    initial-value: 78.42%;
-    inherits: false;
-  }
-
-  @property --stop-4 {
-    syntax: '<percentage>';
-    initial-value: 89.52%;
-    inherits: false;
-  }
-
-  @property --stop-5 {
-    syntax: '<percentage>';
-    initial-value: 100%;
-    inherits: false;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 0 0% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 14.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 14.9%;
+    --sidebar-ring: 0 0% 83.1%;
   }
 }
 
@@ -197,373 +82,7 @@
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-roboto;
-  }
-}
-
-/* Import Roboto Flex Font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap');
-
-/* Add custom utility classes */
-@layer utilities {
-  .text-glow {
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-  }
-  
-  .white-glow {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
-  }
-
-  .bronze-gradient {
-    background: linear-gradient(
-      to right,
-      #b8860b 0%,
-      #e2d1c3 20%,
-      #cd7f32 40%,
-      #ffd700 50%,
-      #cd7f32 60%,
-      #e2d1c3 80%,
-      #b8860b 100%
-    );
-    background-size: 200% auto;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine-bronze 6s linear infinite;
-    text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
-  }
-  
-  .bronze-gradient-fix {
-    background: linear-gradient(
-      to right,
-      #b8860b 0%,
-      #e2d1c3 20%,
-      #cd7f32 40%,
-      #ffd700 50%,
-      #cd7f32 60%,
-      #e2d1c3 80%,
-      #b8860b 100%
-    );
-    background-size: 200% auto;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine-bronze 6s linear infinite;
-    text-shadow: 0 0 2px rgba(205, 127, 50, 0.3);
-    padding-right: 12px; /* Horizontal padding to prevent right cutoff */
-    padding-bottom: 12px; /* Increased padding to fully accommodate descenders */
-    margin-right: 4px; /* Spacing between words */
-    display: inline-block; /* Ensures the full element is rendered */
-    line-height: 1; /* Compact text within lines */
-    transform: translateY(-4px); /* Slight upward shift to prevent descenders cutoff */
-  }
-  
-  .bronze-gradient-button {
-    background: linear-gradient(
-      to right,
-      #b8860b 0%,
-      #e2d1c3 20%,
-      #cd7f32 40%,
-      #ffd700 50%,
-      #cd7f32 60%,
-      #e2d1c3 80%,
-      #b8860b 100%
-    );
-    background-size: 200% auto;
-    color: #fff;
-    text-shadow: none; /* Removed text shadow */
-    border: none;
-    animation: shine-bronze 6s linear infinite;
-    transition: all 0.3s ease;
-    font-weight: 500;
-  }
-  
-  .bronze-gradient-button:hover {
-    transform: translateY(-1px);
-    filter: brightness(110%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .minimalist-button {
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(226, 209, 195, 0.2) 30%,
-      rgba(255, 255, 255, 0.9) 60%,
-      rgba(226, 209, 195, 0.2) 100%
-    );
-    background-size: 200% auto;
-    color: #333;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    text-shadow: none;
-    font-weight: 500;
-    transition: all 0.4s ease;
-  }
-  
-  .minimalist-button:hover {
-    background: linear-gradient(
-      to right,
-      #b8860b 0%,
-      #e2d1c3 20%,
-      #cd7f32 40%,
-      #ffd700 50%,
-      #cd7f32 60%,
-      #e2d1c3 80%,
-      #b8860b 100%
-    );
-    background-size: 200% auto;
-    color: #fff;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(184, 134, 11, 0.5);
-    animation: shine-bronze 6s linear infinite;
-    transform: translateY(-1px);
-    filter: brightness(105%);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  @keyframes shine-bronze {
-    to {
-      background-position: 200% center;
-    }
-  }
-
-  /* Add a shine effect animation for gradient buttons */
-  @keyframes gradient-shine {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  /* New animation for sliding gradient backgrounds */
-  @keyframes gradient-slide {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  /* Add floating animation for modern elements */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px) rotate(var(--rotation, 0deg));
-    }
-    50% {
-      transform: translateY(-10px) rotate(var(--rotation, 0deg));
-    }
-  }
-  
-  /* Add gradient-radial utility */
-  .bg-gradient-radial {
-    background: radial-gradient(circle, var(--tw-gradient-stops));
-  }
-
-  /* Smooth gradient rotation animations for left side */
-  @keyframes rotateleft1 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes rotateleft2 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-  }
-  
-  @keyframes rotateleft3 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes rotateleft4 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-  }
-  
-  @keyframes rotateleft5 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* Smooth gradient rotation animations for right side */
-  @keyframes rotateright1 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-  }
-  
-  @keyframes rotateright2 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes rotateright3 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-  }
-  
-  @keyframes rotateright4 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes rotateright5 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-  }
-}
-
-@layer components {
-  .gradient-button {
-    @apply relative appearance-none cursor-pointer;
-    background: radial-gradient(
-      var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
-      var(--color-1) var(--stop-1),
-      var(--color-2) var(--stop-2),
-      var(--color-3) var(--stop-3),
-      var(--color-4) var(--stop-4),
-      var(--color-5) var(--stop-5)
-    );
-    transition:
-      --pos-x 0.5s,
-      --pos-y 0.5s,
-      --spread-x 0.5s,
-      --spread-y 0.5s,
-      --color-1 0.5s,
-      --color-2 0.5s,
-      --color-3 0.5s,
-      --color-4 0.5s,
-      --color-5 0.5s,
-      --border-angle 0.5s,
-      --border-color-1 0.5s,
-      --border-color-2 0.5s,
-      --stop-1 0.5s,
-      --stop-2 0.5s,
-      --stop-3 0.5s,
-      --stop-4 0.5s,
-      --stop-5 0.5s;
-  }
-
-  .gradient-button::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      var(--border-angle),
-      var(--border-color-1),
-      var(--border-color-2)
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  .gradient-button {
-    /* Default state - luxury bronze/gold with nice contrast for white text */
-    --pos-x: 85%;
-    --pos-y: 20%;
-    --spread-x: 150%;
-    --spread-y: 130%;
-    --color-1: #B8860B; /* Dark gold */
-    --color-2: #956F29; /* Medium-dark gold */
-    --color-3: #CD7F32; /* Bronze */
-    --color-4: #D4AF37; /* Metallic gold */
-    --color-5: #705114; /* Deep brown gold */
-    --border-angle: 190deg;
-    --border-color-1: hsla(43, 74%, 49%, 0.6); /* Bronze */
-    --border-color-2: hsla(33, 74%, 39%, 0.8); /* Darker bronze */
-    --stop-1: 10%;
-    --stop-2: 30%;
-    --stop-3: 60%;
-    --stop-4: 80%;
-    --stop-5: 100%;
-    text-shadow: none; /* Removed text shadow */
-    box-shadow: none; /* Removed box shadow */
-    animation: gradient-shine 6s ease infinite; /* Keep the subtle animation */
-  }
-
-  .gradient-button:hover {
-    --pos-x: 10%;
-    --pos-y: 90%;
-    --spread-x: 180%;
-    --spread-y: 160%;
-    --color-1: #FFD700; /* Bright gold */
-    --color-2: #DAA520; /* Golden rod */
-    --color-3: #CD7F32; /* Bronze */
-    --color-4: #B8860B; /* Dark gold */
-    --color-5: #956F29; /* Medium gold */
-    --border-angle: 220deg;
-    --border-color-1: hsla(43, 84%, 65%, 0.7); /* Brighter bronze border */
-    --border-color-2: hsla(33, 84%, 45%, 0.9); /* Rich bronze border */
-    --stop-1: 0%;
-    --stop-2: 25%;
-    --stop-3: 50%;
-    --stop-4: 75%;
-    --stop-5: 100%;
-    text-shadow: none; /* Removed text shadow */
-    box-shadow: none; /* Removed box shadow */
-    transform: none; /* Removed the translateY movement */
-  }
-
-  .gradient-button-variant {
-    /* Variant button - slightly different color scheme */
-    --pos-x: 70%;
-    --pos-y: 30%;
-    --spread-x: 120%;
-    --spread-y: 110%;
-    --color-1: #956F29; /* Medium-dark gold */
-    --color-2: #B8860B; /* Dark gold */
-    --color-3: #E6BE8A; /* Light gold */
-    --color-4: #8B6914; /* Darker gold */
-    --color-5: #CD7F32; /* Bronze */
-    --border-angle: 200deg;
-    --border-color-1: hsla(43, 74%, 49%, 0.5); /* Bronze */
-    --border-color-2: hsla(33, 74%, 39%, 0.6); /* Darker bronze */
-    --stop-1: 5%;
-    --stop-2: 25%;
-    --stop-3: 55%;
-    --stop-4: 75%;
-    --stop-5: 95%;
-  }
-
-  .gradient-button-variant:hover {
-    --pos-x: 15%;
-    --pos-y: 85%;
-    --spread-x: 160%;
-    --spread-y: 140%;
-    --color-1: #FFD700; /* Bright gold */
-    --color-2: #DAA520; /* Golden rod */
-    --color-3: #CD7F32; /* Bronze */
-    --color-4: #B8860B; /* Dark gold */
-    --color-5: #8B6914; /* Darker gold */
-    --stop-1: 0%;
-    --stop-2: 25%;
-    --stop-3: 50%;
-    --stop-4: 75%;
-    --stop-5: 100%;
-    --border-angle: 220deg;
-    --border-color-1: hsla(43, 84%, 65%, 0.6); /* Brighter bronze border */
-    --border-color-2: hsla(33, 84%, 45%, 0.8); /* Rich bronze border */
-    transform: none; /* Removed the translateY movement */
-  }
-  
-  /* New class for animating gradients */
-  .animate-gradient-slide {
-    animation: gradient-slide 3s ease infinite;
-    background-size: 200% 200%;
+    @apply bg-background text-foreground;
   }
 }
