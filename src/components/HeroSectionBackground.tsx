@@ -9,8 +9,8 @@ interface HeroSectionBackgroundProps {
 }
 
 /**
- * Hero section background with consistent styling and borders
- * Handles the center content area background and border system
+ * Hero section background with perfect alignment and no gaps
+ * Handles the center content area background to seamlessly connect with side blocks
  */
 const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({ 
   children, 
@@ -18,13 +18,11 @@ const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({
 }) => {
   return (
     <div className={`relative font-roboto ${className}`} style={{ zIndex: zIndex.content }}>
-      {/* Border styling and background container */}
+      {/* Background container - perfectly aligned */}
       <div className="absolute inset-0" style={{ zIndex: zIndex.background }}>
-        {/* Border system - left and right borders */}
         <div 
-          className="border-l border-r"
+          className="h-full w-full"
           style={{ 
-            borderColor: colors.white[10],
             backgroundColor: colors.dark
           }}
         >
