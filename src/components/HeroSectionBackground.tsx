@@ -13,7 +13,7 @@ const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({ children,
   return (
     <div className={`relative z-10 font-roboto ${className || ''}`}>
       {/* Border styling to match the navigation line */}
-      <div className="absolute inset-0 z-[-1] border-l border-r border-b border-white/10">
+      <div className="absolute inset-0 z-[-1] border-l border-r border-white/10">
         {/* Main background */}
         <div className="absolute inset-0 bg-dark"></div>
         
@@ -26,6 +26,9 @@ const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({ children,
           }}
         ></div>
       </div>
+      
+      {/* Full-width bottom border that extends beyond container */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-screen h-[1px] bg-white/10 z-[-1]"></div>
       
       {/* Content */}
       {children}
