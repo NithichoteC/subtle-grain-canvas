@@ -7,42 +7,36 @@ import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 import { zIndex } from "@/lib/design-tokens";
 
 /**
- * Main hero demo component with optimized responsive structure
- * Manages the three-column layout with proper z-index layering and responsive design
+ * Main hero demo component with optimized structure
+ * Manages the three-column layout with proper z-index layering
  */
 function HeroDemo() {
   return (
-    <div className="relative w-full min-h-screen font-roboto">
-      {/* Side blocks - fixed positioning for seamless coverage */}
+    <div className="relative w-full font-roboto">
+      {/* Side blocks - positioned with proper z-index */}
       <SideBlockGrids />
       
-      {/* Main content layer - responsive container */}
-      <div className="relative w-full" style={{ zIndex: zIndex.content }}>
-        {/* Hero section container - responsive padding to avoid side blocks */}
+      {/* Main content layer */}
+      <div className="relative" style={{ zIndex: zIndex.content }}>
+        {/* Hero section container */}
         <div className="relative">
-          {/* Navigation - responsive container */}
-          <div className="w-full px-48 sm:px-56 md:px-64 lg:px-80 xl:px-96">
-            <div className="container max-w-5xl mx-auto">
-              <NavBarDemo />
-            </div>
+          {/* Navigation */}
+          <div className="container max-w-5xl mx-auto">
+            <NavBarDemo />
           </div>
           
-          {/* Hero content - responsive container */}
-          <div className="w-full px-48 sm:px-56 md:px-64 lg:px-80 xl:px-96">
-            <div className="container max-w-5xl mx-auto">
-              <HeroSectionBackground>
-                <Hero />
-              </HeroSectionBackground>
-            </div>
+          {/* Hero content */}
+          <div className="container max-w-5xl mx-auto">
+            <HeroSectionBackground>
+              <Hero />
+            </HeroSectionBackground>
           </div>
         </div>
       </div>
       
-      {/* Early Adopter Section - responsive container */}
-      <div className="relative w-full px-48 sm:px-56 md:px-64 lg:px-80 xl:px-96" style={{ zIndex: zIndex.content }}>
-        <div className="container max-w-5xl mx-auto">
-          <EarlyAdopterSection />
-        </div>
+      {/* Early Adopter Section */}
+      <div className="relative" style={{ zIndex: zIndex.content }}>
+        <EarlyAdopterSection />
       </div>
     </div>
   );
