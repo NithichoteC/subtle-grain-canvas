@@ -1,4 +1,3 @@
-
 "use client";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
@@ -18,8 +17,8 @@ export const BackgroundGradientAnimation = ({
   className,
   interactive = true,
   containerClassName,
-  animationSpeed = "normal",
-  animationDelay = "0s",
+  animationSet = "left",
+  cursorResponsiveness = "normal",
 }: {
   gradientBackgroundStart?: string;
   gradientBackgroundEnd?: string;
@@ -35,8 +34,8 @@ export const BackgroundGradientAnimation = ({
   className?: string;
   interactive?: boolean;
   containerClassName?: string;
-  animationSpeed?: "slow" | "normal" | "fast";
-  animationDelay?: string;
+  animationSet?: "left" | "right";
+  cursorResponsiveness?: "normal" | "enhanced";
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
@@ -44,15 +43,6 @@ export const BackgroundGradientAnimation = ({
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
-
-  // Get animation suffix based on speed
-  const getAnimationSuffix = () => {
-    switch (animationSpeed) {
-      case "slow": return "-slow";
-      case "fast": return "-fast";
-      default: return "";
-    }
-  };
   
   useEffect(() => {
     document.body.style.setProperty(
@@ -78,15 +68,16 @@ export const BackgroundGradientAnimation = ({
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
+      const responsiveness = cursorResponsiveness === "enhanced" ? 8 : 20;
+      setCurX(curX + (tgX - curX) / responsiveness);
+      setCurY(curY + (tgY - curY) / responsiveness);
       interactiveRef.current.style.transform = `translate(${Math.round(
         curX
       )}px, ${Math.round(curY)}px)`;
     }
 
     move();
-  }, [tgX, tgY]);
+  }, [tgX, tgY, cursorResponsiveness]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -101,7 +92,27 @@ export const BackgroundGradientAnimation = ({
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
-  const suffix = getAnimationSuffix();
+  // Animation classes based on which side
+  const getAnimationClasses = () => {
+    if (animationSet === "right") {
+      return {
+        first: "animate-first-right",
+        second: "animate-second-right", 
+        third: "animate-third-right",
+        fourth: "animate-fourth-right",
+        fifth: "animate-fifth-right"
+      };
+    }
+    return {
+      first: "animate-first",
+      second: "animate-second",
+      third: "animate-third", 
+      fourth: "animate-fourth",
+      fifth: "animate-fifth"
+    };
+  };
+
+  const animations = getAnimationClasses();
 
   return (
     <div
@@ -137,68 +148,48 @@ export const BackgroundGradientAnimation = ({
       >
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--first-color),_0.8)_0,_rgba(var(--first-color),_0)_50%)_no-repeat]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--first-color),_0.5)_0,_rgba(var(--first-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:center_center]`,
-            `animate-first${suffix}`,
-            `opacity-100`
+            animations.first,
+            `opacity-80`
           )}
-          style={{ 
-            animationDelay,
-            animationFillMode: 'both'
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.5)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-400px)]`,
-            `animate-second${suffix}`,
-            `opacity-100`
+            animations.second,
+            `opacity-80`
           )}
-          style={{ 
-            animationDelay: `calc(${animationDelay} + 0.5s)`,
-            animationFillMode: 'both'
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.5)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%+400px)]`,
-            `animate-third${suffix}`,
-            `opacity-100`
+            animations.third,
+            `opacity-80`
           )}
-          style={{ 
-            animationDelay: `calc(${animationDelay} + 1s)`,
-            animationFillMode: 'both'
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.5)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-200px)]`,
-            `animate-fourth${suffix}`,
-            `opacity-70`
+            animations.fourth,
+            `opacity-60`
           )}
-          style={{ 
-            animationDelay: `calc(${animationDelay} + 1.5s)`,
-            animationFillMode: 'both'
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.5)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
-            `animate-fifth${suffix}`,
-            `opacity-100`
+            animations.fifth,
+            `opacity-80`
           )}
-          style={{ 
-            animationDelay: `calc(${animationDelay} + 2s)`,
-            animationFillMode: 'both'
-          }}
         ></div>
 
         {interactive && (
@@ -206,9 +197,9 @@ export const BackgroundGradientAnimation = ({
             ref={interactiveRef}
             onMouseMove={handleMouseMove}
             className={cn(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
+              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.6)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
               `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
-              `opacity-70`
+              `opacity-50`
             )}
           ></div>
         )}

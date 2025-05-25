@@ -3,6 +3,7 @@
 
 import { NoiseTexture } from '@/components/ui/noise-texture';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
+import { DotPattern } from '@/components/ui/dot-pattern';
 import { colors, layout, noiseConfigs, zIndex } from '@/lib/design-tokens';
 
 interface SideBlockGridsProps {
@@ -11,92 +12,205 @@ interface SideBlockGridsProps {
 
 /**
  * Side block grid enhancements with animated gradient backgrounds
- * Creates illusion of continuous gradient flow across the page with offset timing and mirrored directions
- * Uses bronze/gold color palette with coordinated gradient animations
+ * Enhanced with layered textures and high-tech geometric patterns
+ * Premium enterprise aesthetic with sophisticated visual depth
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Flows right-to-left with slower timing */}
+      {/* Left Edge Enhancement - Original animation timing */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
         <BackgroundGradientAnimation
-          gradientBackgroundStart="rgb(20, 20, 20)"
-          gradientBackgroundEnd="rgb(30, 30, 30)"
-          firstColor="226, 209, 195"   // Bronze light (start with light)
-          secondColor="255, 215, 0"    // Gold
-          thirdColor="205, 127, 50"    // Bronze medium
-          fourthColor="184, 134, 11"   // Bronze dark
-          fifthColor="149, 111, 41"    // Bronze deep
-          pointerColor="239, 204, 138" // Bronze base
-          size="140%"
-          blendingValue="multiply"
-          interactive={false}
+          gradientBackgroundStart="rgb(23, 23, 23)"
+          gradientBackgroundEnd="rgb(35, 35, 35)"
+          firstColor="130, 95, 8"      // Darker bronze
+          secondColor="165, 102, 40"   // Muted bronze medium  
+          thirdColor="200, 170, 0"     // Toned gold
+          fourthColor="119, 89, 33"    // Deep bronze
+          fifthColor="180, 166, 156"   // Subtle bronze light
+          pointerColor="210, 180, 120" // Enhanced pointer intensity
+          size="120%"
+          blendingValue="overlay"
+          interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
-          animationSpeed="slow"
-          animationDelay="0s"
+          animationSet="left"
+          cursorResponsiveness="enhanced"
         >
-          {/* Subtle texture overlay */}
+          {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
-            <NoiseTexture {...noiseConfigs.sideBlocks} />
+            <NoiseTexture {...noiseConfigs.hero} />
           </div>
-
-          {/* Left side flowing effect */}
+          
+          {/* Enhanced dot pattern with more visibility */}
+          <div className="absolute inset-0 z-8">
+            <DotPattern
+              glow={true}
+              dotSize={1.5}
+              spacing={20}
+              opacity={0.12}
+              color={colors.bronze.base}
+              glowColor={colors.bronze.light}
+              className="[mask-image:radial-gradient(500px_circle_at_25%_50%,white,transparent)]"
+            />
+          </div>
+          
+          {/* Secondary dot layer for depth */}
+          <div className="absolute inset-0 z-7">
+            <DotPattern
+              glow={false}
+              dotSize={0.8}
+              spacing={35}
+              opacity={0.08}
+              color={colors.bronze.medium}
+              className="[mask-image:radial-gradient(400px_circle_at_40%_30%,white,transparent)]"
+            />
+          </div>
+          
+          {/* High-tech grid overlay */}
           <div 
-            className="absolute inset-0 z-5 animate-flow-left"
-            style={{ 
-              background: `linear-gradient(45deg, 
-                ${colors.bronze.light}08 0%, 
-                ${colors.bronze.gold}12 25%, 
-                ${colors.bronze.medium}06 50%, 
-                ${colors.bronze.dark}10 75%, 
-                ${colors.bronze.deep}04 100%)`
+            className="absolute inset-0 z-10 opacity-[0.12]"
+            style={{
+              backgroundImage: `
+                linear-gradient(90deg, ${colors.bronze.base}30 1px, transparent 1px),
+                linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px'
             }}
+          />
+          
+          {/* Subtle diagonal lines for tech aesthetic */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.08]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                ${colors.bronze.light}20 20px,
+                ${colors.bronze.light}20 21px
+              )`
+            }}
+          />
+          
+          {/* Circuit-like pattern */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.06]"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 25% 25%, ${colors.bronze.base}40 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, ${colors.bronze.base}40 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px'
+            }}
+          />
+          
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
+            aria-label="Reserved space for 3D assets"
           />
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Flows left-to-right with faster timing, reversed colors */}
+      {/* Right Edge Enhancement - Offset animation timing */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
         <BackgroundGradientAnimation
-          gradientBackgroundStart="rgb(20, 20, 20)"
-          gradientBackgroundEnd="rgb(30, 30, 30)"
-          firstColor="149, 111, 41"    // Bronze deep (start with deep)
-          secondColor="184, 134, 11"   // Bronze dark
-          thirdColor="205, 127, 50"    // Bronze medium
-          fourthColor="255, 215, 0"    // Gold
-          fifthColor="226, 209, 195"   // Bronze light
-          pointerColor="239, 204, 138" // Bronze base
-          size="140%"
-          blendingValue="multiply"
-          interactive={false}
+          gradientBackgroundStart="rgb(23, 23, 23)"
+          gradientBackgroundEnd="rgb(35, 35, 35)"
+          firstColor="180, 166, 156"   // Subtle bronze light (swapped order)
+          secondColor="119, 89, 33"    // Deep bronze
+          thirdColor="130, 95, 8"      // Darker bronze
+          fourthColor="200, 170, 0"    // Toned gold
+          fifthColor="165, 102, 40"    // Muted bronze medium
+          pointerColor="210, 180, 120" // Enhanced pointer intensity
+          size="120%"
+          blendingValue="overlay"
+          interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
-          animationSpeed="fast"
-          animationDelay="2s"
+          animationSet="right"
+          cursorResponsiveness="enhanced"
         >
-          {/* Subtle texture overlay */}
+          {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
-            <NoiseTexture {...noiseConfigs.sideBlocks} />
+            <NoiseTexture {...noiseConfigs.hero} />
           </div>
-
-          {/* Right side flowing effect - opposite direction */}
+          
+          {/* Enhanced dot pattern with offset for asymmetry */}
+          <div className="absolute inset-0 z-8">
+            <DotPattern
+              glow={true}
+              dotSize={1.2}
+              spacing={25}
+              opacity={0.10}
+              color={colors.bronze.medium}
+              glowColor={colors.bronze.gold}
+              className="[mask-image:radial-gradient(450px_circle_at_75%_40%,white,transparent)]"
+            />
+          </div>
+          
+          {/* Secondary dot layer for depth - different pattern */}
+          <div className="absolute inset-0 z-7">
+            <DotPattern
+              glow={false}
+              dotSize={0.6}
+              spacing={30}
+              opacity={0.06}
+              color={colors.bronze.gold}
+              className="[mask-image:radial-gradient(350px_circle_at_60%_60%,white,transparent)]"
+            />
+          </div>
+          
+          {/* High-tech grid overlay - offset pattern */}
           <div 
-            className="absolute inset-0 z-5 animate-flow-right"
-            style={{ 
-              background: `linear-gradient(-45deg, 
-                ${colors.bronze.deep}04 0%, 
-                ${colors.bronze.dark}10 25%, 
-                ${colors.bronze.medium}06 50%, 
-                ${colors.bronze.gold}12 75%, 
-                ${colors.bronze.light}08 100%)`
+            className="absolute inset-0 z-10 opacity-[0.12]"
+            style={{
+              backgroundImage: `
+                linear-gradient(90deg, ${colors.bronze.base}30 1px, transparent 1px),
+                linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px',
+              backgroundPosition: '20px 20px' // Offset for right side
             }}
+          />
+          
+          {/* Diagonal lines - opposite direction */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.08]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 20px,
+                ${colors.bronze.light}20 20px,
+                ${colors.bronze.light}20 21px
+              )`
+            }}
+          />
+          
+          {/* Circuit pattern - offset positions */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.06]"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 75% 25%, ${colors.bronze.base}40 1px, transparent 1px),
+                radial-gradient(circle at 25% 75%, ${colors.bronze.base}40 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px'
+            }}
+          />
+          
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
+            aria-label="Reserved space for 3D assets"
           />
         </BackgroundGradientAnimation>
       </div>
@@ -119,18 +233,11 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </div>
       </div>
       
-      {/* Dynamic cross-flow connector */}
+      {/* Ultra-subtle ambient enhancement */}
       <div 
-        className="absolute inset-0 z-6 animate-cross-flow"
+        className="absolute inset-0 z-5"
         style={{ 
-          background: `linear-gradient(90deg, 
-            ${colors.bronze.light}02 0%, 
-            ${colors.bronze.medium}06 20%, 
-            ${colors.bronze.gold}08 40%, 
-            ${colors.bronze.base}10 50%, 
-            ${colors.bronze.gold}08 60%, 
-            ${colors.bronze.medium}06 80%, 
-            ${colors.bronze.light}02 100%)`
+          background: `radial-gradient(ellipse 80% 50% at 50% 50%, ${colors.bronze.base}01 0%, transparent 70%)`
         }}
       />
     </div>

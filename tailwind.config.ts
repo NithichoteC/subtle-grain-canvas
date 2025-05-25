@@ -91,7 +91,6 @@ export default {
 						height: '0'
 					}
 				},
-				// Standard speed animations
 				first: {
 					"0%": {
 						transform: "rotate(0deg)",
@@ -132,119 +131,60 @@ export default {
 						transform: "rotate(360deg)",
 					},
 				},
-				// New side block animations
-				'breathe-left': {
-					"0%, 100%": { 
-						opacity: "0.3", 
-						transform: "scale(1) translateX(0)" 
+				"first-right": {
+					"0%": {
+						transform: "rotate(180deg)",
 					},
-					"50%": { 
-						opacity: "0.6", 
-						transform: "scale(1.05) translateX(5px)" 
-					}
+					"100%": {
+						transform: "rotate(540deg)",
+					},
 				},
-				'breathe-right': {
-					"0%, 100%": { 
-						opacity: "0.3", 
-						transform: "scale(1) translateX(0)" 
+				"second-right": {
+					"0%": {
+						transform: "rotate(90deg)",
 					},
-					"50%": { 
-						opacity: "0.6", 
-						transform: "scale(1.05) translateX(-5px)" 
-					}
+					"100%": {
+						transform: "rotate(-270deg)",
+					},
 				},
-				'cross-flow': {
-					"0%, 100%": { opacity: "0.2" },
-					"25%": { opacity: "0.4" },
-					"50%": { opacity: "0.3" },
-					"75%": { opacity: "0.5" }
+				"third-right": {
+					"0%": {
+						transform: "rotate(270deg)",
+					},
+					"100%": {
+						transform: "rotate(630deg)",
+					},
 				},
-				// New coordinated animations
-				'breathe-left-coord': {
-					"0%, 100%": { 
-						opacity: "0.25", 
-						transform: "scale(0.98) translateX(-2px)" 
+				"fourth-right": {
+					"0%": {
+						transform: "rotate(45deg)",
 					},
-					"33%": { 
-						opacity: "0.5", 
-						transform: "scale(1.02) translateX(3px)" 
+					"100%": {
+						transform: "rotate(-315deg)",
 					},
-					"66%": { 
-						opacity: "0.4", 
-						transform: "scale(1.0) translateX(1px)" 
-					}
 				},
-				'breathe-right-coord': {
-					"0%, 100%": { 
-						opacity: "0.4", 
-						transform: "scale(1.0) translateX(1px)" 
+				"fifth-right": {
+					"0%": {
+						transform: "rotate(135deg)",
 					},
-					"33%": { 
-						opacity: "0.25", 
-						transform: "scale(0.98) translateX(2px)" 
+					"100%": {
+						transform: "rotate(495deg)",
 					},
-					"66%": { 
-						opacity: "0.5", 
-						transform: "scale(1.02) translateX(-3px)" 
-					}
 				},
-				'cross-flow-enhanced': {
-					"0%": { opacity: "0.15" },
-					"20%": { opacity: "0.35" },
-					"40%": { opacity: "0.25" },
-					"60%": { opacity: "0.45" },
-					"80%": { opacity: "0.3" },
-					"100%": { opacity: "0.15" }
-				},
-				'flow-pulse': {
-					"0%, 100%": { 
-						opacity: "0.1", 
-						transform: "scale(1) rotate(0deg)" 
-					},
-					"25%": { 
-						opacity: "0.2", 
-						transform: "scale(1.02) rotate(0.5deg)" 
-					},
-					"50%": { 
-						opacity: "0.15", 
-						transform: "scale(0.98) rotate(-0.5deg)" 
-					},
-					"75%": { 
-						opacity: "0.25", 
-						transform: "scale(1.01) rotate(0.3deg)" 
-					}
-				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				// Standard animations
 				first: "first 20s linear infinite",
 				second: "second 40s linear infinite",
 				third: "third 40s linear infinite",
 				fourth: "fourth 60s linear infinite",
 				fifth: "fifth 60s linear infinite",
-				// Slow animations (for left side)
-				"first-slow": "first 32s linear infinite",
-				"second-slow": "second 62s linear infinite",
-				"third-slow": "third 62s linear infinite",
-				"fourth-slow": "fourth 92s linear infinite",
-				"fifth-slow": "fifth 92s linear infinite",
-				// Fast animations (for right side)
-				"first-fast": "first 12s linear infinite",
-				"second-fast": "second 28s linear infinite",
-				"third-fast": "third 28s linear infinite",
-				"fourth-fast": "fourth 38s linear infinite",
-				"fifth-fast": "fifth 38s linear infinite",
-				// New side block animations
-				'breathe-left': 'breathe-left 22s ease-in-out infinite 3s',
-				'breathe-right': 'breathe-right 18s ease-in-out infinite',
-				'cross-flow': 'cross-flow 25s ease-in-out infinite',
-				// New coordinated animations
-				'breathe-left-coord': 'breathe-left-coord 28s ease-in-out infinite 2s',
-				'breathe-right-coord': 'breathe-right-coord 24s ease-in-out infinite',
-				'cross-flow-enhanced': 'cross-flow-enhanced 32s ease-in-out infinite 1s',
-				'flow-pulse': 'flow-pulse 35s ease-in-out infinite 0.5s'
+				"first-right": "first-right 20s linear infinite 5s",
+				"second-right": "second-right 40s linear infinite 10s",
+				"third-right": "third-right 40s linear infinite 2s",
+				"fourth-right": "fourth-right 60s linear infinite 15s",
+				"fifth-right": "fifth-right 60s linear infinite 8s",
 			}
 		}
 	},
