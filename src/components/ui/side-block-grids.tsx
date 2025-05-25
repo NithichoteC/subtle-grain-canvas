@@ -14,14 +14,14 @@ interface SideBlockGridsProps {
  * Side block grid enhancements with animated gradient backgrounds
  * Enhanced with layered textures and high-tech geometric patterns
  * Premium enterprise aesthetic with sophisticated visual depth
+ * Now fully responsive with proper visibility on all screen sizes
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Original animation timing */}
+      {/* Left Edge Enhancement - Responsive width */}
       <div 
-        className="absolute left-0 top-0 bottom-0"
-        style={{ width: 'calc(50vw - 640px)' }}
+        className="absolute left-0 top-0 bottom-0 w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[calc(max(200px,50vw-640px))] 2xl:w-[calc(50vw-640px)]"
       >
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
@@ -45,16 +45,16 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
           
-          {/* Enhanced dot pattern with more visibility */}
+          {/* Enhanced dot pattern with increased visibility */}
           <div className="absolute inset-0 z-8">
             <DotPattern
               glow={true}
-              dotSize={1.5}
-              spacing={20}
-              opacity={0.12}
+              dotSize={2}
+              spacing={18}
+              opacity={0.25}
               color={colors.bronze.base}
               glowColor={colors.bronze.light}
-              className="[mask-image:radial-gradient(500px_circle_at_25%_50%,white,transparent)]"
+              className="[mask-image:radial-gradient(600px_circle_at_25%_50%,white,transparent)]"
             />
           </div>
           
@@ -62,49 +62,49 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           <div className="absolute inset-0 z-7">
             <DotPattern
               glow={false}
-              dotSize={0.8}
-              spacing={35}
-              opacity={0.08}
+              dotSize={1}
+              spacing={30}
+              opacity={0.15}
               color={colors.bronze.medium}
-              className="[mask-image:radial-gradient(400px_circle_at_40%_30%,white,transparent)]"
+              className="[mask-image:radial-gradient(500px_circle_at_40%_30%,white,transparent)]"
             />
           </div>
           
-          {/* High-tech grid overlay */}
+          {/* High-tech grid overlay - increased visibility */}
           <div 
-            className="absolute inset-0 z-10 opacity-[0.12]"
+            className="absolute inset-0 z-10 opacity-[0.2]"
             style={{
               backgroundImage: `
-                linear-gradient(90deg, ${colors.bronze.base}30 1px, transparent 1px),
-                linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
+                linear-gradient(90deg, ${colors.bronze.base}40 1px, transparent 1px),
+                linear-gradient(180deg, ${colors.bronze.base}40 1px, transparent 1px)
               `,
-              backgroundSize: '40px 40px'
+              backgroundSize: '35px 35px'
             }}
           />
           
           {/* Subtle diagonal lines for tech aesthetic */}
           <div 
-            className="absolute inset-0 z-10 opacity-[0.08]"
+            className="absolute inset-0 z-10 opacity-[0.12]"
             style={{
               backgroundImage: `repeating-linear-gradient(
                 45deg,
                 transparent,
-                transparent 20px,
-                ${colors.bronze.light}20 20px,
-                ${colors.bronze.light}20 21px
+                transparent 18px,
+                ${colors.bronze.light}30 18px,
+                ${colors.bronze.light}30 19px
               )`
             }}
           />
           
           {/* Circuit-like pattern */}
           <div 
-            className="absolute inset-0 z-10 opacity-[0.06]"
+            className="absolute inset-0 z-10 opacity-[0.1]"
             style={{
               backgroundImage: `
-                radial-gradient(circle at 25% 25%, ${colors.bronze.base}40 1px, transparent 1px),
-                radial-gradient(circle at 75% 75%, ${colors.bronze.base}40 1px, transparent 1px)
+                radial-gradient(circle at 25% 25%, ${colors.bronze.base}50 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, ${colors.bronze.base}50 1px, transparent 1px)
               `,
-              backgroundSize: '80px 80px'
+              backgroundSize: '70px 70px'
             }}
           />
           
@@ -116,10 +116,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Offset animation timing */}
+      {/* Right Edge Enhancement - Responsive width */}
       <div 
-        className="absolute right-0 top-0 bottom-0"
-        style={{ width: 'calc(50vw - 640px)' }}
+        className="absolute right-0 top-0 bottom-0 w-64 sm:w-72 md:w-80 lg:w-96 xl:w-[calc(max(200px,50vw-640px))] 2xl:w-[calc(50vw-640px)]"
       >
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
@@ -147,12 +146,12 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           <div className="absolute inset-0 z-8">
             <DotPattern
               glow={true}
-              dotSize={1.2}
-              spacing={25}
-              opacity={0.10}
+              dotSize={1.8}
+              spacing={22}
+              opacity={0.22}
               color={colors.bronze.medium}
               glowColor={colors.bronze.gold}
-              className="[mask-image:radial-gradient(450px_circle_at_75%_40%,white,transparent)]"
+              className="[mask-image:radial-gradient(550px_circle_at_75%_40%,white,transparent)]"
             />
           </div>
           
@@ -160,50 +159,50 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           <div className="absolute inset-0 z-7">
             <DotPattern
               glow={false}
-              dotSize={0.6}
-              spacing={30}
-              opacity={0.06}
+              dotSize={0.8}
+              spacing={28}
+              opacity={0.12}
               color={colors.bronze.gold}
-              className="[mask-image:radial-gradient(350px_circle_at_60%_60%,white,transparent)]"
+              className="[mask-image:radial-gradient(450px_circle_at_60%_60%,white,transparent)]"
             />
           </div>
           
           {/* High-tech grid overlay - offset pattern */}
           <div 
-            className="absolute inset-0 z-10 opacity-[0.12]"
+            className="absolute inset-0 z-10 opacity-[0.18]"
             style={{
               backgroundImage: `
-                linear-gradient(90deg, ${colors.bronze.base}30 1px, transparent 1px),
-                linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
+                linear-gradient(90deg, ${colors.bronze.base}40 1px, transparent 1px),
+                linear-gradient(180deg, ${colors.bronze.base}40 1px, transparent 1px)
               `,
-              backgroundSize: '40px 40px',
-              backgroundPosition: '20px 20px' // Offset for right side
+              backgroundSize: '35px 35px',
+              backgroundPosition: '17px 17px' // Offset for right side
             }}
           />
           
           {/* Diagonal lines - opposite direction */}
           <div 
-            className="absolute inset-0 z-10 opacity-[0.08]"
+            className="absolute inset-0 z-10 opacity-[0.12]"
             style={{
               backgroundImage: `repeating-linear-gradient(
                 -45deg,
                 transparent,
-                transparent 20px,
-                ${colors.bronze.light}20 20px,
-                ${colors.bronze.light}20 21px
+                transparent 18px,
+                ${colors.bronze.light}30 18px,
+                ${colors.bronze.light}30 19px
               )`
             }}
           />
           
           {/* Circuit pattern - offset positions */}
           <div 
-            className="absolute inset-0 z-10 opacity-[0.06]"
+            className="absolute inset-0 z-10 opacity-[0.1]"
             style={{
               backgroundImage: `
-                radial-gradient(circle at 75% 25%, ${colors.bronze.base}40 1px, transparent 1px),
-                radial-gradient(circle at 25% 75%, ${colors.bronze.base}40 1px, transparent 1px)
+                radial-gradient(circle at 75% 25%, ${colors.bronze.base}50 1px, transparent 1px),
+                radial-gradient(circle at 25% 75%, ${colors.bronze.base}50 1px, transparent 1px)
               `,
-              backgroundSize: '80px 80px'
+              backgroundSize: '70px 70px'
             }}
           />
           
@@ -215,10 +214,13 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Center connection zone - fills the 1280px center area */}
+      {/* Center connection zone - responsive width to prevent overlaps */}
       <div 
-        className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"
-        style={{ width: '1280px' }}
+        className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[1280px]"
+        style={{ 
+          marginLeft: 'clamp(-50vw, -640px, -640px)',
+          marginRight: 'clamp(-50vw, -640px, -640px)'
+        }}
       >
         <div 
           className="absolute inset-0"
@@ -237,7 +239,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
       <div 
         className="absolute inset-0 z-5"
         style={{ 
-          background: `radial-gradient(ellipse 80% 50% at 50% 50%, ${colors.bronze.base}01 0%, transparent 70%)`
+          background: `radial-gradient(ellipse 80% 50% at 50% 50%, ${colors.bronze.base}02 0%, transparent 70%)`
         }}
       />
     </div>
