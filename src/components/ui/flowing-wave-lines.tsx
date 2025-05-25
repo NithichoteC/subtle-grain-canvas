@@ -9,37 +9,48 @@ interface FlowingWaveLinesProps {
 }
 
 export function FlowingWaveLines({ className, side }: FlowingWaveLinesProps) {
-  // Generate simpler, more visible wave paths
+  // Generate much more visible and simpler wave paths
   const generateWavePath = (index: number, total: number) => {
-    const startY = (index / total) * 100;
-    const amplitude = 20 + (index % 3) * 8; // Increased amplitude for visibility
+    const spacing = 100 / total;
+    const startY = index * spacing;
+    const waveHeight = 15 + (index % 2) * 5; // More pronounced waves
     
     if (side === 'left') {
-      // Left side waves flowing inward
-      return `M0,${startY} C${amplitude},${startY + 15} ${amplitude * 0.5},${startY + 35} 0,${startY + 50} S${amplitude},${startY + 75} 0,${startY + 100}`;
+      // Left side - curves flowing from left edge inward
+      return `M0,${startY} Q${waveHeight},${startY + spacing/3} 0,${startY + spacing/2} T0,${startY + spacing}`;
     } else {
-      // Right side waves flowing inward  
-      return `M100,${startY} C${100 - amplitude},${startY + 15} ${100 - amplitude * 0.5},${startY + 35} 100,${startY + 50} S${100 - amplitude},${startY + 75} 100,${startY + 100}`;
+      // Right side - curves flowing from right edge inward
+      return `M100,${startY} Q${100-waveHeight},${startY + spacing/3} 100,${startY + spacing/2} T100,${startY + spacing}`;
     }
   };
 
-  const waveCount = 6;
+  const waveCount = 8;
   const waves = Array.from({ length: waveCount }, (_, i) => ({
     id: i,
     path: generateWavePath(i, waveCount),
-    opacity: 0.4 + (i % 3) * 0.2, // Much higher opacity
-    strokeWidth: 1.5 + (i % 2) * 0.8, // Thicker strokes
-    delay: i * 0.4
+    opacity: 0.6 + (i % 3) * 0.2, // High opacity for visibility
+    strokeWidth: 2 + (i % 2) * 1, // Thick strokes
+    delay: i * 0.3
   }));
 
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
+    <div className={`absolute inset-0 pointer-events-none ${className || ''}`}>
       <svg
         className="w-full h-full"
-        viewBox="0 0 100 120"
+        viewBox="0 0 100 100"
         preserveAspectRatio="none"
         fill="none"
       >
+        <defs>
+          <filter id={`glow-${side}`}>
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge> 
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        
         {waves.map((wave) => (
           <motion.path
             key={wave.id}
@@ -49,61 +60,33 @@ export function FlowingWaveLines({ className, side }: FlowingWaveLinesProps) {
             strokeOpacity={wave.opacity}
             fill="none"
             strokeLinecap="round"
+            filter={`url(#glow-${side})`}
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ 
               pathLength: 1, 
               opacity: wave.opacity,
-              x: side === 'left' ? [0, 3, 0] : [0, -3, 0]
+              strokeDashoffset: [0, -20, 0]
             }}
             transition={{
-              pathLength: { duration: 2.5, delay: wave.delay },
-              opacity: { duration: 1.5, delay: wave.delay },
-              x: { 
-                duration: 6 + wave.id * 0.8, 
+              pathLength: { duration: 2, delay: wave.delay },
+              opacity: { duration: 1, delay: wave.delay },
+              strokeDashoffset: { 
+                duration: 4 + wave.id * 0.5, 
                 repeat: Infinity, 
-                ease: "easeInOut",
+                ease: "linear",
                 delay: wave.delay 
               }
             }}
-          />
-        ))}
-        
-        {/* Additional glow effects */}
-        {waves.slice(0, 3).map((wave) => (
-          <motion.path
-            key={`glow-${wave.id}`}
-            d={wave.path}
-            stroke="#efcc8a"
-            strokeWidth={wave.strokeWidth * 2}
-            strokeOpacity={wave.opacity * 0.3}
-            fill="none"
-            strokeLinecap="round"
-            filter="blur(2px)"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
-              pathLength: 1, 
-              opacity: wave.opacity * 0.3,
-              x: side === 'left' ? [0, 2, 0] : [0, -2, 0]
-            }}
-            transition={{
-              pathLength: { duration: 3, delay: wave.delay + 0.5 },
-              opacity: { duration: 2, delay: wave.delay + 0.5 },
-              x: { 
-                duration: 8 + wave.id, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: wave.delay + 0.5
-              }
-            }}
+            strokeDasharray="10 5"
           />
         ))}
       </svg>
       
-      {/* Enhanced gradient overlay for depth */}
+      {/* Strong gradient overlay for enhanced visibility */}
       <div className={`absolute inset-0 ${
         side === 'left' 
-          ? 'bg-gradient-to-r from-[#efcc8a]/[0.08] via-[#efcc8a]/[0.04] to-transparent' 
-          : 'bg-gradient-to-l from-[#efcc8a]/[0.08] via-[#efcc8a]/[0.04] to-transparent'
+          ? 'bg-gradient-to-r from-[#efcc8a]/20 via-[#efcc8a]/10 to-transparent' 
+          : 'bg-gradient-to-l from-[#efcc8a]/20 via-[#efcc8a]/10 to-transparent'
       }`} />
     </div>
   );

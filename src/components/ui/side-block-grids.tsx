@@ -10,26 +10,26 @@ interface SideBlockGridsProps {
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement with Flowing Waves */}
-      <div className="absolute left-0 top-0 bottom-0 w-[20%] max-w-sm">
+      {/* Left Edge Enhancement - Made wider and more visible */}
+      <div className="absolute left-0 top-0 bottom-0 w-[200px] z-[5]">
         <FlowingWaveLines side="left" />
         
-        {/* Enhanced border accent */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/40 via-50% to-transparent" />
+        {/* Strong border accent */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#efcc8a]/60 via-50% to-transparent" />
       </div>
       
-      {/* Right Edge Enhancement with Flowing Waves */}
-      <div className="absolute right-0 top-0 bottom-0 w-[20%] max-w-sm">
+      {/* Right Edge Enhancement - Made wider and more visible */}
+      <div className="absolute right-0 top-0 bottom-0 w-[200px] z-[5]">
         <FlowingWaveLines side="right" />
         
-        {/* Enhanced border accent */}
-        <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/40 via-50% to-transparent" />
+        {/* Strong border accent */}
+        <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#efcc8a]/60 via-50% to-transparent" />
       </div>
       
-      {/* Enhanced ambient enhancement */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#efcc8a]/[0.03] via-transparent to-transparent" 
+      {/* Enhanced ambient glow */}
+      <div className="absolute inset-0 bg-gradient-radial from-[#efcc8a]/[0.08] via-transparent to-transparent z-[1]" 
            style={{ 
-             background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(239, 204, 138, 0.03) 0%, transparent 70%)'
+             background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(239, 204, 138, 0.08) 0%, transparent 70%)'
            }} 
       />
     </div>
