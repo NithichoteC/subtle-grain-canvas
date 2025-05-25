@@ -67,7 +67,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				dark: {
-					DEFAULT: '#171717',  // Adding your specific dark color
+					DEFAULT: '#171717',
 				}
 			},
 			borderRadius: {
@@ -91,11 +91,56 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				first: {
+					"0%": {
+						transform: "rotate(0deg)",
+					},
+					"100%": {
+						transform: "rotate(360deg)",
+					},
+				},
+				second: {
+					"0%": {
+						transform: "rotate(0deg)",
+					},
+					"100%": {
+						transform: "rotate(-360deg)",
+					},
+				},
+				third: {
+					"0%": {
+						transform: "rotate(0deg)",
+					},
+					"100%": {
+						transform: "rotate(360deg)",
+					},
+				},
+				fourth: {
+					"0%": {
+						transform: "rotate(0deg)",
+					},
+					"100%": {
+						transform: "rotate(-360deg)",
+					},
+				},
+				fifth: {
+					"0%": {
+						transform: "rotate(0deg)",
+					},
+					"100%": {
+						transform: "rotate(360deg)",
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				first: "first 20s linear infinite",
+				second: "second 40s linear infinite",
+				third: "third 40s linear infinite",
+				fourth: "fourth 60s linear infinite",
+				fifth: "fifth 60s linear infinite",
 			}
 		}
 	},

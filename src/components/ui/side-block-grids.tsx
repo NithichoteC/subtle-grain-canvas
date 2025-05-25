@@ -2,6 +2,7 @@
 "use client";
 
 import { NoiseTexture } from '@/components/ui/noise-texture';
+import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { colors, layout, noiseConfigs, zIndex } from '@/lib/design-tokens';
 
 interface SideBlockGridsProps {
@@ -9,13 +10,13 @@ interface SideBlockGridsProps {
 }
 
 /**
- * Side block grid enhancements for left and right edges
- * Provides minimal edge styling and 3D asset zones while maintaining the three-column layout
+ * Side block grid enhancements with animated gradient backgrounds
+ * Uses bronze/gold color palette with smooth gradient animations
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement */}
+      {/* Left Edge Enhancement with Gradient Animation */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ 
@@ -23,33 +24,43 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           maxWidth: layout.sideBlockMaxWidth 
         }}
       >
-        {/* Subtle edge gradient */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to right, ${colors.dark}30 0%, ${colors.dark}10 60%, transparent 100%)`
-          }}
-        />
-        
-        {/* Minimal border accent */}
-        <div 
-          className="absolute left-0 top-0 bottom-0 w-px"
-          style={{
-            background: `linear-gradient(to bottom, transparent 0%, ${colors.bronze.base}20 50%, transparent 100%)`
-          }}
-        />
-        
-        {/* 3D Asset Zone - positioned for future assets */}
-        <div 
-          className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100"
-          aria-label="Reserved space for 3D assets"
-        />
-        
-        {/* Subtle texture overlay */}
-        <NoiseTexture {...noiseConfigs.sideBlocks} />
+        <BackgroundGradientAnimation
+          gradientBackgroundStart="rgb(23, 23, 23)"
+          gradientBackgroundEnd="rgb(35, 35, 35)"
+          firstColor="184, 134, 11"    // Bronze dark
+          secondColor="205, 127, 50"   // Bronze medium  
+          thirdColor="255, 215, 0"     // Gold
+          fourthColor="149, 111, 41"   // Bronze deep
+          fifthColor="226, 209, 195"   // Bronze light
+          pointerColor="239, 204, 138" // Bronze base
+          size="120%"
+          blendingValue="overlay"
+          interactive={true}
+          containerClassName="h-full w-full"
+          className="relative z-0"
+        >
+          {/* Border accent */}
+          <div 
+            className="absolute left-0 top-0 bottom-0 w-px z-10"
+            style={{
+              background: `linear-gradient(to bottom, transparent 0%, ${colors.bronze.base}20 50%, transparent 100%)`
+            }}
+          />
+          
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
+            aria-label="Reserved space for 3D assets"
+          />
+          
+          {/* Subtle texture overlay */}
+          <div className="absolute inset-0 z-10">
+            <NoiseTexture {...noiseConfigs.sideBlocks} />
+          </div>
+        </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement */}
+      {/* Right Edge Enhancement with Gradient Animation */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ 
@@ -57,34 +68,44 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           maxWidth: layout.sideBlockMaxWidth 
         }}
       >
-        {/* Subtle edge gradient */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to left, ${colors.dark}30 0%, ${colors.dark}10 60%, transparent 100%)`
-          }}
-        />
-        
-        {/* Minimal border accent */}
-        <div 
-          className="absolute right-0 top-0 bottom-0 w-px"
-          style={{
-            background: `linear-gradient(to bottom, transparent 0%, ${colors.bronze.base}20 50%, transparent 100%)`
-          }}
-        />
-        
-        {/* 3D Asset Zone - positioned for future assets */}
-        <div 
-          className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100"
-          aria-label="Reserved space for 3D assets"
-        />
-        
-        {/* Subtle texture overlay */}
-        <NoiseTexture {...noiseConfigs.sideBlocks} />
+        <BackgroundGradientAnimation
+          gradientBackgroundStart="rgb(23, 23, 23)"
+          gradientBackgroundEnd="rgb(35, 35, 35)"
+          firstColor="226, 209, 195"   // Bronze light
+          secondColor="149, 111, 41"   // Bronze deep
+          thirdColor="184, 134, 11"    // Bronze dark
+          fourthColor="255, 215, 0"    // Gold
+          fifthColor="205, 127, 50"    // Bronze medium
+          pointerColor="239, 204, 138" // Bronze base
+          size="120%"
+          blendingValue="overlay"
+          interactive={true}
+          containerClassName="h-full w-full"
+          className="relative z-0"
+        >
+          {/* Border accent */}
+          <div 
+            className="absolute right-0 top-0 bottom-0 w-px z-10"
+            style={{
+              background: `linear-gradient(to bottom, transparent 0%, ${colors.bronze.base}20 50%, transparent 100%)`
+            }}
+          />
+          
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
+            aria-label="Reserved space for 3D assets"
+          />
+          
+          {/* Subtle texture overlay */}
+          <div className="absolute inset-0 z-10">
+            <NoiseTexture {...noiseConfigs.sideBlocks} />
+          </div>
+        </BackgroundGradientAnimation>
       </div>
       
       {/* Seamless Connection Layer - maintains layout integrity */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-5">
         {/* Left connection gradient */}
         <div 
           className="absolute left-0 top-0 bottom-0 w-1/4"
@@ -104,7 +125,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
       
       {/* Ultra-subtle ambient enhancement */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 z-5"
         style={{ 
           background: `radial-gradient(ellipse 80% 50% at 50% 50%, ${colors.bronze.base}01 0%, transparent 70%)`
         }}
