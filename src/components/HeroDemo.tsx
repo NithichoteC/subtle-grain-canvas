@@ -8,19 +8,19 @@ import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 function HeroDemo() {
   return (
     <div className="relative w-full font-roboto">
-      {/* Side blocks - fixed positioning for consistent visual */}
+      {/* Side blocks - absolute positioning within the container */}
       <SideBlockGrids />
       
       {/* Main content with proper z-index */}
       <div className="relative z-10">
-        {/* Hero section - removed min-h-screen to fix padding */}
+        {/* Hero section - clean container without extra spacing */}
         <div className="relative">
           {/* Navbar */}
           <div className="container max-w-5xl mx-auto">
             <NavBarDemo />
           </div>
           
-          {/* Hero content */}
+          {/* Hero content - removed extra padding */}
           <div className="container max-w-5xl mx-auto">
             <HeroSectionBackground>
               <Hero />
@@ -29,7 +29,7 @@ function HeroDemo() {
         </div>
       </div>
       
-      {/* Early Adopter Section */}
+      {/* Early Adopter Section - seamless transition */}
       <div className="relative z-10">
         <EarlyAdopterSection />
       </div>
