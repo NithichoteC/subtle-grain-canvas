@@ -4,12 +4,16 @@ import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { SideBlockGrids } from "@/components/ui/side-block-grids";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
+import { UnifiedGridSystem } from "@/components/ui/unified-grid-system";
 
 function HeroDemo() {
   return (
     <div className="relative w-full font-roboto">
       {/* Side blocks - absolute positioning within the container */}
       <SideBlockGrids />
+      
+      {/* Unified Grid System - spans full viewport */}
+      <UnifiedGridSystem />
       
       {/* Main content with proper z-index */}
       <div className="relative z-10">

@@ -13,8 +13,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         {/* Subtle edge gradient that scales with screen width */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* Minimal border accent - matches hero section styling */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/20 via-50% to-transparent" />
+        {/* Removed the border accent - now handled by UnifiedGridSystem */}
         
         {/* 3D Asset Zone - Strategic positioning for your assets */}
         <div className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
@@ -36,8 +35,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         {/* Subtle edge gradient that scales with screen width */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* Minimal border accent - matches hero section styling */}
-        <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/20 via-50% to-transparent" />
+        {/* Removed the border accent - now handled by UnifiedGridSystem */}
         
         {/* 3D Asset Zone - Strategic positioning for your assets */}
         <div className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
