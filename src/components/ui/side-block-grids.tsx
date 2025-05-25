@@ -11,13 +11,13 @@ interface SideBlockGridsProps {
 
 /**
  * Side block grid enhancements with animated gradient backgrounds
- * Uses bronze/gold color palette with smooth gradient animations
+ * Uses toned-down bronze/gold color palette with differentiated left/right animations
  * Ensures perfect edge-to-edge connection with zero gaps and scrolls with page
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Calculated to perfectly meet center */}
+      {/* Left Edge Enhancement - Original animation timing */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -25,17 +25,18 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="184, 134, 11"    // Bronze dark
-          secondColor="205, 127, 50"   // Bronze medium  
-          thirdColor="255, 215, 0"     // Gold
-          fourthColor="149, 111, 41"   // Bronze deep
-          fifthColor="226, 209, 195"   // Bronze light
-          pointerColor="239, 204, 138" // Bronze base
+          firstColor="130, 95, 8"      // Darker bronze
+          secondColor="165, 102, 40"   // Muted bronze medium  
+          thirdColor="200, 170, 0"     // Toned gold
+          fourthColor="119, 89, 33"    // Deep bronze
+          fifthColor="180, 166, 156"   // Subtle bronze light
+          pointerColor="191, 163, 110" // Muted bronze base
           size="120%"
           blendingValue="overlay"
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
+          animationSet="left"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -50,7 +51,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Calculated to perfectly meet center */}
+      {/* Right Edge Enhancement - Offset animation timing */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -58,17 +59,18 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="226, 209, 195"   // Bronze light
-          secondColor="149, 111, 41"   // Bronze deep
-          thirdColor="184, 134, 11"    // Bronze dark
-          fourthColor="255, 215, 0"    // Gold
-          fifthColor="205, 127, 50"    // Bronze medium
-          pointerColor="239, 204, 138" // Bronze base
+          firstColor="180, 166, 156"   // Subtle bronze light (swapped order)
+          secondColor="119, 89, 33"    // Deep bronze
+          thirdColor="130, 95, 8"      // Darker bronze
+          fourthColor="200, 170, 0"    // Toned gold
+          fifthColor="165, 102, 40"    // Muted bronze medium
+          pointerColor="191, 163, 110" // Muted bronze base
           size="120%"
           blendingValue="overlay"
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
+          animationSet="right"
         >
           {/* 3D Asset Zone */}
           <div 
