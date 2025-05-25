@@ -7,20 +7,24 @@ interface SideBlockGridsProps {
 
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Ultra Minimal */}
-      <div className="absolute left-0 top-0 bottom-0 w-[20%] max-w-xs">
-        {/* Subtle edge gradient that scales with screen width */}
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden z-[9999] ${className || ''}`}>
+      {/* Left Side Grid Block - Complete with all borders */}
+      <div className="absolute left-0 top-0 w-[20%] max-w-xs h-full">
+        {/* Left border - bright red for visibility */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
+        
+        {/* Bottom border for left block - bright yellow */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-400" style={{ top: '100vh' }} />
+        
+        {/* Subtle edge gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* Removed the border accent - now handled by UnifiedGridSystem */}
-        
-        {/* 3D Asset Zone - Strategic positioning for your assets */}
+        {/* 3D Asset Zone */}
         <div className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
-          {/* Reserved space for 3D assets like money bag, shield, etc. */}
+          {/* Reserved space for 3D assets */}
         </div>
         
-        {/* Subtle texture overlay - minimal grain */}
+        {/* Subtle texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.03]" 
           style={{ 
@@ -30,19 +34,23 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         />
       </div>
       
-      {/* Right Edge Enhancement - Ultra Minimal */}
-      <div className="absolute right-0 top-0 bottom-0 w-[20%] max-w-xs">
-        {/* Subtle edge gradient that scales with screen width */}
+      {/* Right Side Grid Block - Complete with all borders */}
+      <div className="absolute right-0 top-0 w-[20%] max-w-xs h-full">
+        {/* Right border - bright red for visibility */}
+        <div className="absolute right-0 top-0 bottom-0 w-1 bg-red-500" />
+        
+        {/* Bottom border for right block - bright yellow */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-400" style={{ top: '100vh' }} />
+        
+        {/* Subtle edge gradient */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* Removed the border accent - now handled by UnifiedGridSystem */}
-        
-        {/* 3D Asset Zone - Strategic positioning for your assets */}
+        {/* 3D Asset Zone */}
         <div className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
-          {/* Reserved space for 3D assets like handshake, hourglass, etc. */}
+          {/* Reserved space for 3D assets */}
         </div>
         
-        {/* Subtle texture overlay - minimal grain */}
+        {/* Subtle texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.03]" 
           style={{ 
@@ -50,15 +58,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             backgroundSize: '100px 100px'
           }}
         />
-      </div>
-      
-      {/* Seamless Connection Layer - Ensures no gaps at any screen size */}
-      <div className="absolute inset-0">
-        {/* Left connection */}
-        <div className="absolute left-0 top-0 bottom-0 w-[25%] bg-gradient-to-r from-transparent via-[#efcc8a]/[0.02] via-90% to-transparent" />
-        
-        {/* Right connection */}
-        <div className="absolute right-0 top-0 bottom-0 w-[25%] bg-gradient-to-l from-transparent via-[#efcc8a]/[0.02] via-90% to-transparent" />
       </div>
       
       {/* Ultra-subtle ambient enhancement */}
