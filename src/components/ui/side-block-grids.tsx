@@ -3,6 +3,7 @@
 
 import { NoiseTexture } from '@/components/ui/noise-texture';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
+import { DotPattern } from '@/components/ui/dot-pattern';
 import { colors, layout, noiseConfigs, zIndex } from '@/lib/design-tokens';
 
 interface SideBlockGridsProps {
@@ -42,6 +43,19 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.hero} />
+          </div>
+          
+          {/* Dot pattern with glow - strategic positioning */}
+          <div className="absolute inset-0 z-8">
+            <DotPattern
+              glow={true}
+              dotSize={1.2}
+              spacing={24}
+              opacity={0.04}
+              color={colors.bronze.base}
+              glowColor={colors.bronze.light}
+              className="[mask-image:radial-gradient(400px_circle_at_30%_50%,white,transparent)]"
+            />
           </div>
           
           {/* High-tech grid overlay */}
@@ -115,6 +129,19 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.hero} />
+          </div>
+          
+          {/* Dot pattern with glow - offset for asymmetry */}
+          <div className="absolute inset-0 z-8">
+            <DotPattern
+              glow={true}
+              dotSize={1}
+              spacing={28}
+              opacity={0.035}
+              color={colors.bronze.medium}
+              glowColor={colors.bronze.gold}
+              className="[mask-image:radial-gradient(350px_circle_at_70%_40%,white,transparent)]"
+            />
           </div>
           
           {/* High-tech grid overlay - offset pattern */}
