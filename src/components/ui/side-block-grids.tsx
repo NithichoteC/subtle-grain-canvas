@@ -11,8 +11,8 @@ interface SideBlockGridsProps {
 
 /**
  * Side block grid enhancements with animated gradient backgrounds
- * Uses toned-down bronze/gold color palette with differentiated left/right animations
- * Enhanced cursor responsiveness and rich texture matching hero section
+ * Enhanced with layered textures and high-tech geometric patterns
+ * Premium enterprise aesthetic with sophisticated visual depth
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
@@ -39,16 +39,54 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           animationSet="left"
           cursorResponsiveness="enhanced"
         >
-          {/* 3D Asset Zone */}
-          <div 
-            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
-            aria-label="Reserved space for 3D assets"
-          />
-          
-          {/* Rich texture overlay matching hero section */}
+          {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
+          
+          {/* High-tech grid overlay */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(90deg, ${colors.bronze.base}20 1px, transparent 1px),
+                linear-gradient(180deg, ${colors.bronze.base}20 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px'
+            }}
+          />
+          
+          {/* Subtle diagonal lines for tech aesthetic */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.06]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                ${colors.bronze.light}15 20px,
+                ${colors.bronze.light}15 21px
+              )`
+            }}
+          />
+          
+          {/* Circuit-like pattern */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.04]"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 25% 25%, ${colors.bronze.base}30 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, ${colors.bronze.base}30 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px'
+            }}
+          />
+          
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
+            aria-label="Reserved space for 3D assets"
+          />
         </BackgroundGradientAnimation>
       </div>
       
@@ -74,16 +112,55 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           animationSet="right"
           cursorResponsiveness="enhanced"
         >
-          {/* 3D Asset Zone */}
-          <div 
-            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
-            aria-label="Reserved space for 3D assets"
-          />
-          
-          {/* Rich texture overlay matching hero section */}
+          {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
+          
+          {/* High-tech grid overlay - offset pattern */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(90deg, ${colors.bronze.base}20 1px, transparent 1px),
+                linear-gradient(180deg, ${colors.bronze.base}20 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px',
+              backgroundPosition: '20px 20px' // Offset for right side
+            }}
+          />
+          
+          {/* Diagonal lines - opposite direction */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.06]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 20px,
+                ${colors.bronze.light}15 20px,
+                ${colors.bronze.light}15 21px
+              )`
+            }}
+          />
+          
+          {/* Circuit pattern - offset positions */}
+          <div 
+            className="absolute inset-0 z-10 opacity-[0.04]"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 75% 25%, ${colors.bronze.base}30 1px, transparent 1px),
+                radial-gradient(circle at 25% 75%, ${colors.bronze.base}30 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px'
+            }}
+          />
+          
+          {/* 3D Asset Zone */}
+          <div 
+            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
+            aria-label="Reserved space for 3D assets"
+          />
         </BackgroundGradientAnimation>
       </div>
       
