@@ -24,13 +24,13 @@ function Hero() {
 
   return (
     <div className="w-full pt-0 relative">
-      {/* Grid Lines - Left and Right */}
+      {/* Grid Lines - Aligned with navigation container */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Left vertical grid line */}
-        <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+        {/* Left vertical grid line - aligned with nav container */}
+        <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[1px] bg-white/10"></div>
         
-        {/* Right vertical grid line */}
-        <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+        {/* Right vertical grid line - aligned with nav container */}
+        <div className="absolute right-4 md:right-6 top-0 bottom-0 w-[1px] bg-white/10"></div>
         
         {/* Center vertical grid line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10 transform -translate-x-1/2"></div>
