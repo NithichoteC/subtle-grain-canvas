@@ -27,8 +27,8 @@ const HeroSectionBackground: React.FC<HeroSectionBackgroundProps> = ({ children,
         ></div>
       </div>
       
-      {/* Full-width bottom border that extends beyond container */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-screen h-[1px] bg-white/10 z-[-1]"></div>
+      {/* Full-width bottom border that extends beyond container to cover entire viewport */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-white/10 z-[-1]" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}></div>
       
       {/* Content */}
       {children}
