@@ -19,7 +19,7 @@ export const BackgroundGradientAnimation = ({
   interactive = true,
   containerClassName,
   animationSpeed = "normal",
-  animationDelay = "0s", // New prop for coordinating animations
+  animationDelay = "0s",
 }: {
   gradientBackgroundStart?: string;
   gradientBackgroundEnd?: string;
@@ -45,15 +45,12 @@ export const BackgroundGradientAnimation = ({
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
 
-  // Determine animation classes based on speed
-  const getAnimationClass = (baseAnimation: string) => {
+  // Get animation suffix based on speed
+  const getAnimationSuffix = () => {
     switch (animationSpeed) {
-      case "slow":
-        return `animate-${baseAnimation}-slow`;
-      case "fast":
-        return `animate-${baseAnimation}-fast`;
-      default:
-        return `animate-${baseAnimation}`;
+      case "slow": return "-slow";
+      case "fast": return "-fast";
+      default: return "";
     }
   };
   
@@ -104,13 +101,14 @@ export const BackgroundGradientAnimation = ({
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
+  const suffix = getAnimationSuffix();
+
   return (
     <div
       className={cn(
         "h-full w-full relative overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
-      style={{ animationDelay }}
     >
       <svg className="hidden">
         <defs>
@@ -136,57 +134,71 @@ export const BackgroundGradientAnimation = ({
           "gradients-container h-full w-full blur-lg absolute inset-0",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
-        style={{ animationDelay }}
       >
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--first-color),_0.8)_0,_rgba(var(--first-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:center_center]`,
-            getAnimationClass("first"),
+            `animate-first${suffix}`,
             `opacity-100`
           )}
-          style={{ animationDelay }}
+          style={{ 
+            animationDelay,
+            animationFillMode: 'both'
+          }}
         ></div>
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-400px)]`,
-            getAnimationClass("second"),
+            `animate-second${suffix}`,
             `opacity-100`
           )}
-          style={{ animationDelay: `calc(${animationDelay} + 0.3s)` }}
+          style={{ 
+            animationDelay: `calc(${animationDelay} + 0.5s)`,
+            animationFillMode: 'both'
+          }}
         ></div>
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%+400px)]`,
-            getAnimationClass("third"),
+            `animate-third${suffix}`,
             `opacity-100`
           )}
-          style={{ animationDelay: `calc(${animationDelay} + 0.6s)` }}
+          style={{ 
+            animationDelay: `calc(${animationDelay} + 1s)`,
+            animationFillMode: 'both'
+          }}
         ></div>
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-200px)]`,
-            getAnimationClass("fourth"),
+            `animate-fourth${suffix}`,
             `opacity-70`
           )}
-          style={{ animationDelay: `calc(${animationDelay} + 0.9s)` }}
+          style={{ 
+            animationDelay: `calc(${animationDelay} + 1.5s)`,
+            animationFillMode: 'both'
+          }}
         ></div>
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
             `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
-            getAnimationClass("fifth"),
+            `animate-fifth${suffix}`,
             `opacity-100`
           )}
-          style={{ animationDelay: `calc(${animationDelay} + 1.2s)` }}
+          style={{ 
+            animationDelay: `calc(${animationDelay} + 2s)`,
+            animationFillMode: 'both'
+          }}
         ></div>
 
         {interactive && (

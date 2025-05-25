@@ -23,81 +23,79 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         style={{ width: 'calc(50vw - 640px)' }}
       >
         <BackgroundGradientAnimation
-          gradientBackgroundStart="rgb(23, 23, 23)"
-          gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="184, 134, 11"    // Bronze dark
-          secondColor="205, 127, 50"   // Bronze medium  
-          thirdColor="255, 215, 0"     // Gold
-          fourthColor="149, 111, 41"   // Bronze deep
-          fifthColor="226, 209, 195"   // Bronze light
+          gradientBackgroundStart="rgb(20, 20, 20)"
+          gradientBackgroundEnd="rgb(30, 30, 30)"
+          firstColor="226, 209, 195"   // Bronze light (start with light)
+          secondColor="255, 215, 0"    // Gold
+          thirdColor="205, 127, 50"    // Bronze medium
+          fourthColor="184, 134, 11"   // Bronze dark
+          fifthColor="149, 111, 41"    // Bronze deep
           pointerColor="239, 204, 138" // Bronze base
-          size="120%"
-          blendingValue="overlay"
-          interactive={true}
+          size="140%"
+          blendingValue="multiply"
+          interactive={false}
           containerClassName="h-full w-full"
           className="relative z-0"
           animationSpeed="slow"
           animationDelay="0s"
         >
-          {/* 3D Asset Zone */}
-          <div 
-            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
-            aria-label="Reserved space for 3D assets"
-          />
-          
           {/* Subtle texture overlay */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
 
-          {/* Left side breathing effect - starts with 3s delay to coordinate with right */}
+          {/* Left side flowing effect */}
           <div 
-            className="absolute inset-0 z-5 animate-breathe-left-coord"
+            className="absolute inset-0 z-5 animate-flow-left"
             style={{ 
-              background: `radial-gradient(ellipse 120% 80% at 80% 50%, ${colors.bronze.base}02 0%, transparent 60%)`
+              background: `linear-gradient(45deg, 
+                ${colors.bronze.light}08 0%, 
+                ${colors.bronze.gold}12 25%, 
+                ${colors.bronze.medium}06 50%, 
+                ${colors.bronze.dark}10 75%, 
+                ${colors.bronze.deep}04 100%)`
             }}
           />
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Flows left-to-right with faster timing, mirrored colors */}
+      {/* Right Edge Enhancement - Flows left-to-right with faster timing, reversed colors */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
         <BackgroundGradientAnimation
-          gradientBackgroundStart="rgb(23, 23, 23)"
-          gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="226, 209, 195"   // Bronze light (reversed order for flow effect)
-          secondColor="149, 111, 41"   // Bronze deep
-          thirdColor="184, 134, 11"    // Bronze dark
+          gradientBackgroundStart="rgb(20, 20, 20)"
+          gradientBackgroundEnd="rgb(30, 30, 30)"
+          firstColor="149, 111, 41"    // Bronze deep (start with deep)
+          secondColor="184, 134, 11"   // Bronze dark
+          thirdColor="205, 127, 50"    // Bronze medium
           fourthColor="255, 215, 0"    // Gold
-          fifthColor="205, 127, 50"    // Bronze medium
+          fifthColor="226, 209, 195"   // Bronze light
           pointerColor="239, 204, 138" // Bronze base
-          size="120%"
-          blendingValue="overlay"
-          interactive={true}
+          size="140%"
+          blendingValue="multiply"
+          interactive={false}
           containerClassName="h-full w-full"
           className="relative z-0"
           animationSpeed="fast"
-          animationDelay="1.5s"
+          animationDelay="2s"
         >
-          {/* 3D Asset Zone */}
-          <div 
-            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-10"
-            aria-label="Reserved space for 3D assets"
-          />
-          
           {/* Subtle texture overlay */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
 
-          {/* Right side breathing effect - starts immediately to coordinate with left */}
+          {/* Right side flowing effect - opposite direction */}
           <div 
-            className="absolute inset-0 z-5 animate-breathe-right-coord"
+            className="absolute inset-0 z-5 animate-flow-right"
             style={{ 
-              background: `radial-gradient(ellipse 120% 80% at 20% 50%, ${colors.bronze.base}02 0%, transparent 60%)`
+              background: `linear-gradient(-45deg, 
+                ${colors.bronze.deep}04 0%, 
+                ${colors.bronze.dark}10 25%, 
+                ${colors.bronze.medium}06 50%, 
+                ${colors.bronze.gold}12 75%, 
+                ${colors.bronze.light}08 100%)`
             }}
           />
         </BackgroundGradientAnimation>
@@ -121,31 +119,18 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </div>
       </div>
       
-      {/* Enhanced cross-flow ambient enhancement - creates stronger connection between sides */}
+      {/* Dynamic cross-flow connector */}
       <div 
-        className="absolute inset-0 z-5 animate-cross-flow-enhanced"
+        className="absolute inset-0 z-6 animate-cross-flow"
         style={{ 
           background: `linear-gradient(90deg, 
-            ${colors.bronze.base}01 0%, 
-            ${colors.bronze.base}02 15%, 
-            ${colors.bronze.base}04 30%, 
-            ${colors.bronze.base}05 50%, 
-            ${colors.bronze.base}04 70%, 
-            ${colors.bronze.base}02 85%, 
-            ${colors.bronze.base}01 100%)`
-        }}
-      />
-
-      {/* Additional flow connectors for seamless transition */}
-      <div 
-        className="absolute inset-0 z-4 animate-flow-pulse"
-        style={{ 
-          background: `radial-gradient(ellipse 200% 100% at 25% 50%, 
-            ${colors.bronze.light}01 0%, 
-            transparent 40%), 
-            radial-gradient(ellipse 200% 100% at 75% 50%, 
-            ${colors.bronze.light}01 0%, 
-            transparent 40%)`
+            ${colors.bronze.light}02 0%, 
+            ${colors.bronze.medium}06 20%, 
+            ${colors.bronze.gold}08 40%, 
+            ${colors.bronze.base}10 50%, 
+            ${colors.bronze.gold}08 60%, 
+            ${colors.bronze.medium}06 80%, 
+            ${colors.bronze.light}02 100%)`
         }}
       />
     </div>
