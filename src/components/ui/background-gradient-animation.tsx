@@ -18,7 +18,8 @@ export const BackgroundGradientAnimation = ({
   className,
   interactive = true,
   containerClassName,
-  animationSpeed = "normal", // new prop for controlling animation speed
+  animationSpeed = "normal",
+  animationDelay = "0s", // New prop for coordinating animations
 }: {
   gradientBackgroundStart?: string;
   gradientBackgroundEnd?: string;
@@ -35,6 +36,7 @@ export const BackgroundGradientAnimation = ({
   interactive?: boolean;
   containerClassName?: string;
   animationSpeed?: "slow" | "normal" | "fast";
+  animationDelay?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
@@ -108,6 +110,7 @@ export const BackgroundGradientAnimation = ({
         "h-full w-full relative overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
+      style={{ animationDelay }}
     >
       <svg className="hidden">
         <defs>
@@ -133,6 +136,7 @@ export const BackgroundGradientAnimation = ({
           "gradients-container h-full w-full blur-lg absolute inset-0",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
+        style={{ animationDelay }}
       >
         <div
           className={cn(
@@ -142,6 +146,7 @@ export const BackgroundGradientAnimation = ({
             getAnimationClass("first"),
             `opacity-100`
           )}
+          style={{ animationDelay }}
         ></div>
         <div
           className={cn(
@@ -151,6 +156,7 @@ export const BackgroundGradientAnimation = ({
             getAnimationClass("second"),
             `opacity-100`
           )}
+          style={{ animationDelay: `calc(${animationDelay} + 0.3s)` }}
         ></div>
         <div
           className={cn(
@@ -160,6 +166,7 @@ export const BackgroundGradientAnimation = ({
             getAnimationClass("third"),
             `opacity-100`
           )}
+          style={{ animationDelay: `calc(${animationDelay} + 0.6s)` }}
         ></div>
         <div
           className={cn(
@@ -169,6 +176,7 @@ export const BackgroundGradientAnimation = ({
             getAnimationClass("fourth"),
             `opacity-70`
           )}
+          style={{ animationDelay: `calc(${animationDelay} + 0.9s)` }}
         ></div>
         <div
           className={cn(
@@ -178,6 +186,7 @@ export const BackgroundGradientAnimation = ({
             getAnimationClass("fifth"),
             `opacity-100`
           )}
+          style={{ animationDelay: `calc(${animationDelay} + 1.2s)` }}
         ></div>
 
         {interactive && (

@@ -37,6 +37,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           containerClassName="h-full w-full"
           className="relative z-0"
           animationSpeed="slow"
+          animationDelay="0s"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -49,9 +50,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
 
-          {/* Left side breathing effect - starts with 3s delay */}
+          {/* Left side breathing effect - starts with 3s delay to coordinate with right */}
           <div 
-            className="absolute inset-0 z-5 animate-breathe-left"
+            className="absolute inset-0 z-5 animate-breathe-left-coord"
             style={{ 
               background: `radial-gradient(ellipse 120% 80% at 80% 50%, ${colors.bronze.base}02 0%, transparent 60%)`
             }}
@@ -59,7 +60,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Flows left-to-right with faster timing */}
+      {/* Right Edge Enhancement - Flows left-to-right with faster timing, mirrored colors */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -79,6 +80,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           containerClassName="h-full w-full"
           className="relative z-0"
           animationSpeed="fast"
+          animationDelay="1.5s"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -91,9 +93,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
 
-          {/* Right side breathing effect - starts immediately */}
+          {/* Right side breathing effect - starts immediately to coordinate with left */}
           <div 
-            className="absolute inset-0 z-5 animate-breathe-right"
+            className="absolute inset-0 z-5 animate-breathe-right-coord"
             style={{ 
               background: `radial-gradient(ellipse 120% 80% at 20% 50%, ${colors.bronze.base}02 0%, transparent 60%)`
             }}
@@ -119,11 +121,31 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </div>
       </div>
       
-      {/* Cross-flow ambient enhancement - creates connection between sides */}
+      {/* Enhanced cross-flow ambient enhancement - creates stronger connection between sides */}
       <div 
-        className="absolute inset-0 z-5 animate-cross-flow"
+        className="absolute inset-0 z-5 animate-cross-flow-enhanced"
         style={{ 
-          background: `linear-gradient(90deg, ${colors.bronze.base}01 0%, ${colors.bronze.base}03 30%, ${colors.bronze.base}03 70%, ${colors.bronze.base}01 100%)`
+          background: `linear-gradient(90deg, 
+            ${colors.bronze.base}01 0%, 
+            ${colors.bronze.base}02 15%, 
+            ${colors.bronze.base}04 30%, 
+            ${colors.bronze.base}05 50%, 
+            ${colors.bronze.base}04 70%, 
+            ${colors.bronze.base}02 85%, 
+            ${colors.bronze.base}01 100%)`
+        }}
+      />
+
+      {/* Additional flow connectors for seamless transition */}
+      <div 
+        className="absolute inset-0 z-4 animate-flow-pulse"
+        style={{ 
+          background: `radial-gradient(ellipse 200% 100% at 25% 50%, 
+            ${colors.bronze.light}01 0%, 
+            transparent 40%), 
+            radial-gradient(ellipse 200% 100% at 75% 50%, 
+            ${colors.bronze.light}01 0%, 
+            transparent 40%)`
         }}
       />
     </div>

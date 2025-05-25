@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -159,6 +158,61 @@ export default {
 					"25%": { opacity: "0.4" },
 					"50%": { opacity: "0.3" },
 					"75%": { opacity: "0.5" }
+				},
+				// New coordinated animations
+				'breathe-left-coord': {
+					"0%, 100%": { 
+						opacity: "0.25", 
+						transform: "scale(0.98) translateX(-2px)" 
+					},
+					"33%": { 
+						opacity: "0.5", 
+						transform: "scale(1.02) translateX(3px)" 
+					},
+					"66%": { 
+						opacity: "0.4", 
+						transform: "scale(1.0) translateX(1px)" 
+					}
+				},
+				'breathe-right-coord': {
+					"0%, 100%": { 
+						opacity: "0.4", 
+						transform: "scale(1.0) translateX(1px)" 
+					},
+					"33%": { 
+						opacity: "0.25", 
+						transform: "scale(0.98) translateX(2px)" 
+					},
+					"66%": { 
+						opacity: "0.5", 
+						transform: "scale(1.02) translateX(-3px)" 
+					}
+				},
+				'cross-flow-enhanced': {
+					"0%": { opacity: "0.15" },
+					"20%": { opacity: "0.35" },
+					"40%": { opacity: "0.25" },
+					"60%": { opacity: "0.45" },
+					"80%": { opacity: "0.3" },
+					"100%": { opacity: "0.15" }
+				},
+				'flow-pulse': {
+					"0%, 100%": { 
+						opacity: "0.1", 
+						transform: "scale(1) rotate(0deg)" 
+					},
+					"25%": { 
+						opacity: "0.2", 
+						transform: "scale(1.02) rotate(0.5deg)" 
+					},
+					"50%": { 
+						opacity: "0.15", 
+						transform: "scale(0.98) rotate(-0.5deg)" 
+					},
+					"75%": { 
+						opacity: "0.25", 
+						transform: "scale(1.01) rotate(0.3deg)" 
+					}
 				}
 			},
 			animation: {
@@ -185,7 +239,12 @@ export default {
 				// New side block animations
 				'breathe-left': 'breathe-left 22s ease-in-out infinite 3s',
 				'breathe-right': 'breathe-right 18s ease-in-out infinite',
-				'cross-flow': 'cross-flow 25s ease-in-out infinite'
+				'cross-flow': 'cross-flow 25s ease-in-out infinite',
+				// New coordinated animations
+				'breathe-left-coord': 'breathe-left-coord 28s ease-in-out infinite 2s',
+				'breathe-right-coord': 'breathe-right-coord 24s ease-in-out infinite',
+				'cross-flow-enhanced': 'cross-flow-enhanced 32s ease-in-out infinite 1s',
+				'flow-pulse': 'flow-pulse 35s ease-in-out infinite 0.5s'
 			}
 		}
 	},
