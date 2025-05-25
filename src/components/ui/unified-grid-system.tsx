@@ -7,17 +7,16 @@ interface UnifiedGridSystemProps {
 
 export function UnifiedGridSystem({ className }: UnifiedGridSystemProps) {
   return (
-    <div className={`w-screen h-screen pointer-events-none overflow-hidden ${className || ''}`}>
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
       {/* Left vertical line - full viewport height */}
       <div className="absolute left-0 top-0 h-full w-px bg-white/10" />
       
       {/* Right vertical line - full viewport height */}
       <div className="absolute right-0 top-0 h-full w-px bg-white/10" />
       
-      {/* Bottom horizontal line - full viewport width, positioned at hero section bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-white/10" style={{ 
-        top: 'auto',
-        bottom: 'calc(100vh - 100vh)' // This will be adjusted based on hero section height
+      {/* Bottom horizontal line - positioned at hero section bottom using viewport calculations */}
+      <div className="absolute left-0 w-full h-px bg-white/10" style={{ 
+        top: '100vh'
       }} />
       
       {/* Inner content area markers - subtle guides for the content container */}
