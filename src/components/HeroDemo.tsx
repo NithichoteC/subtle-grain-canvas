@@ -8,19 +8,19 @@ import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 function HeroDemo() {
   return (
     <div className="relative w-full font-roboto">
-      {/* Hero Section with proper layout */}
-      <div className="relative min-h-screen">
-        {/* Side blocks that scroll with content */}
-        <SideBlockGrids className="absolute inset-0 z-0" />
-        
-        {/* Content container with proper z-index */}
-        <div className="relative z-10">
+      {/* Side blocks - fixed positioning for consistent visual */}
+      <SideBlockGrids />
+      
+      {/* Main content with proper z-index */}
+      <div className="relative z-10">
+        {/* Hero section - removed min-h-screen to fix padding */}
+        <div className="relative">
           {/* Navbar */}
           <div className="container max-w-5xl mx-auto">
             <NavBarDemo />
           </div>
           
-          {/* Hero section */}
+          {/* Hero content */}
           <div className="container max-w-5xl mx-auto">
             <HeroSectionBackground>
               <Hero />
@@ -29,8 +29,10 @@ function HeroDemo() {
         </div>
       </div>
       
-      {/* Early Adopter Section - separate scrollable block */}
-      <EarlyAdopterSection />
+      {/* Early Adopter Section */}
+      <div className="relative z-10">
+        <EarlyAdopterSection />
+      </div>
     </div>
   );
 }

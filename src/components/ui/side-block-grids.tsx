@@ -9,41 +9,51 @@ interface SideBlockGridsProps {
 
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`relative w-full ${className || ''}`}>
-      {/* Left Side Panel - scrollable with page */}
-      <div className="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-[#0a0a0a] to-[#171717] overflow-hidden">
-        {/* Subtle noise texture */}
-        <div 
-          className="absolute inset-0 opacity-[0.08]" 
-          style={{ 
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundSize: '150px 150px'
-          }}
-        />
+    <div className={`fixed inset-0 pointer-events-none ${className || ''}`}>
+      {/* Left Side Panel - Modern AI aesthetic */}
+      <div className="absolute left-0 top-0 bottom-0 w-80 bg-gradient-to-r from-[#0a0a0a] via-[#111111] to-transparent">
+        {/* Geometric grid pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="h-full w-full" style={{
+            backgroundImage: `
+              linear-gradient(rgba(239, 204, 138, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(239, 204, 138, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
         
-        {/* Ambient Particles for Problems */}
+        {/* Ambient Particles */}
         <AmbientParticles type="problems" />
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 via-transparent to-transparent" />
+        {/* Vertical accent line */}
+        <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/30 to-transparent" />
+        
+        {/* Glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#efcc8a]/5 via-transparent to-transparent" />
       </div>
       
-      {/* Right Side Panel - scrollable with page */}
-      <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-[#0a0a0a] to-[#171717] overflow-hidden">
-        {/* Subtle noise texture */}
-        <div 
-          className="absolute inset-0 opacity-[0.08]" 
-          style={{ 
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundSize: '150px 150px'
-          }}
-        />
+      {/* Right Side Panel - Modern AI aesthetic */}
+      <div className="absolute right-0 top-0 bottom-0 w-80 bg-gradient-to-l from-[#0a0a0a] via-[#111111] to-transparent">
+        {/* Geometric grid pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="h-full w-full" style={{
+            backgroundImage: `
+              linear-gradient(rgba(239, 204, 138, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(239, 204, 138, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
         
-        {/* Ambient Particles for Solutions */}
+        {/* Ambient Particles */}
         <AmbientParticles type="solutions" />
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-l from-green-900/5 via-transparent to-transparent" />
+        {/* Vertical accent line */}
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/30 to-transparent" />
+        
+        {/* Glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-l from-[#efcc8a]/5 via-transparent to-transparent" />
       </div>
     </div>
   );

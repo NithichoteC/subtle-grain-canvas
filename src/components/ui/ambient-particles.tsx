@@ -24,21 +24,21 @@ export function AmbientParticles({ type }: AmbientParticlesProps) {
 
   useEffect(() => {
     const generateParticles = () => {
-      const particleCount = 12;
+      const particleCount = 8;
       const newParticles: Particle[] = [];
       
       for (let i = 0; i < particleCount; i++) {
         newParticles.push({
           id: `particle-${type}-${i}`,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 3 + 1,
-          opacity: Math.random() * 0.4 + 0.1,
-          duration: Math.random() * 20 + 15,
-          delay: Math.random() * 10,
+          x: Math.random() * 80 + 10, // Keep particles within bounds
+          y: Math.random() * 90 + 5,
+          size: Math.random() * 2 + 2, // Larger particles
+          opacity: Math.random() * 0.6 + 0.3, // More visible
+          duration: Math.random() * 15 + 10,
+          delay: Math.random() * 8,
           color: type === 'problems' 
-            ? `rgba(239, 68, 68, ${Math.random() * 0.3 + 0.1})`
-            : `rgba(34, 197, 94, ${Math.random() * 0.3 + 0.1})`
+            ? `rgba(239, 204, 138, ${Math.random() * 0.4 + 0.3})`
+            : `rgba(239, 204, 138, ${Math.random() * 0.4 + 0.3})`
         });
       }
       
@@ -58,7 +58,7 @@ export function AmbientParticles({ type }: AmbientParticlesProps) {
             width: `${particle.size}px`,
             height: `${particle.size}px`,
             backgroundColor: particle.color,
-            boxShadow: `0 0 ${particle.size * 4}px ${particle.color}`,
+            boxShadow: `0 0 ${particle.size * 6}px ${particle.color}`,
             filter: 'blur(0.5px)'
           }}
           initial={{
@@ -68,8 +68,8 @@ export function AmbientParticles({ type }: AmbientParticlesProps) {
             scale: 0
           }}
           animate={{
-            x: [`${particle.x}%`, `${particle.x + (Math.random() * 20 - 10)}%`, `${particle.x}%`],
-            y: [`${particle.y}%`, `${particle.y + (Math.random() * 30 - 15)}%`, `${particle.y}%`],
+            x: [`${particle.x}%`, `${particle.x + (Math.random() * 15 - 7.5)}%`, `${particle.x}%`],
+            y: [`${particle.y}%`, `${particle.y + (Math.random() * 20 - 10)}%`, `${particle.y}%`],
             opacity: [0, particle.opacity, particle.opacity, 0],
             scale: [0, 1, 1, 0]
           }}
@@ -82,40 +82,59 @@ export function AmbientParticles({ type }: AmbientParticlesProps) {
         />
       ))}
       
-      {/* Floating geometric shapes */}
+      {/* Modern geometric accents */}
       <motion.div
-        className="absolute w-16 h-16 border border-white/10 rounded-full"
+        className="absolute w-12 h-12 border border-[#efcc8a]/20"
         style={{
-          left: '20%',
-          top: '30%'
+          left: '15%',
+          top: '25%',
+          borderRadius: '2px'
         }}
         animate={{
-          rotate: [0, 360],
+          rotate: [0, 90, 180, 270, 360],
           scale: [1, 1.1, 1],
-          opacity: [0.3, 0.1, 0.3]
+          opacity: [0.2, 0.4, 0.2]
         }}
         transition={{
-          duration: 25,
+          duration: 20,
           repeat: Infinity,
           ease: "linear"
         }}
       />
       
       <motion.div
-        className="absolute w-8 h-8 border border-white/5 rotate-45"
+        className="absolute w-8 h-8 bg-[#efcc8a]/10 rounded-full"
         style={{
-          right: '25%',
-          bottom: '40%'
+          right: '20%',
+          bottom: '30%'
         }}
         animate={{
-          rotate: [45, 405],
-          y: [-10, 10, -10],
-          opacity: [0.2, 0.05, 0.2]
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.6, 0.3]
         }}
         transition={{
-          duration: 18,
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut"
+        }}
+      />
+      
+      {/* Flowing lines */}
+      <motion.div
+        className="absolute h-px w-24 bg-gradient-to-r from-transparent via-[#efcc8a]/30 to-transparent"
+        style={{
+          left: '10%',
+          top: '60%'
+        }}
+        animate={{
+          scaleX: [0, 1, 0],
+          opacity: [0, 0.6, 0]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
         }}
       />
     </div>
