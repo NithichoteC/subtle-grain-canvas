@@ -9,44 +9,44 @@ interface FlowingWaveLinesProps {
 }
 
 export function FlowingWaveLines({ className, side }: FlowingWaveLinesProps) {
-  // Create simple, visible wave paths
-  const generateSimpleWave = (index: number) => {
-    const amplitude = 30;
-    const frequency = 0.02;
-    const yOffset = index * 80;
+  // Create highly visible wave paths
+  const generateWavePath = (index: number) => {
+    const amplitude = 60;
+    const yStart = index * 120 + 100;
+    const width = 300;
     
     if (side === 'left') {
-      // Left side - simple sine wave from left edge
-      return `M 0 ${yOffset} Q ${amplitude} ${yOffset + 20} 0 ${yOffset + 40} T 0 ${yOffset + 80}`;
+      return `M 0 ${yStart} 
+              Q ${amplitude} ${yStart + 30} 0 ${yStart + 60} 
+              T 0 ${yStart + 120}
+              Q ${amplitude * 1.5} ${yStart + 150} 0 ${yStart + 180}`;
     } else {
-      // Right side - simple sine wave from right edge  
-      const width = 200;
-      return `M ${width} ${yOffset} Q ${width - amplitude} ${yOffset + 20} ${width} ${yOffset + 40} T ${width} ${yOffset + 80}`;
+      return `M ${width} ${yStart} 
+              Q ${width - amplitude} ${yStart + 30} ${width} ${yStart + 60} 
+              T ${width} ${yStart + 120}
+              Q ${width - amplitude * 1.5} ${yStart + 150} ${width} ${yStart + 180}`;
     }
   };
 
-  const waves = Array.from({ length: 6 }, (_, i) => ({
+  const waves = Array.from({ length: 4 }, (_, i) => ({
     id: i,
-    path: generateSimpleWave(i),
-    opacity: 0.8 - (i * 0.1),
-    strokeWidth: 2 + (i % 2),
-    delay: i * 0.2
+    path: generateWavePath(i),
+    opacity: 0.9 - (i * 0.15),
+    strokeWidth: 3 + (i % 2),
+    delay: i * 0.5
   }));
 
   return (
-    <div className={`absolute inset-0 pointer-events-none ${className || ''}`}>
-      {/* High contrast background for debugging */}
-      <div className="absolute inset-0 bg-red-500/10" />
-      
+    <div className={`absolute inset-0 pointer-events-none z-[1015] ${className || ''}`}>
       <svg
         className="w-full h-full"
-        viewBox="0 0 200 500"
+        viewBox="0 0 300 800"
         preserveAspectRatio="none"
         fill="none"
       >
         <defs>
           <filter id={`wave-glow-${side}`}>
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
             <feMerge> 
               <feMergeNode in="coloredBlur"/>
               <feMergeNode in="SourceGraphic"/>
@@ -70,21 +70,32 @@ export function FlowingWaveLines({ className, side }: FlowingWaveLinesProps) {
               opacity: wave.opacity,
             }}
             transition={{
-              pathLength: { duration: 2, delay: wave.delay },
-              opacity: { duration: 1, delay: wave.delay },
+              pathLength: { duration: 3, delay: wave.delay },
+              opacity: { duration: 1.5, delay: wave.delay },
             }}
           />
         ))}
         
-        {/* Additional bright test lines */}
+        {/* Bright test line to confirm visibility */}
         <line 
-          x1={side === 'left' ? "0" : "200"} 
-          y1="0" 
-          x2={side === 'left' ? "50" : "150"} 
-          y2="100" 
+          x1={side === 'left' ? "20" : "280"} 
+          y1="50" 
+          x2={side === 'left' ? "100" : "200"} 
+          y2="200" 
           stroke="#00FF00" 
-          strokeWidth="3"
+          strokeWidth="4"
           opacity="0.8"
+        />
+        
+        {/* Additional bright accent line */}
+        <line 
+          x1={side === 'left' ? "0" : "300"} 
+          y1="0" 
+          x2={side === 'left' ? "0" : "300"} 
+          y2="800" 
+          stroke="#FFD700" 
+          strokeWidth="2"
+          opacity="0.6"
         />
       </svg>
     </div>
