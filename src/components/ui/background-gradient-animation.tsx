@@ -1,4 +1,3 @@
-
 "use client";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
@@ -19,6 +18,7 @@ export const BackgroundGradientAnimation = ({
   interactive = true,
   containerClassName,
   animationSet = "left",
+  cursorResponsiveness = "normal",
 }: {
   gradientBackgroundStart?: string;
   gradientBackgroundEnd?: string;
@@ -35,6 +35,7 @@ export const BackgroundGradientAnimation = ({
   interactive?: boolean;
   containerClassName?: string;
   animationSet?: "left" | "right";
+  cursorResponsiveness?: "normal" | "enhanced";
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
@@ -67,15 +68,16 @@ export const BackgroundGradientAnimation = ({
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
+      const responsiveness = cursorResponsiveness === "enhanced" ? 8 : 20;
+      setCurX(curX + (tgX - curX) / responsiveness);
+      setCurY(curY + (tgY - curY) / responsiveness);
       interactiveRef.current.style.transform = `translate(${Math.round(
         curX
       )}px, ${Math.round(curY)}px)`;
     }
 
     move();
-  }, [tgX, tgY]);
+  }, [tgX, tgY, cursorResponsiveness]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {

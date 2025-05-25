@@ -12,7 +12,7 @@ interface SideBlockGridsProps {
 /**
  * Side block grid enhancements with animated gradient backgrounds
  * Uses toned-down bronze/gold color palette with differentiated left/right animations
- * Ensures perfect edge-to-edge connection with zero gaps and scrolls with page
+ * Enhanced cursor responsiveness and rich texture matching hero section
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
@@ -30,13 +30,14 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           thirdColor="200, 170, 0"     // Toned gold
           fourthColor="119, 89, 33"    // Deep bronze
           fifthColor="180, 166, 156"   // Subtle bronze light
-          pointerColor="191, 163, 110" // Muted bronze base
+          pointerColor="210, 180, 120" // Enhanced pointer intensity
           size="120%"
           blendingValue="overlay"
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
           animationSet="left"
+          cursorResponsiveness="enhanced"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -44,9 +45,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             aria-label="Reserved space for 3D assets"
           />
           
-          {/* Subtle texture overlay */}
+          {/* Rich texture overlay matching hero section */}
           <div className="absolute inset-0 z-10">
-            <NoiseTexture {...noiseConfigs.sideBlocks} />
+            <NoiseTexture {...noiseConfigs.hero} />
           </div>
         </BackgroundGradientAnimation>
       </div>
@@ -64,13 +65,14 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           thirdColor="130, 95, 8"      // Darker bronze
           fourthColor="200, 170, 0"    // Toned gold
           fifthColor="165, 102, 40"    // Muted bronze medium
-          pointerColor="191, 163, 110" // Muted bronze base
+          pointerColor="210, 180, 120" // Enhanced pointer intensity
           size="120%"
           blendingValue="overlay"
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
           animationSet="right"
+          cursorResponsiveness="enhanced"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -78,9 +80,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             aria-label="Reserved space for 3D assets"
           />
           
-          {/* Subtle texture overlay */}
+          {/* Rich texture overlay matching hero section */}
           <div className="absolute inset-0 z-10">
-            <NoiseTexture {...noiseConfigs.sideBlocks} />
+            <NoiseTexture {...noiseConfigs.hero} />
           </div>
         </BackgroundGradientAnimation>
       </div>
