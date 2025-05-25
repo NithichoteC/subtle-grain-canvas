@@ -131,7 +131,7 @@ export default {
 						transform: "rotate(360deg)",
 					},
 				},
-				"first-right-sync": {
+				"first-right": {
 					"0%": {
 						transform: "rotate(180deg)",
 					},
@@ -139,7 +139,7 @@ export default {
 						transform: "rotate(540deg)",
 					},
 				},
-				"second-right-sync": {
+				"second-right": {
 					"0%": {
 						transform: "rotate(90deg)",
 					},
@@ -147,7 +147,7 @@ export default {
 						transform: "rotate(-270deg)",
 					},
 				},
-				"third-right-sync": {
+				"third-right": {
 					"0%": {
 						transform: "rotate(270deg)",
 					},
@@ -155,7 +155,7 @@ export default {
 						transform: "rotate(630deg)",
 					},
 				},
-				"fourth-right-sync": {
+				"fourth-right": {
 					"0%": {
 						transform: "rotate(45deg)",
 					},
@@ -163,7 +163,7 @@ export default {
 						transform: "rotate(-315deg)",
 					},
 				},
-				"fifth-right-sync": {
+				"fifth-right": {
 					"0%": {
 						transform: "rotate(135deg)",
 					},
@@ -180,11 +180,11 @@ export default {
 				third: "third 40s linear infinite",
 				fourth: "fourth 60s linear infinite",
 				fifth: "fifth 60s linear infinite",
-				"first-right-sync": "first-right-sync 20s linear infinite",
-				"second-right-sync": "second-right-sync 40s linear infinite",
-				"third-right-sync": "third-right-sync 40s linear infinite",
-				"fourth-right-sync": "fourth-right-sync 60s linear infinite",
-				"fifth-right-sync": "fifth-right-sync 60s linear infinite",
+				"first-right": "first-right 20s linear infinite 5s",
+				"second-right": "second-right 40s linear infinite 10s",
+				"third-right": "third-right 40s linear infinite 2s",
+				"fourth-right": "fourth-right 60s linear infinite 15s",
+				"fifth-right": "fifth-right 60s linear infinite 8s",
 			}
 		}
 	},

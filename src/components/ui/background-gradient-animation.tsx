@@ -1,23 +1,24 @@
-
 "use client";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart = "rgb(23, 23, 23)",
-  gradientBackgroundEnd = "rgb(184, 134, 11)",
-  firstColor = "184, 134, 11",
-  secondColor = "205, 127, 50",
-  thirdColor = "255, 215, 0",
-  fourthColor = "226, 209, 195",
-  fifthColor = "149, 111, 41",
-  pointerColor = "184, 134, 11",
+  gradientBackgroundStart = "rgb(108, 0, 162)",
+  gradientBackgroundEnd = "rgb(0, 17, 82)",
+  firstColor = "18, 113, 255",
+  secondColor = "221, 74, 255",
+  thirdColor = "100, 220, 255",
+  fourthColor = "200, 50, 50",
+  fifthColor = "180, 180, 50",
+  pointerColor = "140, 100, 255",
   size = "80%",
   blendingValue = "hard-light",
   children,
   className,
   interactive = true,
   containerClassName,
+  animationSet = "left",
+  cursorResponsiveness = "normal",
 }: {
   gradientBackgroundStart?: string;
   gradientBackgroundEnd?: string;
@@ -33,6 +34,8 @@ export const BackgroundGradientAnimation = ({
   className?: string;
   interactive?: boolean;
   containerClassName?: string;
+  animationSet?: "left" | "right";
+  cursorResponsiveness?: "normal" | "enhanced";
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
@@ -65,15 +68,16 @@ export const BackgroundGradientAnimation = ({
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
+      const responsiveness = cursorResponsiveness === "enhanced" ? 8 : 20;
+      setCurX(curX + (tgX - curX) / responsiveness);
+      setCurY(curY + (tgY - curY) / responsiveness);
       interactiveRef.current.style.transform = `translate(${Math.round(
         curX
       )}px, ${Math.round(curY)}px)`;
     }
 
     move();
-  }, [tgX, tgY]);
+  }, [tgX, tgY, cursorResponsiveness]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -88,10 +92,32 @@ export const BackgroundGradientAnimation = ({
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
+  // Animation classes based on which side
+  const getAnimationClasses = () => {
+    if (animationSet === "right") {
+      return {
+        first: "animate-first-right",
+        second: "animate-second-right", 
+        third: "animate-third-right",
+        fourth: "animate-fourth-right",
+        fifth: "animate-fifth-right"
+      };
+    }
+    return {
+      first: "animate-first",
+      second: "animate-second",
+      third: "animate-third", 
+      fourth: "animate-fourth",
+      fifth: "animate-fifth"
+    };
+  };
+
+  const animations = getAnimationClasses();
+
   return (
     <div
       className={cn(
-        "h-screen w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        "h-full w-full relative overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
     >
@@ -113,72 +139,57 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-      <div className={cn("", className)}>{children}</div>
+      <div className={cn("relative z-10", className)}>{children}</div>
       <div
         className={cn(
-          "gradients-container h-full w-full blur-lg",
+          "gradients-container h-full w-full blur-lg absolute inset-0",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
-            `w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--first-color),_0.5)_0,_rgba(var(--first-color),_0)_50%)_no-repeat]`,
+            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:center_center]`,
-            `animate-first`,
-            `opacity-100`
+            animations.first,
+            `opacity-80`
           )}
-          style={{
-            mixBlendMode: blendingValue as React.CSSProperties['mixBlendMode']
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
-            `w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.5)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
+            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-400px)]`,
-            `animate-second`,
-            `opacity-100`
+            animations.second,
+            `opacity-80`
           )}
-          style={{
-            mixBlendMode: blendingValue as React.CSSProperties['mixBlendMode']
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
-            `w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.5)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
+            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%+400px)]`,
-            `animate-third`,
-            `opacity-100`
+            animations.third,
+            `opacity-80`
           )}
-          style={{
-            mixBlendMode: blendingValue as React.CSSProperties['mixBlendMode']
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
-            `w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.5)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
+            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-200px)]`,
-            `animate-fourth`,
-            `opacity-70`
+            animations.fourth,
+            `opacity-60`
           )}
-          style={{
-            mixBlendMode: blendingValue as React.CSSProperties['mixBlendMode']
-          }}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
-            `w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.5)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
+            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
             `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
-            `animate-fifth`,
-            `opacity-100`
+            animations.fifth,
+            `opacity-80`
           )}
-          style={{
-            mixBlendMode: blendingValue as React.CSSProperties['mixBlendMode']
-          }}
         ></div>
 
         {interactive && (
@@ -186,13 +197,10 @@ export const BackgroundGradientAnimation = ({
             ref={interactiveRef}
             onMouseMove={handleMouseMove}
             className={cn(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
-              `w-full h-full -top-1/2 -left-1/2`,
-              `opacity-70`
+              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.6)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
+              `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
+              `opacity-50`
             )}
-            style={{
-              mixBlendMode: blendingValue as React.CSSProperties['mixBlendMode']
-            }}
           ></div>
         )}
       </div>
