@@ -171,6 +171,30 @@ export default {
 						transform: "rotate(495deg)",
 					},
 				},
+				"drift-left": {
+					"0%": {
+						transform: "translateX(0) translateY(0)",
+					},
+					"100%": {
+						transform: "translateX(-20px) translateY(-10px)",
+					},
+				},
+				"drift-right": {
+					"0%": {
+						transform: "translateX(0) translateY(0)",
+					},
+					"100%": {
+						transform: "translateX(20px) translateY(10px)",
+					},
+				},
+				"scan-lines": {
+					"0%": {
+						transform: "translateY(0)",
+					},
+					"100%": {
+						transform: "translateY(8px)",
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -185,6 +209,9 @@ export default {
 				"third-right": "third-right 40s linear infinite 2s",
 				"fourth-right": "fourth-right 60s linear infinite 15s",
 				"fifth-right": "fifth-right 60s linear infinite 8s",
+				"drift-left": "drift-left 20s ease-in-out infinite alternate",
+				"drift-right": "drift-right 25s ease-in-out infinite alternate",
+				"scan-lines": "scan-lines 8s linear infinite",
 			}
 		}
 	},
