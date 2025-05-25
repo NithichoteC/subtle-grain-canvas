@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -204,6 +205,36 @@
 
 /* Import Roboto Flex Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap');
+
+/* Add keyframes for the side block animations */
+@keyframes breathe-left {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1) translateX(0); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: scale(1.05) translateX(5px); 
+  }
+}
+
+@keyframes breathe-right {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1) translateX(0); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: scale(1.05) translateX(-5px); 
+  }
+}
+
+@keyframes cross-flow {
+  0%, 100% { opacity: 0.2; }
+  25% { opacity: 0.4; }
+  50% { opacity: 0.3; }
+  75% { opacity: 0.5; }
+}
 
 /* Add custom utility classes */
 @layer utilities {

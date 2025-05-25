@@ -51,11 +51,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
 
           {/* Left side breathing effect - starts with 3s delay */}
           <div 
-            className="absolute inset-0 z-5"
+            className="absolute inset-0 z-5 animate-breathe-left"
             style={{ 
-              background: `radial-gradient(ellipse 120% 80% at 80% 50%, ${colors.bronze.base}02 0%, transparent 60%)`,
-              animation: 'breathe-left 22s ease-in-out infinite',
-              animationDelay: '3s'
+              background: `radial-gradient(ellipse 120% 80% at 80% 50%, ${colors.bronze.base}02 0%, transparent 60%)`
             }}
           />
         </BackgroundGradientAnimation>
@@ -95,10 +93,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
 
           {/* Right side breathing effect - starts immediately */}
           <div 
-            className="absolute inset-0 z-5"
+            className="absolute inset-0 z-5 animate-breathe-right"
             style={{ 
-              background: `radial-gradient(ellipse 120% 80% at 20% 50%, ${colors.bronze.base}02 0%, transparent 60%)`,
-              animation: 'breathe-right 18s ease-in-out infinite'
+              background: `radial-gradient(ellipse 120% 80% at 20% 50%, ${colors.bronze.base}02 0%, transparent 60%)`
             }}
           />
         </BackgroundGradientAnimation>
@@ -124,32 +121,11 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
       
       {/* Cross-flow ambient enhancement - creates connection between sides */}
       <div 
-        className="absolute inset-0 z-5"
+        className="absolute inset-0 z-5 animate-cross-flow"
         style={{ 
-          background: `linear-gradient(90deg, ${colors.bronze.base}01 0%, ${colors.bronze.base}03 30%, ${colors.bronze.base}03 70%, ${colors.bronze.base}01 100%)`,
-          animation: 'cross-flow 25s ease-in-out infinite'
+          background: `linear-gradient(90deg, ${colors.bronze.base}01 0%, ${colors.bronze.base}03 30%, ${colors.bronze.base}03 70%, ${colors.bronze.base}01 100%)`
         }}
       />
-
-      {/* Global style injection for new animations */}
-      <style jsx>{`
-        @keyframes breathe-left {
-          0%, 100% { opacity: 0.3; transform: scale(1) translateX(0); }
-          50% { opacity: 0.6; transform: scale(1.05) translateX(5px); }
-        }
-        
-        @keyframes breathe-right {
-          0%, 100% { opacity: 0.3; transform: scale(1) translateX(0); }
-          50% { opacity: 0.6; transform: scale(1.05) translateX(-5px); }
-        }
-        
-        @keyframes cross-flow {
-          0%, 100% { opacity: 0.2; }
-          25% { opacity: 0.4; }
-          50% { opacity: 0.3; }
-          75% { opacity: 0.5; }
-        }
-      `}</style>
     </div>
   );
 }
