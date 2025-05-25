@@ -7,23 +7,18 @@ interface SideBlockGridsProps {
 
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`fixed inset-0 pointer-events-none overflow-hidden z-[9999] ${className || ''}`}>
-      {/* Left Side Grid Block - Complete with all borders */}
-      <div className="absolute left-0 top-0 w-[20%] max-w-xs h-full">
-        {/* Left border - bright red for visibility */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden z-20 ${className || ''}`}>
+      {/* Left Side Grid Block - Complete grid block */}
+      <div className="absolute left-0 top-0 w-[20%] max-w-xs h-screen">
+        {/* Left border */}
+        <div className="absolute left-0 top-0 bottom-0 w-2 bg-red-500" />
         
-        {/* Bottom border for left block - bright yellow */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-400" style={{ top: '100vh' }} />
+        {/* Bottom border for left block */}
+        <div className="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400" />
         
         {/* Subtle edge gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* 3D Asset Zone */}
-        <div className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
-          {/* Reserved space for 3D assets */}
-        </div>
-        
         {/* Subtle texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.03]" 
@@ -34,22 +29,17 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         />
       </div>
       
-      {/* Right Side Grid Block - Complete with all borders */}
-      <div className="absolute right-0 top-0 w-[20%] max-w-xs h-full">
-        {/* Right border - bright red for visibility */}
-        <div className="absolute right-0 top-0 bottom-0 w-1 bg-red-500" />
+      {/* Right Side Grid Block - Complete grid block */}
+      <div className="absolute right-0 top-0 w-[20%] max-w-xs h-screen">
+        {/* Right border */}
+        <div className="absolute right-0 top-0 bottom-0 w-2 bg-red-500" />
         
-        {/* Bottom border for right block - bright yellow */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-400" style={{ top: '100vh' }} />
+        {/* Bottom border for right block */}
+        <div className="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400" />
         
         {/* Subtle edge gradient */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* 3D Asset Zone */}
-        <div className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
-          {/* Reserved space for 3D assets */}
-        </div>
-        
         {/* Subtle texture overlay */}
         <div 
           className="absolute inset-0 opacity-[0.03]" 
@@ -59,13 +49,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           }}
         />
       </div>
-      
-      {/* Ultra-subtle ambient enhancement */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#efcc8a]/[0.01] via-transparent to-transparent" 
-           style={{ 
-             background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(239, 204, 138, 0.01) 0%, transparent 70%)'
-           }} 
-      />
     </div>
   );
 }
