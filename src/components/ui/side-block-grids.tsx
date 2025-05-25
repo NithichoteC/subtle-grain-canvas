@@ -1,8 +1,7 @@
-
 "use client";
 
 import { NoiseTexture } from '@/components/ui/noise-texture';
-import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
+import { BackgroundGradientAnimationDebug } from '@/components/ui/background-gradient-animation-debug';
 import { DotPattern } from '@/components/ui/dot-pattern';
 import { colors, layout, noiseConfigs, zIndex } from '@/lib/design-tokens';
 
@@ -23,7 +22,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
-        <BackgroundGradientAnimation
+        <BackgroundGradientAnimationDebug
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
           firstColor="130, 95, 8"      // Darker bronze
@@ -113,7 +112,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
             aria-label="Reserved space for 3D assets"
           />
-        </BackgroundGradientAnimation>
+        </BackgroundGradientAnimationDebug>
       </div>
       
       {/* Right Edge Enhancement - Offset animation timing */}
@@ -121,7 +120,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
-        <BackgroundGradientAnimation
+        <BackgroundGradientAnimationDebug
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
           firstColor="180, 166, 156"   // Subtle bronze light (swapped order)
@@ -177,7 +176,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
                 linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
               `,
               backgroundSize: '40px 40px',
-              backgroundPosition: '20px 20px' // Offset for right side
+              backgroundPosition: '20px 20px'
             }}
           />
           
@@ -212,7 +211,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
             aria-label="Reserved space for 3D assets"
           />
-        </BackgroundGradientAnimation>
+        </BackgroundGradientAnimationDebug>
       </div>
       
       {/* Center connection zone - fills the 1280px center area */}
