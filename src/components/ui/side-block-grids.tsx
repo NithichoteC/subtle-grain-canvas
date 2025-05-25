@@ -1,8 +1,6 @@
 
 "use client";
 
-import { AmbientParticles } from "./ambient-particles";
-
 interface SideBlockGridsProps {
   className?: string;
 }
@@ -10,89 +8,67 @@ interface SideBlockGridsProps {
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Side Panel - Extended to connect with center content */}
-      <div className="absolute left-0 top-0 bottom-0 w-96 bg-gradient-to-r from-[#0a0a0a]/95 via-[#111111]/80 via-70% to-transparent backdrop-blur-sm">
-        {/* Primary gradient orb */}
-        <div className="absolute top-1/4 left-12 w-32 h-32 bg-gradient-radial from-[#efcc8a]/20 via-[#efcc8a]/10 to-transparent rounded-full blur-xl animate-pulse" />
+      {/* Left Edge Enhancement - Ultra Minimal */}
+      <div className="absolute left-0 top-0 bottom-0 w-[20%] max-w-xs">
+        {/* Subtle edge gradient that scales with screen width */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* Secondary gradient orb */}
-        <div className="absolute bottom-1/3 left-8 w-24 h-24 bg-gradient-radial from-[#cd7f32]/15 via-[#cd7f32]/8 to-transparent rounded-full blur-lg" style={{
-          animation: 'pulse 4s ease-in-out infinite alternate'
-        }} />
+        {/* Minimal border accent - matches hero section styling */}
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/20 via-50% to-transparent" />
         
-        {/* Sophisticated geometric grid */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="h-full w-full" style={{
-            backgroundImage: `
-              linear-gradient(rgba(239, 204, 138, 0.15) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239, 204, 138, 0.15) 1px, transparent 1px),
-              linear-gradient(rgba(239, 204, 138, 0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239, 204, 138, 0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px, 60px 60px, 20px 20px, 20px 20px'
-          }} />
+        {/* 3D Asset Zone - Strategic positioning for your assets */}
+        <div className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
+          {/* Reserved space for 3D assets like money bag, shield, etc. */}
         </div>
         
-        {/* Glassmorphism floating elements */}
-        <div className="absolute top-1/2 left-6 w-16 h-16 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg transform -rotate-12" style={{
-          animation: 'float 6s ease-in-out infinite'
-        }} />
-        
-        <div className="absolute top-1/3 left-16 w-12 h-12 bg-[#efcc8a]/10 backdrop-blur-md border border-[#efcc8a]/20 rounded-lg transform rotate-45" style={{
-          animation: 'float 8s ease-in-out infinite reverse'
-        }} />
-        
-        {/* Ambient Particles */}
-        <AmbientParticles type="problems" />
-        
-        {/* Extended connection fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-[#efcc8a]/5 to-transparent" />
-        
-        {/* Subtle edge lighting */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#efcc8a]/3 via-transparent to-transparent" />
+        {/* Subtle texture overlay - minimal grain */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]" 
+          style={{ 
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+            backgroundSize: '100px 100px'
+          }}
+        />
       </div>
       
-      {/* Right Side Panel - Extended to connect with center content */}
-      <div className="absolute right-0 top-0 bottom-0 w-96 bg-gradient-to-l from-[#0a0a0a]/95 via-[#111111]/80 via-70% to-transparent backdrop-blur-sm">
-        {/* Primary gradient orb */}
-        <div className="absolute top-1/3 right-12 w-28 h-28 bg-gradient-radial from-[#efcc8a]/18 via-[#efcc8a]/9 to-transparent rounded-full blur-xl" style={{
-          animation: 'pulse 5s ease-in-out infinite alternate'
-        }} />
+      {/* Right Edge Enhancement - Ultra Minimal */}
+      <div className="absolute right-0 top-0 bottom-0 w-[20%] max-w-xs">
+        {/* Subtle edge gradient that scales with screen width */}
+        <div className="absolute inset-0 bg-gradient-to-l from-[#0a0a0a]/30 via-[#0a0a0a]/10 via-60% to-transparent" />
         
-        {/* Secondary gradient orb */}
-        <div className="absolute bottom-1/4 right-8 w-20 h-20 bg-gradient-radial from-[#cd7f32]/12 via-[#cd7f32]/6 to-transparent rounded-full blur-lg animate-pulse" />
+        {/* Minimal border accent - matches hero section styling */}
+        <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/20 via-50% to-transparent" />
         
-        {/* Sophisticated geometric grid */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="h-full w-full" style={{
-            backgroundImage: `
-              linear-gradient(rgba(239, 204, 138, 0.15) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239, 204, 138, 0.15) 1px, transparent 1px),
-              linear-gradient(rgba(239, 204, 138, 0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239, 204, 138, 0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px, 60px 60px, 20px 20px, 20px 20px'
-          }} />
+        {/* 3D Asset Zone - Strategic positioning for your assets */}
+        <div className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100">
+          {/* Reserved space for 3D assets like handshake, hourglass, etc. */}
         </div>
         
-        {/* Glassmorphism floating elements */}
-        <div className="absolute top-2/5 right-6 w-14 h-14 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg transform rotate-12" style={{
-          animation: 'float 7s ease-in-out infinite'
-        }} />
-        
-        <div className="absolute top-1/4 right-16 w-10 h-10 bg-[#efcc8a]/10 backdrop-blur-md border border-[#efcc8a]/20 rounded-lg transform -rotate-45" style={{
-          animation: 'float 9s ease-in-out infinite reverse'
-        }} />
-        
-        {/* Ambient Particles */}
-        <AmbientParticles type="solutions" />
-        
-        {/* Extended connection fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-l from-transparent via-[#efcc8a]/5 to-transparent" />
-        
-        {/* Subtle edge lighting */}
-        <div className="absolute inset-0 bg-gradient-to-l from-[#efcc8a]/3 via-transparent to-transparent" />
+        {/* Subtle texture overlay - minimal grain */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]" 
+          style={{ 
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+            backgroundSize: '100px 100px'
+          }}
+        />
       </div>
+      
+      {/* Seamless Connection Layer - Ensures no gaps at any screen size */}
+      <div className="absolute inset-0">
+        {/* Left connection */}
+        <div className="absolute left-0 top-0 bottom-0 w-[25%] bg-gradient-to-r from-transparent via-[#efcc8a]/[0.02] via-90% to-transparent" />
+        
+        {/* Right connection */}
+        <div className="absolute right-0 top-0 bottom-0 w-[25%] bg-gradient-to-l from-transparent via-[#efcc8a]/[0.02] via-90% to-transparent" />
+      </div>
+      
+      {/* Ultra-subtle ambient enhancement */}
+      <div className="absolute inset-0 bg-gradient-radial from-[#efcc8a]/[0.01] via-transparent to-transparent" 
+           style={{ 
+             background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(239, 204, 138, 0.01) 0%, transparent 70%)'
+           }} 
+      />
     </div>
   );
 }
