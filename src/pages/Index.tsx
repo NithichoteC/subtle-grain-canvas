@@ -5,9 +5,9 @@ import { HeroDemo } from '@/components/HeroDemo';
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full overflow-hidden">
+    <div className="min-h-screen w-full">
       <TextureBackground />
-      <div className="min-h-screen w-full relative">
+      <div className="relative w-full">
         <HeroDemo />
       </div>
     </div>
