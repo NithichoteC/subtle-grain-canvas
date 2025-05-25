@@ -30,7 +30,7 @@ export const colors = {
 // Layout Constants
 export const layout = {
   containerMaxWidth: '1280px', // 5xl
-  sideBlockMaxWidth: '300px', // Ensure consistent side block sizing
+  sideBlockMaxWidth: '280px', // Optimized for better proportions
   borderWidth: '1px',
   edgeEnhancementWidth: '20%'
 } as const;
@@ -55,10 +55,10 @@ export const noiseConfigs = {
     backgroundSize: '200px 200px'
   },
   sideBlocks: {
-    opacity: 0.03,
-    baseFrequency: 0.9,
-    numOctaves: 1,
-    backgroundSize: '100px 100px'
+    opacity: 0.04, // Reduced for cleaner appearance
+    baseFrequency: 0.8,
+    numOctaves: 2,
+    backgroundSize: '120px 120px'
   }
 } as const;
 
@@ -68,4 +68,12 @@ export const zIndex = {
   sideBlocks: 0,
   content: 10,
   navbar: 50
+} as const;
+
+// Fine Line Pattern Constants
+export const patterns = {
+  lineSpacing: 18, // px between vertical lines
+  lineCount: 8, // number of lines per side
+  lineOpacityStart: 0.6,
+  lineOpacityDecay: 0.05
 } as const;
