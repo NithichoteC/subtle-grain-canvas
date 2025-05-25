@@ -10,8 +10,8 @@ interface SideBlockGridsProps {
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Side Panel - Modern AI aesthetic with glassmorphism */}
-      <div className="absolute left-0 top-0 bottom-0 w-72 bg-gradient-to-r from-[#0a0a0a]/95 via-[#111111]/80 to-transparent backdrop-blur-sm">
+      {/* Left Side Panel - Extended to connect with center content */}
+      <div className="absolute left-0 top-0 bottom-0 w-96 bg-gradient-to-r from-[#0a0a0a]/95 via-[#111111]/80 via-70% to-transparent backdrop-blur-sm">
         {/* Primary gradient orb */}
         <div className="absolute top-1/4 left-12 w-32 h-32 bg-gradient-radial from-[#efcc8a]/20 via-[#efcc8a]/10 to-transparent rounded-full blur-xl animate-pulse" />
         
@@ -45,15 +45,15 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         {/* Ambient Particles */}
         <AmbientParticles type="problems" />
         
-        {/* Elegant vertical accent line with glow */}
-        <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/40 to-transparent shadow-[0_0_10px_rgba(239,204,138,0.3)]" />
+        {/* Extended connection fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-[#efcc8a]/5 to-transparent" />
         
         {/* Subtle edge lighting */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#efcc8a]/3 via-transparent to-transparent" />
       </div>
       
-      {/* Right Side Panel - Mirror with slight variations */}
-      <div className="absolute right-0 top-0 bottom-0 w-72 bg-gradient-to-l from-[#0a0a0a]/95 via-[#111111]/80 to-transparent backdrop-blur-sm">
+      {/* Right Side Panel - Extended to connect with center content */}
+      <div className="absolute right-0 top-0 bottom-0 w-96 bg-gradient-to-l from-[#0a0a0a]/95 via-[#111111]/80 via-70% to-transparent backdrop-blur-sm">
         {/* Primary gradient orb */}
         <div className="absolute top-1/3 right-12 w-28 h-28 bg-gradient-radial from-[#efcc8a]/18 via-[#efcc8a]/9 to-transparent rounded-full blur-xl" style={{
           animation: 'pulse 5s ease-in-out infinite alternate'
@@ -87,8 +87,8 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         {/* Ambient Particles */}
         <AmbientParticles type="solutions" />
         
-        {/* Elegant vertical accent line with glow */}
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#efcc8a]/40 to-transparent shadow-[0_0_10px_rgba(239,204,138,0.3)]" />
+        {/* Extended connection fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-l from-transparent via-[#efcc8a]/5 to-transparent" />
         
         {/* Subtle edge lighting */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#efcc8a]/3 via-transparent to-transparent" />
