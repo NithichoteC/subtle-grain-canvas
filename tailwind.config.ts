@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -131,46 +132,6 @@ export default {
 						transform: "rotate(360deg)",
 					},
 				},
-				"first-right": {
-					"0%": {
-						transform: "rotate(180deg)",
-					},
-					"100%": {
-						transform: "rotate(540deg)",
-					},
-				},
-				"second-right": {
-					"0%": {
-						transform: "rotate(90deg)",
-					},
-					"100%": {
-						transform: "rotate(-270deg)",
-					},
-				},
-				"third-right": {
-					"0%": {
-						transform: "rotate(270deg)",
-					},
-					"100%": {
-						transform: "rotate(630deg)",
-					},
-				},
-				"fourth-right": {
-					"0%": {
-						transform: "rotate(45deg)",
-					},
-					"100%": {
-						transform: "rotate(-315deg)",
-					},
-				},
-				"fifth-right": {
-					"0%": {
-						transform: "rotate(135deg)",
-					},
-					"100%": {
-						transform: "rotate(495deg)",
-					},
-				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -180,11 +141,6 @@ export default {
 				third: "third 40s linear infinite",
 				fourth: "fourth 60s linear infinite",
 				fifth: "fifth 60s linear infinite",
-				"first-right": "first-right 20s linear infinite 5s",
-				"second-right": "second-right 40s linear infinite 10s",
-				"third-right": "third-right 40s linear infinite 2s",
-				"fourth-right": "fourth-right 60s linear infinite 15s",
-				"fifth-right": "fifth-right 60s linear infinite 8s",
 			}
 		}
 	},
