@@ -37,6 +37,8 @@ export const BackgroundGradientAnimation = ({
   animationSet?: "left" | "right";
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
@@ -51,8 +53,9 @@ export const BackgroundGradientAnimation = ({
       setCurY(curY + (tgY - curY) / 20);
       interactiveRef.current.style.transform = `translate3d(${Math.round(curX)}px, ${Math.round(curY)}px, 0)`;
     }
+
     move();
-  }, [tgX, tgY, curX, curY]);
+  }, [tgX, tgY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current && interactive) {
@@ -67,21 +70,30 @@ export const BackgroundGradientAnimation = ({
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
-  // Create unique IDs for filters to avoid conflicts
-  const filterId = `blurMe-${animationSet}-${Math.random().toString(36).substr(2, 9)}`;
+  // Generate unique animation keyframes for each side
+  const animationDelay = animationSet === "right" ? "2s" : "0s";
+  const rotationDirection = animationSet === "right" ? "reverse" : "normal";
 
   return (
     <div
-      className={cn("h-full w-full relative overflow-hidden", containerClassName)}
+      ref={containerRef}
+      className={cn(
+        "h-full w-full relative overflow-hidden",
+        containerClassName
+      )}
       style={{
         background: `linear-gradient(40deg, ${gradientBackgroundStart}, ${gradientBackgroundEnd})`,
+        contain: "layout style paint"
       }}
-      onMouseMove={handleMouseMove}
     >
       <svg className="hidden">
         <defs>
-          <filter id={filterId}>
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <filter id={`blurMe-${animationSet}`}>
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -92,109 +104,115 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-
-      <div className={cn("", className)}>{children}</div>
-
+      
+      <div className={cn("relative z-10", className)}>{children}</div>
+      
       <div
         className={cn(
-          "gradients-container h-full w-full blur-lg",
-          isSafari ? "blur-2xl" : ""
+          "gradients-container h-full w-full blur-lg absolute inset-0",
+          isSafari ? "blur-2xl" : `[filter:url(#blurMe-${animationSet})_blur(40px)]`
         )}
-        style={{
-          filter: isSafari ? undefined : `url(#${filterId}) blur(40px)`,
-        }}
+        style={{ contain: "layout style paint", willChange: "transform" }}
       >
         {/* First gradient orb */}
         <div
-          className="absolute opacity-100 mix-blend-mode"
+          className="absolute opacity-70"
           style={{
-            background: `radial-gradient(circle at center, rgba(${firstColor}, 0.8) 0%, rgba(${firstColor}, 0.8) 50%, transparent 100%)`,
-            mixBlendMode: blendingValue,
+            background: `radial-gradient(circle at center, rgba(${firstColor}, 0.4) 0%, rgba(${firstColor}, 0) 70%) no-repeat`,
+            mixBlendMode: blendingValue as any,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "center center",
-            animation: `gradient-flow-1-${animationSet} 30s ease-in-out infinite`,
+            transformOrigin: 'center center',
+            willChange: 'transform',
+            animation: `rotate${animationSet}1 20s ease-in-out infinite ${animationDelay}`,
+            animationDirection: rotationDirection
           }}
         />
-
+        
         {/* Second gradient orb */}
         <div
-          className="absolute opacity-100 mix-blend-mode"
+          className="absolute opacity-70"
           style={{
-            background: `radial-gradient(circle at center, rgba(${secondColor}, 0.8) 0%, rgba(${secondColor}, 0.8) 50%, transparent 100%)`,
-            mixBlendMode: blendingValue,
+            background: `radial-gradient(circle at center, rgba(${secondColor}, 0.4) 0%, rgba(${secondColor}, 0) 70%) no-repeat`,
+            mixBlendMode: blendingValue as any,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "center center",
-            animation: `gradient-flow-2-${animationSet} 25s ease-in-out infinite`,
-            animationDelay: "2s",
+            transformOrigin: 'calc(50% - 400px)',
+            willChange: 'transform',
+            animation: `rotate${animationSet}2 25s ease-in-out infinite ${animationDelay}`,
+            animationDirection: rotationDirection
           }}
         />
-
+        
         {/* Third gradient orb */}
         <div
-          className="absolute opacity-100 mix-blend-mode"
+          className="absolute opacity-70"
           style={{
-            background: `radial-gradient(circle at center, rgba(${thirdColor}, 0.8) 0%, rgba(${thirdColor}, 0.8) 50%, transparent 100%)`,
-            mixBlendMode: blendingValue,
+            background: `radial-gradient(circle at center, rgba(${thirdColor}, 0.4) 0%, rgba(${thirdColor}, 0) 70%) no-repeat`,
+            mixBlendMode: blendingValue as any,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "center center",
-            animation: `gradient-flow-3-${animationSet} 35s ease-in-out infinite`,
-            animationDelay: "4s",
+            transformOrigin: 'calc(50% + 400px)',
+            willChange: 'transform',
+            animation: `rotate${animationSet}3 30s ease-in-out infinite ${animationDelay}`,
+            animationDirection: rotationDirection
           }}
         />
-
+        
         {/* Fourth gradient orb */}
         <div
-          className="absolute opacity-70 mix-blend-mode"
+          className="absolute opacity-50"
           style={{
-            background: `radial-gradient(circle at center, rgba(${fourthColor}, 0.7) 0%, rgba(${fourthColor}, 0.7) 50%, transparent 100%)`,
-            mixBlendMode: blendingValue,
+            background: `radial-gradient(circle at center, rgba(${fourthColor}, 0.4) 0%, rgba(${fourthColor}, 0) 70%) no-repeat`,
+            mixBlendMode: blendingValue as any,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "center center",
-            animation: `gradient-flow-4-${animationSet} 20s ease-in-out infinite`,
-            animationDelay: "1s",
+            transformOrigin: 'calc(50% - 200px)',
+            willChange: 'transform',
+            animation: `rotate${animationSet}4 35s ease-in-out infinite ${animationDelay}`,
+            animationDirection: rotationDirection
           }}
         />
-
+        
         {/* Fifth gradient orb */}
         <div
-          className="absolute opacity-100 mix-blend-mode"
+          className="absolute opacity-60"
           style={{
-            background: `radial-gradient(circle at center, rgba(${fifthColor}, 0.7) 0%, rgba(${fifthColor}, 0.7) 50%, transparent 100%)`,
-            mixBlendMode: blendingValue,
+            background: `radial-gradient(circle at center, rgba(${fifthColor}, 0.4) 0%, rgba(${fifthColor}, 0) 70%) no-repeat`,
+            mixBlendMode: blendingValue as any,
             width: size,
             height: size,
             top: `calc(50% - ${size} / 2)`,
             left: `calc(50% - ${size} / 2)`,
-            transformOrigin: "center center",
-            animation: `gradient-flow-5-${animationSet} 40s ease-in-out infinite`,
-            animationDelay: "3s",
+            transformOrigin: 'calc(50% - 800px) calc(50% + 800px)',
+            willChange: 'transform',
+            animation: `rotate${animationSet}5 40s ease-in-out infinite ${animationDelay}`,
+            animationDirection: rotationDirection
           }}
         />
 
-        {/* Interactive pointer element */}
-        {interactive && (
+        {/* Interactive pointer element - only for left side */}
+        {interactive && animationSet === "left" && (
           <div
             ref={interactiveRef}
-            className="absolute opacity-70 mix-blend-mode"
+            onMouseMove={handleMouseMove}
+            className="absolute opacity-40"
             style={{
-              background: `radial-gradient(circle at center, rgba(${pointerColor}, 0.5) 0%, transparent 50%)`,
-              mixBlendMode: blendingValue,
-              width: "100%",
-              height: "100%",
-              top: "-50%",
-              left: "-50%",
+              background: `radial-gradient(circle at center, rgba(${pointerColor}, 0.5) 0%, rgba(${pointerColor}, 0) 50%) no-repeat`,
+              mixBlendMode: blendingValue as any,
+              width: '100%',
+              height: '100%',
+              top: '-50%',
+              left: '-50%',
+              willChange: 'transform'
             }}
           />
         )}
