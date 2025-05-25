@@ -36,7 +36,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
-          animationSet="left"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -70,7 +69,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
-          animationSet="right"
         >
           {/* 3D Asset Zone */}
           <div 
