@@ -11,30 +11,31 @@ function HeroDemo() {
       {/* Side blocks - absolute positioning within the container */}
       <SideBlockGrids />
       
+      {/* Grid System - Fixed positioning to ensure visibility */}
+      <div className="fixed inset-0 pointer-events-none z-50">
+        {/* Left vertical line - full viewport height */}
+        <div className="absolute left-0 top-0 h-full w-px bg-white/20" />
+        
+        {/* Right vertical line - full viewport height */}
+        <div className="absolute right-0 top-0 h-full w-px bg-white/20" />
+        
+        {/* Inner content area markers */}
+        <div className="absolute inset-0 flex justify-center">
+          <div className="w-full max-w-5xl relative">
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-white/10" />
+            <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10" />
+          </div>
+        </div>
+      </div>
+      
+      {/* Hero Section Bottom Border - Positioned after hero content */}
+      <div className="absolute left-0 right-0 h-px bg-white/20 pointer-events-none z-50" 
+           style={{ top: '100vh' }} />
+      
       {/* Main content with proper z-index */}
       <div className="relative z-10">
-        {/* Hero section with integrated grid borders */}
-        <div className="relative">
-          {/* Grid borders positioned relative to hero section */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Left vertical line */}
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-white/10" />
-            
-            {/* Right vertical line */}
-            <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10" />
-            
-            {/* Bottom horizontal line - spans full width at bottom of hero */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
-            
-            {/* Inner content area markers */}
-            <div className="absolute inset-0 flex justify-center">
-              <div className="w-full max-w-5xl relative">
-                <div className="absolute left-0 top-0 bottom-0 w-px bg-white/5" />
-                <div className="absolute right-0 top-0 bottom-0 w-px bg-white/5" />
-              </div>
-            </div>
-          </div>
-          
+        {/* Hero section */}
+        <div className="relative min-h-screen">
           <HeroSectionBackground>
             <div className="relative">
               {/* Navbar */}
