@@ -16,17 +16,17 @@ function HeroDemo() {
       {/* Side blocks - positioned with proper z-index */}
       <SideBlockGrids />
       
-      {/* Main content layer */}
+      {/* Main content layer - centered with max-width */}
       <div className="relative" style={{ zIndex: zIndex.content }}>
-        {/* Hero section container */}
+        {/* Hero section container - exact width to eliminate gaps */}
         <div className="relative">
           {/* Navigation */}
-          <div className="container max-w-5xl mx-auto">
+          <div className="w-full max-w-5xl mx-auto">
             <NavBarDemo />
           </div>
           
           {/* Hero content */}
-          <div className="container max-w-5xl mx-auto">
+          <div className="w-full max-w-5xl mx-auto">
             <HeroSectionBackground>
               <Hero />
             </HeroSectionBackground>

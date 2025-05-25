@@ -15,15 +15,9 @@ interface SideBlockGridsProps {
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement with Gradient Animation */}
-      <div 
-        className="absolute left-0 top-0 bottom-0"
-        style={{ 
-          width: layout.edgeEnhancementWidth,
-          maxWidth: layout.sideBlockMaxWidth 
-        }}
-      >
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
+      {/* Left Edge Enhancement with Gradient Animation - No Gap */}
+      <div className="absolute left-0 top-0 bottom-0 w-[calc(50vw-640px)] min-w-0">
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
@@ -39,9 +33,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           containerClassName="h-full w-full"
           className="relative z-0"
         >
-          {/* Border accent */}
+          {/* Border accent - right edge to meet center */}
           <div 
-            className="absolute left-0 top-0 bottom-0 w-px z-10"
+            className="absolute right-0 top-0 bottom-0 w-px z-10"
             style={{
               background: `linear-gradient(to bottom, transparent 0%, ${colors.bronze.base}20 50%, transparent 100%)`
             }}
@@ -60,14 +54,8 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement with Gradient Animation */}
-      <div 
-        className="absolute right-0 top-0 bottom-0"
-        style={{ 
-          width: layout.edgeEnhancementWidth,
-          maxWidth: layout.sideBlockMaxWidth 
-        }}
-      >
+      {/* Right Edge Enhancement with Gradient Animation - No Gap */}
+      <div className="absolute right-0 top-0 bottom-0 w-[calc(50vw-640px)] min-w-0">
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
@@ -83,9 +71,9 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           containerClassName="h-full w-full"
           className="relative z-0"
         >
-          {/* Border accent */}
+          {/* Border accent - left edge to meet center */}
           <div 
-            className="absolute right-0 top-0 bottom-0 w-px z-10"
+            className="absolute left-0 top-0 bottom-0 w-px z-10"
             style={{
               background: `linear-gradient(to bottom, transparent 0%, ${colors.bronze.base}20 50%, transparent 100%)`
             }}
@@ -102,25 +90,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
         </BackgroundGradientAnimation>
-      </div>
-      
-      {/* Seamless Connection Layer - maintains layout integrity */}
-      <div className="absolute inset-0 z-5">
-        {/* Left connection gradient */}
-        <div 
-          className="absolute left-0 top-0 bottom-0 w-1/4"
-          style={{
-            background: `linear-gradient(to right, transparent 0%, ${colors.bronze.base}02 90%, transparent 100%)`
-          }}
-        />
-        
-        {/* Right connection gradient */}
-        <div 
-          className="absolute right-0 top-0 bottom-0 w-1/4"
-          style={{
-            background: `linear-gradient(to left, transparent 0%, ${colors.bronze.base}02 90%, transparent 100%)`
-          }}
-        />
       </div>
       
       {/* Ultra-subtle ambient enhancement */}
