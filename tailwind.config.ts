@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -92,6 +91,7 @@ export default {
 						height: '0'
 					}
 				},
+				// Standard speed animations
 				first: {
 					"0%": {
 						transform: "rotate(0deg)",
@@ -136,11 +136,24 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+				// Standard animations
 				first: "first 20s linear infinite",
 				second: "second 40s linear infinite",
 				third: "third 40s linear infinite",
 				fourth: "fourth 60s linear infinite",
 				fifth: "fifth 60s linear infinite",
+				// Slow animations (for left side)
+				"first-slow": "first 32s linear infinite",
+				"second-slow": "second 62s linear infinite",
+				"third-slow": "third 62s linear infinite",
+				"fourth-slow": "fourth 92s linear infinite",
+				"fifth-slow": "fifth 92s linear infinite",
+				// Fast animations (for right side)
+				"first-fast": "first 12s linear infinite",
+				"second-fast": "second 28s linear infinite",
+				"third-fast": "third 28s linear infinite",
+				"fourth-fast": "fourth 38s linear infinite",
+				"fifth-fast": "fifth 38s linear infinite",
 			}
 		}
 	},

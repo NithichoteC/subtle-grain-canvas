@@ -11,13 +11,13 @@ interface SideBlockGridsProps {
 
 /**
  * Side block grid enhancements with animated gradient backgrounds
- * Uses bronze/gold color palette with smooth gradient animations
- * Ensures perfect edge-to-edge connection with zero gaps and scrolls with page
+ * Creates illusion of continuous gradient flow across the page with offset timing and mirrored directions
+ * Uses bronze/gold color palette with coordinated gradient animations
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Calculated to perfectly meet center */}
+      {/* Left Edge Enhancement - Flows right-to-left with slower timing */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -36,6 +36,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
+          animationSpeed="slow"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -47,10 +48,20 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
+
+          {/* Left side breathing effect - starts with 3s delay */}
+          <div 
+            className="absolute inset-0 z-5"
+            style={{ 
+              background: `radial-gradient(ellipse 120% 80% at 80% 50%, ${colors.bronze.base}02 0%, transparent 60%)`,
+              animation: 'breathe-left 22s ease-in-out infinite',
+              animationDelay: '3s'
+            }}
+          />
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Calculated to perfectly meet center */}
+      {/* Right Edge Enhancement - Flows left-to-right with faster timing */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -58,7 +69,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="226, 209, 195"   // Bronze light
+          firstColor="226, 209, 195"   // Bronze light (reversed order for flow effect)
           secondColor="149, 111, 41"   // Bronze deep
           thirdColor="184, 134, 11"    // Bronze dark
           fourthColor="255, 215, 0"    // Gold
@@ -69,6 +80,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           interactive={true}
           containerClassName="h-full w-full"
           className="relative z-0"
+          animationSpeed="fast"
         >
           {/* 3D Asset Zone */}
           <div 
@@ -80,6 +92,15 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.sideBlocks} />
           </div>
+
+          {/* Right side breathing effect - starts immediately */}
+          <div 
+            className="absolute inset-0 z-5"
+            style={{ 
+              background: `radial-gradient(ellipse 120% 80% at 20% 50%, ${colors.bronze.base}02 0%, transparent 60%)`,
+              animation: 'breathe-right 18s ease-in-out infinite'
+            }}
+          />
         </BackgroundGradientAnimation>
       </div>
       
@@ -101,13 +122,34 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </div>
       </div>
       
-      {/* Ultra-subtle ambient enhancement */}
+      {/* Cross-flow ambient enhancement - creates connection between sides */}
       <div 
         className="absolute inset-0 z-5"
         style={{ 
-          background: `radial-gradient(ellipse 80% 50% at 50% 50%, ${colors.bronze.base}01 0%, transparent 70%)`
+          background: `linear-gradient(90deg, ${colors.bronze.base}01 0%, ${colors.bronze.base}03 30%, ${colors.bronze.base}03 70%, ${colors.bronze.base}01 100%)`,
+          animation: 'cross-flow 25s ease-in-out infinite'
         }}
       />
+
+      {/* Global style injection for new animations */}
+      <style jsx>{`
+        @keyframes breathe-left {
+          0%, 100% { opacity: 0.3; transform: scale(1) translateX(0); }
+          50% { opacity: 0.6; transform: scale(1.05) translateX(5px); }
+        }
+        
+        @keyframes breathe-right {
+          0%, 100% { opacity: 0.3; transform: scale(1) translateX(0); }
+          50% { opacity: 0.6; transform: scale(1.05) translateX(-5px); }
+        }
+        
+        @keyframes cross-flow {
+          0%, 100% { opacity: 0.2; }
+          25% { opacity: 0.4; }
+          50% { opacity: 0.3; }
+          75% { opacity: 0.5; }
+        }
+      `}</style>
     </div>
   );
 }
