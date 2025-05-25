@@ -1,217 +1,291 @@
+
 "use client";
 
 import { NoiseTexture } from '@/components/ui/noise-texture';
-import { BackgroundGradientAnimationDebug } from '@/components/ui/background-gradient-animation-debug';
 import { DotPattern } from '@/components/ui/dot-pattern';
 import { colors, layout, noiseConfigs, zIndex } from '@/lib/design-tokens';
+import { motion } from 'framer-motion';
 
 interface SideBlockGridsProps {
   className?: string;
 }
 
 /**
- * Side block grid enhancements with animated gradient backgrounds
- * Enhanced with layered textures and high-tech geometric patterns
- * Premium enterprise aesthetic with sophisticated visual depth
+ * Side block grid enhancements with smooth flowing gradients
+ * Matches the premium template aesthetic with elegant gradient flows
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Original animation timing */}
+      {/* Left Edge Enhancement */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
-        <BackgroundGradientAnimationDebug
-          gradientBackgroundStart="rgb(23, 23, 23)"
-          gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="130, 95, 8"      // Darker bronze
-          secondColor="165, 102, 40"   // Muted bronze medium  
-          thirdColor="200, 170, 0"     // Toned gold
-          fourthColor="119, 89, 33"    // Deep bronze
-          fifthColor="180, 166, 156"   // Subtle bronze light
-          pointerColor="210, 180, 120" // Enhanced pointer intensity
-          size="120%"
-          blendingValue="overlay"
-          interactive={true}
-          containerClassName="h-full w-full"
-          className="relative z-0"
-          animationSet="left"
-          cursorResponsiveness="enhanced"
-        >
+        <div className="relative h-full w-full overflow-hidden">
+          {/* Main flowing gradient - Left */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: `
+                radial-gradient(ellipse 800px 1200px at -200px 50%, 
+                  rgba(184, 134, 11, 0.4) 0%,
+                  rgba(205, 127, 50, 0.3) 25%, 
+                  rgba(255, 215, 0, 0.2) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 800px at -100px 20%, 
+                  rgba(226, 209, 195, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 500px 600px at -150px 80%, 
+                  rgba(205, 127, 50, 0.25) 0%,
+                  rgba(255, 215, 0, 0.1) 50%,
+                  transparent 70%
+                )`
+            }}
+            animate={{
+              background: [
+                `
+                radial-gradient(ellipse 800px 1200px at -200px 50%, 
+                  rgba(184, 134, 11, 0.4) 0%,
+                  rgba(205, 127, 50, 0.3) 25%, 
+                  rgba(255, 215, 0, 0.2) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 800px at -100px 20%, 
+                  rgba(226, 209, 195, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 500px 600px at -150px 80%, 
+                  rgba(205, 127, 50, 0.25) 0%,
+                  rgba(255, 215, 0, 0.1) 50%,
+                  transparent 70%
+                )`,
+                `
+                radial-gradient(ellipse 900px 1400px at -250px 30%, 
+                  rgba(184, 134, 11, 0.5) 0%,
+                  rgba(205, 127, 50, 0.35) 25%, 
+                  rgba(255, 215, 0, 0.25) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 700px 900px at -50px 60%, 
+                  rgba(226, 209, 195, 0.25) 0%,
+                  rgba(184, 134, 11, 0.2) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 700px at -200px 10%, 
+                  rgba(205, 127, 50, 0.3) 0%,
+                  rgba(255, 215, 0, 0.15) 50%,
+                  transparent 70%
+                )`,
+                `
+                radial-gradient(ellipse 800px 1200px at -200px 70%, 
+                  rgba(184, 134, 11, 0.4) 0%,
+                  rgba(205, 127, 50, 0.3) 25%, 
+                  rgba(255, 215, 0, 0.2) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 800px at -100px 90%, 
+                  rgba(226, 209, 195, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 500px 600px at -150px 40%, 
+                  rgba(205, 127, 50, 0.25) 0%,
+                  rgba(255, 215, 0, 0.1) 50%,
+                  transparent 70%
+                )`
+              ]
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Secondary flowing layer */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: `
+                radial-gradient(ellipse 400px 800px at -50px 25%, 
+                  rgba(255, 215, 0, 0.15) 0%,
+                  rgba(184, 134, 11, 0.1) 60%,
+                  transparent 80%
+                )`
+            }}
+            animate={{
+              background: [
+                `radial-gradient(ellipse 400px 800px at -50px 25%, 
+                  rgba(255, 215, 0, 0.15) 0%,
+                  rgba(184, 134, 11, 0.1) 60%,
+                  transparent 80%
+                )`,
+                `radial-gradient(ellipse 500px 900px at -100px 75%, 
+                  rgba(255, 215, 0, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 60%,
+                  transparent 80%
+                )`,
+                `radial-gradient(ellipse 400px 800px at -50px 25%, 
+                  rgba(255, 215, 0, 0.15) 0%,
+                  rgba(184, 134, 11, 0.1) 60%,
+                  transparent 80%
+                )`
+              ]
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3
+            }}
+          />
+          
           {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
-          
-          {/* Enhanced dot pattern with more visibility */}
-          <div className="absolute inset-0 z-8">
-            <DotPattern
-              glow={true}
-              dotSize={1.5}
-              spacing={20}
-              opacity={0.12}
-              color={colors.bronze.base}
-              glowColor={colors.bronze.light}
-              className="[mask-image:radial-gradient(500px_circle_at_25%_50%,white,transparent)]"
-            />
-          </div>
-          
-          {/* Secondary dot layer for depth */}
-          <div className="absolute inset-0 z-7">
-            <DotPattern
-              glow={false}
-              dotSize={0.8}
-              spacing={35}
-              opacity={0.08}
-              color={colors.bronze.medium}
-              className="[mask-image:radial-gradient(400px_circle_at_40%_30%,white,transparent)]"
-            />
-          </div>
-          
-          {/* High-tech grid overlay */}
-          <div 
-            className="absolute inset-0 z-10 opacity-[0.12]"
-            style={{
-              backgroundImage: `
-                linear-gradient(90deg, ${colors.bronze.base}30 1px, transparent 1px),
-                linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
-              `,
-              backgroundSize: '40px 40px'
-            }}
-          />
-          
-          {/* Subtle diagonal lines for tech aesthetic */}
-          <div 
-            className="absolute inset-0 z-10 opacity-[0.08]"
-            style={{
-              backgroundImage: `repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 20px,
-                ${colors.bronze.light}20 20px,
-                ${colors.bronze.light}20 21px
-              )`
-            }}
-          />
-          
-          {/* Circuit-like pattern */}
-          <div 
-            className="absolute inset-0 z-10 opacity-[0.06]"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 25% 25%, ${colors.bronze.base}40 1px, transparent 1px),
-                radial-gradient(circle at 75% 75%, ${colors.bronze.base}40 1px, transparent 1px)
-              `,
-              backgroundSize: '80px 80px'
-            }}
-          />
-          
-          {/* 3D Asset Zone */}
-          <div 
-            className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
-            aria-label="Reserved space for 3D assets"
-          />
-        </BackgroundGradientAnimationDebug>
+        </div>
       </div>
       
-      {/* Right Edge Enhancement - Offset animation timing */}
+      {/* Right Edge Enhancement */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
       >
-        <BackgroundGradientAnimationDebug
-          gradientBackgroundStart="rgb(23, 23, 23)"
-          gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="180, 166, 156"   // Subtle bronze light (swapped order)
-          secondColor="119, 89, 33"    // Deep bronze
-          thirdColor="130, 95, 8"      // Darker bronze
-          fourthColor="200, 170, 0"    // Toned gold
-          fifthColor="165, 102, 40"    // Muted bronze medium
-          pointerColor="210, 180, 120" // Enhanced pointer intensity
-          size="120%"
-          blendingValue="overlay"
-          interactive={true}
-          containerClassName="h-full w-full"
-          className="relative z-0"
-          animationSet="right"
-          cursorResponsiveness="enhanced"
-        >
+        <div className="relative h-full w-full overflow-hidden">
+          {/* Main flowing gradient - Right */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: `
+                radial-gradient(ellipse 800px 1200px at calc(100% + 200px) 50%, 
+                  rgba(184, 134, 11, 0.4) 0%,
+                  rgba(205, 127, 50, 0.3) 25%, 
+                  rgba(255, 215, 0, 0.2) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 800px at calc(100% + 100px) 80%, 
+                  rgba(226, 209, 195, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 500px 600px at calc(100% + 150px) 20%, 
+                  rgba(205, 127, 50, 0.25) 0%,
+                  rgba(255, 215, 0, 0.1) 50%,
+                  transparent 70%
+                )`
+            }}
+            animate={{
+              background: [
+                `
+                radial-gradient(ellipse 800px 1200px at calc(100% + 200px) 50%, 
+                  rgba(184, 134, 11, 0.4) 0%,
+                  rgba(205, 127, 50, 0.3) 25%, 
+                  rgba(255, 215, 0, 0.2) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 800px at calc(100% + 100px) 80%, 
+                  rgba(226, 209, 195, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 500px 600px at calc(100% + 150px) 20%, 
+                  rgba(205, 127, 50, 0.25) 0%,
+                  rgba(255, 215, 0, 0.1) 50%,
+                  transparent 70%
+                )`,
+                `
+                radial-gradient(ellipse 900px 1400px at calc(100% + 250px) 70%, 
+                  rgba(184, 134, 11, 0.5) 0%,
+                  rgba(205, 127, 50, 0.35) 25%, 
+                  rgba(255, 215, 0, 0.25) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 700px 900px at calc(100% + 50px) 40%, 
+                  rgba(226, 209, 195, 0.25) 0%,
+                  rgba(184, 134, 11, 0.2) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 700px at calc(100% + 200px) 90%, 
+                  rgba(205, 127, 50, 0.3) 0%,
+                  rgba(255, 215, 0, 0.15) 50%,
+                  transparent 70%
+                )`,
+                `
+                radial-gradient(ellipse 800px 1200px at calc(100% + 200px) 30%, 
+                  rgba(184, 134, 11, 0.4) 0%,
+                  rgba(205, 127, 50, 0.3) 25%, 
+                  rgba(255, 215, 0, 0.2) 50%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 600px 800px at calc(100% + 100px) 10%, 
+                  rgba(226, 209, 195, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 40%,
+                  transparent 70%
+                ),
+                radial-gradient(ellipse 500px 600px at calc(100% + 150px) 60%, 
+                  rgba(205, 127, 50, 0.25) 0%,
+                  rgba(255, 215, 0, 0.1) 50%,
+                  transparent 70%
+                )`
+              ]
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+          
+          {/* Secondary flowing layer */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: `
+                radial-gradient(ellipse 400px 800px at calc(100% + 50px) 75%, 
+                  rgba(255, 215, 0, 0.15) 0%,
+                  rgba(184, 134, 11, 0.1) 60%,
+                  transparent 80%
+                )`
+            }}
+            animate={{
+              background: [
+                `radial-gradient(ellipse 400px 800px at calc(100% + 50px) 75%, 
+                  rgba(255, 215, 0, 0.15) 0%,
+                  rgba(184, 134, 11, 0.1) 60%,
+                  transparent 80%
+                )`,
+                `radial-gradient(ellipse 500px 900px at calc(100% + 100px) 25%, 
+                  rgba(255, 215, 0, 0.2) 0%,
+                  rgba(184, 134, 11, 0.15) 60%,
+                  transparent 80%
+                )`,
+                `radial-gradient(ellipse 400px 800px at calc(100% + 50px) 75%, 
+                  rgba(255, 215, 0, 0.15) 0%,
+                  rgba(184, 134, 11, 0.1) 60%,
+                  transparent 80%
+                )`
+              ]
+            }}
+            transition={{
+              duration: 14,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 5
+            }}
+          />
+          
           {/* Base noise texture */}
           <div className="absolute inset-0 z-10">
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
-          
-          {/* Enhanced dot pattern with offset for asymmetry */}
-          <div className="absolute inset-0 z-8">
-            <DotPattern
-              glow={true}
-              dotSize={1.2}
-              spacing={25}
-              opacity={0.10}
-              color={colors.bronze.medium}
-              glowColor={colors.bronze.gold}
-              className="[mask-image:radial-gradient(450px_circle_at_75%_40%,white,transparent)]"
-            />
-          </div>
-          
-          {/* Secondary dot layer for depth - different pattern */}
-          <div className="absolute inset-0 z-7">
-            <DotPattern
-              glow={false}
-              dotSize={0.6}
-              spacing={30}
-              opacity={0.06}
-              color={colors.bronze.gold}
-              className="[mask-image:radial-gradient(350px_circle_at_60%_60%,white,transparent)]"
-            />
-          </div>
-          
-          {/* High-tech grid overlay - offset pattern */}
-          <div 
-            className="absolute inset-0 z-10 opacity-[0.12]"
-            style={{
-              backgroundImage: `
-                linear-gradient(90deg, ${colors.bronze.base}30 1px, transparent 1px),
-                linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
-              `,
-              backgroundSize: '40px 40px',
-              backgroundPosition: '20px 20px'
-            }}
-          />
-          
-          {/* Diagonal lines - opposite direction */}
-          <div 
-            className="absolute inset-0 z-10 opacity-[0.08]"
-            style={{
-              backgroundImage: `repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 20px,
-                ${colors.bronze.light}20 20px,
-                ${colors.bronze.light}20 21px
-              )`
-            }}
-          />
-          
-          {/* Circuit pattern - offset positions */}
-          <div 
-            className="absolute inset-0 z-10 opacity-[0.06]"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 75% 25%, ${colors.bronze.base}40 1px, transparent 1px),
-                radial-gradient(circle at 25% 75%, ${colors.bronze.base}40 1px, transparent 1px)
-              `,
-              backgroundSize: '80px 80px'
-            }}
-          />
-          
-          {/* 3D Asset Zone */}
-          <div 
-            className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
-            aria-label="Reserved space for 3D assets"
-          />
-        </BackgroundGradientAnimationDebug>
+        </div>
       </div>
       
       {/* Center connection zone - fills the 1280px center area */}
