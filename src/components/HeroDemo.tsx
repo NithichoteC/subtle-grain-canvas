@@ -4,23 +4,28 @@ import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { SideBlockGrids } from "@/components/ui/side-block-grids";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
+import { zIndex } from "@/lib/design-tokens";
 
+/**
+ * Main hero demo component with optimized structure
+ * Manages the three-column layout with proper z-index layering
+ */
 function HeroDemo() {
   return (
     <div className="relative w-full font-roboto">
-      {/* Side blocks - absolute positioning within the container */}
+      {/* Side blocks - positioned with proper z-index */}
       <SideBlockGrids />
       
-      {/* Main content with proper z-index */}
-      <div className="relative z-10">
-        {/* Hero section - clean container without extra spacing */}
+      {/* Main content layer */}
+      <div className="relative" style={{ zIndex: zIndex.content }}>
+        {/* Hero section container */}
         <div className="relative">
-          {/* Navbar */}
+          {/* Navigation */}
           <div className="container max-w-5xl mx-auto">
             <NavBarDemo />
           </div>
           
-          {/* Hero content - removed extra padding */}
+          {/* Hero content */}
           <div className="container max-w-5xl mx-auto">
             <HeroSectionBackground>
               <Hero />
@@ -29,8 +34,8 @@ function HeroDemo() {
         </div>
       </div>
       
-      {/* Early Adopter Section - seamless transition */}
-      <div className="relative z-10">
+      {/* Early Adopter Section */}
+      <div className="relative" style={{ zIndex: zIndex.content }}>
         <EarlyAdopterSection />
       </div>
     </div>
