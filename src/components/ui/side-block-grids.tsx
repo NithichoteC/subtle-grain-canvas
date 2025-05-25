@@ -12,11 +12,11 @@ interface SideBlockGridsProps {
 /**
  * Side block grid enhancements with animated gradient backgrounds
  * Uses bronze/gold color palette with smooth gradient animations
- * Ensures perfect edge-to-edge connection with zero gaps
+ * Ensures perfect edge-to-edge connection with zero gaps and scrolls with page
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
-    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
+    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
       {/* Left Edge Enhancement - Calculated to perfectly meet center */}
       <div 
         className="absolute left-0 top-0 bottom-0"

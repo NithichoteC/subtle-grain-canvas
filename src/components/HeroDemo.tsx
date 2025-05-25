@@ -7,17 +7,17 @@ import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 import { zIndex } from "@/lib/design-tokens";
 
 /**
- * Main hero demo component with sticky behavior and seamless layout
- * Manages the three-column layout with zero gaps and sticky scroll behavior
+ * Main hero demo component with natural scrolling behavior
+ * Manages the three-column layout with zero gaps and natural scroll behavior
  */
 function HeroDemo() {
   return (
     <div className="relative w-full font-roboto">
-      {/* Side blocks - positioned with proper z-index */}
+      {/* Side blocks - positioned with proper z-index, scrolls with page */}
       <SideBlockGrids />
       
-      {/* Main content layer - sticky and perfectly centered */}
-      <div className="sticky top-0" style={{ zIndex: zIndex.content }}>
+      {/* Main content layer - scrolls naturally with page */}
+      <div className="relative" style={{ zIndex: zIndex.content }}>
         {/* Hero section container - exact 1280px width to match side blocks */}
         <div className="relative w-full max-w-[1280px] mx-auto">
           {/* Navigation */}
@@ -34,8 +34,8 @@ function HeroDemo() {
         </div>
       </div>
       
-      {/* Early Adopter Section - also sticky */}
-      <div className="sticky top-0" style={{ zIndex: zIndex.content }}>
+      {/* Early Adopter Section - also scrolls naturally */}
+      <div className="relative" style={{ zIndex: zIndex.content }}>
         <EarlyAdopterSection />
       </div>
     </div>
