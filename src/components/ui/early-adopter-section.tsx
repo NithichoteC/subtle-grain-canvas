@@ -97,7 +97,7 @@ export function EarlyAdopterSection() {
           </div>
         </motion.div>
 
-        {/* Premium Features Grid - Better Width Distribution */}
+        {/* Premium Features Grid - Fixed Height and Added Edge Lines */}
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
@@ -111,9 +111,15 @@ export function EarlyAdopterSection() {
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
                 className={cn(
-                  "border-b border-white/10",
+                  "border-b border-white/10 relative",
+                  // Add right border for all except last column
                   index < 3 ? "lg:border-r border-white/10" : "",
-                  index % 2 === 0 ? "md:border-r border-white/10" : ""
+                  // Add right border for first column on md screens
+                  index % 2 === 0 ? "md:border-r border-white/10" : "",
+                  // Add left border for first item (leftmost edge)
+                  index === 0 ? "border-l border-white/10" : "",
+                  // Add right border for last item (rightmost edge)
+                  index === features.length - 1 ? "border-r border-white/10" : ""
                 )}
               >
                 <Magnetic 
@@ -128,7 +134,7 @@ export function EarlyAdopterSection() {
                     mass: 0.3
                   }}
                 >
-                  <div className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group min-h-[280px] flex flex-col">
+                  <div className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" style={{ minHeight: '320px' }}>
                     {/* Luxury Background Texture */}
                     <div 
                       className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" 
