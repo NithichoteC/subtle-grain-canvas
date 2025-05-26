@@ -3,11 +3,12 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { GridPattern } from "@/components/ui/grid-pattern";
+import { Magnetic } from "@/components/ui/magnetic";
 
 export function ProblemSolutionSection() {
   return (
     <div className="w-full relative font-roboto bg-[#171717] overflow-hidden">
-      {/* Grid Pattern Background */}
+      {/* Enhanced Grid Pattern Background */}
       <div className="absolute inset-0">
         <GridPattern
           width={30}
@@ -16,8 +17,8 @@ export function ProblemSolutionSection() {
           y={-1}
           strokeDasharray="4 2"
           className={cn(
-            "opacity-20 stroke-[#efcc8a]/30 fill-transparent",
-            "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
+            "opacity-40 stroke-[#efcc8a]/50 fill-transparent",
+            "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
           )}
         />
       </div>
@@ -27,9 +28,9 @@ export function ProblemSolutionSection() {
         {/* Bronze wave behind content */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-gradient-to-br from-[#efcc8a]/12 via-transparent to-[#cd7f32]/8 blur-3xl"></div>
         
-        {/* Pain icons - left side */}
+        {/* Pain icons - distributed across left side */}
         <motion.div 
-          className="absolute top-16 left-12 w-20 h-20 bg-gradient-to-br from-red-400/25 to-red-500/35 rounded-2xl flex items-center justify-center text-3xl shadow-2xl"
+          className="absolute top-20 left-8 w-20 h-20 bg-gradient-to-br from-red-400/25 to-red-500/35 rounded-2xl flex items-center justify-center text-3xl shadow-2xl"
           animate={{ 
             y: [0, -15, 0],
             rotate: [0, 5, -5, 0],
@@ -45,7 +46,7 @@ export function ProblemSolutionSection() {
         </motion.div>
         
         <motion.div 
-          className="absolute top-48 left-8 w-16 h-16 bg-gradient-to-br from-orange-400/30 to-red-400/40 rounded-xl flex items-center justify-center text-2xl shadow-xl"
+          className="absolute top-1/2 left-4 w-16 h-16 bg-gradient-to-br from-orange-400/30 to-red-400/40 rounded-xl flex items-center justify-center text-2xl shadow-xl"
           animate={{ 
             y: [0, -12, 0],
             rotate: [0, -8, 8, 0]
@@ -60,7 +61,7 @@ export function ProblemSolutionSection() {
         </motion.div>
 
         <motion.div 
-          className="absolute bottom-24 left-16 w-18 h-18 bg-gradient-to-br from-red-500/25 to-orange-500/35 rounded-lg flex items-center justify-center text-2xl shadow-lg"
+          className="absolute bottom-32 left-12 w-18 h-18 bg-gradient-to-br from-red-500/25 to-orange-500/35 rounded-lg flex items-center justify-center text-2xl shadow-lg"
           animate={{ 
             y: [0, -10, 0],
             rotate: [0, 10, -10, 0]
@@ -73,10 +74,25 @@ export function ProblemSolutionSection() {
         >
           💸
         </motion.div>
-        
-        {/* Promise icons - right side */}
+
         <motion.div 
-          className="absolute top-20 right-12 w-20 h-20 bg-gradient-to-br from-[#efcc8a]/35 to-[#cd7f32]/45 rounded-2xl flex items-center justify-center text-3xl shadow-2xl"
+          className="absolute top-1/3 left-16 w-14 h-14 bg-gradient-to-br from-red-400/20 to-orange-400/30 rounded-xl flex items-center justify-center text-xl shadow-md"
+          animate={{ 
+            y: [0, -8, 0],
+            rotate: [0, 6, -6, 0]
+          }}
+          transition={{ 
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          ⏰
+        </motion.div>
+        
+        {/* Promise icons - distributed across right side */}
+        <motion.div 
+          className="absolute top-24 right-8 w-20 h-20 bg-gradient-to-br from-[#efcc8a]/35 to-[#cd7f32]/45 rounded-2xl flex items-center justify-center text-3xl shadow-2xl"
           animate={{ 
             y: [0, -18, 0],
             rotate: [0, -5, 5, 0],
@@ -92,7 +108,7 @@ export function ProblemSolutionSection() {
         </motion.div>
         
         <motion.div 
-          className="absolute top-52 right-8 w-16 h-16 bg-gradient-to-br from-[#ffd700]/40 to-[#efcc8a]/50 rounded-xl flex items-center justify-center text-2xl shadow-xl"
+          className="absolute top-1/2 right-4 w-16 h-16 bg-gradient-to-br from-[#ffd700]/40 to-[#efcc8a]/50 rounded-xl flex items-center justify-center text-2xl shadow-xl"
           animate={{ 
             y: [0, -14, 0],
             rotate: [0, 8, -8, 0]
@@ -107,7 +123,7 @@ export function ProblemSolutionSection() {
         </motion.div>
 
         <motion.div 
-          className="absolute bottom-28 right-16 w-18 h-18 bg-gradient-to-br from-[#cd7f32]/30 to-[#ffd700]/40 rounded-lg flex items-center justify-center text-2xl shadow-lg"
+          className="absolute bottom-36 right-12 w-18 h-18 bg-gradient-to-br from-[#cd7f32]/30 to-[#ffd700]/40 rounded-lg flex items-center justify-center text-2xl shadow-lg"
           animate={{ 
             y: [0, -12, 0],
             rotate: [0, -6, 6, 0]
@@ -119,6 +135,21 @@ export function ProblemSolutionSection() {
           }}
         >
           🎯
+        </motion.div>
+
+        <motion.div 
+          className="absolute top-1/4 right-16 w-14 h-14 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-xl flex items-center justify-center text-xl shadow-md"
+          animate={{ 
+            y: [0, -10, 0],
+            rotate: [0, 4, -4, 0]
+          }}
+          transition={{ 
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          📅
         </motion.div>
         
         {/* Bronze glow effects */}
@@ -164,38 +195,33 @@ export function ProblemSolutionSection() {
               </p>
             </div>
           </motion.div>
+        </div>
 
-          {/* Enhanced Split Panels with Sophisticated Divider */}
-          <div className="relative pb-16">
-            {/* Sophisticated central divider */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[1px] h-full bg-gradient-to-b from-transparent via-[#efcc8a]/40 to-transparent"></div>
-            
-            {/* Central decorative element */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#efcc8a] to-[#cd7f32] rounded-full shadow-lg border border-[#efcc8a]/30"></div>
-                <div className="absolute inset-0 w-12 h-12 bg-gradient-to-br from-[#efcc8a]/50 to-[#cd7f32]/50 rounded-full blur-md"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#171717] text-xs font-bold">VS</div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Pain Panel - Enhanced Design */}
-              <motion.div 
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative"
-              >
-                <div className="relative p-10 lg:p-12 bg-gradient-to-br from-[#1c1c1c]/90 to-[#171717]/90 border border-red-400/20 rounded-3xl group transition-all duration-500 hover:border-red-400/40 hover:shadow-[0_0_40px_rgba(248,113,113,0.15)] backdrop-blur-sm">
-                  
-                  {/* Subtle texture overlay */}
-                  <div className="absolute inset-0 opacity-[0.06] rounded-3xl" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                    backgroundSize: '150px 150px'
+        {/* Enhanced Grid-Block Layout matching Early Adopter Section */}
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Pain Panel - Grid Block Style */}
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="border-b border-white/10 lg:border-r border-white/10 relative"
+            >
+              <Magnetic intensity={0.03} rangeX={80} rangeY={40} actionArea="self" shape="rectangular" springOptions={{
+                stiffness: 140,
+                damping: 25,
+                mass: 0.3
+              }}>
+                <div className="relative h-full p-8 lg:p-12 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" style={{
+                  minHeight: '500px'
+                }}>
+                  {/* Luxury Background Texture */}
+                  <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    backgroundSize: '200px 200px'
                   }}></div>
                   
-                  <div className="relative z-10 space-y-8">
+                  <div className="relative z-10 space-y-8 h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-red-400/30 to-red-500/40 rounded-xl flex items-center justify-center text-2xl">
                         💀
@@ -205,7 +231,7 @@ export function ProblemSolutionSection() {
                       </h3>
                     </div>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-6 flex-grow">
                       <div className="flex items-start gap-4 p-4 bg-red-400/5 rounded-2xl border border-red-400/10">
                         <span className="text-red-400 text-2xl mt-1 flex-shrink-0">💸</span>
                         <div>
@@ -233,28 +259,36 @@ export function ProblemSolutionSection() {
                   </div>
                   
                   {/* Enhanced hover effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl">
-                    <div className="absolute inset-0 bg-gradient-to-t from-red-400/5 via-transparent to-transparent rounded-3xl"></div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute inset-0 border border-red-400/8"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-400/5 via-transparent to-transparent"></div>
                   </div>
                 </div>
-              </motion.div>
+              </Magnetic>
+            </motion.div>
 
-              {/* Promise Panel - Enhanced Design */}
-              <motion.div 
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative"
-              >
-                <div className="relative p-10 lg:p-12 bg-gradient-to-br from-[#1e1e1e]/90 to-[#1a1a1a]/90 border border-[#efcc8a]/25 rounded-3xl group transition-all duration-500 hover:border-[#efcc8a]/50 hover:shadow-[0_0_40px_rgba(239,204,138,0.2)] backdrop-blur-sm">
-                  
-                  {/* Subtle texture overlay */}
-                  <div className="absolute inset-0 opacity-[0.06] rounded-3xl" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                    backgroundSize: '150px 150px'
+            {/* Promise Panel - Grid Block Style */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="border-b border-white/10 border-r border-white/10 relative"
+            >
+              <Magnetic intensity={0.03} rangeX={80} rangeY={40} actionArea="self" shape="rectangular" springOptions={{
+                stiffness: 140,
+                damping: 25,
+                mass: 0.3
+              }}>
+                <div className="relative h-full p-8 lg:p-12 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" style={{
+                  minHeight: '500px'
+                }}>
+                  {/* Luxury Background Texture */}
+                  <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    backgroundSize: '200px 200px'
                   }}></div>
                   
-                  <div className="relative z-10 space-y-8">
+                  <div className="relative z-10 space-y-8 h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-[#efcc8a]/40 to-[#cd7f32]/50 rounded-xl flex items-center justify-center text-2xl">
                         ✅
@@ -264,7 +298,7 @@ export function ProblemSolutionSection() {
                       </h3>
                     </div>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-6 flex-grow">
                       <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 rounded-2xl border border-[#efcc8a]/15">
                         <span className="text-[#efcc8a] text-2xl mt-1 flex-shrink-0">🎯</span>
                         <div>
@@ -292,12 +326,13 @@ export function ProblemSolutionSection() {
                   </div>
                   
                   {/* Enhanced hover effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#efcc8a]/5 via-transparent to-transparent rounded-3xl"></div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute inset-0 border border-[#efcc8a]/8"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#efcc8a]/5 via-transparent to-transparent"></div>
                   </div>
                 </div>
-              </motion.div>
-            </div>
+              </Magnetic>
+            </motion.div>
           </div>
         </div>
         
