@@ -65,11 +65,11 @@ export function EarlyAdopterSection() {
             {/* Sophisticated Typography */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-                <span className="bronze-gradient-fix px-0 mx-0 py-0 my-0">Become Our</span>{" "}
-                <span className="text-white mx-0 px-0 my-0 py-0 text-6xl">Founding Partner</span>
+                <span className="bronze-gradient-fix px-0 mx-0 py-0 my-0 text-5xl">Become Our</span>{" "}
+                <span className="text-white mx-0 px-0 my-0 py-0 text-5xl font-semibold">Founding Partner</span>
               </h2>
               
-              <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-light md:text-base">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-light md:text-sm">
                 Join an exclusive group of 50 solar & roofing leaders who get priority access, 
                 personalized support, and help shape the future of AI-powered lead generation.
               </p>
