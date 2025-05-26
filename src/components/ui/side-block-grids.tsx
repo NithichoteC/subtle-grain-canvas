@@ -14,11 +14,12 @@ interface SideBlockGridsProps {
  * Side block grid enhancements with animated gradient backgrounds
  * Enhanced with layered textures and high-tech geometric patterns
  * Premium enterprise aesthetic with sophisticated visual depth
+ * Now includes proper vertical boundary lines aligned with navigation
  */
 export function SideBlockGrids({ className }: SideBlockGridsProps) {
   return (
     <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className || ''}`}>
-      {/* Left Edge Enhancement - Original animation timing */}
+      {/* Left Edge Enhancement */}
       <div 
         className="absolute left-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -26,12 +27,12 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="130, 95, 8"      // Darker bronze
-          secondColor="165, 102, 40"   // Muted bronze medium  
-          thirdColor="200, 170, 0"     // Toned gold
-          fourthColor="119, 89, 33"    // Deep bronze
-          fifthColor="180, 166, 156"   // Subtle bronze light
-          pointerColor="210, 180, 120" // Enhanced pointer intensity
+          firstColor="130, 95, 8"
+          secondColor="165, 102, 40"
+          thirdColor="200, 170, 0"
+          fourthColor="119, 89, 33"
+          fifthColor="180, 166, 156"
+          pointerColor="210, 180, 120"
           size="120%"
           blendingValue="overlay"
           interactive={true}
@@ -45,7 +46,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
           
-          {/* Enhanced dot pattern with more visibility */}
           <div className="absolute inset-0 z-8">
             <DotPattern
               glow={true}
@@ -58,7 +58,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             />
           </div>
           
-          {/* Secondary dot layer for depth */}
           <div className="absolute inset-0 z-7">
             <DotPattern
               glow={false}
@@ -70,7 +69,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             />
           </div>
           
-          {/* High-tech grid overlay */}
           <div 
             className="absolute inset-0 z-10 opacity-[0.12]"
             style={{
@@ -82,7 +80,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             }}
           />
           
-          {/* Subtle diagonal lines for tech aesthetic */}
           <div 
             className="absolute inset-0 z-10 opacity-[0.08]"
             style={{
@@ -96,7 +93,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             }}
           />
           
-          {/* Circuit-like pattern */}
           <div 
             className="absolute inset-0 z-10 opacity-[0.06]"
             style={{
@@ -108,7 +104,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             }}
           />
           
-          {/* 3D Asset Zone */}
           <div 
             className="absolute top-1/4 left-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
             aria-label="Reserved space for 3D assets"
@@ -116,7 +111,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Right Edge Enhancement - Offset animation timing */}
+      {/* Right Edge Enhancement */}
       <div 
         className="absolute right-0 top-0 bottom-0"
         style={{ width: 'calc(50vw - 640px)' }}
@@ -124,12 +119,12 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         <BackgroundGradientAnimation
           gradientBackgroundStart="rgb(23, 23, 23)"
           gradientBackgroundEnd="rgb(35, 35, 35)"
-          firstColor="180, 166, 156"   // Subtle bronze light (swapped order)
-          secondColor="119, 89, 33"    // Deep bronze
-          thirdColor="130, 95, 8"      // Darker bronze
-          fourthColor="200, 170, 0"    // Toned gold
-          fifthColor="165, 102, 40"    // Muted bronze medium
-          pointerColor="210, 180, 120" // Enhanced pointer intensity
+          firstColor="180, 166, 156"
+          secondColor="119, 89, 33"
+          thirdColor="130, 95, 8"
+          fourthColor="200, 170, 0"
+          fifthColor="165, 102, 40"
+          pointerColor="210, 180, 120"
           size="120%"
           blendingValue="overlay"
           interactive={true}
@@ -143,7 +138,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             <NoiseTexture {...noiseConfigs.hero} />
           </div>
           
-          {/* Enhanced dot pattern with offset for asymmetry */}
           <div className="absolute inset-0 z-8">
             <DotPattern
               glow={true}
@@ -156,7 +150,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             />
           </div>
           
-          {/* Secondary dot layer for depth - different pattern */}
           <div className="absolute inset-0 z-7">
             <DotPattern
               glow={false}
@@ -168,7 +161,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             />
           </div>
           
-          {/* High-tech grid overlay - offset pattern */}
           <div 
             className="absolute inset-0 z-10 opacity-[0.12]"
             style={{
@@ -177,11 +169,10 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
                 linear-gradient(180deg, ${colors.bronze.base}30 1px, transparent 1px)
               `,
               backgroundSize: '40px 40px',
-              backgroundPosition: '20px 20px' // Offset for right side
+              backgroundPosition: '20px 20px'
             }}
           />
           
-          {/* Diagonal lines - opposite direction */}
           <div 
             className="absolute inset-0 z-10 opacity-[0.08]"
             style={{
@@ -195,7 +186,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             }}
           />
           
-          {/* Circuit pattern - offset positions */}
           <div 
             className="absolute inset-0 z-10 opacity-[0.06]"
             style={{
@@ -207,7 +197,6 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
             }}
           />
           
-          {/* 3D Asset Zone */}
           <div 
             className="absolute top-1/3 right-8 w-16 h-16 opacity-0 transition-opacity duration-500 hover:opacity-100 z-20"
             aria-label="Reserved space for 3D assets"
@@ -215,7 +204,7 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         </BackgroundGradientAnimation>
       </div>
       
-      {/* Center connection zone - fills the 1280px center area */}
+      {/* Center content zone - exactly 1280px wide with proper borders */}
       <div 
         className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"
         style={{ width: '1280px' }}
@@ -223,13 +212,23 @@ export function SideBlockGrids({ className }: SideBlockGridsProps) {
         <div 
           className="absolute inset-0"
           style={{ 
-            background: colors.dark,
-            borderLeft: `1px solid ${colors.white[10]}`,
-            borderRight: `1px solid ${colors.white[10]}`
+            background: colors.dark
           }}
         >
           {/* Noise texture for consistency */}
           <NoiseTexture {...noiseConfigs.hero} />
+          
+          {/* Left boundary line - aligned with navigation padding */}
+          <div 
+            className="absolute left-4 md:left-6 top-0 bottom-0 w-[1px]"
+            style={{ backgroundColor: colors.white[10] }}
+          />
+          
+          {/* Right boundary line - aligned with navigation padding */}
+          <div 
+            className="absolute right-4 md:right-6 top-0 bottom-0 w-[1px]"
+            style={{ backgroundColor: colors.white[10] }}
+          />
         </div>
       </div>
       
