@@ -19,15 +19,36 @@ export function TrustBar() {
 
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Solid bronze background with static noise texture - exactly like the rest of the site */}
+      {/* Solid bronze background - no transparency issues */}
       <div 
         className="absolute inset-0" 
         style={{ 
-          backgroundColor: '#6B4E0C'
+          backgroundColor: '#6B4E0C',
+          background: 'linear-gradient(90deg, #6B4E0C 0%, #7A5A10 50%, #6B4E0C 100%)'
         }}
       >
-        {/* Static noise texture overlay - exactly like TextureBackground */}
-        <NoiseTexture {...noiseConfigs.hero} />
+        {/* Subtle noise texture overlay - much lower opacity for smoothness */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            x: [0, -singleSetWidth]
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+        >
+          <NoiseTexture 
+            opacity={0.08}
+            baseFrequency={0.5}
+            numOctaves={2}
+            backgroundSize="400px 400px"
+          />
+        </motion.div>
       </div>
       
       {/* Minimal bronze accent lines */}
