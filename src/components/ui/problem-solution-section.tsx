@@ -24,9 +24,10 @@ export function ProblemSolutionSection() {
 
       {/* Simplified Background - no color bands */}
       <div className="absolute inset-0">
-        {/* Pain icons - keeping the animated elements you like */}
+        {/* Pain icons - responsive positioning */}
         <motion.div 
-          className="absolute top-20 left-8 w-20 h-20 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-2xl flex items-center justify-center text-3xl shadow-2xl"
+          className="absolute w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-2xl"
+          style={{ left: '8%', top: '15%' }}
           animate={{ 
             y: [0, -15, 0],
             rotate: [0, 5, -5, 0],
@@ -42,7 +43,8 @@ export function ProblemSolutionSection() {
         </motion.div>
         
         <motion.div 
-          className="absolute top-1/2 left-4 w-16 h-16 bg-gradient-to-br from-[#efcc8a]/30 to-[#cd7f32]/40 rounded-xl flex items-center justify-center text-2xl shadow-xl"
+          className="absolute w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#efcc8a]/30 to-[#cd7f32]/40 rounded-xl flex items-center justify-center text-xl md:text-2xl shadow-xl"
+          style={{ left: '2%', top: '50%' }}
           animate={{ 
             y: [0, -12, 0],
             rotate: [0, -8, 8, 0]
@@ -57,7 +59,8 @@ export function ProblemSolutionSection() {
         </motion.div>
 
         <motion.div 
-          className="absolute bottom-32 left-12 w-18 h-18 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-lg flex items-center justify-center text-2xl shadow-lg"
+          className="absolute w-14 h-14 md:w-18 md:h-18 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-lg flex items-center justify-center text-xl md:text-2xl shadow-lg"
+          style={{ left: '6%', top: '75%' }}
           animate={{ 
             y: [0, -10, 0],
             rotate: [0, 10, -10, 0]
@@ -72,7 +75,8 @@ export function ProblemSolutionSection() {
         </motion.div>
 
         <motion.div 
-          className="absolute top-1/3 left-16 w-14 h-14 bg-gradient-to-br from-[#efcc8a]/20 to-[#cd7f32]/30 rounded-xl flex items-center justify-center text-xl shadow-md"
+          className="absolute w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#efcc8a]/20 to-[#cd7f32]/30 rounded-xl flex items-center justify-center text-lg md:text-xl shadow-md"
+          style={{ left: '12%', top: '35%' }}
           animate={{ 
             y: [0, -8, 0],
             rotate: [0, 6, -6, 0]
@@ -86,9 +90,10 @@ export function ProblemSolutionSection() {
           ⏰
         </motion.div>
         
-        {/* Promise icons */}
+        {/* Promise icons - responsive positioning */}
         <motion.div 
-          className="absolute top-24 right-8 w-20 h-20 bg-gradient-to-br from-[#efcc8a]/35 to-[#cd7f32]/45 rounded-2xl flex items-center justify-center text-3xl shadow-2xl"
+          className="absolute w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#efcc8a]/35 to-[#cd7f32]/45 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-2xl"
+          style={{ right: '8%', top: '15%' }}
           animate={{ 
             y: [0, -18, 0],
             rotate: [0, -5, 5, 0],
@@ -104,7 +109,8 @@ export function ProblemSolutionSection() {
         </motion.div>
         
         <motion.div 
-          className="absolute top-1/2 right-4 w-16 h-16 bg-gradient-to-br from-[#ffd700]/40 to-[#efcc8a]/50 rounded-xl flex items-center justify-center text-2xl shadow-xl"
+          className="absolute w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#ffd700]/40 to-[#efcc8a]/50 rounded-xl flex items-center justify-center text-xl md:text-2xl shadow-xl"
+          style={{ right: '2%', top: '50%' }}
           animate={{ 
             y: [0, -14, 0],
             rotate: [0, 8, -8, 0]
@@ -119,7 +125,8 @@ export function ProblemSolutionSection() {
         </motion.div>
 
         <motion.div 
-          className="absolute bottom-36 right-12 w-18 h-18 bg-gradient-to-br from-[#cd7f32]/30 to-[#ffd700]/40 rounded-lg flex items-center justify-center text-2xl shadow-lg"
+          className="absolute w-14 h-14 md:w-18 md:h-18 bg-gradient-to-br from-[#cd7f32]/30 to-[#ffd700]/40 rounded-lg flex items-center justify-center text-xl md:text-2xl shadow-lg"
+          style={{ right: '6%', top: '75%' }}
           animate={{ 
             y: [0, -12, 0],
             rotate: [0, -6, 6, 0]
@@ -134,7 +141,8 @@ export function ProblemSolutionSection() {
         </motion.div>
 
         <motion.div 
-          className="absolute top-1/4 right-16 w-14 h-14 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-xl flex items-center justify-center text-xl shadow-md"
+          className="absolute w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-xl flex items-center justify-center text-lg md:text-xl shadow-md"
+          style={{ right: '12%', top: '25%' }}
           animate={{ 
             y: [0, -10, 0],
             rotate: [0, 4, -4, 0]
@@ -158,7 +166,7 @@ export function ProblemSolutionSection() {
         }}
       />
       
-      {/* Full-width Container - no gaps like Early Adopter section */}
+      {/* Full-width Container with proper structure */}
       <div className="w-full relative z-10">
         {/* Header Section */}
         <div className="w-full border-l border-r border-white/10">
@@ -197,15 +205,15 @@ export function ProblemSolutionSection() {
           </div>
         </div>
 
-        {/* Grid Layout - Full Width with No Gaps */}
-        <div className="w-full">
+        {/* Grid Layout - Full Width with Proper Container */}
+        <div className="w-full border-l border-r border-white/10">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Pain Panel - Grid Box Style */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="border-b border-white/10 lg:border-r border-white/10 relative"
+              className="border-b border-white/10 lg:border-r lg:border-b-0 border-white/10 relative"
             >
               <Magnetic intensity={0.03} rangeX={80} rangeY={40} actionArea="self" shape="rectangular" springOptions={{
                 stiffness: 140,
@@ -342,9 +350,9 @@ export function ProblemSolutionSection() {
           </div>
         </div>
         
-        {/* Flow Guide Arrow */}
+        {/* Flow Guide Arrow - no borders */}
         <motion.div 
-          className="flex justify-center py-8 border-l border-r border-white/10"
+          className="flex justify-center py-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
