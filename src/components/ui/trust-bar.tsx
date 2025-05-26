@@ -16,10 +16,29 @@ export function TrustBar() {
 
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Solid bronze background - 100% opacity */}
-      <div className="absolute inset-0" style={{ backgroundColor: '#8B6914' }}>
-        {/* Add the same noise texture as the rest of the page */}
-        <NoiseTexture {...noiseConfigs.hero} />
+      {/* Darker bronze background - 100% opacity */}
+      <div className="absolute inset-0" style={{ backgroundColor: '#6B4E0C' }}>
+        {/* Animated noise texture that moves with the text */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            x: [0, -100 * badges.length - 24 * (badges.length - 1)]
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+        >
+          <NoiseTexture 
+            {...noiseConfigs.hero} 
+            opacity={0.15}
+            backgroundSize="300px 300px"
+          />
+        </motion.div>
       </div>
       
       {/* Minimal bronze accent lines */}
@@ -29,8 +48,8 @@ export function TrustBar() {
       {/* Main content area */}
       <div className="relative py-2">
         {/* Bronze fade edges that match the background */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#8B6914] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#8B6914] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#6B4E0C] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#6B4E0C] to-transparent z-10 pointer-events-none" />
         
         {/* Scrolling container */}
         <div className="flex">
