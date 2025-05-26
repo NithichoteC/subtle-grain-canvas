@@ -3,7 +3,6 @@ import { Hero } from "@/components/ui/animated-hero";
 import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { SideBlockGrids } from "@/components/ui/side-block-grids";
-import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
 import { TrustBar } from "@/components/ui/trust-bar";
 import { zIndex } from "@/lib/design-tokens";
 
@@ -35,12 +34,7 @@ function HeroDemo() {
         </div>
       </div>
       
-      {/* Early Adopter Section - also scrolls naturally */}
-      <div className="relative" style={{ zIndex: zIndex.content }}>
-        <EarlyAdopterSection />
-      </div>
-      
-      {/* Trust Bar - full width below Early Adopter Section */}
+      {/* Trust Bar - full width below hero section */}
       <div className="relative" style={{ zIndex: zIndex.content }}>
         <TrustBar />
       </div>
