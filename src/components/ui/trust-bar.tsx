@@ -79,9 +79,8 @@ export function TrustBar() {
                   <span className="text-[#efcc8a]/90 text-xs font-light tracking-[0.08em] uppercase">
                     {badge}
                   </span>
-                  {index < badges.length - 1 && (
-                    <div className="w-0.5 h-0.5 bg-[#efcc8a]/50 rounded-full ml-6" />
-                  )}
+                  {/* Always add dot after each badge except we'll handle it differently */}
+                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/50 rounded-full ml-6" />
                 </div>
               ))}
             </motion.div>
