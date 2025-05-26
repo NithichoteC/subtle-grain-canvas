@@ -17,7 +17,7 @@ export function ProblemSolutionSection() {
           y={-1} 
           strokeDasharray="4 2" 
           className={cn(
-            "opacity-50 stroke-[#efcc8a]/60 fill-transparent",
+            "opacity-30 stroke-[#efcc8a]/40 fill-transparent",
             "[mask-image:linear-gradient(to_right,white_0%,white_100%,white)]"
           )} 
         />
@@ -27,7 +27,7 @@ export function ProblemSolutionSection() {
       <div className="absolute inset-0">
         {/* Left side floating icons */}
         <motion.div 
-          className="absolute top-24 left-8 w-16 h-16 bg-gradient-to-br from-red-400/25 to-red-500/35 rounded-2xl flex items-center justify-center text-2xl shadow-xl" 
+          className="absolute top-24 left-8 w-16 h-16 bg-gradient-to-br from-red-400/15 to-red-500/25 rounded-2xl flex items-center justify-center text-2xl shadow-xl" 
           animate={{
             y: [0, -12, 0],
             rotate: [0, 5, -5, 0]
@@ -42,7 +42,7 @@ export function ProblemSolutionSection() {
         </motion.div>
         
         <motion.div 
-          className="absolute bottom-24 left-16 w-14 h-14 bg-gradient-to-br from-red-400/20 to-orange-400/30 rounded-xl flex items-center justify-center text-xl shadow-sm" 
+          className="absolute bottom-24 left-16 w-14 h-14 bg-gradient-to-br from-red-400/10 to-orange-400/20 rounded-xl flex items-center justify-center text-xl shadow-sm" 
           animate={{
             y: [0, -6, 0],
             rotate: [0, 4, -4, 0]
@@ -58,7 +58,7 @@ export function ProblemSolutionSection() {
         
         {/* Right side floating icons */}
         <motion.div 
-          className="absolute top-20 right-8 w-18 h-18 bg-gradient-to-br from-[#efcc8a]/35 to-[#cd7f32]/45 rounded-2xl flex items-center justify-center text-2xl shadow-xl" 
+          className="absolute top-20 right-8 w-18 h-18 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-2xl flex items-center justify-center text-2xl shadow-xl" 
           animate={{
             y: [0, -14, 0],
             rotate: [0, -4, 4, 0]
@@ -73,7 +73,7 @@ export function ProblemSolutionSection() {
         </motion.div>
         
         <motion.div 
-          className="absolute bottom-28 right-14 w-14 h-14 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-xl flex items-center justify-center text-lg shadow-sm" 
+          className="absolute bottom-28 right-14 w-14 h-14 bg-gradient-to-br from-[#efcc8a]/15 to-[#cd7f32]/25 rounded-xl flex items-center justify-center text-lg shadow-sm" 
           animate={{
             y: [0, -7, 0],
             rotate: [0, 3, -3, 0]
@@ -128,7 +128,7 @@ export function ProblemSolutionSection() {
         {/* Grid Layout - Exact Match to Early Adopter Structure */}
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Pain Panel - Exact Border Structure */}
+            {/* Pain Panel - Transparent Integration */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
@@ -144,18 +144,9 @@ export function ProblemSolutionSection() {
                 springOptions={{ stiffness: 140, damping: 25, mass: 0.3 }}
               >
                 <div 
-                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" 
+                  className="relative h-full p-8 lg:p-10 transition-all duration-500 group flex flex-col" 
                   style={{ minHeight: '400px' }}
                 >
-                  {/* Luxury Background Texture */}
-                  <div 
-                    className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" 
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                      backgroundSize: '200px 200px'
-                    }}
-                  />
-                  
                   <div className="relative z-10 space-y-6 h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="w-8 h-8 text-red-400">💀</div>
@@ -165,7 +156,7 @@ export function ProblemSolutionSection() {
                     </div>
                     
                     <div className="space-y-4 flex-grow">
-                      <div className="flex items-start gap-4 p-4 bg-red-400/5 rounded-none border border-red-400/10">
+                      <div className="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/5">
                         <span className="text-red-400 text-xl mt-1 flex-shrink-0">💸</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Ghost leads that vanish without replying</h4>
@@ -173,7 +164,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 bg-red-400/5 rounded-none border border-red-400/10">
+                      <div className="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/5">
                         <span className="text-red-400 text-xl mt-1 flex-shrink-0">⚠️</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Ad dollars lost on tire-kick traffic</h4>
@@ -181,7 +172,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 bg-red-400/5 rounded-none border border-red-400/10">
+                      <div className="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/5">
                         <span className="text-red-400 text-xl mt-1 flex-shrink-0">⏰</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Hours wasted chasing no-shows</h4>
@@ -191,16 +182,15 @@ export function ProblemSolutionSection() {
                     </div>
                   </div>
                   
-                  {/* Enhanced hover effect */}
+                  {/* Subtle hover effect without background fill */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 border border-red-400/8"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-red-400/5 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 border border-red-400/15"></div>
                   </div>
                 </div>
               </Magnetic>
             </motion.div>
 
-            {/* Promise Panel - Exact Border Structure */}
+            {/* Promise Panel - Transparent Integration */}
             <motion.div 
               initial={{ opacity: 0, x: 40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
@@ -216,18 +206,9 @@ export function ProblemSolutionSection() {
                 springOptions={{ stiffness: 140, damping: 25, mass: 0.3 }}
               >
                 <div 
-                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" 
+                  className="relative h-full p-8 lg:p-10 transition-all duration-500 group flex flex-col" 
                   style={{ minHeight: '400px' }}
                 >
-                  {/* Luxury Background Texture */}
-                  <div 
-                    className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" 
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                      backgroundSize: '200px 200px'
-                    }}
-                  />
-                  
                   <div className="relative z-10 space-y-6 h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="w-8 h-8 text-[#efcc8a]">✅</div>
@@ -237,7 +218,7 @@ export function ProblemSolutionSection() {
                     </div>
                     
                     <div className="space-y-4 flex-grow">
-                      <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 rounded-none border border-[#efcc8a]/15">
+                      <div className="flex items-start gap-4 p-4 border border-[#efcc8a]/20 bg-[#efcc8a]/5">
                         <span className="text-[#efcc8a] text-xl mt-1 flex-shrink-0">🎯</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Only decision-makers hit your calendar</h4>
@@ -245,7 +226,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 rounded-none border border-[#efcc8a]/15">
+                      <div className="flex items-start gap-4 p-4 border border-[#efcc8a]/20 bg-[#efcc8a]/5">
                         <span className="text-[#efcc8a] text-xl mt-1 flex-shrink-0">⚡</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">AI filters out time-wasters automatically</h4>
@@ -253,7 +234,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 rounded-none border border-[#efcc8a]/15">
+                      <div className="flex items-start gap-4 p-4 border border-[#efcc8a]/20 bg-[#efcc8a]/5">
                         <span className="text-[#efcc8a] text-xl mt-1 flex-shrink-0">📅</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Strategy calls booked—no follow-up needed</h4>
@@ -263,10 +244,9 @@ export function ProblemSolutionSection() {
                     </div>
                   </div>
                   
-                  {/* Enhanced hover effect */}
+                  {/* Subtle hover effect without background fill */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 border border-[#efcc8a]/8"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#efcc8a]/5 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 border border-[#efcc8a]/15"></div>
                   </div>
                 </div>
               </Magnetic>
