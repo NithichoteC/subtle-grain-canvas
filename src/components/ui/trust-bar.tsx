@@ -14,18 +14,18 @@ export function TrustBar() {
 
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Simple bronze background */}
-      <div className="absolute inset-0 bg-[#cd7f32]/15"></div>
+      {/* Consistent bronze background throughout */}
+      <div className="absolute inset-0 bg-[#cd7f32]/12"></div>
       
       {/* Minimal bronze accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/20"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/20"></div>
+      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/25"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/25"></div>
       
       {/* Main content area */}
       <div className="relative py-2">
-        {/* Clean fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
+        {/* Subtle bronze fade edges instead of black */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#cd7f32]/12 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#cd7f32]/12 to-transparent z-10 pointer-events-none" />
         
         {/* Scrolling container */}
         <div className="flex">
@@ -46,11 +46,11 @@ export function TrustBar() {
           >
             {badges.map((badge, index) => (
               <div key={`first-${index}`} className="flex items-center">
-                <span className="text-[#efcc8a]/70 text-xs font-light tracking-[0.08em] uppercase">
+                <span className="text-[#efcc8a]/75 text-xs font-light tracking-[0.08em] uppercase">
                   {badge}
                 </span>
                 {index < badges.length - 1 && (
-                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/30 rounded-full ml-6" />
+                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/35 rounded-full ml-6" />
                 )}
               </div>
             ))}
@@ -73,11 +73,11 @@ export function TrustBar() {
           >
             {badges.map((badge, index) => (
               <div key={`second-${index}`} className="flex items-center">
-                <span className="text-[#efcc8a]/70 text-xs font-light tracking-[0.08em] uppercase">
+                <span className="text-[#efcc8a]/75 text-xs font-light tracking-[0.08em] uppercase">
                   {badge}
                 </span>
                 {index < badges.length - 1 && (
-                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/30 rounded-full ml-6" />
+                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/35 rounded-full ml-6" />
                 )}
               </div>
             ))}
