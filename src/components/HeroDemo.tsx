@@ -4,8 +4,8 @@ import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { SideBlockGrids } from "@/components/ui/side-block-grids";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
-import { CodeComparisonStyle } from "@/components/ui/code-comparison-style";
-import { FeatureHighlightsSection } from "@/components/ui/feature-highlights-section";
+import { ProblemSolutionGrid } from "@/components/ui/problem-solution-grid";
+import { EnhancedFeatureGrid } from "@/components/ui/enhanced-feature-grid";
 import { zIndex } from "@/lib/design-tokens";
 
 /**
@@ -41,14 +41,14 @@ function HeroDemo() {
         <EarlyAdopterSection />
       </div>
       
-      {/* Code Comparison Style Section - replaces Pain-to-Promise */}
+      {/* Problem Solution Grid - replaces Code Comparison */}
       <div className="relative" style={{ zIndex: zIndex.content }}>
-        <CodeComparisonStyle />
+        <ProblemSolutionGrid />
       </div>
       
-      {/* Feature Highlights Section */}
+      {/* Enhanced Feature Grid - replaces basic Feature Highlights */}
       <div className="relative" style={{ zIndex: zIndex.content }}>
-        <FeatureHighlightsSection />
+        <EnhancedFeatureGrid />
       </div>
     </div>
   );
