@@ -14,35 +14,38 @@ export function TrustBar() {
 
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Enhanced background with gradient and texture */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#171717] via-[#1a1a1a] to-[#171717]"></div>
+      {/* Professional low-opacity background with gradient and texture */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/60 via-[#171717]/40 to-[#0a0a0a]/60"></div>
       
-      {/* Subtle noise texture overlay */}
+      {/* Subtle radial gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-radial from-[#1a1a1a]/20 via-transparent to-[#0f0f0f]/30"></div>
+      
+      {/* Ultra-subtle noise texture overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.15]" 
+        className="absolute inset-0 opacity-[0.03]" 
         style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px'
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundSize: '150px 150px'
         }}
       ></div>
       
-      {/* Subtle bronze accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#efcc8a]/20 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#efcc8a]/10 to-transparent"></div>
+      {/* Minimal bronze accent lines */}
+      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-[#efcc8a]/15 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-[#efcc8a]/8 to-transparent"></div>
       
       {/* Main content area */}
-      <div className="relative border-t border-b border-white/5 py-4">
-        {/* Elegant gradient fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
+      <div className="relative py-2">
+        {/* Clean gradient fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
         
         {/* Scrolling container */}
         <div className="flex">
           {/* First set of badges */}
           <motion.div
-            className="flex items-center space-x-8 whitespace-nowrap"
+            className="flex items-center space-x-6 whitespace-nowrap"
             animate={{
-              x: [0, -100 * badges.length - 32 * (badges.length - 1)]
+              x: [0, -100 * badges.length - 24 * (badges.length - 1)]
             }}
             transition={{
               x: {
@@ -55,11 +58,11 @@ export function TrustBar() {
           >
             {badges.map((badge, index) => (
               <div key={`first-${index}`} className="flex items-center">
-                <span className="text-[#efcc8a]/80 text-sm font-light tracking-[0.05em] uppercase">
+                <span className="text-[#efcc8a]/70 text-xs font-light tracking-[0.08em] uppercase">
                   {badge}
                 </span>
                 {index < badges.length - 1 && (
-                  <div className="w-1 h-1 bg-[#efcc8a]/40 rounded-full ml-8" />
+                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/30 rounded-full ml-6" />
                 )}
               </div>
             ))}
@@ -67,9 +70,9 @@ export function TrustBar() {
           
           {/* Duplicate set for seamless loop */}
           <motion.div
-            className="flex items-center space-x-8 whitespace-nowrap ml-8"
+            className="flex items-center space-x-6 whitespace-nowrap ml-6"
             animate={{
-              x: [0, -100 * badges.length - 32 * (badges.length - 1)]
+              x: [0, -100 * badges.length - 24 * (badges.length - 1)]
             }}
             transition={{
               x: {
@@ -82,11 +85,11 @@ export function TrustBar() {
           >
             {badges.map((badge, index) => (
               <div key={`second-${index}`} className="flex items-center">
-                <span className="text-[#efcc8a]/80 text-sm font-light tracking-[0.05em] uppercase">
+                <span className="text-[#efcc8a]/70 text-xs font-light tracking-[0.08em] uppercase">
                   {badge}
                 </span>
                 {index < badges.length - 1 && (
-                  <div className="w-1 h-1 bg-[#efcc8a]/40 rounded-full ml-8" />
+                  <div className="w-0.5 h-0.5 bg-[#efcc8a]/30 rounded-full ml-6" />
                 )}
               </div>
             ))}
