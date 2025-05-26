@@ -9,9 +9,9 @@ import { AmbientParticles } from "@/components/ui/ambient-particles";
 export function ProblemSolutionSection() {
   return (
     <div className="w-full relative font-roboto bg-[#171717] overflow-hidden">
-      {/* Subdued Grid Pattern Background */}
+      {/* Extended Grid Pattern Background - Covering Entire Section */}
       <GridPattern 
-        className="absolute inset-0 opacity-30" 
+        className="absolute inset-0 opacity-20 stroke-[#efcc8a]/15" 
         strokeDasharray="0" 
         width={40} 
         height={40}
@@ -104,9 +104,9 @@ export function ProblemSolutionSection() {
           </div>
         </motion.div>
 
-        {/* Grid Layout - Exact Match to Early Adopter Structure */}
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Grid Layout - Fixed Container to Remove Right Edge Gaps */}
+        <div className="w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
             {/* Pain Panel - Flat Block Style with Ambient Particles */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }} 
@@ -126,7 +126,7 @@ export function ProblemSolutionSection() {
                 springOptions={{ stiffness: 140, damping: 25, mass: 0.3 }}
               >
                 <div 
-                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" 
+                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col w-full" 
                   style={{ minHeight: '400px' }}
                 >
                   {/* Luxury Background Texture - Same as Early Adopter */}
@@ -184,7 +184,7 @@ export function ProblemSolutionSection() {
               initial={{ opacity: 0, x: 40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }} 
-              className="border-b border-white/10 border-r border-white/10 relative"
+              className="border-b border-white/10 lg:border-r-0 border-r border-white/10 relative"
             >
               {/* Ambient Particles for Solutions */}
               <AmbientParticles type="solutions" />
@@ -198,7 +198,7 @@ export function ProblemSolutionSection() {
                 springOptions={{ stiffness: 140, damping: 25, mass: 0.3 }}
               >
                 <div 
-                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" 
+                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col w-full" 
                   style={{ minHeight: '400px' }}
                 >
                   {/* Luxury Background Texture - Same as Early Adopter */}
