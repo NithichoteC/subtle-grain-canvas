@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Magnetic } from "@/components/ui/magnetic";
 import { motion } from "framer-motion";
 import { Brain, Calendar, BarChart3, ArrowDown } from "lucide-react";
+import { GridPattern } from "@/components/ui/grid-pattern";
 
 export function CoreCapabilitiesSection() {
   const capabilities = [
@@ -32,6 +33,21 @@ export function CoreCapabilitiesSection() {
 
   return (
     <div className="w-full relative font-roboto bg-[#171717] overflow-hidden">
+      {/* Continuous Grid Pattern Background - same as problem-solution */}
+      <div className="absolute inset-0">
+        <GridPattern
+          width={30}
+          height={30}
+          x={-1}
+          y={-1}
+          strokeDasharray="4 2"
+          className={cn(
+            "opacity-40 stroke-[#efcc8a]/50 fill-transparent",
+            "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
+          )}
+        />
+      </div>
+
       {/* Enhanced Layered Background */}
       <div className="absolute inset-0">
         {/* Central featured column highlight */}
