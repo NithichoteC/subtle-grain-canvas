@@ -2,133 +2,60 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { GridPattern } from "@/components/ui/grid-pattern";
 import { Magnetic } from "@/components/ui/magnetic";
 
 export function ProblemSolutionSection() {
   return (
     <div className="w-full relative font-roboto bg-[#171717] overflow-hidden">
-      {/* Enhanced Grid Pattern Background - Full Coverage and Visibility */}
-      <div className="absolute inset-0">
-        <GridPattern 
-          width={40} 
-          height={40} 
-          x={-1} 
-          y={-1} 
-          strokeDasharray="4 2" 
-          className={cn(
-            "opacity-30 stroke-[#efcc8a]/40 fill-transparent",
-            "[mask-image:linear-gradient(to_right,white_0%,white_100%,white)]"
-          )} 
-        />
-      </div>
-
-      {/* Simplified Background Elements - Repositioned for Balance */}
-      <div className="absolute inset-0">
-        {/* Left side floating icons */}
-        <motion.div 
-          className="absolute top-24 left-8 w-16 h-16 bg-gradient-to-br from-red-400/15 to-red-500/25 rounded-2xl flex items-center justify-center text-2xl shadow-xl" 
-          animate={{
-            y: [0, -12, 0],
-            rotate: [0, 5, -5, 0]
-          }} 
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          💀
-        </motion.div>
-        
-        <motion.div 
-          className="absolute bottom-24 left-16 w-14 h-14 bg-gradient-to-br from-red-400/10 to-orange-400/20 rounded-xl flex items-center justify-center text-xl shadow-sm" 
-          animate={{
-            y: [0, -6, 0],
-            rotate: [0, 4, -4, 0]
-          }} 
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          ⏰
-        </motion.div>
-        
-        {/* Right side floating icons */}
-        <motion.div 
-          className="absolute top-20 right-8 w-18 h-18 bg-gradient-to-br from-[#efcc8a]/25 to-[#cd7f32]/35 rounded-2xl flex items-center justify-center text-2xl shadow-xl" 
-          animate={{
-            y: [0, -14, 0],
-            rotate: [0, -4, 4, 0]
-          }} 
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          ✅
-        </motion.div>
-        
-        <motion.div 
-          className="absolute bottom-28 right-14 w-14 h-14 bg-gradient-to-br from-[#efcc8a]/15 to-[#cd7f32]/25 rounded-xl flex items-center justify-center text-lg shadow-sm" 
-          animate={{
-            y: [0, -7, 0],
-            rotate: [0, 3, -3, 0]
-          }} 
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          📅
-        </motion.div>
-      </div>
+      {/* Subdued background texture - matching other sections */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#171717]/50 to-transparent"></div>
+      <div className="absolute inset-0 opacity-[0.08]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        backgroundSize: '200px 200px'
+      }}></div>
       
       {/* Premium Container - Exact Match to Early Adopter Section */}
       <div className="w-full relative z-10 border-l border-r border-white/10">
-        <div className="max-w-[1400px] mx-auto px-[6%]">
-          {/* Header Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }} 
-            className="py-16 lg:py-20 space-y-8"
-          >
-            <div className="text-center space-y-6">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+        {/* Header Section - Matching Early Adopter Style */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }} 
+          className="w-full border-b border-white/10 py-16 bg-[#171717] relative"
+        >
+          {/* Texture background for header */}
+          <div className="absolute inset-0 opacity-[0.12]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundSize: '200px 200px'
+          }}></div>
+          
+          <div className="relative z-10 text-center space-y-8 max-w-4xl mx-auto px-8">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
                 <span className="text-white">What Keeps You Up at Night</span>{" "}
-                <span className="bronze-gradient-fix">And How We Solve It</span>
+                <span className="bronze-gradient-fix px-0 mx-0 py-0 my-0">And How We Solve It</span>
               </h2>
               
-              <motion.div 
-                className="w-32 h-[3px] bg-white/10 relative mx-auto" 
-                initial={{ opacity: 0 }} 
-                whileInView={{ opacity: 1 }} 
-                transition={{ duration: 0.6 }}
-              >
-                <motion.div 
-                  className="absolute top-0 left-0 h-[3px] bg-gradient-to-r from-[#efcc8a] to-[#cd7f32] shadow-[0_0_15px_rgba(239,204,138,0.6)]" 
-                  initial={{ width: "0%" }} 
-                  whileInView={{ width: "100%" }} 
-                  transition={{ duration: 2, ease: "easeOut" }} 
-                />
-              </motion.div>
-              
-              <p className="text-xl md:text-2xl text-white/75 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-light md:text-base">
                 Every solar and roofing executive faces the same challenge: turning expensive leads into profitable conversations.
               </p>
             </div>
-          </motion.div>
-        </div>
+            
+            {/* Elegant Progress Indicator */}
+            <div className="space-y-4 pt-4">
+              <div className="flex items-center justify-center gap-4 py-0 my-0">
+                <div className="w-24 h-[2px] bg-gradient-to-r from-[#efcc8a] to-[#cd7f32] rounded-full"></div>
+                <span className="text-[#efcc8a] text-sm font-medium tracking-wide">Pain → Solution</span>
+                <div className="w-8 h-[1px] bg-white/20 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Grid Layout - Exact Match to Early Adopter Structure */}
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Pain Panel - Transparent Integration */}
+            {/* Pain Panel - Flat Block Style */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
@@ -144,9 +71,15 @@ export function ProblemSolutionSection() {
                 springOptions={{ stiffness: 140, damping: 25, mass: 0.3 }}
               >
                 <div 
-                  className="relative h-full p-8 lg:p-10 transition-all duration-500 group flex flex-col" 
+                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" 
                   style={{ minHeight: '400px' }}
                 >
+                  {/* Luxury Background Texture - Same as Early Adopter */}
+                  <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    backgroundSize: '200px 200px'
+                  }}></div>
+                  
                   <div className="relative z-10 space-y-6 h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="w-8 h-8 text-red-400">💀</div>
@@ -156,7 +89,7 @@ export function ProblemSolutionSection() {
                     </div>
                     
                     <div className="space-y-4 flex-grow">
-                      <div className="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/5">
+                      <div className="flex items-start gap-4 p-4 bg-red-400/5 border-l-2 border-red-400/30">
                         <span className="text-red-400 text-xl mt-1 flex-shrink-0">💸</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Ghost leads that vanish without replying</h4>
@@ -164,7 +97,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/5">
+                      <div className="flex items-start gap-4 p-4 bg-red-400/5 border-l-2 border-red-400/30">
                         <span className="text-red-400 text-xl mt-1 flex-shrink-0">⚠️</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Ad dollars lost on tire-kick traffic</h4>
@@ -172,7 +105,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/5">
+                      <div className="flex items-start gap-4 p-4 bg-red-400/5 border-l-2 border-red-400/30">
                         <span className="text-red-400 text-xl mt-1 flex-shrink-0">⏰</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Hours wasted chasing no-shows</h4>
@@ -182,15 +115,16 @@ export function ProblemSolutionSection() {
                     </div>
                   </div>
                   
-                  {/* Subtle hover effect without background fill */}
+                  {/* Subtle Luxury Border Effect - Same as Early Adopter */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 border border-red-400/15"></div>
+                    <div className="absolute inset-0 border border-red-400/8 rounded-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-400/5 via-transparent to-transparent"></div>
                   </div>
                 </div>
               </Magnetic>
             </motion.div>
 
-            {/* Promise Panel - Transparent Integration */}
+            {/* Promise Panel - Flat Block Style */}
             <motion.div 
               initial={{ opacity: 0, x: 40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
@@ -206,9 +140,15 @@ export function ProblemSolutionSection() {
                 springOptions={{ stiffness: 140, damping: 25, mass: 0.3 }}
               >
                 <div 
-                  className="relative h-full p-8 lg:p-10 transition-all duration-500 group flex flex-col" 
+                  className="relative h-full p-8 lg:p-10 bg-[#171717] transition-all duration-500 hover:bg-[#1c1c1c] group flex flex-col" 
                   style={{ minHeight: '400px' }}
                 >
+                  {/* Luxury Background Texture - Same as Early Adopter */}
+                  <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.12] transition-opacity duration-500" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    backgroundSize: '200px 200px'
+                  }}></div>
+                  
                   <div className="relative z-10 space-y-6 h-full flex flex-col">
                     <div className="flex items-center gap-4">
                       <div className="w-8 h-8 text-[#efcc8a]">✅</div>
@@ -218,7 +158,7 @@ export function ProblemSolutionSection() {
                     </div>
                     
                     <div className="space-y-4 flex-grow">
-                      <div className="flex items-start gap-4 p-4 border border-[#efcc8a]/20 bg-[#efcc8a]/5">
+                      <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 border-l-2 border-[#efcc8a]/30">
                         <span className="text-[#efcc8a] text-xl mt-1 flex-shrink-0">🎯</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Only decision-makers hit your calendar</h4>
@@ -226,7 +166,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 border border-[#efcc8a]/20 bg-[#efcc8a]/5">
+                      <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 border-l-2 border-[#efcc8a]/30">
                         <span className="text-[#efcc8a] text-xl mt-1 flex-shrink-0">⚡</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">AI filters out time-wasters automatically</h4>
@@ -234,7 +174,7 @@ export function ProblemSolutionSection() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start gap-4 p-4 border border-[#efcc8a]/20 bg-[#efcc8a]/5">
+                      <div className="flex items-start gap-4 p-4 bg-[#efcc8a]/5 border-l-2 border-[#efcc8a]/30">
                         <span className="text-[#efcc8a] text-xl mt-1 flex-shrink-0">📅</span>
                         <div>
                           <h4 className="text-base font-semibold text-white/90 mb-2">Strategy calls booked—no follow-up needed</h4>
@@ -244,9 +184,10 @@ export function ProblemSolutionSection() {
                     </div>
                   </div>
                   
-                  {/* Subtle hover effect without background fill */}
+                  {/* Subtle Luxury Border Effect - Same as Early Adopter */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 border border-[#efcc8a]/15"></div>
+                    <div className="absolute inset-0 border border-[#efcc8a]/8 rounded-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#efcc8a]/5 via-transparent to-transparent"></div>
                   </div>
                 </div>
               </Magnetic>
