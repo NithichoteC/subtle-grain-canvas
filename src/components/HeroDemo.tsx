@@ -4,7 +4,7 @@ import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { SideBlockGrids } from "@/components/ui/side-block-grids";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
-import { PainToPromiseSection } from "@/components/ui/pain-to-promise-section";
+import { PainToPromiseComparison } from "@/components/ui/pain-to-promise-comparison";
 import { FeatureHighlightsSection } from "@/components/ui/feature-highlights-section";
 import { zIndex } from "@/lib/design-tokens";
 
@@ -41,9 +41,9 @@ function HeroDemo() {
         <EarlyAdopterSection />
       </div>
       
-      {/* Pain-to-Promise Section */}
+      {/* Pain-to-Promise Comparison Section */}
       <div className="relative" style={{ zIndex: zIndex.content }}>
-        <PainToPromiseSection />
+        <PainToPromiseComparison />
       </div>
       
       {/* Feature Highlights Section */}
