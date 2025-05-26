@@ -4,8 +4,6 @@ import { NavBarDemo } from "@/components/NavBarDemo";
 import HeroSectionBackground from "@/components/HeroSectionBackground";
 import { SideBlockGrids } from "@/components/ui/side-block-grids";
 import { EarlyAdopterSection } from "@/components/ui/early-adopter-section";
-import { ProblemSolutionGrid } from "@/components/ui/problem-solution-grid";
-import { EnhancedFeatureGrid } from "@/components/ui/enhanced-feature-grid";
 import { zIndex } from "@/lib/design-tokens";
 
 /**
@@ -39,16 +37,6 @@ function HeroDemo() {
       {/* Early Adopter Section - also scrolls naturally */}
       <div className="relative" style={{ zIndex: zIndex.content }}>
         <EarlyAdopterSection />
-      </div>
-      
-      {/* Problem Solution Grid - replaces Code Comparison */}
-      <div className="relative" style={{ zIndex: zIndex.content }}>
-        <ProblemSolutionGrid />
-      </div>
-      
-      {/* Enhanced Feature Grid - replaces basic Feature Highlights */}
-      <div className="relative" style={{ zIndex: zIndex.content }}>
-        <EnhancedFeatureGrid />
       </div>
     </div>
   );
