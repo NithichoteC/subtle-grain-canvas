@@ -19,9 +19,15 @@ export function TrustBar() {
 
   return (
     <div className="w-full relative overflow-hidden">
-      {/* Darker bronze background - 100% opacity */}
-      <div className="absolute inset-0" style={{ backgroundColor: '#6B4E0C' }}>
-        {/* Animated noise texture that moves with the text */}
+      {/* Solid bronze background - no transparency issues */}
+      <div 
+        className="absolute inset-0" 
+        style={{ 
+          backgroundColor: '#6B4E0C',
+          background: 'linear-gradient(90deg, #6B4E0C 0%, #7A5A10 50%, #6B4E0C 100%)'
+        }}
+      >
+        {/* Subtle noise texture overlay - much lower opacity for smoothness */}
         <motion.div
           className="absolute inset-0"
           animate={{
@@ -37,22 +43,23 @@ export function TrustBar() {
           }}
         >
           <NoiseTexture 
-            {...noiseConfigs.hero} 
-            opacity={0.15}
-            backgroundSize="300px 300px"
+            opacity={0.08}
+            baseFrequency={0.5}
+            numOctaves={2}
+            backgroundSize="400px 400px"
           />
         </motion.div>
       </div>
       
       {/* Minimal bronze accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/60"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/60"></div>
+      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/40"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-[#efcc8a]/40"></div>
       
       {/* Main content area */}
       <div className="relative py-2">
-        {/* Bronze fade edges that match the background */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#6B4E0C] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#6B4E0C] to-transparent z-10 pointer-events-none" />
+        {/* Smooth gradient fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#6B4E0C] via-[#6B4E0C]/90 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#6B4E0C] via-[#6B4E0C]/90 to-transparent z-10 pointer-events-none" />
         
         {/* Scrolling container with multiple sets for seamless coverage */}
         <div className="flex">
@@ -79,7 +86,7 @@ export function TrustBar() {
                   <span className="text-[#efcc8a]/90 text-xs font-light tracking-[0.08em] uppercase">
                     {badge}
                   </span>
-                  {/* Always add dot after each badge except we'll handle it differently */}
+                  {/* Always add dot after each badge */}
                   <div className="w-0.5 h-0.5 bg-[#efcc8a]/50 rounded-full ml-6" />
                 </div>
               ))}
