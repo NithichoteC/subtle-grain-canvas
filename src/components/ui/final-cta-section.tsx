@@ -74,12 +74,12 @@ export function FinalCtaSection() {
           >
             {/* Main CTA Copy */}
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl mx-auto" style={{ lineHeight: '1.5' }}>
                 <span className="text-white">Ready to fill your calendar with</span>{" "}
                 <span className="bronze-gradient-fix">decision-makers?</span>
               </h2>
               
-              <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed font-light" style={{ lineHeight: '1.5' }}>
                 Book your free strategy call today and discover how our AI system can transform your lead generation.
               </p>
             </div>

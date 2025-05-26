@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { ArrowDown } from "lucide-react";
 
 export function ResultsMetricsSection() {
   const [counts, setCounts] = useState([0, 0, 0, 0]);
@@ -77,7 +78,7 @@ export function ResultsMetricsSection() {
           🏆
         </motion.div>
         
-        {/* Organic bronze light spots */}
+        {/* Visual anchors behind odd cards */}
         <div className="absolute top-1/3 left-16 w-28 h-28 bg-[#efcc8a]/4 rounded-full blur-2xl"></div>
         <div className="absolute bottom-1/4 right-32 w-20 h-20 bg-[#cd7f32]/6 rounded-full blur-xl"></div>
       </div>
@@ -92,150 +93,178 @@ export function ResultsMetricsSection() {
         }}
       ></div>
       
-      {/* Premium Container */}
+      {/* Premium Container with 10% horizontal margins */}
       <div className="w-full relative z-10 border-l border-r border-white/10">
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="w-full border-b border-white/10 py-16 bg-[#171717] relative"
-        >
-          <div className="relative z-10 text-center space-y-8 max-w-4xl mx-auto px-8">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+        <div className="max-w-7xl mx-auto px-[10%]">
+          {/* Header Section with Progress Bar */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="py-20 space-y-8"
+          >
+            {/* Left-aligned title */}
+            <div className="text-left space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]" style={{ lineHeight: '1.5' }}>
                 <span className="bronze-gradient-fix">Proven Results</span>{" "}
                 <span className="text-white">That Speak for Themselves</span>
               </h2>
               
-              <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-light">
+              {/* Progress bar that fills on scroll */}
+              <motion.div 
+                className="w-full h-px bg-white/10 relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.div 
+                  className="absolute top-0 left-0 h-px bg-[#efcc8a]"
+                  initial={{ width: "0%" }}
+                  whileInView={{ width: "100%" }}
+                  transition={{ duration: 2, ease: "easeOut" }}
+                />
+              </motion.div>
+              
+              <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light" style={{ lineHeight: '1.5' }}>
                 Real metrics from real clients who transformed their lead generation with our AI system.
               </p>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* KPI Carousel/Grid */}
-        <div className="w-full max-w-7xl mx-auto py-16">
-          {/* Desktop: Full-width carousel */}
-          <div className="hidden lg:grid lg:grid-cols-4 gap-0">
-            {metrics.map((metric, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                className={cn(
-                  "relative p-8 lg:p-12 bg-[#171717] border-b border-white/10 group transition-all duration-500 hover:bg-[#1a1a1a]",
-                  index > 0 ? "border-l border-white/10" : "",
-                  "border-l border-white/10",
-                  index === metrics.length - 1 ? "border-r border-white/10" : ""
-                )}
-              >
-                <div className="text-center space-y-4">
-                  {/* Bronze Numerals with Count-up */}
-                  <motion.div 
-                    className="text-4xl lg:text-5xl font-bold bronze-gradient-fix"
-                    initial={{ scale: 0.8 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {counts[index]}{metric.suffix}
-                  </motion.div>
+          {/* KPI Grid with Responsive Reflow */}
+          <div className="pb-16">
+            {/* Desktop: Full-width carousel */}
+            <div className="hidden lg:grid lg:grid-cols-4 gap-0 border-b border-white/10">
+              {metrics.map((metric, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
+                  className={cn(
+                    "relative p-8 lg:p-12 bg-[#171717] group transition-all duration-500 hover:bg-[#1a1a1a]",
+                    index > 0 ? "border-l border-white/10" : "",
+                    "border-l border-white/10",
+                    index === metrics.length - 1 ? "border-r border-white/10" : ""
+                  )}
+                >
+                  <div className="text-center space-y-4">
+                    {/* Bronze Numerals with Count-up */}
+                    <motion.div 
+                      className="text-4xl lg:text-5xl font-bold bronze-gradient-fix"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      {counts[index]}{metric.suffix}
+                    </motion.div>
+                    
+                    <h3 className="text-lg font-medium text-white/80 tracking-tight">
+                      {metric.label}
+                    </h3>
+                  </div>
                   
-                  <h3 className="text-lg font-medium text-white/80 tracking-tight">
-                    {metric.label}
-                  </h3>
-                </div>
-                
-                {/* Hover effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent"></div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Tablet: 2x2 Grid */}
-          <div className="hidden md:grid lg:hidden md:grid-cols-2 gap-0">
-            {metrics.map((metric, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                className={cn(
-                  "relative p-8 bg-[#171717] border-b border-white/10 border-l border-white/10 group transition-all duration-500 hover:bg-[#1a1a1a]",
-                  index % 2 === 1 ? "border-r border-white/10" : "",
-                  index >= 2 ? "" : ""
-                )}
-              >
-                <div className="text-center space-y-4">
-                  <motion.div 
-                    className="text-4xl font-bold bronze-gradient-fix"
-                    initial={{ scale: 0.8 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {counts[index]}{metric.suffix}
-                  </motion.div>
+                  {/* Hover effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent"></div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Tablet: 2x2 Grid */}
+            <div className="hidden md:grid lg:hidden md:grid-cols-2 gap-0 border-b border-white/10">
+              {metrics.map((metric, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
+                  className={cn(
+                    "relative p-8 bg-[#171717] border-l border-white/10 group transition-all duration-500 hover:bg-[#1a1a1a]",
+                    index % 2 === 1 ? "border-r border-white/10" : "",
+                    index >= 2 ? "border-t border-white/10" : ""
+                  )}
+                >
+                  <div className="text-center space-y-4">
+                    <motion.div 
+                      className="text-4xl font-bold bronze-gradient-fix"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      {counts[index]}{metric.suffix}
+                    </motion.div>
+                    
+                    <h3 className="text-lg font-medium text-white/80 tracking-tight">
+                      {metric.label}
+                    </h3>
+                  </div>
                   
-                  <h3 className="text-lg font-medium text-white/80 tracking-tight">
-                    {metric.label}
-                  </h3>
-                </div>
-                
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent"></div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Mobile: Stacked */}
-          <div className="md:hidden space-y-0">
-            {metrics.map((metric, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                className="relative p-6 bg-[#171717] border-b border-white/10 border-l border-r border-white/10 group transition-all duration-500 hover:bg-[#1a1a1a]"
-              >
-                <div className="text-center space-y-3">
-                  <motion.div 
-                    className="text-3xl font-bold bronze-gradient-fix"
-                    initial={{ scale: 0.8 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {counts[index]}{metric.suffix}
-                  </motion.div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent"></div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Mobile: Stacked */}
+            <div className="md:hidden space-y-0 border-b border-white/10">
+              {metrics.map((metric, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
+                  className="relative p-6 bg-[#171717] border-l border-r border-white/10 group transition-all duration-500 hover:bg-[#1a1a1a] border-b border-white/10"
+                >
+                  <div className="text-center space-y-3">
+                    <motion.div 
+                      className="text-3xl font-bold bronze-gradient-fix"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      {counts[index]}{metric.suffix}
+                    </motion.div>
+                    
+                    <h3 className="text-base font-medium text-white/80 tracking-tight">
+                      {metric.label}
+                    </h3>
+                  </div>
                   
-                  <h3 className="text-base font-medium text-white/80 tracking-tight">
-                    {metric.label}
-                  </h3>
-                </div>
-                
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent"></div>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent"></div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
+        
+        {/* Flow Guide Arrow */}
+        <motion.div 
+          className="flex justify-center py-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="w-4 h-4 text-[#efcc8a]">
+            <ArrowDown className="w-full h-full" />
+          </div>
+        </motion.div>
       </div>
     </div>
   );

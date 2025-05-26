@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { Magnetic } from "@/components/ui/magnetic";
 import { motion } from "framer-motion";
-import { Brain, Calendar, BarChart3 } from "lucide-react";
+import { Brain, Calendar, BarChart3, ArrowDown } from "lucide-react";
 
 export function CoreCapabilitiesSection() {
   const capabilities = [
@@ -11,21 +11,25 @@ export function CoreCapabilitiesSection() {
       description: "AI ranks & prioritizes leads in seconds.",
       icon: <Brain className="w-8 h-8" />,
       placeholder: "🧠",
-      iconConcepts: ["brain", "filter", "target"]
+      iconConcepts: ["brain", "filter", "target"],
+      width: "35%"
     },
     {
       title: "Instant Scheduling", 
       description: "Calls auto-book with decision-makers.",
       icon: <Calendar className="w-8 h-8" />,
       placeholder: "📅",
-      iconConcepts: ["calendar", "clock", "phone"]
+      iconConcepts: ["calendar", "clock", "phone"],
+      width: "30%",
+      isMiddle: true
     },
     {
       title: "Real-Time Insights",
       description: "Live dashboard tracks appointments & ROI.",
       icon: <BarChart3 className="w-8 h-8" />,
       placeholder: "📊",
-      iconConcepts: ["chart", "eye", "activity"]
+      iconConcepts: ["chart", "eye", "activity"],
+      width: "35%"
     }
   ];
 
@@ -33,11 +37,11 @@ export function CoreCapabilitiesSection() {
     <div className="w-full relative font-roboto bg-[#171717] overflow-hidden">
       {/* Organic Background Elements */}
       <div className="absolute inset-0">
-        {/* Soft bronze light spots */}
-        <div className="absolute top-10 right-10 w-28 h-28 bg-[#efcc8a]/4 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1/3 left-20 w-20 h-20 bg-[#cd7f32]/6 rounded-full blur-lg"></div>
-        {/* Diagonal bronze wave behind middle card */}
+        {/* Visual anchor behind middle card - diagonal bronze wave */}
         <div className="absolute top-0 left-1/3 right-1/3 bottom-0 bg-gradient-to-br from-[#efcc8a]/3 via-transparent to-[#cd7f32]/2 transform skew-y-3 blur-sm"></div>
+        {/* Soft bronze light spots behind odd cards */}
+        <div className="absolute top-10 left-10 w-28 h-28 bg-[#efcc8a]/4 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-1/3 right-20 w-20 h-20 bg-[#cd7f32]/6 rounded-full blur-lg"></div>
       </div>
       
       {/* Background texture */}
@@ -50,32 +54,46 @@ export function CoreCapabilitiesSection() {
         }}
       ></div>
       
-      {/* Premium Container */}
+      {/* Premium Container with 10% horizontal margins */}
       <div className="w-full relative z-10 border-l border-r border-white/10">
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="w-full border-b border-white/10 py-16 bg-[#171717] relative"
-        >
-          <div className="relative z-10 text-center space-y-8 max-w-4xl mx-auto px-8">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+        <div className="max-w-7xl mx-auto px-[10%]">
+          {/* Header Section with Progress Bar */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="py-20 space-y-8"
+          >
+            {/* Left-aligned title */}
+            <div className="text-left space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]" style={{ lineHeight: '1.5' }}>
                 <span className="bronze-gradient-fix">Core Capabilities</span>{" "}
                 <span className="text-white">That Drive Results</span>
               </h2>
               
-              <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-light">
+              {/* Progress bar that fills on scroll */}
+              <motion.div 
+                className="w-full h-px bg-white/10 relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.div 
+                  className="absolute top-0 left-0 h-px bg-[#efcc8a]"
+                  initial={{ width: "0%" }}
+                  whileInView={{ width: "100%" }}
+                  transition={{ duration: 2, ease: "easeOut" }}
+                />
+              </motion.div>
+              
+              <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light" style={{ lineHeight: '1.5' }}>
                 Three pillars of our AI-powered system that transform how you connect with qualified prospects.
               </p>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Three Pillars Grid */}
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          {/* Asymmetric Three Pillars - 35%/30%/35% */}
+          <div className="flex flex-col lg:flex-row border-b border-white/10">
             {capabilities.map((capability, index) => (
               <motion.div 
                 key={index} 
@@ -83,11 +101,15 @@ export function CoreCapabilitiesSection() {
                 whileInView={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 0.7, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }} 
                 className={cn(
-                  "border-b border-white/10 relative",
-                  index < 2 ? "md:border-r border-white/10" : "",
+                  "border-b lg:border-b-0 border-white/10 relative flex-1",
+                  index < 2 ? "lg:border-r border-white/10" : "",
                   "border-l border-white/10",
-                  index === 2 ? "border-r border-white/10" : ""
+                  index === 2 ? "lg:border-r border-white/10" : ""
                 )}
+                style={{ 
+                  flexBasis: capability.width,
+                  minWidth: capability.width 
+                }}
               >
                 <Magnetic 
                   intensity={0.04} 
@@ -163,6 +185,18 @@ export function CoreCapabilitiesSection() {
             ))}
           </div>
         </div>
+        
+        {/* Flow Guide Arrow */}
+        <motion.div 
+          className="flex justify-center py-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="w-4 h-4 text-[#efcc8a]">
+            <ArrowDown className="w-full h-full" />
+          </div>
+        </motion.div>
       </div>
     </div>
   );
