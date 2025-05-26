@@ -69,7 +69,7 @@ export function EarlyAdopterSection() {
                 <span className="text-white mx-0 px-0 my-0 py-0 text-5xl font-semibold">Founding Partner</span>
               </h2>
               
-              <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-light md:text-sm">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed font-light md:text-base">
                 Join an exclusive group of 50 solar & roofing leaders who get priority access, 
                 personalized support, and help shape the future of AI-powered lead generation.
               </p>
@@ -77,7 +77,7 @@ export function EarlyAdopterSection() {
             
             {/* Elegant Progress Indicator */}
             <div className="space-y-4 pt-4">
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4 py-0 my-0">
                 <div className="w-24 h-[2px] bg-gradient-to-r from-[#efcc8a] to-[#cd7f32] rounded-full"></div>
                 <span className="text-[#efcc8a] text-sm font-medium tracking-wide">13 spots remaining</span>
                 <div className="w-8 h-[1px] bg-white/20 rounded-full"></div>
