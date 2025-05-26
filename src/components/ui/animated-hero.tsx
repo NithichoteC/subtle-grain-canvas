@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { animations } from "@/lib/design-tokens";
+import GridLines from "@/components/GridLines";
 
 /**
  * Main hero section with animated text rotation and CTAs
@@ -24,6 +25,9 @@ function Hero() {
 
   return (
     <div className="w-full pt-0 relative">
+      {/* Grid lines positioned to align with navigation */}
+      <GridLines />
+      
       <div className="w-full">
         <div className="flex flex-col items-center justify-center py-16 lg:py-24 space-y-12">
           {/* Brand bubble */}
