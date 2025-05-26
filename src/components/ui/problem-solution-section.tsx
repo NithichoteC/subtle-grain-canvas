@@ -3,16 +3,68 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Magnetic } from "@/components/ui/magnetic";
+import { GridPattern } from "@/components/ui/grid-pattern";
+import { AmbientParticles } from "@/components/ui/ambient-particles";
 
 export function ProblemSolutionSection() {
   return (
     <div className="w-full relative font-roboto bg-[#171717] overflow-hidden">
+      {/* Subdued Grid Pattern Background */}
+      <GridPattern 
+        className="absolute inset-0 opacity-30" 
+        strokeDasharray="0" 
+        width={40} 
+        height={40}
+      />
+      
       {/* Subdued background texture - matching other sections */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#171717]/50 to-transparent"></div>
       <div className="absolute inset-0 opacity-[0.08]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         backgroundSize: '200px 200px'
       }}></div>
+
+      {/* Floating Geometric Elements */}
+      <motion.div 
+        className="absolute top-20 left-16 w-12 h-12 border border-[#efcc8a]/25 bg-[#efcc8a]/5 backdrop-blur-sm rounded-sm"
+        animate={{
+          rotate: [0, 180, 360],
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.6, 0.3]
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      
+      <motion.div 
+        className="absolute bottom-24 right-20 w-8 h-8 bg-gradient-radial from-[#efcc8a]/20 to-transparent rounded-full backdrop-blur-sm"
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [0.4, 0.8, 0.4]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      <motion.div
+        className="absolute top-1/3 right-1/4 h-px w-24 bg-gradient-to-r from-transparent via-[#efcc8a]/40 to-transparent shadow-[0_0_8px_rgba(239,204,138,0.4)]"
+        animate={{
+          scaleX: [0, 1, 0],
+          opacity: [0, 0.8, 0]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+      />
       
       {/* Premium Container - Exact Match to Early Adopter Section */}
       <div className="w-full relative z-10 border-l border-r border-white/10">
@@ -55,13 +107,16 @@ export function ProblemSolutionSection() {
         {/* Grid Layout - Exact Match to Early Adopter Structure */}
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Pain Panel - Flat Block Style */}
+            {/* Pain Panel - Flat Block Style with Ambient Particles */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }} 
               className="border-b border-white/10 lg:border-r border-white/10 relative"
             >
+              {/* Ambient Particles for Problems */}
+              <AmbientParticles type="problems" />
+              
               <Magnetic 
                 intensity={0.03} 
                 rangeX={80} 
@@ -124,13 +179,16 @@ export function ProblemSolutionSection() {
               </Magnetic>
             </motion.div>
 
-            {/* Promise Panel - Flat Block Style */}
+            {/* Promise Panel - Flat Block Style with Ambient Particles */}
             <motion.div 
               initial={{ opacity: 0, x: 40 }} 
               whileInView={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }} 
               className="border-b border-white/10 border-r border-white/10 relative"
             >
+              {/* Ambient Particles for Solutions */}
+              <AmbientParticles type="solutions" />
+              
               <Magnetic 
                 intensity={0.03} 
                 rangeX={80} 
